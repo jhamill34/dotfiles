@@ -1,136 +1,136 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# Set the directory we want to store zinit and plugins
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+
+# Download Zinit, if it's not there yet
+if [ ! -d $ZINIT_HOME ]; then 
+    mkdir -p "$(dirname $ZINIT_HOME)"
+    git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 fi
 
-export PATH="$PATH:$HOME/go/bin:$HOME/.bin"
-export TERM="screen-256color"
-export ZSH="$HOME/.oh-my-zsh"
-export LD_SDK
+# Load zinit 
+source "${ZINIT_HOME}/zinit.zsh"
 
-export FEATURE_FLAG_MODE=ENABLED
-export LD_SDK_KEY="sdk-2f7e2884-a74b-4505-a5f5-50b94f31fab3"
+# Add in zsh plugins
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-autosuggestions
+zinit light Aloxaf/fzf-tab
 
-DISABLE_AUTO_TITLE="true"
+zinit snippet OMZP::git
+zinit snippet OMZP::aws
+zinit snippet OMZP::kubectl
+zinit snippet OMZP::kubectx
+zinit snippet OMZP::docker
+zinit snippet OMZP::command-not-found
 
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor root line)
-ZSH_HIGHLIGHT_PATTERNS=(
-	'rm -rf *' 'fg=white,bold,bg=red'
-)
+# I used to have these plugins, no idea
+# if I used to use them....
+# brew
+# colorize
+# git-extras
+# fzf
+# node
+# npm
+# macos
+# tmux
+# z
 
-ZSH_AUTOSUGGEST_STRATEGY=(history)
+# Load autocompletions
+autoload -U compinit && compinit
 
-ZSH_THEME="powerlevel10k/powerlevel10k"
+zinit cdreplay -q
 
-plugins=(
-	aws
-	brew
-	colorize
-	git
-	git-extras
-	fzf
-	node
-	npm
-	macos
-	tmux
-	z
-	zsh-autosuggestions
-	zsh-syntax-highlighting
-)
+# Load oh-my-posh
+eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/base.toml)"
 
-source $ZSH/oh-my-zsh.sh
+# Custom aliases
+alias vim=nvim
+alias ls='ls --color'
 
-export EDITOR=nvim
-if type nvim > /dev/null 2>&1; then 
-	alias vim='nvim'
-fi
-
-bindkey -v 
-export KEYTIMEOUT=20
-bindkey -M viins '^u' vi-cmd-mode
+# Setup keybindings
+bindkey -e
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
 bindkey '^ ' autosuggest-accept
 
-zstyle ':completion:*' menu select
-zmodload zsh/complist
+# Open up our command line in $EDITOR
+autoload edit-command-line; zle -N edit-command-line 
+bindkey '^e' edit-command-line
 
-bindkey -M menuselect 'h' vi-backward-char
-bindkey -M menuselect 'k' vi-up-line-or-history
-bindkey -M menuselect 'l' vi-forward-char
-bindkey -M menuselect 'j' vi-down-line-or-history
+# zsh history configs
+HISTSIZE=5000
+HISTFILE=~/.zsh_history
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
 
-# TODO: RangerCD setup
-rangercd() {
-	temp="$(mktemp)"
-	ranger --choosedir="$temp" "$@"
-	if [ -f "$temp" ]; then 
-		dir="$(cat $temp)"
-		rm -rf "$temp"
-		[ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
-	fi
-}
-bindkey -s '^o' 'rangercd\n'
+# Zstyle completions
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' menu no
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
-alias lc=listclasses
-alias tw=timewrap
+# shell integrations
+eval "$(fzf --zsh)"
+eval "$(zoxide init --cmd cd zsh)"
+eval "$(gs shell completion zsh)"
+eval "$(k3d completion zsh)"
 
+# NVM configuration
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  
+
+# Python Env configuration
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+# Ruby Env Configuration
+export RBENV_ROOT="$HOME/.rbenv"
+[[ -d $RBENV_ROOT/bin ]] && export PATH="$RBENV_ROOT/bin:$PATH"
+eval "$(rbenv init -)"
+
+# Jabba (Java) configuration
+export JABBA_ROOT="$HOME/.jabba"
+[ -s "$JABBA_ROOT/jabba.sh" ] && source "$JABBA_ROOT/jabba.sh"
+
+# PNPM Configuration
+export PNPM_HOME="$HOME/.pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+
+# Setup Go Binaries
+export PATH="$PATH:$HOME/go/bin"
+
+# Personal Scripts
+export PATH="$PATH:$HOME/.bin:$HOME/.lbin"
+
+# Work stuff
 export WORK_HOME="$HOME/Desktop/Code/Work"
 export TOOLS_HOME="$WORK_HOME/tools"
 
 export PATH="$PATH:$TOOLS_HOME/bin"
 
-alias wk="cd $WORK_HOME"
-alias be="cd $WORK_HOME/backend"
-alias fe="cd $WORK_HOME/frontend"
-alias api="cd $WORK_HOME/apis"
+export LD_SDK
+export FEATURE_FLAG_MODE=ENABLED
+export LD_SDK_KEY="sdk-2f7e2884-a74b-4505-a5f5-50b94f31fab3"
 
 bindkey -s '^[6' 'aws_vpn toggle\n'
 bindkey -s '^[7' 'osc_token fetch\n'
 bindkey -s '^[8' 'source osc_cust_env\n'
 bindkey -s '^[9' 'source osc_env\n'
 bindkey -s '^[0' 'source clear_osc_env\n'
-
-export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
-autoload edit-command-line; zle -N edit-command-line 
-bindkey '^e' edit-command-line
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-
-
-export RBENV_ROOT="$HOME/.rbenv"
-[[ -d $RBENV_ROOT/bin ]] && export PATH="$RBENV_ROOT/bin:$PATH"
-eval "$(rbenv init -)"
-
-export JABBA_ROOT="$HOME/.jabba"
-[ -s "$JABBA_ROOT/jabba.sh" ] && source "$JABBA_ROOT/jabba.sh"
-
-eval "$(fzf --zsh)"
-
-# pnpm
-export PNPM_HOME="/Users/joshuahamill/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-
-export CONFLUENT_HOME="/Users/joshuahamill/confluent-7.9.0"
-export PATH="$PATH:$CONFLUENT_HOME/bin"
-
-[ -s "$WORK_HOME/deployer/deployer_completion" ] && \. "$WORK_HOME/deployer/deployer_completion"
-
-eval "$(gs shell completion zsh)"
-eval "$(k3d completion zsh)"
-eval "$(zoxide init zsh)"
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 
