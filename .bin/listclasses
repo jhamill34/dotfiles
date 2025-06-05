@@ -1,0 +1,9 @@
+#!/bin/bash
+
+location="$1"
+
+escaped=$(echo "$location" | sed 's/\([\.\/]\)/\\\1/g')
+
+find "$location" | sed "s/$escaped\/\(.*\).class/\1/g" | grep -v '^\.' | grep -v '\$' | tr '/' '.' 
+
+

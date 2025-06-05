@@ -1,0 +1,209 @@
+" .ideavimrc is a configuration file for IdeaVim plugin. It uses
+"   the same commands as the original .vimrc configuration.
+" You can find a list of commands here: https://jb.gg/h38q75
+" Find more examples here: https://jb.gg/share-ideavimrc
+
+" Source your .vimrc
+" source ~/.vimrc
+
+let mapleader=" "
+
+" -- Suggested options --
+" Show a few lines of context around the cursor. Note that this makes the
+" text scroll if you mouse-click near the start or end of the window.
+set scrolloff=5
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set smarttab
+set expandtab
+set ideajoin
+set showcmd
+set number relativenumber
+set visualbell
+
+" Do incremental searching.
+set incsearch
+
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+
+map <C-c> <Esc><CR>
+
+" --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
+
+let g:WhichKeyDesc_methodDown = "[[ Method Down"
+nmap [[ <Action>(MethodDown)
+
+let g:WhichKeyDesc_methodUp = "]] Method Up"
+nmap ]] <Action>(MethodUp)
+
+let g:WhichKeyDesc_gotoNextError = "[d Goto Next Error"
+nmap [d <Action>(GotoNextError)
+let g:WhichKeyDesc_gotoPrevError = "]d Goto Previous Error"
+nmap ]d <Action>(GotoPreviousError)
+
+let g:WhichKeyDesc_nextChange = "[c Goto Next Change"
+nmap [c <Action>(VcsShowNextChangeMarker)
+let g:WhichKeyDesc_prevChange = "]c Previous Change"
+nmap ]c <Action>(VcsShowPreviousChangeMarker)
+
+let g:WhichKeyDesc_back = "gb [g]oto [b]ack"
+nmap gb <Action>(Back)
+let g:WhichKeyDesc_forward = "gf [g]oto [f]orward"
+nmap gf <Action>(Forward)
+let g:WhichKeyDesc_gotoRefs = "gr [g]oto [r]eferences"
+nmap gr <Action>(FindUsages)
+let g:WhichKeyDesc_gotoImpl = "gI [g]oto [I]mplementations"
+nmap gI <Action>(GotoImplementation)
+let g:WhichKeyDesc_gotoDesc = "gD [g]oto [D]eclarations"
+nmap gD <Action>(GotoDeclaration)
+let g:WhichKeyDesc_gotoErr = "ge [g]oto [e]rror"
+nmap ge <Action>(ShowErrorDescription)
+let g:WhichKeyDesc_gotoQuickImpl = "gi [G]oto quick [i]mplementations"
+nmap gi <Action>(QuickImplementations)
+let g:WhichKeyDesc_gotoTest = "gt [g]oto [T]est"
+nmap gt <Action>(GotoTest)
+
+nmap K <Action>(ShowHoverInfo)
+
+let g:WhichKeyDesc_codeCall = "<leader>cc [c]code [c]alls"
+nmap <leader>cc <Action>(CallHierarchy)
+let g:WhichKeyDesc_codeTypes = "<leader>ct [c]ode [t]ype"
+nmap <leader>ct <Action>(TypeHierarchy)
+let g:WhichKeyDesc_codeStruct = "<leader>cs [c]ode [s]tructure"
+nmap <leader>cs <Action>(ActivateStructureToolWindow)
+let g:WhichKeyDesc_codeParams = "<leader>cp [c]ode [p]arameter"
+nmap <leader>cp <Action>(ParameterInfo)
+let g:WhichKeyDesc_codeDocs = "<leader>cd [c]ode [d]oc"
+nmap <leader>cd <Action>(ToggleRenderedDocPresentation)
+let g:WhichKeyDesc_codeGenerate = "<leader>cg [c]ode [g]enerate"
+nmap <leader>cg <Action>(Generate)
+let g:WhichKeyDesc_codeAction = "<leader>ca [c]ode [a]ction"
+nmap <leader>ca <Action>(ShowIntentionActions)
+
+let g:WhichKeyDesc_searchFiles = "<leader>sf [s]earch [f]iles (and other things)"
+nmap <leader>sf <Action>(SearchEverywhere)
+let g:WhichKeyDesc_searchGrep = "<leader>sg [s]earch [g]rep"
+nmap <leader>sg <Action>(FindInPath)
+let g:WhichKeyDesc_searchRecent = "<leader>s. [s]earch [.] (recent stuff)"
+nmap <leader>s. <Action>(RecentFiles)
+
+let g:WhichKeyDesc_debugStart = "<leader>ds [d]ebug [s]tart"
+map <leader>ds  <Action>(Debug)
+let g:WhichKeyDesc_debugBreakpoint = "<leader>db [d]ebug [b]reakpoint"
+map <leader>db  <Action>(ToggleLineBreakpoint)
+let g:WhichKeyDesc_debugStop = "<leader>dx [d]ebug [x] (quit)"
+map <leader>dx  <Action>(Stop)
+
+let g:WhichKeyDesc_reformat = "<leader>rf [r]efactor [f]ormat"
+map <leader>rf <Action>(ReformatCode)
+let g:WhichKeyDesc_rename = "<leader>rn [r]efactor re[N]ame"
+map <leader>rn <Action>(RenameElement)
+let g:WhichKeyDesc_method = "<leader>rm [r]efactor [m]ethod"
+map <leader>rm <Action>(ExtractMethod)
+let g:WhichKeyDesc_var = "<leader>rv [r]efactor local [v]ariable"
+map <leader>rv <Action>(IntroduceVariable)
+let g:WhichKeyDesc_field = "<leader>rV [r]efactor field [V]araible"
+map <leader>rV <Action>(IntroduceField)
+let g:WhichKeyDesc_sig = "<leader>rs [r]efactor [s]ignature"
+map <leader>rs <Action>(ChangeSignature)
+let g:WhichKeyDesc_all = "<leader>rr [r]efactor [r] (all)"
+map <leader>rr <Action>(Refactorings.QuickListPopupAction)
+
+let g:WhichKeyDesc_gitCommit = "<leader>gc [g]it [c]ommit"
+map <leader>gc <Action>(CheckinProject)
+let g:WhichKeyDesc_gitShow = "<leader>gs [g]it [s]how"
+map <leader>gs <Action>(ActivateVersionControlToolWindow)
+let g:WhichKeyDesc_gitBranch = "<leader>gb [g]it [b]ranches"
+map <leader>gb <Action>(Git.Branches)
+
+let g:WhichKeyDesc_githubOpenInBrowser = "<leader>go [g]ithub [o]pen"
+map <leader>go <Action>(Github.Open.In.Browser)
+
+let g:WhichKeyDesc_zenDist = "<leader>zd [z]en [d]istractions"
+map <leader>zd <Action>(ToggleDistractionFreeMode)
+let g:WhichKeyDesc_zenHide = "<leader>zh [z]en [h]ide"
+map <leader>zh <Action>(HideAllWindows)
+let g:WhichKeyDesc_fullScreen = "<leader>zf [z]en [f]ull Screen"
+map <leader>zf <Action>(ToggleFullScreen)
+let g:WhichKeyDesc_zen = "<leader>zz [z]en [z] (all)"
+map <leader>zz <Action>(ToggleZenMode)
+
+let g:WhichKeyDesc_mavenSync = "<leader>ms [m]aven [s]ync"
+map <leader>ms <Action>(Gradle.DownloadSources)
+let g:WhichKeyDesc_mavenWindow = "<leader>mw [m]aven [w]indow"
+map <leader>mw <Action>(ActivateGradleToolWindow)
+let g:WhichKeyDes_mavenRunTask = "<leader>mg [m]aven [g]oal"
+map <leader>mg <Action>(Gradle.ExecuteTask)
+let g:WhichKeyDesc_mavenDependencyHelper = "<leader>mdh [m]aven [d]ependency [h]elper"
+map <leader>mdh <Action>(ActivatePackageSearchToolWindow)
+let g:WhichKeyDesc_mavenDependencyAnalyzer = "<leader>mda [m]aven [d]ependency [a]nalyzer"
+map <leader>mda <Action>(Gradle.ProjectViewDependencyAnalyzer)
+
+map <C-e> <Action>(ShowBookmarks)
+let g:WhichKeyDesc_gotoBookmark0 = "<leader>j goto bookmark [j] 0"
+map <leader>j <Action>(GotoBookmark0)
+let g:WhichKeyDesc_toggleBookmark0 = "<leader>aj [a]dd bookmark 0 [j]"
+map <leader>aj <Action>(ToggleBookmark0)
+
+let g:WhichKeyDesc_gotoBookmark1 = "<leader>k goto bookmark [k] 1"
+map <leader>k <Action>(GotoBookmark1)
+let g:WhichKeyDesc_toggleBookmark1 = "<leader>ak [a]dd bookmark 1 [k]"
+map <leader>ak <Action>(ToggleBookmark1)
+
+let g:WhichKeyDesc_gotoBookmark2 = "<leader>l goto bookmark [l] 2"
+map <leader>l <Action>(GotoBookmark2)
+let g:WhichKeyDesc_toggleBookmark2 = "<leader>al [a]dd bookmark 2 [l]"
+map <leader>al <Action>(ToggleBookmark2)
+
+" Move code (Ctrl+Shift+v_vim-motion) to move a line around
+nmap <C-S-j> <Action>(MoveLineDown)
+xmap <C-S-j> <Action>(MoveLineDown)
+nmap <C-S-k> <Action>(MoveLineUp)
+xmap <C-S-k> <Action>(MoveLineUp)
+
+" Cycle through tabs (Alt+Shift+h_vim-motion) to move tabs
+nnoremap <C-S-l> :tabnext<CR>
+nnoremap <C-S-h> :tabprev<CR>
+
+" Navigate through splits (Ctrl+vim-motion)
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+
+nnoremap <C-k> <C-w>k
+nnoremap <C-j> <C-w>j
+
+" Plugins
+Plug 'machakann/vim-highlightedyank'
+Plug 'tpope/vim-commentary'
+Plug 'easymotion/vim-easymotion'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-exchange'
+Plug 'preservim/nerdtree'
+
+set easymotion
+set sneak
+set quickscope
+set NERDTree
+set which-key
+
+set notimeout
+
+" Open project view nd other things)(... again... just muscle memory)
+"TIP IdeaVim specific Note: need to use q to quit or <Ctrl+c> to just move back
+let g:WhichKeyDesc_closeNerdFocus = "<leader>ns [N]erdTree [s]witch"
+nmap <leader>ns :NERDTreeFocus<CR>
+let g:WhichKeyDesc_closeNerdTree = "<leader>nc [N]erdTree [c]lose"
+nmap <leader>nc :NERDTreeClose<CR>
+let g:WhichKeyDesc_navigateDatabase = "<leader>nd [N]avigate] [d]atabase"
+nmap <leader>nd <Action>(ActivateDatabaseToolWindow)
+let g:WhichKeyDesc_zenHide = "<leader>nh [N]avigate [h]ide"
+map <leader>nh <Action>(HideAllWindows)
+
+let g:NERDTreeMapQuit = ['<C-n>']
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+
+" TODO: Add shortcut for HTTP Requests
+" TODO: Add shortcut for Docker things...
+" TODO: Add shortcut for GraphQL / DGS

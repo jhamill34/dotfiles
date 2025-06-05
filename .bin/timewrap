@@ -1,0 +1,173 @@
+#!/bin/bash 
+
+##################################################
+# Parse command line options
+##################################################
+
+TW_DIR="$HOME/.tw"
+TW_LOG="$TW_DIR/tw_log"
+WORKFLOW_CONFIG="$TW_DIR/n8n-workflow.json"
+SLACK_ENABLED=true
+N8N_ENABLED=true
+FORMAT=plain
+
+while [[ "$1" == -* ]]; do 
+    case "$1" in 
+        -l|--log)
+            TW_LOG="$2"
+            shift 2
+            ;;
+        --no-slack)
+            SLACK_ENABLED=false
+            shift
+            ;;
+        --no-n8n)
+            N8N_ENABLED=false
+            shift
+            ;;
+        -w|--workflow-config)
+            WORKFLOW_CONFIG="$2"
+            shift 2
+            ;;
+        -f|--format)
+            FORMAT="$2"
+            shift 2
+            ;;
+        -h|--help)
+            echo "Usage: $0 [options] -- command [args...]"
+            echo "Flags:"
+            echo "  --no-slack              Sends option to workflow to skip sending a slack notification (default: off)"
+            echo "  --no-n8n                Bypass sending our timing result to n8n entirely (default: off)" 
+            echo ""
+            echo "Options:"
+            echo "  -f, --format            The format to display the results locally (options: none, plain, json) (default: plain)"
+            echo "  -l, --log <file>        Diagnostic logs specific to this script (default: $TW_LOG)"
+            echo "  -w, --workflow-config   Configuration file for how to send to n8n (default: $WORKFLOW_CONFIG)"
+            echo "  -h, --help              Show this help message"
+            exit 0
+            ;;
+        --)
+            shift 
+            break
+            ;;
+        *)
+            echo "Unknown option: $1"
+            exit 1
+            ;;
+    esac
+done
+
+
+##################################################
+# Persist some configuration if needed. 
+##################################################
+if [ ! -d "$TW_DIR" ]; then 
+    echo "INFO: timewrap configuration directory does not exist, creating now"
+    mkdir -p "$TW_DIR"
+fi
+
+if [ ! -f "$WORKFLOW_CONFIG" ]; then 
+    echo "INFO: provided workflow configuration does not exist, creating with defaults"
+    read -p "Webhook URL: " WEBHOOK_URL
+    read -p "Username: " WEBHOOK_USER
+    read -s -p "Password: " WEBHOOK_PASSWORD
+    echo 
+
+    jq << EOF > "$WORKFLOW_CONFIG"
+{
+    "url": "$WEBHOOK_URL",
+    "user": "$WEBHOOK_USER",
+    "password": "$WEBHOOK_PASSWORD"
+}
+EOF
+    echo "INFO: writing config to $WORKFLOW_CONFIG"
+fi
+
+if [[ $# -eq 0 ]]; then 
+    echo "No command provided."
+    exit 1
+fi
+
+##################################################
+# Capture the start time 
+##################################################
+CMD="$*"
+echo "Running: $CMD" 
+CMD_START=$(date +"%s.%N")
+
+##################################################
+# Run our actual command
+##################################################
+bash -c "$CMD"
+
+##################################################
+# Capture the stop time and the exit code from our command
+##################################################
+CMD_EXIT_CODE=$?
+CMD_END=$(date +"%s.%N")
+    
+##################################################
+# Create JSON formatted result 
+# Potentially used in format or n8n
+##################################################
+TMP_FILE=$(mktemp)
+jq <<EOF > $TMP_FILE
+{
+    "start_time": "$CMD_START",
+    "end_time": "$CMD_END",
+    "exit_code": $CMD_EXIT_CODE,
+    "command": "$CMD",
+    "slack_enabled": $SLACK_ENABLED
+}
+EOF
+
+
+##################################################
+# Format the timing output locally
+##################################################
+case "$FORMAT" in
+    plain)
+        START_FORMATTED=$(echo "$CMD_START" | cut -d. -f1 | xargs -I {} date -j -f "%s" +"%m/%d/%Y %H:%M:%S" {})
+        END_FORMATTED=$(echo "$CMD_END" | cut -d. -f1 | xargs -I {} date -j -f "%s" +"%m/%d/%Y %H:%M:%S" {})
+        ELAPSED=$(echo "$CMD_END - $CMD_START" | bc)
+
+        echo "Command: $CMD"
+        echo "Start: $START_FORMATTED"
+        echo "End: $END_FORMATTED"
+        echo "Duration (s): $ELAPSED"
+        echo
+        ;;
+    json)
+        jq "$TMP_FILE"
+        ;;
+    none)
+        break;
+        ;;
+    *)
+        echo "WARN: Unknown output format $FORMAT"
+        ;;
+esac
+
+##################################################
+# Send results to our n8n instance
+##################################################
+if $N8N_ENABLED; then 
+    echo "Sending to N8N"
+    WEBHOOK_URL=$(jq -r '.url' "$WORKFLOW_CONFIG")
+    WEBHOOK_USER=$(jq -r '.user' "$WORKFLOW_CONFIG")
+    WEBHOOK_PASSWORD=$(jq -r '.password' "$WORKFLOW_CONFIG")
+
+    curl -u "$WEBHOOK_USER:$WEBHOOK_PASSWORD" \
+        -H "Content-Type: application/json" \
+        -d @"$TMP_FILE" \
+        "$WEBHOOK_URL" &> "$TW_LOG"
+else
+    echo "Not sending results to n8n workflow"
+fi
+
+
+##################################################
+# Exit
+##################################################
+echo "Done!"
+

@@ -1,0 +1,6 @@
+[core]
+excludesfile = ~/.config/git/personal.gitignore
+
+[user]
+name = "Josh Hamill"
+email = "joshrasmussen34@gmail.com"
