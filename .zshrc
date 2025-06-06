@@ -125,7 +125,7 @@ export PATH="$PATH:$TOOLS_HOME/bin"
 
 export LD_SDK
 export FEATURE_FLAG_MODE=ENABLED
-export LD_SDK_KEY="sdk-2f7e2884-a74b-4505-a5f5-50b94f31fab3"
+export LD_SDK_KEY=""
 
 bindkey -s '^[6' 'aws_vpn toggle\n'
 bindkey -s '^[7' 'osc_token fetch\n'

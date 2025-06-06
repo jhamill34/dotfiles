@@ -10,9 +10,8 @@ su = submodule update
 [includeIf "gitdir:~/Desktop/Code/Personal/"]
 	path = "~/.config/git/personal.gitconfig"
 
-; Uncomment if you have a work profile
-; [includeIf "gitdir:~/Desktop/Code/Work/"]
-; 	path = "~/.config/git/work.gitconfig"
+[includeIf "gitdir:~/Desktop/Code/Work/"]
+	path = "~/.config/git/work.gitconfig"
 
 [core]
 	autocrlf = input
