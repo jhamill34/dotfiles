@@ -47,6 +47,7 @@ eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/base.toml)"
 
 # Custom aliases
 alias vim=nvim
+export EDITOR="nvim"
 alias ls='ls --color'
 
 # Setup keybindings
