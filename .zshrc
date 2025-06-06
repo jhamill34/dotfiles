@@ -107,22 +107,9 @@ eval "$(rbenv init -)"
 export PATH="$PATH:$HOME/go/bin"
 
 # Personal Scripts
+export PERSONAL_HOME="$HOME/Desktop/Code/Personal"
 export PATH="$PATH:$HOME/.bin:$HOME/.lbin"
 
 # Work stuff
 export WORK_HOME="$HOME/Desktop/Code/Work"
-export TOOLS_HOME="$WORK_HOME/tools"
-
-export PATH="$PATH:$TOOLS_HOME/bin"
-
-export LD_SDK
-export FEATURE_FLAG_MODE=ENABLED
-export LD_SDK_KEY=""
-
-bindkey -s '^[6' 'aws_vpn toggle\n'
-bindkey -s '^[7' 'osc_token fetch\n'
-bindkey -s '^[8' 'source osc_cust_env\n'
-bindkey -s '^[9' 'source osc_env\n'
-bindkey -s '^[0' 'source clear_osc_env\n'
-
-
+source "$HOME/work.zshrc"
