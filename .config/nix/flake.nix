@@ -47,8 +47,6 @@
             pkgs.kind
             pkgs.kubectl
             pkgs.kubernetes-helm
-            pkgs.luajit
-            pkgs.luajitPackages.luarocks
             pkgs.mkalias
             pkgs.mkcert
             pkgs.neovim
