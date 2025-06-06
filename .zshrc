@@ -113,4 +113,4 @@ export PATH="$PATH:$HOME/.bin:$HOME/.lbin"
 
 # Work stuff
 export WORK_HOME="$HOME/Desktop/Code/Work"
-source "$HOME/work.zshrc"
+source "$HOME/.work.zshrc"
