@@ -104,13 +104,6 @@ eval "$(rbenv init -)"
 export JABBA_ROOT="$HOME/.jabba"
 [ -s "$JABBA_ROOT/jabba.sh" ] && source "$JABBA_ROOT/jabba.sh"
 
-# PNPM Configuration
-export PNPM_HOME="$HOME/.pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-
 # Setup Go Binaries
 export PATH="$PATH:$HOME/go/bin"
 

@@ -1,5 +1,54 @@
 {
   "nodes": {
+    "brew-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1748658199,
+        "narHash": "sha256-xmI9Bk8zDWgmvJlPpeHZk9yHCZPG5uxZH9VmdEdWCkU=",
+        "owner": "Homebrew",
+        "repo": "brew",
+        "rev": "54c8b127ea2263fbbaf1354e3d8d86025e387ea6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Homebrew",
+        "ref": "4.5.4",
+        "repo": "brew",
+        "type": "github"
+      }
+    },
+    "homebrew-cask": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1749227050,
+        "narHash": "sha256-mEdJ+OUnRdobthjFt2ko+rW7jhXAQEZA8DpBz3kcASw=",
+        "owner": "homebrew",
+        "repo": "homebrew-cask",
+        "rev": "326702f6916db839f6e82b589e822d7787a227fa",
+        "type": "github"
+      },
+      "original": {
+        "owner": "homebrew",
+        "repo": "homebrew-cask",
+        "type": "github"
+      }
+    },
+    "homebrew-core": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1749226214,
+        "narHash": "sha256-k6YjFD8uAtg+/U5xw4AyUsK6BKcHAhOZV7gfl+Lf7D8=",
+        "owner": "homebrew",
+        "repo": "homebrew-core",
+        "rev": "bb979507d1887e57c88a7e2e347db179d85ea74f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "homebrew",
+        "repo": "homebrew-core",
+        "type": "github"
+      }
+    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
@@ -21,6 +70,24 @@
         "type": "github"
       }
     },
+    "nix-homebrew": {
+      "inputs": {
+        "brew-src": "brew-src"
+      },
+      "locked": {
+        "lastModified": 1749061673,
+        "narHash": "sha256-cMXNT+bMgnbH1OVlGEGUr2K7Fbq+MXC2rGLnHjduQT0=",
+        "owner": "zhaofengli",
+        "repo": "nix-homebrew",
+        "rev": "5108f0846cde2080aaeb1c7b08e3bd7d27f33b57",
+        "type": "github"
+      },
+      "original": {
+        "owner": "zhaofengli",
+        "repo": "nix-homebrew",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1749174413,
@@ -39,7 +106,10 @@
     },
     "root": {
       "inputs": {
+        "homebrew-cask": "homebrew-cask",
+        "homebrew-core": "homebrew-core",
         "nix-darwin": "nix-darwin",
+        "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs"
       }
     }
