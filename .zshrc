@@ -87,8 +87,8 @@ eval "$(k3d completion zsh)"
 
 # NVM configuration
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  
+[ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" # This loads nvm
+[ -s "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
 
 # Python Env configuration
 export PYENV_ROOT="$HOME/.pyenv"
@@ -101,8 +101,7 @@ export RBENV_ROOT="$HOME/.rbenv"
 eval "$(rbenv init -)"
 
 # Jabba (Java) configuration
-export JABBA_ROOT="$HOME/.jabba"
-[ -s "$JABBA_ROOT/jabba.sh" ] && source "$JABBA_ROOT/jabba.sh"
+[ -s "$HOMEBREW_PREFIX/opt/jabba/share/jabba/jabba.sh" ] && . "$HOMEBREW_PREFIX/opt/jabba/share/jabba/jabba.sh"
 
 # Setup Go Binaries
 export PATH="$PATH:$HOME/go/bin"

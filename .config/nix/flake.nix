@@ -1,3 +1,9 @@
+##############################################################
+# Documentation
+# - https://search.nixos.org/packages
+# - https://nix-darwin.github.io/nix-darwin/manual/index.html
+##############################################################
+
 {
   description = "Personal nix-darwin system flake";
 
@@ -23,7 +29,6 @@
     configuration = { pkgs, config, ... }: {
       nixpkgs.config.allowUnfree = true;
 
-      # https://search.nixos.org/packages
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
       environment.systemPackages =
@@ -31,7 +36,6 @@
             pkgs.aws-sam-cli
             pkgs.awscli2
             pkgs.clickhouse
-            pkgs.dnsmasq
             pkgs.fd
             pkgs.fzf
             pkgs.gh
@@ -66,37 +70,71 @@
             pkgs.zoxide
         ];
 
-      # TODO: Jabba  https://github.com/shyiko/jabba
-
-      # TODO: NVM  https://github.com/nvm-sh/nvm
-
       fonts.packages = [
           pkgs.nerd-fonts.fira-mono
         ];
 
-      # system.activationScripts.applications.text = let 
-      #   env = pkgs.buildEnv {
-      #       name = "system-applications";
-      #       paths = config.environment.systemPackages;
-      #       pathsToLink = "/Applications";
-      #   };
-      # in 
-      #   pkgs.lib.mkForce ''
-      #       # Setup applications.
-      #       echo "setting up /Applications..." >&2
-      #       rm -rf /Applications/Nix\ Apps
-      #       mkdir -p /Applications/Nix\ Apps
-      #       find ${env}/Applications -maxdepth 1 -type l -exec readlink '{}' + |
-      #       while read -r src; do 
-      #         app_name=$(basename "$src")
-      #         echo "copying $src" >&2
-      #         ${pkgs.mkalias}/bin/mkalias "$src" "/Applications/Nix Apps/$app_name"
-      #       done
-      #   '';
-      
+      homebrew = {
+          enable = true;
+          brews = [
+            "nvm"
+            "jabba"
+            {
+              name = "dnsmasq";
+              start_service = true;
+            }
+          ];
+          casks = [
+            "ghostty"
+            "slack"
+            "zoom"
+            "notion-calendar"
+            "sunsama"
+            "google-chrome"
+            "spotify"
+            "raycast"
+            "jetbrains-toolbox"
+            "docker"
+          ]; 
+          masApps = {
+            "Spark" = 6445813049;
+          };
+          onActivation.autoUpdate = true;
+          onActivation.upgrade = true;
+        };
 
       # Required since we used the "Determinate" distribution
       nix.enable = false;
+
+      system.primaryUser = "joshuahamill";
+      system.defaults = {
+          dock.autohide = true;
+          dock.persistent-apps = [
+            "/System/Applications/Messages.app"
+            "/System/Applications/Passwords.app"
+            "/Applications/Sunsama.app"
+            "/Applications/Spark\ Desktop.app"
+            "/Applications/Notion\ Calendar.app"
+            "/Applications/Slack.app"
+            "/Applications/Ghostty.app"
+            "/Applications/Google\ Chrome.app"
+            "/Applications/Spotify.app"
+            "/Applications/zoom.us.app"
+          ];
+          finder.FXPreferredViewStyle = "clmv";
+          NSGlobalDomain.AppleInterfaceStyle = "Dark";
+      };
+
+      networking.dns = [
+          "1.1.1.1"
+          "8.8.8.8"
+      ];
+
+      networking.knownNetworkServices = [
+          "Wi-Fi"
+          "Thunderbolt Ethernet Slot 2"
+          "Thunderbolt Bridge"
+      ];
 
       # Necessary for using flakes on this system.
       nix.settings.experimental-features = "nix-command flakes";
