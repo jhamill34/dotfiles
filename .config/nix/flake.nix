@@ -35,7 +35,6 @@
         [ 
             pkgs.aws-sam-cli
             pkgs.awscli2
-            pkgs.clickhouse
             pkgs.fd
             pkgs.fzf
             pkgs.gh
@@ -83,6 +82,7 @@
             }
           ];
           casks = [
+            "clickhouse"
             "ghostty"
             "slack"
             "zoom"
