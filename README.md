@@ -24,4 +24,5 @@ stow .
 - [ ] Try out karabeaner 
 - [ ] Sketchybar sounds fun
 - [ ] Add our ghostty config here too
+- [ ] Configure oh-my-posh look and feel
 
