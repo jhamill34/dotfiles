@@ -39,6 +39,7 @@
             pkgs.fzf
             pkgs.gh
             pkgs.git-spice
+            pkgs.go
             pkgs.gradle
             pkgs.jq
             pkgs.k3d
@@ -60,6 +61,7 @@
             pkgs.rbenv
             pkgs.redis
             pkgs.ripgrep
+            pkgs.rustup
             pkgs.stow
             pkgs.tmux
             pkgs.wget
