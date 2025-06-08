@@ -25,4 +25,7 @@ stow .
 - [ ] Sketchybar sounds fun
 - [ ] Add our ghostty config here too
 - [ ] Configure oh-my-posh look and feel
+- [ ] Hammerspoon configuration 
+- [ ] Karabeaner Mac App configuration 
+- [ ] Sketchybar Mac App
 

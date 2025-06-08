@@ -22,9 +22,14 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
+
+    homebrew-felixkratz = {
+      url = "github:FelixKratz/homebrew-formulae";
+      flake = false;
+    };
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew, homebrew-core, homebrew-cask }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew, homebrew-core, homebrew-cask, homebrew-felixkratz }:
   let
     configuration = { pkgs, config, ... }: {
       nixpkgs.config.allowUnfree = true;
@@ -82,6 +87,10 @@
               name = "dnsmasq";
               start_service = true;
             }
+            {
+              name = "sketchybar";
+              start_service = true;
+            }
           ];
           casks = [
             "clickhouse"
@@ -95,6 +104,8 @@
             "raycast"
             "jetbrains-toolbox"
             "docker"
+            "hammerspoon"
+            "karabiner-elements"
           ]; 
           masApps = {
             "Spark" = 6445813049;
@@ -175,6 +186,7 @@
                   taps = {
                     "homebrew/homebrew-core" = homebrew-core;
                     "homebrew/homebrew-cask" = homebrew-cask;
+                    "FelixKratz/homebrew-formulae" = homebrew-felixkratz;
                   };
 
                   # Only allow taps to be added declaratively
