@@ -43,7 +43,7 @@ autoload -U compinit && compinit
 zinit cdreplay -q
 
 # Load oh-my-posh
-eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/base.toml)"
+eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/catppuccin_mocha.omp.json)"
 
 # Custom aliases
 alias vim=nvim

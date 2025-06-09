@@ -14,6 +14,10 @@ To install the configuration files. We can use:
 stow . 
 ```
 
+## TMUX Plugins (tpm)
+
+
+
 ## Future Work 
 
 - [ ] Redoing our Tmux Config
