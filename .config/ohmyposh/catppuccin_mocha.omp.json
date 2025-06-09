@@ -23,12 +23,6 @@
                     "type": "os"
                 },
                 {
-                    "foreground": "p:blue",
-                    "style": "plain",
-                    "template": "{{ .UserName }}@{{ .HostName }} ",
-                    "type": "session"
-                },
-                {
                     "foreground": "p:pink",
                     "properties": {
                         "folder_icon": "..\ue5fe..",
@@ -71,16 +65,10 @@
             "type": "rprompt",
             "segments": [
                 {
-                    "type": "shell",
-                    "style": "plain",
-                    "foreground": "p:blue",
-                    "template": "{{if .Env.CURRENT_CUSTOMER_NAME}}{{.Env.CURRENT_CUSTOMER_NAME}}{{end}} "
-                },
-                {
                     "type": "kubectl",
                     "style": "plain",
                     "foreground": "p:blue",
-                    "template": "{{.Context}}{{if .Namespace}} :: {{.Namespace}}{{end}} "
+                    "template": "⎈ {{.Context}}{{if .Namespace}} :: {{.Namespace}}{{end}} "
                 },
                 {
                     "type": "aws",
@@ -94,7 +82,7 @@
                     "foreground": "#000000",
                     "background": "p:lavender",
                     "leading_diamond": "",
-                    "trailing_diamond": "",
+                    "trailing_diamond": " ",
                     "template": "{{ .IP }}",
                     "properties": {
                         "http_timeout": 1000
