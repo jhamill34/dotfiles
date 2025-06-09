@@ -28,4 +28,15 @@ stow .
 - [ ] Hammerspoon configuration 
 - [ ] Karabeaner Mac App configuration 
 - [ ] Sketchybar Mac App
+- [ ] Use Ansible to run playbooks to install / run commands on remote machines (i.e. Amanda's macbook)
+- [ ] Continue to look into multi-user homebrew. 
+
+
+## Multi-user homebrew
+
+This setup is probably best done by having a dedicated homebrew user and then making sure that permissions are configured properly. 
+
+## Ansible 
+
+This tool is typically run over SSH so as long as that is configured initially, I can run ansible playbooks remotely and update Amanda's computer or anyone elses with my own. I could also use this to setup k3s on computers or k8s on VPS. 
 
