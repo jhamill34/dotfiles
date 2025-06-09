@@ -69,6 +69,7 @@
             pkgs.rustup
             pkgs.stow
             pkgs.tmux
+            pkgs.typst
             pkgs.wget
             pkgs.yq
             pkgs.zoxide
