@@ -5,7 +5,8 @@
         "closer": "p:os",
         "pink": "#F5C2E7",
         "lavender": "#B4BEFE",
-        "blue": "#89B4FA"
+        "blue": "#89B4FA",
+        "text": "#494D64"
     },
     "transient_prompt": {
         "background": "transparent",
@@ -17,24 +18,31 @@
             "alignment": "left",
             "segments": [
                 {
-                    "foreground": "p:os",
-                    "style": "plain",
+                    "background": "p:os",
+                    "foreground": "p:text",
+                    "style": "powerline",
                     "template": "{{.Icon}} ",
+                    "invert_powerline": false,
+                    "leading_powerline_symbol": "",
+                    "powerline_symbol": " ",
                     "type": "os"
                 },
                 {
-                    "foreground": "p:pink",
+                    "background": "p:pink",
+                    "foreground": "p:text",
                     "properties": {
                         "folder_icon": "..\ue5fe..",
                         "home_icon": "~",
                         "style": "agnoster_short"
                     },
-                    "style": "plain",
+                    "style": "powerline",
+                    "powerline_symbol": " ",
                     "template": "{{ .Path }} ",
                     "type": "path"
                 },
                 {
-                    "foreground": "p:lavender",
+                    "background": "p:lavender",
+                    "foreground": "p:text",
                     "properties": {
                         "branch_icon": "\ue725 ",
                         "cherry_pick_icon": "\ue29b ",
@@ -47,15 +55,10 @@
                         "revert_icon": "\uf0e2 ",
                         "tag_icon": "\uf412 "
                     },
+                    "powerline_symbol": " ",
                     "template": "{{ .HEAD }} ",
-                    "style": "plain",
+                    "style": "powerline",
                     "type": "git"
-                },
-                {
-                    "style": "plain",
-                    "foreground": "p:closer",
-                    "template": "\uf105",
-                    "type": "text"
                 }
             ],
             "type": "prompt"
