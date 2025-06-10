@@ -14,24 +14,24 @@ To install the configuration files. We can use:
 stow . 
 ```
 
-## TMUX Plugins (tpm)
+## Uninstall
 
+```bash 
+stow -D . 
+```
 
 
 ## Future Work 
 
-- [ ] Redoing our Tmux Config
-- [ ] Redoing our Neovim config (mini nvim, snack.nvim, and kickstart)
+- [x] Redoing our Tmux Config
+- [-] Redoing our Neovim config (mini nvim, snack.nvim, and kickstart)
 - [ ] Using home manager to install our dot files
 - [ ] Use nix to configure our personal laptop with a user for Amanda
-- [ ] Try out hammerspoon mac app 
-- [ ] Try out karabeaner 
-- [ ] Sketchybar sounds fun
-- [ ] Add our ghostty config here too
-- [ ] Configure oh-my-posh look and feel
-- [ ] Hammerspoon configuration 
-- [ ] Karabeaner Mac App configuration 
-- [ ] Sketchybar Mac App
+- [-] Try out hammerspoon mac app 
+- [-] Try out karabeaner 
+- [-] Sketchybar sounds fun
+- [x] Add our ghostty config here too
+- [x] Configure oh-my-posh look and feel
 - [ ] Use Ansible to run playbooks to install / run commands on remote machines (i.e. Amanda's macbook)
 - [ ] Continue to look into multi-user homebrew. 
 

@@ -1,0 +1,9 @@
+theme=catppuccin-mocha
+copy-on-select = false
+# doesn't currently work as of ghostty v1.0.1:
+#keybind = unconsumed:ctrl+shift+c=copy_to_clipboard
+keybind = ctrl+shift+c=unbind
+# remap super+c to ctrl+shift+c, use `bash -i -c cat` to see keycodes as you type them
+keybind = super+c=csi:99;6u
+selection-invert-fg-bg = true
+shell-integration-features = no-cursor
