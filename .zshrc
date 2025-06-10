@@ -49,6 +49,7 @@ eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/catppuccin_mocha.omp
 alias vim=nvim
 export EDITOR="nvim"
 alias ls='ls --color'
+alias gai='git add -i'
 
 # Setup keybindings
 bindkey -e
