@@ -69,11 +69,15 @@ automatically-unhide-macos-hidden-apps = false
     inner.vertical =   16
     outer.left =       16
     outer.bottom =     16
-    outer.top =        48
+    outer.top =        [ { monitor."built-in" = 48 }, 58 ]
     outer.right =      16
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'finder'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'activity'
 run = 'layout floating'
 
 [[on-window-detected]]
@@ -83,11 +87,11 @@ run = 'layout floating'
 # Coding Workspace
 [[on-window-detected]]
 if.app-name-regex-substring = 'ghostty'
-run = 'move-node-to-workspace 1'
+run = 'move-node-to-workspace 2'
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'intellij'
-run = 'move-node-to-workspace 1'
+run = 'move-node-to-workspace 2'
 
 # Communication Workspace 
 [[on-window-detected]]
@@ -109,7 +113,7 @@ run = 'move-node-to-workspace 3'
 # Media Workspace
 [[on-window-detected]]
 if.app-name-regex-substring = 'spotify'
-run = 'move-node-to-workspace 4'
+run = 'move-node-to-workspace 5'
 
 
 # 'main' binding mode declaration
@@ -170,12 +174,14 @@ run = 'move-node-to-workspace 4'
     alt-2 = 'workspace 2'
     alt-3 = 'workspace 3'
     alt-4 = 'workspace 4'
+    alt-5 = 'workspace 5'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
     alt-shift-1 = 'move-node-to-workspace 1'
     alt-shift-2 = 'move-node-to-workspace 2'
     alt-shift-3 = 'move-node-to-workspace 3'
     alt-shift-4 = 'move-node-to-workspace 4'
+    alt-shift-5 = 'move-node-to-workspace 5'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
     alt-tab = 'workspace-back-and-forth'
@@ -205,9 +211,10 @@ run = 'move-node-to-workspace 4'
     up = 'volume up'
     shift-down = ['volume set 0', 'mode main']
 
-# [workspace-to-monitor-force-assignment]
-#     1 = 1                            # Monitor sequence number from left to right. 1-based indexing
-#     2 = 'main'                       # Main monitor
-#     3 = 'secondary'                  # Non-main monitor in case when there are only two monitors
-#     4 = 'built-in'                   # Case insensitive regex substring
+[workspace-to-monitor-force-assignment]
+    1 =  ['built-in', 'secondary'] 	# Web browsing
+    2 = ['built-in', 'main']         	# Coding space 
+    3 = ['built-in', 'secondary']    	# Communications
+    4 = []
+    5 = ['built-in', 'secondary']    	# Media 
 

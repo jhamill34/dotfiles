@@ -65,6 +65,7 @@
             pkgs.git-spice
             pkgs.go
             pkgs.gradle
+	    pkgs.imagemagick
             pkgs.jq
             pkgs.k3d
             pkgs.k9s
@@ -96,6 +97,7 @@
 
       fonts.packages = [
           pkgs.nerd-fonts.fira-mono
+	  pkgs.sketchybar-app-font
         ];
 
 
