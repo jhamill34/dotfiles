@@ -20,11 +20,11 @@
     "homebrew-cask": {
       "flake": false,
       "locked": {
-        "lastModified": 1749227050,
-        "narHash": "sha256-mEdJ+OUnRdobthjFt2ko+rW7jhXAQEZA8DpBz3kcASw=",
+        "lastModified": 1749583316,
+        "narHash": "sha256-J3TEXuRjvC7qhMGytBq+kp3ICTk5DNNzZujry8ycVy0=",
         "owner": "homebrew",
         "repo": "homebrew-cask",
-        "rev": "326702f6916db839f6e82b589e822d7787a227fa",
+        "rev": "9c31d23038c317953f64da44fee7ff8d0b2edfcf",
         "type": "github"
       },
       "original": {
@@ -36,11 +36,11 @@
     "homebrew-core": {
       "flake": false,
       "locked": {
-        "lastModified": 1749226214,
-        "narHash": "sha256-k6YjFD8uAtg+/U5xw4AyUsK6BKcHAhOZV7gfl+Lf7D8=",
+        "lastModified": 1749585559,
+        "narHash": "sha256-Qt0rZf+k8z8c8BSAe2cd3JTx0dPXHMAVwAByuw/zq7g=",
         "owner": "homebrew",
         "repo": "homebrew-core",
-        "rev": "bb979507d1887e57c88a7e2e347db179d85ea74f",
+        "rev": "1e395560e93baa944df8099c9cbafd3642d487b7",
         "type": "github"
       },
       "original": {
@@ -62,6 +62,38 @@
       "original": {
         "owner": "FelixKratz",
         "repo": "homebrew-formulae",
+        "type": "github"
+      }
+    },
+    "homebrew-koekeishiya": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1747579322,
+        "narHash": "sha256-e7NybFVmFDHHy8m+cJPnDugGKzfYkMvh/3c+O7jMM2Y=",
+        "owner": "koekeishiya",
+        "repo": "homebrew-formulae",
+        "rev": "f5711b9c70e104bffc79e3525e2ed0dc335bdbba",
+        "type": "github"
+      },
+      "original": {
+        "owner": "koekeishiya",
+        "repo": "homebrew-formulae",
+        "type": "github"
+      }
+    },
+    "homebrew-nikitabobko": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1746359410,
+        "narHash": "sha256-hXcquTkyfKZw2p8bAE4Yh6we8xeAZbwNHhQtoK6SMU4=",
+        "owner": "nikitabobko",
+        "repo": "homebrew-tap",
+        "rev": "6714dd2c19455643dbe754e6ec8454a86b3000d1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nikitabobko",
+        "repo": "homebrew-tap",
         "type": "github"
       }
     },
@@ -125,6 +157,8 @@
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
         "homebrew-felixkratz": "homebrew-felixkratz",
+        "homebrew-koekeishiya": "homebrew-koekeishiya",
+        "homebrew-nikitabobko": "homebrew-nikitabobko",
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs"

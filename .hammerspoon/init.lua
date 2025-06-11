@@ -1,27 +1,7 @@
 local hyper = { "ctrl", "alt", "cmd", "shift" }
-
--- Window management, move windows around
--- using the hyper key
-hs.loadSpoon("MiroWindowsManager")
-spoon.MiroWindowsManager:bindHotkeys({
-	up = { hyper, "up" },
-	right = { hyper, "right" },
-	down = { hyper, "down" },
-	left = { hyper, "left" },
-	fullscreen = { hyper, "f" },
-	nextscreen = { hyper, "n" },
-})
+hs.application.enableSpotlightForNameSearches(true)
 
 -- Enable caffeine
-local caffeine = hs.menubar.new()
-function setCaffeineDisplay(state)
-	if state then
-		caffeine:setTitle("☕")
-	else
-		caffeine:setTitle("😴")
-	end
-end
-
 function caffeineClicked()
 	setCaffeineDisplay(hs.caffeinate.toggle("displayIdle"))
 end
@@ -32,65 +12,37 @@ if caffeine then
 end
 hs.hotkey.bind(hyper, "c", caffeineClicked)
 
--- App Shortcuts
-function openApp(name)
-	local app = hs.application.get(name)
-	if app then
-		if app:isFrontmost() then
-			app:hide()
-		else
-			app:mainWindow():focus()
-		end
-	else
-		hs.application.launchOrFocus(name)
-	end
-end
-
-function slack()
-	openApp("Slack")
-end
-
-function calendar()
-	openApp("Notion Calendar")
-end
-
-function mail()
-	openApp("Spark Desktop")
-end
-
-function sunsama()
-	openApp("Sunsama")
-end
-
-function spotify()
-	openApp("Spotify")
-end
-
--- Hotkeys for communication apps
-hs.hotkey.bind(hyper, "1", mail)
-hs.hotkey.bind(hyper, "2", slack)
-hs.hotkey.bind(hyper, "3", sunsama)
-hs.hotkey.bind(hyper, "4", calendar)
-hs.hotkey.bind(hyper, "5", spotify)
-
-function terminal()
-	openApp("Ghostty")
-end
-
-function editor()
-	openApp("IntelliJ IDEA")
-end
-
---- Hotkeys for coding workflow
-hs.hotkey.bind(hyper, "9", editor)
-hs.hotkey.bind(hyper, "0", terminal)
-
--- URL Handler for certain app
 function appID(app)
 	if hs.application.infoForBundlePath(app) then
 		return hs.application.infoForBundlePath(app)["CFBundleIdentifier"]
 	end
 end
+
+mail = appID("/Applications/Spark Desktop.app")
+slack = appID("/Applications/Slack.app")
+calendar = appID("/Applications/Notion Calendar.app")
+sunsama = appID("/Applications/Sunsama.app")
+spotify = appID("/Applications/Spotify.app")
+terminal = appID("/Applications/Ghostty.app")
+intellij = appID(os.getenv("HOME") .. "/Applications/IntelliJ IDEA Ultimate.app")
+
+-- App Shortcuts
+function openApp(bundleId)
+	return function()
+		hs.application.launchOrFocusByBundleID(bundleId)
+	end
+end
+
+-- Hotkeys for communication apps
+hs.hotkey.bind(hyper, "1", openApp(mail))
+hs.hotkey.bind(hyper, "2", openApp(slack))
+hs.hotkey.bind(hyper, "3", openApp(sunsama))
+hs.hotkey.bind(hyper, "4", openApp(calendar))
+hs.hotkey.bind(hyper, "5", openApp(spotify))
+
+--- Hotkeys for coding workflow
+hs.hotkey.bind(hyper, "9", openApp(intellij))
+hs.hotkey.bind(hyper, "0", openApp(terminal))
 
 function chromeProfile(profile)
 	return function(url)
@@ -105,6 +57,19 @@ function chromeProfile(profile)
 			})
 			:start()
 	end
+end
+
+function chromeProfileBlank(profile)
+	hs.task
+		.new("/usr/bin/open", nil, {
+			"-n",
+			"-a",
+			"Google Chrome",
+			"--args",
+			"--profile-directory=" .. profile,
+			"https://google.com",
+		})
+		:start()
 end
 
 browsers = {
@@ -128,33 +93,11 @@ urlFiles = {
 }
 
 hs.hotkey.bind(hyper, "7", function()
-	log = hs.logger.new("test", "debug")
-	local app = hs.application.get("Google Chrome")
-	if app then
-		local profile = app:findMenuItem(profileMenus.personal)
-		if profile and not profile["ticked"] then
-			log.i(profile)
-			app:selectMenuItem(profileMenus.personal)
-		end
-		app:mainWindow():focus()
-	else
-		browsers.personal("http://google.com")
-	end
+	chromeProfileBlank("Default")
 end)
 
 hs.hotkey.bind(hyper, "8", function()
-	log = hs.logger.new("test", "debug")
-	local app = hs.application.get("Google Chrome")
-	if app then
-		local profile = app:findMenuItem(profileMenus.work)
-		if profile and not profile["ticked"] then
-			log.i(profile)
-			app:selectMenuItem(profileMenus.work)
-		end
-		app:mainWindow():focus()
-	else
-		browsers.work("http://google.com")
-	end
+	chromeProfileBlank("Profile 1")
 end)
 
 hs.loadSpoon("URLDispatcher")

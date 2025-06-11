@@ -27,9 +27,28 @@
       url = "github:FelixKratz/homebrew-formulae";
       flake = false;
     };
+    
+    homebrew-koekeishiya = {
+      url = "github:koekeishiya/homebrew-formulae";
+      flake = false;
+    };
+    homebrew-nikitabobko = {
+      url = "github:nikitabobko/homebrew-tap";
+      flake = false;
+    };
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew, homebrew-core, homebrew-cask, homebrew-felixkratz }:
+  outputs = inputs@{ 
+		self, 
+		nix-darwin, 
+		nixpkgs, 
+		nix-homebrew, 
+		homebrew-core, 
+		homebrew-cask, 
+		homebrew-felixkratz, 
+		homebrew-koekeishiya, 
+		homebrew-nikitabobko
+	}:
   let
     configuration = { pkgs, config, ... }: {
       nixpkgs.config.allowUnfree = true;
@@ -79,6 +98,7 @@
           pkgs.nerd-fonts.fira-mono
         ];
 
+
       homebrew = {
           enable = true;
           brews = [
@@ -92,6 +112,10 @@
               name = "sketchybar";
               start_service = true;
             }
+            {
+              name = "borders";
+              start_service = true;
+            }
           ];
           casks = [
             "clickhouse"
@@ -102,17 +126,30 @@
             "sunsama"
             "google-chrome"
             "spotify"
-            "raycast"
             "jetbrains-toolbox"
             "docker"
             "hammerspoon"
             "karabiner-elements"
+	    "aerospace"
           ]; 
           masApps = {
             "Spark" = 6445813049;
           };
+          taps = [
+	    "homebrew/core"
+	    "homebrew/cask"
+	    "FelixKratz/formulae" 
+            "koekeishiya/formulae" 
+	    "nikitabobko/tap"
+	  ];
+	
+	  onActivation.cleanup = "zap";
           onActivation.autoUpdate = true;
           onActivation.upgrade = true;
+
+	  global = {
+	    brewfile = true;
+	  };
         };
 
       # Required since we used the "Determinate" distribution
@@ -184,14 +221,16 @@
                   # User owning the homebrew prefix
                   user = "joshuahamill";
 
-                  taps = {
-                    "homebrew/homebrew-core" = homebrew-core;
-                    "homebrew/homebrew-cask" = homebrew-cask;
-                    "FelixKratz/homebrew-formulae" = homebrew-felixkratz;
-                  };
+		  taps = {
+		    "homebrew/homebrew-core" = homebrew-core;
+		    "homebrew/homebrew-cask" = homebrew-cask;
+		    "FelixKratz/homebrew-formulae" = homebrew-felixkratz;
+	            "koekeishiya/homebrew-formulae" = homebrew-koekeishiya;
+		    "nikitabobko/homebrew-tap" = homebrew-nikitabobko;
+		  };
 
                   # Only allow taps to be added declaratively
-                  mutableTaps = false;
+		  mutableTaps = false;
               };
           }
         ];
