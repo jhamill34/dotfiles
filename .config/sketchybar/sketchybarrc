@@ -21,7 +21,7 @@ bar=(
   padding_left=10
   y_offset=8
   margin=10
-  blur_radius=30
+  blur_radius=15
   corner_radius=9
   topmost=window
 )
@@ -64,6 +64,7 @@ source "$ITEM_DIR/calendar.sh"
 source "$ITEM_DIR/wifi.sh"
 source "$ITEM_DIR/battery.sh"
 source "$ITEM_DIR/volume.sh"
+source "$ITEM_DIR/coffee.sh"
 
 source "$ITEM_DIR/spotify.sh"
 
