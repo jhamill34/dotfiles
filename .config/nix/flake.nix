@@ -3,7 +3,7 @@
 # - https://search.nixos.org/packages
 # - https://nix-darwin.github.io/nix-darwin/manual/index.html
 ##############################################################
-
+ 
 {
   description = "Personal nix-darwin system flake";
 
@@ -12,22 +12,23 @@
     nix-darwin.url = "github:nix-darwin/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+    home-manager = {
+			url = "github:nix-community/home-manager";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
 
     homebrew-core = {
       url = "github:homebrew/homebrew-core";
       flake = false;
     };
-
     homebrew-cask = {
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
-
     homebrew-felixkratz = {
       url = "github:FelixKratz/homebrew-formulae";
       flake = false;
     };
-    
     homebrew-koekeishiya = {
       url = "github:koekeishiya/homebrew-formulae";
       flake = false;
@@ -38,17 +39,18 @@
     };
   };
 
-  outputs = inputs@{ 
-		self, 
-		nix-darwin, 
-		nixpkgs, 
-		nix-homebrew, 
-		homebrew-core, 
-		homebrew-cask, 
-		homebrew-felixkratz, 
-		homebrew-koekeishiya, 
-		homebrew-nikitabobko
-	}:
+  outputs = inputs@{
+    self,
+    nix-darwin,
+    nixpkgs,
+    nix-homebrew,
+    homebrew-core,
+    homebrew-cask,
+    homebrew-felixkratz,
+    homebrew-koekeishiya,
+    homebrew-nikitabobko,
+		home-manager
+  }:
   let
     configuration = { pkgs, config, ... }: {
       nixpkgs.config.allowUnfree = true;
@@ -56,7 +58,7 @@
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
       environment.systemPackages =
-        [ 
+        [
             pkgs.aws-sam-cli
             pkgs.awscli2
             pkgs.fd
@@ -65,7 +67,7 @@
             pkgs.git-spice
             pkgs.go
             pkgs.gradle
-	    pkgs.imagemagick
+      pkgs.imagemagick
             pkgs.jq
             pkgs.k3d
             pkgs.k9s
@@ -97,7 +99,7 @@
 
       fonts.packages = [
           pkgs.nerd-fonts.fira-mono
-	  pkgs.sketchybar-app-font
+          pkgs.sketchybar-app-font
         ];
 
 
@@ -132,27 +134,31 @@
             "docker"
             "hammerspoon"
             "karabiner-elements"
-	    "aerospace"
-          ]; 
+            "aerospace"
+          ];
           masApps = {
             "Spark" = 6445813049;
           };
           taps = [
-	    "homebrew/core"
-	    "homebrew/cask"
-	    "FelixKratz/formulae" 
-            "koekeishiya/formulae" 
-	    "nikitabobko/tap"
-	  ];
-	
-	  onActivation.cleanup = "zap";
+            "homebrew/core"
+            "homebrew/cask"
+            "FelixKratz/formulae"
+            "koekeishiya/formulae"
+            "nikitabobko/tap"
+          ];
+
+          onActivation.cleanup = "zap";
           onActivation.autoUpdate = true;
           onActivation.upgrade = true;
 
-	  global = {
-	    brewfile = true;
-	  };
+          global = {
+            brewfile = true;
+          };
         };
+
+      users.users.joshuahamill.home = "/Users/joshuahamill";
+      home-manager.backupFileExtension = "bak";
+			nix.configureBuildUsers = true;
 
       # Required since we used the "Determinate" distribution
       nix.enable = false;
@@ -208,11 +214,15 @@
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#Joshuas-MacBook-Pro
     darwinConfigurations."Joshuas-MacBook-Pro" = nix-darwin.lib.darwinSystem {
-      modules = 
-        [ 
-          configuration 
-          nix-homebrew.darwinModules.nix-homebrew 
-          {
+      modules =
+        [
+          configuration
+          home-manager.darwinModules.home-manager {
+							home-manager.useGlobalPkgs = true;
+							home-manager.useUserPackages = true;
+							home-manager.users.joshuahamill = import ./home.nix;
+          }
+          nix-homebrew.darwinModules.nix-homebrew {
               nix-homebrew = {
                   # Install Homebrew under the default prefix
                   enable = true;
@@ -223,16 +233,16 @@
                   # User owning the homebrew prefix
                   user = "joshuahamill";
 
-		  taps = {
-		    "homebrew/homebrew-core" = homebrew-core;
-		    "homebrew/homebrew-cask" = homebrew-cask;
-		    "FelixKratz/homebrew-formulae" = homebrew-felixkratz;
-	            "koekeishiya/homebrew-formulae" = homebrew-koekeishiya;
-		    "nikitabobko/homebrew-tap" = homebrew-nikitabobko;
-		  };
+                  taps = {
+                    "homebrew/homebrew-core" = homebrew-core;
+                    "homebrew/homebrew-cask" = homebrew-cask;
+                    "FelixKratz/homebrew-formulae" = homebrew-felixkratz;
+                    "koekeishiya/homebrew-formulae" = homebrew-koekeishiya;
+                    "nikitabobko/homebrew-tap" = homebrew-nikitabobko;
+                  };
 
                   # Only allow taps to be added declaratively
-		  mutableTaps = false;
+                  mutableTaps = false;
               };
           }
         ];

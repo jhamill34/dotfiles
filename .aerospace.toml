@@ -84,6 +84,14 @@ run = 'layout floating'
 if.app-name-regex-substring = 'settings'
 run = 'layout floating'
 
+[[on-window-detected]]
+if.window-title-regex-substring = 'sunsama focus bar'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'zoom'
+run = 'layout floating'
+
 # Coding Workspace
 [[on-window-detected]]
 if.app-name-regex-substring = 'ghostty'

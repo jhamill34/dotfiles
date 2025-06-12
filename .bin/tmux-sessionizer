@@ -3,7 +3,7 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find "$HOME/Desktop/Code/Work" "$HOME/Desktop/Code/Personal" -mindepth 1 -maxdepth 1 -type d -or -type l | fzf)
+    selected=$(find "$HOME/Code/Work" "$HOME/Code/Personal" -mindepth 1 -maxdepth 1 -type d -or -type l | fzf)
 fi
 
 if [[ -z $selected ]]; then

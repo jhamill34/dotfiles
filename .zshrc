@@ -109,9 +109,9 @@ eval "$(rbenv init -)"
 export PATH="$PATH:$HOME/go/bin"
 
 # Personal Scripts
-export PERSONAL_HOME="$HOME/Desktop/Code/Personal"
+export PERSONAL_HOME="$HOME/Code/Personal"
 export PATH="$PATH:$HOME/.bin:$HOME/.lbin"
 
 # Work stuff
-export WORK_HOME="$HOME/Desktop/Code/Work"
+export WORK_HOME="$HOME/Code/Work"
 source "$HOME/.work.zshrc"

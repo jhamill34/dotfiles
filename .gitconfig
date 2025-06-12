@@ -4,10 +4,10 @@ lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(
 lg = lg1
 co = checkout
 
-[includeIf "gitdir:~/Desktop/Code/Personal/"]
+[includeIf "gitdir:~/Code/Personal/"]
 	path = "~/.config/git/personal.gitconfig"
 
-[includeIf "gitdir:~/Desktop/Code/Work/"]
+[includeIf "gitdir:~/Code/Work/"]
 	path = "~/.config/git/work.gitconfig"
 
 [core]
