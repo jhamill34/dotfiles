@@ -1,3 +1,8 @@
 #!/bin/bash
 
 APPLE=
+
+VOLUME_100=
+
+WIFI_DISCONNECTED=󰖪
+WIFI_CONNECTED=󰖩
