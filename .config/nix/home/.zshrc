@@ -1,5 +1,3 @@
-eval "$(/opt/homebrew/bin/brew shellenv)"
-
 # Set the directory we want to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
@@ -115,3 +113,6 @@ export PATH="$PATH:$HOME/.bin:$HOME/.lbin"
 # Work stuff
 export WORK_HOME="$HOME/Code/Work"
 source "$HOME/.work.zshrc"
+
+# Extra configuration
+[ -f "$HOME/.extras/.zshrc" ] && source "$HOME/.extras/.zshrc"

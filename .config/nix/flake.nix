@@ -67,7 +67,7 @@
             pkgs.git-spice
             pkgs.go
             pkgs.gradle
-      pkgs.imagemagick
+      	    pkgs.imagemagick
             pkgs.jq
             pkgs.k3d
             pkgs.k9s
@@ -158,7 +158,6 @@
 
       users.users.joshuahamill.home = "/Users/joshuahamill";
       home-manager.backupFileExtension = "bak";
-			nix.configureBuildUsers = true;
 
       # Required since we used the "Determinate" distribution
       nix.enable = false;
