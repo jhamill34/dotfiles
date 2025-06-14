@@ -122,12 +122,12 @@ obj.pat_files = {}
 obj.pat_watchers = {}
 
 -- Local functions to decode URLs
-function hex_to_char(x)
+function obj.hex_to_char(x)
 	return string.char(tonumber(x, 16))
 end
 
 function obj.unescape(url)
-	return url:gsub("%%(%x%x)", hex_to_char)
+	return url:gsub("%%(%x%x)", obj.hex_to_char)
 end
 
 -- Match a single pattern against an application name.
@@ -162,7 +162,7 @@ function obj:read_and_store(patfile)
 	self.pat_files[patfile] = hs.fnutils.copy(pats)
 end
 
-function obj:patfileWatcher(patfile, paths, flags)
+function obj:patfileWatcher(patfile, _, flags)
 	-- Only trigger re-reading the file when the 'itemModified' flag is present,
 	-- otherwise the file gets read multiple times due to file manipulations done
 	-- by editors
@@ -215,7 +215,7 @@ function obj:dispatchURL(scheme, host, params, fullUrl, senderPid)
 			self.logger.df("  Decoded Slack redirect. New URL: '%s'", url)
 		end
 	end
-	for i, dec in ipairs(self.url_redir_decoders) do
+	for _, dec in ipairs(self.url_redir_decoders) do
 		self.logger.df("  Testing decoder '%s'", dec[1])
 		local processed = false
 		if self.matchapps(currentApp, dec[5]) then
@@ -242,7 +242,7 @@ function obj:dispatchURL(scheme, host, params, fullUrl, senderPid)
 		end
 	end
 	self.logger.df("Final URL to open: '%s'", url)
-	for i, pair in ipairs(self.url_patterns) do
+	for _, pair in ipairs(self.url_patterns) do
 		self.logger.df("Evaluating rule %s", hs.inspect(pair))
 
 		local pats = pair[1]
@@ -273,7 +273,7 @@ function obj:dispatchURL(scheme, host, params, fullUrl, senderPid)
 				end
 			end
 
-			for i, p in ipairs(pats) do
+			for _, p in ipairs(pats) do
 				self.logger.df("  Testing URL with pattern '%s'", p)
 				if string.match(url, p) then
 					local id = nil

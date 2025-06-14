@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # make sure it's executable with:
 # chmod +x ~/.config/sketchybar/plugins/aerospace.sh
@@ -16,7 +16,6 @@ if [ "${apps}" != "" ]; then
 else 
     icon_strip=" -"
 fi
-
 
 if [ "$1" = "$FOCUSED_WORKSPACE" ]; then
     sketchybar --animate sin 10 --set $NAME \

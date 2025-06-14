@@ -22,7 +22,7 @@ launcher.mappings = {
 		key = "1",
 	},
 	{
-		app = "/Applications/Slack.app",
+		app = os.getenv("HOME") .. "/Applications/Home Manager Trampolines/Slack.app",
 		key = "2",
 	},
 	{
@@ -34,11 +34,11 @@ launcher.mappings = {
 		key = "4",
 	},
 	{
-		app = "/Applications/Spotify.app",
+		app = os.getenv("HOME") .. "/Applications/Home Manager Trampolines/Spotify.app",
 		key = "5",
 	},
 	{
-		app = os.getenv("HOME") .. "/Applications/IntelliJ IDEA Ultimate.app",
+		app = os.getenv("HOME") .. "/Applications/Home Manager Trampolines/IntelliJ IDEA.app",
 		key = "9",
 	},
 	{
@@ -66,6 +66,6 @@ chromeProfile:start()
 
 local dispatcher = spoon.URLDispatcher
 dispatcher.decode_slack_redir_urls = true
-dispatcher.default_handler = appID("/Applications/Google Chrome.app")
+dispatcher.default_handler = appID(os.getenv("HOME") .. "/Applications/Home Manager Trampolines/Google Chrome.app")
 dispatcher.url_patterns = chromeProfile:patterns()
 dispatcher:start()

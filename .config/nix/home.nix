@@ -11,8 +11,100 @@
   programs.home-manager.enable = true;
 
   home.packages = [
-    pkgs.cowsay
+    pkgs.aws-sam-cli
+    pkgs.awscli2
+    pkgs.confluent-platform
+    pkgs.gh
+    pkgs.git-spice
+    pkgs.go
+    pkgs.gradle
+    pkgs.k3d
+    pkgs.k9s
+    pkgs.kafkactl
+    pkgs.kind
+    pkgs.kubectl
+    pkgs.kubernetes-helm
+    pkgs.mkalias
+    pkgs.mkcert
+    pkgs.neovim
+    pkgs.ngrok
+    pkgs.nss
+    pkgs.oh-my-posh
+    pkgs.parallel
+    pkgs.postgresql
+    pkgs.pulumi
+    pkgs.pulumictl
+    pkgs.pyenv
+    pkgs.rbenv
+    pkgs.redis
+    pkgs.ripgrep
+    pkgs.rustup
+    pkgs.typst
+    pkgs.zoxide
+
+    pkgs.clickhouse
+    pkgs.dnsmasq
+    pkgs.docker
+
+    pkgs.slack
+    pkgs.spotify
+    pkgs.google-chrome
+    pkgs.zoom-us
+    pkgs.aerospace
+    pkgs.sketchybar
+    pkgs.jankyborders
+    pkgs.jetbrains.idea-ultimate
   ];
+
+  launchd.agents.sketchybarAgent = {
+    enable = true;
+    config = {
+        EnvironmentVariables = {
+            PATH = "${pkgs.sketchybar}/bin:${pkgs.aerospace}/bin:/usr/bin:/bin:/usr/sbin:/sbin";
+        };
+        Label = "com.koekeishiya.sketchybar";
+        ProgramArguments = [
+            "${pkgs.sketchybar}/bin/sketchybar"
+        ];
+        KeepAlive = true;
+        RunAtLoad = true;
+        StandardOutPath = "/tmp/sketchybar.out.log";
+        StandardErrorPath = "/tmp/sketchybar.err.log";
+        ProcessType = "Interactive";
+        LimitLoadToSessionType = [
+                "Aqua"
+                "Background"
+                "LoginWindow"
+                "StandardIO"
+                "System"
+        ];
+    };
+  };
+
+  launchd.agents.jankyBordersAgent = {
+    enable = true;
+    config = {
+        EnvironmentVariables = {
+            PATH = "${pkgs.jankyborders}/bin:/usr/bin:/bin:/usr/sbin:/sbin";
+        };
+        Label = "com.koekeishiya.jankyborders";
+        ProgramArguments = [
+            "${pkgs.jankyborders}/bin/borders"
+        ];
+        KeepAlive = true;
+        RunAtLoad = true;
+        StandardOutPath = "/tmp/borders.out.log";
+        StandardErrorPath = "/tmp/borders.err.log";
+        ProcessType = "Interactive";
+        LimitLoadToSessionType = [
+                "Aqua"
+                "Background"
+                "LoginWindow"
+                "StandardIO"
+                "System"
+        ];
+    };
+  };
 
   home.file = {
     ".zshrc".source = ./home/.zshrc;
@@ -21,11 +113,11 @@
     ".gitconfig".source = ./home/.gitconfig;
     ".config" = {
         source = ./home/.config;
-	recursive = true;
+        recursive = true;
      };
     ".hammerspoon" = {
         source = ./home/.hammerspoon;
-	recursive = true;
+        recursive = true;
      };
 
 

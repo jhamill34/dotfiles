@@ -44,3 +44,6 @@ This setup is probably best done by having a dedicated homebrew user and then ma
 
 This tool is typically run over SSH so as long as that is configured initially, I can run ansible playbooks remotely and update Amanda's computer or anyone elses with my own. I could also use this to setup k3s on computers or k8s on VPS. 
 
+## Issues
+
+- [ ] System reboot can't find executables until another `sudo nix nix-darwin switch --flake ~/.config/nix` is ran, seems like something is wonky here. 
