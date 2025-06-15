@@ -58,6 +58,20 @@ This tool is typically run over SSH so as long as that is configured initially, 
 ## Issues
 
 - [ ] System reboot can't find executables until another `sudo nix nix-darwin switch --flake ~/.config/nix` is ran, seems like something is wonky here. 
+- [ ] AeroSpace + Sketchybar on reboot doesn't quite work. 
+
+### Starting AeroSpace and Sketchybar 
+
+```bash
+open "$HOME/Applications/Home Manager Trampolines/AeroSpace.app"
+sketchybar --reload
+```
+
+To kill the aerospace process
+
+```bash 
+pgrep "AeroSpace | xargs -I {} kill {}
+```
 
 ## Apps I want to look into
 
