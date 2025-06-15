@@ -56,20 +56,20 @@
     pkgs.jetbrains.idea-ultimate
   ];
 
-  launchd.agents.sketchybarAgent = {
+  launchd.agents.jankyBordersAgent = {
     enable = true;
     config = {
         EnvironmentVariables = {
-            PATH = "${pkgs.sketchybar}/bin:${pkgs.aerospace}/bin:/usr/bin:/bin:/usr/sbin:/sbin";
+            PATH = "${pkgs.jankyborders}/bin:/usr/bin:/bin:/usr/sbin:/sbin";
         };
-        Label = "com.koekeishiya.sketchybar";
+        Label = "tech.jhamill.jankyborders";
         ProgramArguments = [
-            "${pkgs.sketchybar}/bin/sketchybar"
+            "${pkgs.jankyborders}/bin/borders"
         ];
         KeepAlive = true;
         RunAtLoad = true;
-        StandardOutPath = "/tmp/sketchybar.out.log";
-        StandardErrorPath = "/tmp/sketchybar.err.log";
+        StandardOutPath = "/tmp/borders.out.log";
+        StandardErrorPath = "/tmp/borders.err.log";
         ProcessType = "Interactive";
         LimitLoadToSessionType = [
                 "Aqua"
@@ -81,20 +81,21 @@
     };
   };
 
-  launchd.agents.jankyBordersAgent = {
+
+  launchd.agents.sketchybarAgent = {
     enable = true;
     config = {
         EnvironmentVariables = {
-            PATH = "${pkgs.jankyborders}/bin:/usr/bin:/bin:/usr/sbin:/sbin";
+            PATH = "${pkgs.sketchybar}/bin:${pkgs.aerospace}/bin:/usr/bin:/bin:/usr/sbin:/sbin";
         };
-        Label = "com.koekeishiya.jankyborders";
+        Label = "tech.jhamill.sketchybar";
         ProgramArguments = [
-            "${pkgs.jankyborders}/bin/borders"
+            "${pkgs.sketchybar}/bin/sketchybar"
         ];
         KeepAlive = true;
         RunAtLoad = true;
-        StandardOutPath = "/tmp/borders.out.log";
-        StandardErrorPath = "/tmp/borders.err.log";
+        StandardOutPath = "/tmp/sketchybar.out.log";
+        StandardErrorPath = "/tmp/sketchybar.err.log";
         ProcessType = "Interactive";
         LimitLoadToSessionType = [
                 "Aqua"
