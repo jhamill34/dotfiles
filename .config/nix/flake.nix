@@ -50,10 +50,10 @@
                     pkgs.fd
                     pkgs.fzf
                     pkgs.imagemagick
-    pkgs.stow
-    pkgs.tmux
-    pkgs.wget
-    pkgs.yq
+                    pkgs.stow
+                    pkgs.tmux
+                    pkgs.wget
+                    pkgs.yq
                 ];
 
             fonts.packages = [
