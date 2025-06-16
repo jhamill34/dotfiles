@@ -42,7 +42,7 @@ launcher.mappings = {
 		key = "9",
 	},
 	{
-		app = "/Applications/Ghostty.app",
+		app = os.getenv("HOME") .. "/Applications/Home Manager Trampolines/kitty.app",
 		key = "0",
 	},
 	{

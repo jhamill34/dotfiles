@@ -191,6 +191,9 @@ function icon_map() {
   "Ghostty")
     icon_result=":ghostty:"
     ;;
+  "Kitty" | "kitty")
+    icon_result=":kitty:"
+    ;;
   *)
     icon_result=":default:"
     ;;

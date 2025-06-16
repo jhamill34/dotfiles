@@ -69,7 +69,6 @@
                     ];
                     casks = [
                         # These do, but I can't get them to work... 
-                        "ghostty" # Maybe try alacratty
                         "karabiner-elements"
 
 
