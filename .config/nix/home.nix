@@ -45,6 +45,7 @@
     pkgs.clickhouse
     pkgs.dnsmasq
     pkgs.docker
+    pkgs.colima
 
     pkgs.kitty
     pkgs.obsidian
