@@ -151,7 +151,7 @@
     {
         # Build darwin flake using:
         # $ darwin-rebuild build --flake .#Joshuas-MacBook-Pro
-        darwinConfigurations."Joshuas-MacBook-Pro" = nix-darwin.lib.darwinSystem {
+        darwinConfigurations."josh-macbook-pro" = nix-darwin.lib.darwinSystem {
             modules =
                 [
                     configuration
