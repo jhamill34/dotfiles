@@ -45,6 +45,10 @@ launcher.mappings = {
 		app = "/Applications/Ghostty.app",
 		key = "0",
 	},
+	{
+		app = os.getenv("HOME") .. "/Applications/Home Manager Trampolines/Obsidian.app",
+		key = "-",
+	},
 }
 launcher:start()
 

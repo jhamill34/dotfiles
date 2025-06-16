@@ -46,6 +46,8 @@
     pkgs.dnsmasq
     pkgs.docker
 
+    pkgs.kitty
+    pkgs.obsidian
     pkgs.slack
     pkgs.spotify
     pkgs.google-chrome

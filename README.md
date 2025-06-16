@@ -78,3 +78,7 @@ pgrep "AeroSpace | xargs -I {} kill {}
 - Kitty -> Terminal emulator
 - Obsidian + Excalidraw -> Notes
 
+## Self Hosting
+
+- Strapi -> CMS for a blog
+
