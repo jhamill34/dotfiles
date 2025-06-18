@@ -71,6 +71,9 @@
                         # These do, but I can't get them to work... 
                         "karabiner-elements"
 
+                        # NOTE: We'll use the homebrew cask for now, spent too much 
+                        #  time trying to get lima/colima working with test containers
+                        "docker"
 
                         # These apps don't exist in 
                         # Nix store 
@@ -111,7 +114,7 @@
                         "/Applications/Spark\ Desktop.app"
                         "/Applications/Notion\ Calendar.app"
                         "${pkgs.slack}/Applications/Slack.app"
-                        "/Applications/Ghostty.app"
+                        "${pkgs.kitty}/Applications/kitty.app"
                         "${pkgs.google-chrome}/Applications/Google\ Chrome.app"
                         "${pkgs.zoom-us}/Applications/zoom.us.app"
                     ];

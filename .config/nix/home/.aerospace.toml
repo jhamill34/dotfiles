@@ -195,7 +195,6 @@ run = 'move-node-to-workspace 5'
     # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
     alt-tab = 'workspace-back-and-forth'
     # See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
-    alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#mode
     alt-shift-semicolon = 'mode service'
@@ -216,14 +215,10 @@ run = 'move-node-to-workspace 5'
     alt-shift-k = ['join-with up', 'mode main']
     alt-shift-l = ['join-with right', 'mode main']
 
+    alt-ctrl-shift-h = ['move-workspace-to-monitor --wrap-around next', 'mode main']
+    alt-ctrl-shift-l = ['move-workspace-to-monitor --wrap-around prev', 'mode main']
+
     down = 'volume down'
     up = 'volume up'
     shift-down = ['volume set 0', 'mode main']
-
-[workspace-to-monitor-force-assignment]
-    1 =  ['built-in', 'secondary'] 	# Web browsing
-    2 = ['built-in', 'main']         	# Coding space 
-    3 = ['built-in', 'secondary']    	# Communications
-    4 = []
-    5 = ['built-in', 'secondary']    	# Media 
 
