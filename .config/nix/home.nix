@@ -65,6 +65,7 @@
     pkgs.sketchybar
     pkgs.jankyborders
     pkgs.jetbrains.idea-ultimate
+    pkgs.code-cursor
   ];
 
   launchd.agents.jankyBordersAgent = {
