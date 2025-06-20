@@ -38,6 +38,10 @@ launcher.mappings = {
 		key = "5",
 	},
 	{
+		app = "/Applications/Docker.app",
+		key = "6",
+	},
+	{
 		app = os.getenv("HOME") .. "/Applications/Home Manager Trampolines/IntelliJ IDEA.app",
 		key = "9",
 	},

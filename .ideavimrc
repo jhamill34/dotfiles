@@ -129,6 +129,8 @@ let g:WhichKeyDesc_fullScreen = "<leader>zf [z]en [f]ull Screen"
 map <leader>zf <Action>(ToggleFullScreen)
 let g:WhichKeyDesc_zen = "<leader>zz [z]en [z] (all)"
 map <leader>zz <Action>(ToggleZenMode)
+let g:WhichKeyDesc_close = "<leader>zc [z]en [c]lose "
+map <leader>zc <Action>(CloseAllUnmodifiedEditors)
 
 let g:WhichKeyDesc_mavenSync = "<leader>ms [m]aven [s]ync"
 map <leader>ms <Action>(Gradle.DownloadSources)

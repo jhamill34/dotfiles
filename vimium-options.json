@@ -1,0 +1,7 @@
+{
+  "filterLinkHints": true,
+  "keyMappings": "# Insert your preferred key mappings here.\nmap zl closeTabsOnLeft\nmap zl closeTabsOnRight\nmap zc closeOtherTabs\nmap <space> passNextKey\n\nunmap <a-p>\nmap zp togglePinTab\n\nunmap H\nunmap J\nunmap K\nunmap L\n\nmap H previousTab\nmap L nextTab\nmap <c-o> goBack\nmap <c-i> goForward",
+  "settingsVersion": "2.2.1",
+  "userDefinedLinkHintCss": "div > .vimiumHintMarker {\n/* linkhint boxes */\nbackground: rgb(220, 138, 120, 0.8);\ncolor: #505050;\nborder: 1px solid background: rgb(220, 138, 120, 0.9);\n}\n\ndiv > .vimiumHintMarker span {\n/* linkhint text */\ncolor: black;\nfont-weight: bold;\nfont-size: 12px;\n}\n\ndiv > .vimiumHintMarker > .matchingCharacter {\n}",
+  "exclusionRules": []
+}
