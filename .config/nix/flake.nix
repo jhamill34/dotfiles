@@ -63,10 +63,6 @@
 
             homebrew = {
                     enable = true;
-                    brews = [
-                        "nvm"
-                        "jabba"
-                    ];
                     casks = [
                         # These do, but I can't get them to work... 
                         "karabiner-elements"

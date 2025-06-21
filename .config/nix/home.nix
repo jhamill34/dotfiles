@@ -23,6 +23,7 @@
     pkgs.kafkactl
     pkgs.kind
     pkgs.kubectl
+    pkgs.kubectx
     pkgs.kubernetes-helm
     pkgs.mkalias
     pkgs.mkcert
@@ -40,6 +41,7 @@
     pkgs.ripgrep
     pkgs.rustup
     pkgs.typst
+    pkgs.tilt
     pkgs.zoxide
 
     pkgs.clickhouse
