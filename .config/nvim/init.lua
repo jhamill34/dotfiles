@@ -234,6 +234,11 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	end
 end
 
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+	pattern = "Tiltfile",
+	command = "setfiletype starlark",
+})
+
 ---@type vim.Option
 local rtp = vim.opt.rtp
 rtp:prepend(lazypath)
