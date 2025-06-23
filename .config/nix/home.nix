@@ -14,6 +14,7 @@
     pkgs.aws-sam-cli
     pkgs.awscli2
     pkgs.confluent-platform
+    pkgs.d2
     pkgs.gh
     pkgs.git-spice
     pkgs.go
@@ -58,7 +59,6 @@
     pkgs.nodejs_22 # NodeJS
 
     pkgs.kitty
-    pkgs.obsidian
     pkgs.slack
     pkgs.spotify
     pkgs.google-chrome

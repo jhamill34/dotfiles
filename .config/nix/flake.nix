@@ -54,8 +54,10 @@
                     pkgs.tmux
                     pkgs.wget
                     pkgs.yq
-                    pkgs.luajit
-                    pkgs.luajitPackages.luarocks
+
+                    pkgs.tree-sitter
+                    pkgs.lua51Packages.lua
+                    pkgs.lua51Packages.luarocks
                 ];
 
             fonts.packages = [

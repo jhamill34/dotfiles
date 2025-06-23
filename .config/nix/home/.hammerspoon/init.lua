@@ -49,10 +49,6 @@ launcher.mappings = {
 		app = os.getenv("HOME") .. "/Applications/Home Manager Trampolines/kitty.app",
 		key = "0",
 	},
-	{
-		app = os.getenv("HOME") .. "/Applications/Home Manager Trampolines/Obsidian.app",
-		key = "-",
-	},
 }
 launcher:start()
 
