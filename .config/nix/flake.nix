@@ -68,22 +68,10 @@
             homebrew = {
                     enable = true;
                     casks = [
-                        # These do, but I can't get them to work... 
-                        "karabiner-elements"
-
                         # NOTE: We'll use the homebrew cask for now, spent too much 
                         #  time trying to get lima/colima working with test containers
                         "docker"
-
-                        # These apps don't exist in 
-                        # Nix store 
-                        "notion-calendar" # Maybe try something new?
-                        "sunsama"
-                        "hammerspoon"
                     ];
-                    masApps = {
-                        "Spark" = 6445813049;
-                    };
                     taps = [
                         "homebrew/core"
                         "homebrew/cask"
@@ -110,12 +98,8 @@
                     dock.persistent-apps = [
                         "/System/Applications/Messages.app"
                         "/System/Applications/Passwords.app"
-                        "/Applications/Sunsama.app"
-                        "/Applications/Spark\ Desktop.app"
-                        "/Applications/Notion\ Calendar.app"
                         "${pkgs.slack}/Applications/Slack.app"
                         "${pkgs.kitty}/Applications/kitty.app"
-                        "${pkgs.google-chrome}/Applications/Google\ Chrome.app"
                         "${pkgs.zoom-us}/Applications/zoom.us.app"
                     ];
                     finder.FXPreferredViewStyle = "clmv";
@@ -124,8 +108,8 @@
             };
 
             networking.dns = [
-                    "1.1.1.1"
-                    "8.8.8.8"
+                    "1.1.1.1" # Cloudflare DNS
+                    "8.8.8.8" # Google DNS
             ];
 
             networking.knownNetworkServices = [

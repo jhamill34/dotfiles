@@ -93,38 +93,6 @@ run = 'layout floating'
 if.app-name-regex-substring = 'zoom'
 run = 'layout floating'
 
-# Coding Workspace
-[[on-window-detected]]
-if.app-name-regex-substring = 'ghostty'
-run = 'move-node-to-workspace 2'
-
-[[on-window-detected]]
-if.app-name-regex-substring = 'intellij'
-run = 'move-node-to-workspace 2'
-
-# Communication Workspace 
-[[on-window-detected]]
-if.app-name-regex-substring = 'slack'
-run = 'move-node-to-workspace 3'
-
-[[on-window-detected]]
-if.app-name-regex-substring = 'spark'
-run = 'move-node-to-workspace 3'
-
-[[on-window-detected]]
-if.app-name-regex-substring = 'calendar'
-run = 'move-node-to-workspace 3'
-
-[[on-window-detected]]
-if.app-name-regex-substring = 'sunsama'
-run = 'move-node-to-workspace 3'
-
-# Media Workspace
-[[on-window-detected]]
-if.app-name-regex-substring = 'spotify'
-run = 'move-node-to-workspace 5'
-
-
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 # 'main' binding mode must be always presented
@@ -198,6 +166,7 @@ run = 'move-node-to-workspace 5'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#mode
     alt-shift-semicolon = 'mode service'
+    alt-shift-comma = 'mode launcher'
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -221,4 +190,19 @@ run = 'move-node-to-workspace 5'
     down = 'volume down'
     up = 'volume up'
     shift-down = ['volume set 0', 'mode main']
+
+[mode.launcher.binding]
+    esc = ['mode main']
+
+    u = ['exec-and-forget open -a Thunderbird', 'mode main']
+    i = ['exec-and-forget open -a Slack', 'mode main']
+    
+    j = ['exec-and-forget open -a IntelliJ\ IDEA', 'mode main']
+    k = ['exec-and-forget open -a kitty', 'mode main']
+    l = ['exec-and-forget open -a Firefox', 'mode main']
+    
+    h = ['exec-and-forget open -a Spotify', 'mode main']
+
+
+
 

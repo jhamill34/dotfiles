@@ -5,7 +5,12 @@ if ! command -v d2 &> /dev/null; then
     exit 1
 fi
 
-INPUT="$1"
+if ! command -v fzf &> /dev/null; then 
+    INPUT="$1"
+else 
+    INPUT=$(find ./diagrams -name "*.d2" -type f | fzf)
+fi
+
 output_dir=$(mktemp -d)
 output_file="${output_dir}/${input_name}.svg"
 

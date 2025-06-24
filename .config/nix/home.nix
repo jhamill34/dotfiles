@@ -68,6 +68,8 @@
     pkgs.jankyborders
     pkgs.jetbrains.idea-ultimate
     pkgs.code-cursor
+    pkgs.firefox
+    pkgs.thunderbird
   ];
 
   launchd.agents.jankyBordersAgent = {
@@ -130,11 +132,6 @@
         source = ./home/.config;
         recursive = true;
      };
-    ".hammerspoon" = {
-        source = ./home/.hammerspoon;
-        recursive = true;
-     };
-
 
     "Code/Personal/README.md".text = ''
       # Personal Work
@@ -143,10 +140,6 @@
     "Code/Work/README.md".text = ''
       # Work
       This directory is intended to be used for work projects only. 
-    '';
-    "Code/Test/README.md".text = ''
-      # Test
-      This directory is just a test to see if the directory gets created
     '';
   };
 }

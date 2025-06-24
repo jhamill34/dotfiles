@@ -34,6 +34,9 @@ while [[ "$1" == -* ]]; do
     esac
 done
 
+if [[ -z "$INPUT" ]]; then
+    INPUT=$(find ./diagrams -name "*.d2" -type f | fzf)
+fi
 
 input_name=$(basename "$INPUT")
 name=$(echo "$input_name" | cut -d. -f 1)
