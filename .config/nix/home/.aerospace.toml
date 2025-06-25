@@ -196,6 +196,7 @@ run = 'layout floating'
 
     u = ['exec-and-forget open -a Thunderbird', 'mode main']
     i = ['exec-and-forget open -a Slack', 'mode main']
+    o = ['exec-and-forget open -a zoom.us', 'mode main']
     
     j = ['exec-and-forget open -a IntelliJ\ IDEA', 'mode main']
     k = ['exec-and-forget open -a kitty', 'mode main']
