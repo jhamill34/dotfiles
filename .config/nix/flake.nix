@@ -71,6 +71,7 @@
                         # NOTE: We'll use the homebrew cask for now, spent too much 
                         #  time trying to get lima/colima working with test containers
                         "docker"
+                        "loom"
                     ];
                     taps = [
                         "homebrew/core"
