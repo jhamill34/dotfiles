@@ -6,7 +6,7 @@ source "$CONFIG_DIR/icons.sh"
 PLUGIN_DIR="$CONFIG_DIR/plugins"
 ITEM_DIR="$CONFIG_DIR/items"
 
-FONT="FiraMono Nerd Font"
+FONT="Terminess Nerd Font"
 PADDINGS=5
 
 bar=(

@@ -84,6 +84,8 @@ eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 eval "$(gs shell completion zsh)"
 eval "$(k3d completion zsh)"
+eval "$(kubectl completion zsh)"
+eval "$(kafkactl completion zsh)"
 
 # NVM configuration
 export NVM_DIR="$HOME/.nvm"
@@ -113,6 +115,8 @@ export PATH="$PATH:$HOME/.bin:$HOME/.lbin"
 # Work stuff
 export WORK_HOME="$HOME/Code/Work"
 source "$HOME/.work.zshrc"
+
+export PATH="$HOME/.npm-global/bin:$PATH"
 
 # Extra configuration
 [ -f "$HOME/.extras/.zshrc" ] && source "$HOME/.extras/.zshrc"

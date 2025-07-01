@@ -32,6 +32,7 @@
     pkgs.ngrok
     pkgs.nss
     pkgs.oh-my-posh
+    pkgs.openapi-generator-cli
     pkgs.parallel
     pkgs.postgresql
     pkgs.pulumi
@@ -57,6 +58,7 @@
     # pkgs.lima 
 
     pkgs.nodejs_22 # NodeJS
+    # pkgs.claude-code
 
     pkgs.kitty
     pkgs.slack
