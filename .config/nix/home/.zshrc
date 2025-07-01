@@ -83,7 +83,7 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 eval "$(gs shell completion zsh)"
-eval "$(k3d completion zsh)"
+# eval "$(k3d completion zsh)"
 eval "$(kubectl completion zsh)"
 eval "$(kafkactl completion zsh)"
 
