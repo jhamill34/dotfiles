@@ -1,9 +1,23 @@
 #!/bin/bash
 
+export ROSEWATER=0xfff5e0dc
+export FLAMINGO=0xfff2cdcd
+export PINK=0xfff5c2e7
+export MAUVE=0xffcba6f7
+export RED=0xfff38ba8
+export MAROON=0xffeba0ac
+export PEACH=0xfffab387
+export YELLOW=0xfff9e2af
+export GREEN=0xffa6e3a1
+export TEAL=0xff94e2d5
+export SKY=0xff89dceb
+export SAPPHIRE=0xff74c7ec
+export BLUE=0xff89b4fa
+export LAVENDER=0xffb4befe
+
 ### Catppuccin
 export BLACK=0xff181926
 export WHITE=0xffcad3f5
-export RED=0xffed8796
 export GREEN=0xffa6da95
 export BLUE=0xff8aadf4
 export YELLOW=0xffeed49f

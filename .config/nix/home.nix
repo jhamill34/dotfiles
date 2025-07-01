@@ -34,6 +34,7 @@
     pkgs.oh-my-posh
     pkgs.openapi-generator-cli
     pkgs.parallel
+    pkgs.pokemon-colorscripts-mac
     pkgs.postgresql
     pkgs.pulumi
     pkgs.pulumictl
