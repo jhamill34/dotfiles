@@ -46,6 +46,7 @@
             # List packages installed in system profile. To search by name, run:
             # $ nix-env -qaP | grep wget
             environment.systemPackages = [
+                    pkgs.btop
                     pkgs.jq
                     pkgs.fd
                     pkgs.fzf
@@ -98,13 +99,9 @@
             system.defaults = {
                     dock.autohide = true;
                     dock.persistent-apps = [
-                        "/System/Applications/Messages.app"
-                        "/System/Applications/Passwords.app"
                         "${pkgs.slack}/Applications/Slack.app"
-                        "${pkgs.thunderbird}/Applications/Thunderbird.app"
                         "${pkgs.jetbrains.idea-ultimate}/Applications/IntelliJ IDEA.app"
                         "${pkgs.kitty}/Applications/kitty.app"
-                        "${pkgs.firefox}/Applications/Firefox.app"
                         "${pkgs.zoom-us}/Applications/zoom.us.app"
                         "${pkgs.spotify}/Applications/Spotify.app"
                     ];

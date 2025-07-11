@@ -2,6 +2,9 @@
 
 function icon_map() {
   case "$1" in
+  "Brave" | "Brave Browser")
+    icon_result=":brave_browser:"
+    ;;
   "Cursor") 
     icon_result=":cursor:"
     ;;

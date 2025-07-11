@@ -1,5 +1,43 @@
 { config, pkgs, ... }:
+let
+  makeBraveApp = { name, profileName, displayName, userDataDir }: pkgs.stdenv.mkDerivation {
+    pname = name;
+    version = "1.0.0";
 
+    buildCommand = ''
+      mkdir -p "$out/Applications/${displayName}.app/Contents/MacOS"
+      mkdir -p "$out/Applications/${displayName}.app/Contents/Resources"
+
+      cat > "$out/Applications/${displayName}.app/Contents/Info.plist" << EOF
+      <?xml version="1.0" encoding="UTF-8"?>
+      <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+      <plist version="1.0">
+      <dict>
+        <key>CFBundleExecutable</key>
+        <string>${name}</string>
+        <key>CFBundleIdentifier</key>
+        <string>com.brave.${name}</string>
+        <key>CFBundleName</key>
+        <string>${displayName}</string>
+        <key>CFBundleVersion</key>
+        <string>1.0.0</string>
+      </dict>
+      </plist>
+      EOF
+
+      cat > "$out/Applications/${displayName}.app/Contents/MacOS/${name}" << 'EOF'
+      #!/bin/bash
+      exec ${pkgs.brave}/bin/brave \
+        --user-data-dir="${userDataDir}" \
+        --profile-directory="${profileName}" \
+        --class="${displayName}" \
+        --window-name="${displayName}" "$@"
+      EOF
+
+      chmod +x "$out/Applications/${displayName}.app/Contents/MacOS/${name}"
+    '';
+  };
+in
 {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -26,6 +64,8 @@
     pkgs.kubectl
     pkgs.kubectx
     pkgs.kubernetes-helm
+    pkgs.lazydocker
+    pkgs.lazygit
     pkgs.mkalias
     pkgs.mkcert
     pkgs.neovim
@@ -47,7 +87,7 @@
     pkgs.tilt
     pkgs.zoxide
 
-    pkgs.clickhouse
+    # pkgs.clickhouse
     pkgs.dnsmasq
  
     # NOTE: 
@@ -61,19 +101,31 @@
     pkgs.nodejs_22 # NodeJS
     # pkgs.claude-code
 
-    pkgs.kitty
-    pkgs.slack
-    pkgs.spotify
-    pkgs.google-chrome
-    pkgs.zoom-us
+    pkgs._1password-cli
     pkgs.aerospace
-    pkgs.sketchybar
+    pkgs.brave
+    (makeBraveApp { 
+      name = "brave-personal"; 
+      profileName = "Personal"; 
+      displayName = "Brave Personal";
+      userDataDir = "${config.xdg.dataHome}/brave-personal";
+    })
+    (makeBraveApp { 
+      name = "brave-work"; 
+      profileName = "Work"; 
+      displayName = "Brave Work";
+      userDataDir = "${config.xdg.dataHome}/brave-work";
+    })
     pkgs.jankyborders
     pkgs.jetbrains.idea-ultimate
-    pkgs.code-cursor
-    pkgs.firefox
-    pkgs.thunderbird
+    pkgs.kitty
+    pkgs.sketchybar
+    pkgs.slack
+    pkgs.spotify
+    pkgs.zoom-us
   ];
+
+  xdg.enable = true;
 
   launchd.agents.jankyBordersAgent = {
     enable = true;

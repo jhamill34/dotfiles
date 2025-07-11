@@ -194,14 +194,14 @@ run = 'layout floating'
 [mode.launcher.binding]
     esc = ['mode main']
 
-    u = ['exec-and-forget open -a Thunderbird', 'mode main']
+    u = ['exec-and-forget open -a zoom.us', 'mode main']
     i = ['exec-and-forget open -a Slack', 'mode main']
-    o = ['exec-and-forget open -a zoom.us', 'mode main']
-    
+    o = ['exec-and-forget open -a Brave\ Work', 'mode main']
+
     j = ['exec-and-forget open -a IntelliJ\ IDEA', 'mode main']
     k = ['exec-and-forget open -a kitty', 'mode main']
-    l = ['exec-and-forget open -a Firefox', 'mode main']
-    
+    l = ['exec-and-forget open -a Brave\ Personal', 'mode main']
+
     h = ['exec-and-forget open -a Spotify', 'mode main']
 
 

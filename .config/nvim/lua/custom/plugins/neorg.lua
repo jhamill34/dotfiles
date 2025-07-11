@@ -10,6 +10,7 @@ return {
 					["core.autocommands"] = {},
 					["core.defaults"] = {},
 					["core.concealer"] = {},
+					["core.export"] = {},
 					["core.todo-introspector"] = {},
 					["core.itero"] = {},
 					["core.qol.todo_items"] = {},

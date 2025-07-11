@@ -21,6 +21,7 @@ zinit snippet OMZP::aws
 zinit snippet OMZP::kubectl
 zinit snippet OMZP::kubectx
 zinit snippet OMZP::docker
+zinit snippet OMZP::gradle
 zinit snippet OMZP::command-not-found
 
 # I used to have these plugins, no idea
