@@ -89,26 +89,13 @@
                     };
                 };
 
-            users.users.joshuahamill.home = "/Users/joshuahamill";
             home-manager.backupFileExtension = "bak";
 
             # Required since we used the "Determinate" distribution
             nix.enable = false;
 
+            # TODO: Do we need these here? 
             system.primaryUser = "joshuahamill";
-            system.defaults = {
-                    dock.autohide = true;
-                    dock.persistent-apps = [
-                        "${pkgs.slack}/Applications/Slack.app"
-                        "${pkgs.jetbrains.idea-ultimate}/Applications/IntelliJ IDEA.app"
-                        "${pkgs.kitty}/Applications/kitty.app"
-                        "${pkgs.zoom-us}/Applications/zoom.us.app"
-                        "${pkgs.spotify}/Applications/Spotify.app"
-                    ];
-                    finder.FXPreferredViewStyle = "clmv";
-                    NSGlobalDomain.AppleInterfaceStyle = "Dark";
-                    screencapture.location = "~/Pictures/Screen Captures";
-            };
 
             networking.dns = [
                     "1.1.1.1" # Cloudflare DNS

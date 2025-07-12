@@ -126,6 +126,19 @@ in
   ];
 
   xdg.enable = true;
+  # system.defaults = {
+  #         dock.autohide = true;
+  #         dock.persistent-apps = [
+  #             "${pkgs.slack}/Applications/Slack.app"
+  #             "${pkgs.jetbrains.idea-ultimate}/Applications/IntelliJ IDEA.app"
+  #             "${pkgs.kitty}/Applications/kitty.app"
+  #             "${pkgs.zoom-us}/Applications/zoom.us.app"
+  #             "${pkgs.spotify}/Applications/Spotify.app"
+  #         ];
+  #         finder.FXPreferredViewStyle = "clmv";
+  #         NSGlobalDomain.AppleInterfaceStyle = "Dark";
+  #         screencapture.location = "~/Pictures/Screen Captures";
+  # };
 
   launchd.agents.jankyBordersAgent = {
     enable = true;
@@ -179,12 +192,12 @@ in
   };
 
   home.file = {
-    ".zshrc".source = ./home/.zshrc;
-    ".tmux.conf".source = ./home/.tmux.conf;
-    ".aerospace.toml".source = ./home/.aerospace.toml;
-    ".gitconfig".source = ./home/.gitconfig;
+    ".zshrc".source = ./home/dot-zshrc;
+    ".tmux.conf".source = ./home/dot-tmux.conf;
+    ".aerospace.toml".source = ./home/dot-aerospace.toml;
+    ".gitconfig".source = ./home/dot-gitconfig;
     ".config" = {
-        source = ./home/.config;
+        source = ./home/dot-config;
         recursive = true;
      };
 

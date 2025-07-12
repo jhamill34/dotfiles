@@ -111,7 +111,7 @@ export PATH="$PATH:$HOME/go/bin"
 
 # Personal Scripts
 export PERSONAL_HOME="$HOME/Code/Personal"
-export PATH="$PATH:$HOME/.bin:$HOME/.lbin"
+export PATH="$PATH:$HOME/personal_dotfiles/bin"
 
 # Work stuff
 export WORK_HOME="$HOME/Code/Work"

@@ -71,7 +71,7 @@
                     "type": "kubectl",
                     "style": "plain",
                     "foreground": "p:blue",
-                    "template": "⎈ {{.Context}}{{if .Namespace}} :: {{.Namespace}}{{end}} "
+                    "template": "{{if .Namespace}}⎈ {{.Namespace}}{{end}} "
                 },
                 {
                     "type": "aws",
