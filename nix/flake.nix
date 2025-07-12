@@ -69,12 +69,7 @@
 
             homebrew = {
                     enable = true;
-                    casks = [
-                        # NOTE: We'll use the homebrew cask for now, spent too much 
-                        #  time trying to get lima/colima working with test containers
-                        "docker"
-                        "loom"
-                    ];
+                    casks = [];
                     taps = [
                         "homebrew/core"
                         "homebrew/cask"
