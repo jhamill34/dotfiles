@@ -96,6 +96,7 @@
 
             # TODO: Do we need these here? 
             system.primaryUser = "joshuahamill";
+            users.users.joshuahamill.home = "/Users/joshuahamill";
 
             networking.dns = [
                     "1.1.1.1" # Cloudflare DNS
