@@ -31,7 +31,6 @@ zinit snippet OMZP::command-not-found
 
 # I used to have these plugins, no idea
 # if I used to use them....
-# brew
 # colorize
 # git-extras
 # fzf
@@ -93,11 +92,6 @@ eval "$(gs shell completion zsh)"
 eval "$(kubectl completion zsh)"
 eval "$(kafkactl completion zsh)"
 
-# NVM configuration
-export NVM_DIR="$HOME/.nvm"
-[ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" # This loads nvm
-[ -s "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
-
 # Python Env configuration
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
@@ -107,9 +101,6 @@ eval "$(pyenv init -)"
 export RBENV_ROOT="$HOME/.rbenv"
 [[ -d $RBENV_ROOT/bin ]] && export PATH="$RBENV_ROOT/bin:$PATH"
 eval "$(rbenv init -)"
-
-# Jabba (Java) configuration
-[ -s "$HOMEBREW_PREFIX/opt/jabba/share/jabba/jabba.sh" ] && . "$HOMEBREW_PREFIX/opt/jabba/share/jabba/jabba.sh"
 
 # Setup Go Binaries
 export PATH="$PATH:$HOME/go/bin"

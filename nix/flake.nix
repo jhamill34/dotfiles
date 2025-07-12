@@ -11,7 +11,6 @@
         nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
         nix-darwin.url = "github:nix-darwin/nix-darwin/master";
         nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
-        nix-homebrew.url = "github:zhaofengli/nix-homebrew";
         home-manager = {
             url = "github:nix-community/home-manager";
             inputs.nixpkgs.follows = "nixpkgs";
@@ -19,25 +18,26 @@
 
         mac-app-util.url = "github:hraban/mac-app-util";
 
-        homebrew-core = {
-            url = "github:homebrew/homebrew-core";
-            flake = false;
-        };
-        homebrew-cask = {
-            url = "github:homebrew/homebrew-cask";
-            flake = false;
-        };
+        # nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+        # homebrew-core = {
+        #     url = "github:homebrew/homebrew-core";
+        #     flake = false;
+        # };
+        # homebrew-cask = {
+        #     url = "github:homebrew/homebrew-cask";
+        #     flake = false;
+        # };
     };
 
     outputs = inputs@{
         self,
         nix-darwin,
         nixpkgs,
-        nix-homebrew,
-        homebrew-core,
-        homebrew-cask,
         home-manager,
         mac-app-util
+        # nix-homebrew,
+        # homebrew-core,
+        # homebrew-cask
     }:
     let
         configuration = { pkgs, config, ... }: {
@@ -67,23 +67,23 @@
                     pkgs.sketchybar-app-font
                 ];
 
-            homebrew = {
-                    enable = true;
-                    casks = [];
-                    taps = [
-                        "homebrew/core"
-                        "homebrew/cask"
-                    ];
-
-                    onActivation.cleanup = "zap";
-                    onActivation.autoUpdate = true;
-                    onActivation.upgrade = true;
-
-                    global = {
-                        brewfile = true;
-                    };
-                };
-
+            # homebrew = {
+            #         enable = true;
+            #         casks = [];
+            #         taps = [
+            #             "homebrew/core"
+            #             "homebrew/cask"
+            #         ];
+            #
+            #         onActivation.cleanup = "zap";
+            #         onActivation.autoUpdate = true;
+            #         onActivation.upgrade = true;
+            #
+            #         global = {
+            #             brewfile = true;
+            #         };
+            #     };
+            #
             home-manager.backupFileExtension = "bak";
 
             # Required since we used the "Determinate" distribution
@@ -137,26 +137,26 @@
                             mac-app-util.homeManagerModules.default
                         ];
                     }
-                    nix-homebrew.darwinModules.nix-homebrew {
-                            nix-homebrew = {
-                                    # Install Homebrew under the default prefix
-                                    enable = true;
-
-                                    # Apple Silicon Only: Also install Homebrew under the default
-                                    enableRosetta = true;
-
-                                    # User owning the homebrew prefix
-                                    user = "joshuahamill";
-
-                                    taps = {
-                                        "homebrew/homebrew-core" = homebrew-core;
-                                        "homebrew/homebrew-cask" = homebrew-cask;
-                                    };
-
-                                    # Only allow taps to be added declaratively
-                                    mutableTaps = false;
-                            };
-                    }
+                    # nix-homebrew.darwinModules.nix-homebrew {
+                    #         nix-homebrew = {
+                    #                 # Install Homebrew under the default prefix
+                    #                 enable = true;
+                    #
+                    #                 # Apple Silicon Only: Also install Homebrew under the default
+                    #                 enableRosetta = true;
+                    #
+                    #                 # User owning the homebrew prefix
+                    #                 user = "joshuahamill";
+                    #
+                    #                 taps = {
+                    #                     "homebrew/homebrew-core" = homebrew-core;
+                    #                     "homebrew/homebrew-cask" = homebrew-cask;
+                    #                 };
+                    #
+                    #                 # Only allow taps to be added declaratively
+                    #                 mutableTaps = false;
+                    #         };
+                    # }
                 ];
         };
     };
