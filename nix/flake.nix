@@ -41,31 +41,13 @@
     }:
     let
         configuration = { pkgs, config, ... }: {
+            imports = [
+                ./modules/system-packages.nix
+                ./modules/fonts.nix
+                ./modules/networking.nix
+            ];
+
             nixpkgs.config.allowUnfree = true;
-
-            # List packages installed in system profile. To search by name, run:
-            # $ nix-env -qaP | grep wget
-            environment.systemPackages = [
-                    pkgs.btop
-                    pkgs.jq
-                    pkgs.fd
-                    pkgs.fzf
-                    pkgs.imagemagick
-                    pkgs.stow
-                    pkgs.tmux
-                    pkgs.wget
-                    pkgs.yq
-
-                    pkgs.tree-sitter
-                    pkgs.lua51Packages.lua
-                    pkgs.lua51Packages.luarocks
-                ];
-
-            fonts.packages = [
-                    pkgs.nerd-fonts.terminess-ttf
-                    pkgs.nerd-fonts.fira-mono
-                    pkgs.sketchybar-app-font
-                ];
 
             # homebrew = {
             #         enable = true;
@@ -92,17 +74,6 @@
             # TODO: Do we need these here? 
             system.primaryUser = "joshuahamill";
             users.users.joshuahamill.home = "/Users/joshuahamill";
-
-            networking.dns = [
-                    "1.1.1.1" # Cloudflare DNS
-                    "8.8.8.8" # Google DNS
-            ];
-
-            networking.knownNetworkServices = [
-                    "Wi-Fi"
-                    "Thunderbolt Ethernet Slot 2"
-                    "Thunderbolt Bridge"
-            ];
 
             # Necessary for using flakes on this system.
             nix.settings.experimental-features = "nix-command flakes";
