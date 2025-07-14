@@ -47,9 +47,8 @@
     #  We'll use the homebrew cask for now, spent too much 
     #  time trying to get lima/colima working with test containers
     #
-    # pkgs.docker # <- just the docker cli
-    # pkgs.colima # <- keep for now, its a wrapper around lima
-    # pkgs.lima 
+    pkgs.docker # <- just the docker cli
+    pkgs.colima # <- keep for now, its a wrapper around lima
 
     pkgs.nodejs_22 # NodeJS
     # pkgs.claude-code

@@ -105,6 +105,8 @@ eval "$(rbenv init -)"
 # Setup Go Binaries
 export PATH="$PATH:$HOME/go/bin"
 
+export COLIMA_HOME="${XDG_CONFIG_HOME:-${HOME}/.config}/colima"
+
 # Personal Scripts
 export PERSONAL_HOME="$HOME/Code/Personal"
 export PATH="$PATH:$HOME/personal_dotfiles/bin"

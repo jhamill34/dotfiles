@@ -10,6 +10,10 @@
         source = ../home/dot-config;
         recursive = true;
      };
+    ".local/share/colima-docker-data/README.md".text = ''
+      # Colima Docker Data
+      This is where all of our docker images will be saved
+    '';
 
     "Code/Personal/README.md".text = ''
       # Personal Work

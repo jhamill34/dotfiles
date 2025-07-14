@@ -1,1 +1,3 @@
 .hammerspoon/local
+*.log
+*.sock
