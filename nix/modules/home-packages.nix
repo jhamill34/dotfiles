@@ -6,7 +6,6 @@
     pkgs.awscli2
     pkgs.confluent-platform
     pkgs.d2
-    pkgs.drive
     pkgs.gh
     pkgs.git-spice
     pkgs.go
