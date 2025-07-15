@@ -106,6 +106,9 @@ eval "$(rbenv init -)"
 export PATH="$PATH:$HOME/go/bin"
 
 export COLIMA_HOME="${XDG_CONFIG_HOME:-${HOME}/.config}/colima"
+export DOCKER_HOST="unix://${COLIMA_HOME}/default/docker.sock"
+export TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE="/var/run/docker.sock"
+export TESTCONTAINERS_HOST_OVERRIDE=$(colima ls -j | jq -r '.address')
 
 # Personal Scripts
 export PERSONAL_HOME="$HOME/Code/Personal"
