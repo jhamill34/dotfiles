@@ -112,7 +112,7 @@ export TESTCONTAINERS_HOST_OVERRIDE=$(colima ls -j | jq -r '.address')
 
 # Personal Scripts
 export PERSONAL_HOME="$HOME/Code/Personal"
-export PATH="$PATH:$HOME/personal_dotfiles/bin"
+export PATH="$PATH:$HOME/.bin"
 
 # Work stuff
 export WORK_HOME="$HOME/Code/Work"
