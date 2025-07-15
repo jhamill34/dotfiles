@@ -194,7 +194,8 @@ run = 'layout floating'
 [mode.launcher.binding]
     esc = ['mode main']
 
-    u = ['exec-and-forget open -a zoom.us', 'mode main']
+    y = ['exec-and-forget open -a zoom.us', 'mode main']
+    u = ['exec-and-forget open -a Spark\ Desktop', 'mode main']
     i = ['exec-and-forget open -a Slack', 'mode main']
     o = ['exec-and-forget open -a Brave\ Work', 'mode main']
 

@@ -7,6 +7,7 @@
     ./modules/launchd.nix
     ./modules/home-files.nix
     ./modules/clickhouse.nix
+    ./modules/spark-mail.nix
   ];
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
