@@ -9,7 +9,7 @@ return {
 			-- or leave it empty to use the default settings
 			-- refer to the configuration section below
 			dashboard = { example = "files" },
-			explorer = { enabled = true },
+			-- explorer = { enabled = true },
 			image = {
 				doc = {
 					enabled = true,
@@ -58,13 +58,13 @@ return {
 			-- words = { enabled = true },
 		},
 		keys = {
-			{
-				"<leader>e",
-				function()
-					Snacks.explorer()
-				end,
-				desc = "File Explorer",
-			},
+			-- {
+			-- 	"<leader>e",
+			-- 	function()
+			-- 		Snacks.explorer()
+			-- 	end,
+			-- 	desc = "File Explorer",
+			-- },
 		},
 	},
 }
