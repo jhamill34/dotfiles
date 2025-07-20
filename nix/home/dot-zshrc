@@ -86,6 +86,7 @@ zinit light romkatv/zsh-defer
 zinit light mroth/evalcache
 
 # Fast completions system
+zinit ice wait lucid blockf atpull'zinit creinstall -q .'
 zinit light zsh-users/zsh-completions
 
 # Essential UI plugins
@@ -122,6 +123,10 @@ zinit snippet OMZP::gradle
 zinit ice wait lucid
 zinit snippet OMZP::command-not-found
 
+# Optimize completion loading
+zinit ice wait lucid atinit'zicompinit; zicdreplay'
+zinit light zdharma-continuum/null
+
 # ==============================================================================
 # COMPLETION CONFIGURATION
 # ==============================================================================
@@ -152,7 +157,8 @@ _evalcache oh-my-posh init zsh --config $HOME/.config/ohmyposh/catppuccin_mocha.
 # Shell integrations with higher priority deferral
 zsh-defer -t 1 _evalcache fzf --zsh
 zsh-defer -t 1 _evalcache zoxide init --cmd cd zsh
-zsh-defer -t 2 _evalcache gs shell completion zsh
+zsh-defer -t 1 _evalcache gs shell completion zsh
+
 zsh-defer -t 2 _evalcache kafkactl completion zsh
 
 # Language environment managers - lowest priority
@@ -166,8 +172,7 @@ zsh-defer -t 3 _evalcache rbenv init -
 export COLIMA_HOME="${XDG_CONFIG_HOME:-${HOME}/.config}/colima"
 export DOCKER_HOST="unix://${COLIMA_HOME}/default/docker.sock"
 export TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE="/var/run/docker.sock"
-# Defer slow Docker environment variable
-zsh-defer _evalcache 'export TESTCONTAINERS_HOST_OVERRIDE=$(colima ls -j | jq -r '"'"'.address'"'"')'
+zsh-defer -t 3 _evalcache echo "export TESTCONTAINERS_HOST_OVERRIDE=$(colima ls -j | jq -r '.address')"
 
 source "$HOME/.work.zshrc"
 
