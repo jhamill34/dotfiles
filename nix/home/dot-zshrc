@@ -19,7 +19,8 @@ export FZF_DEFAULT_OPTS=" \
     --color=fg:#CDD6F4,header:#F38BA8,info:#CBA6F7,pointer:#F5E0DC \
     --color=marker:#B4BEFE,fg+:#CDD6F4,prompt:#CBA6F7,hl+:#F38BA8 \
     --color=selected-bg:#45475A \
-    --color=border:#313244,label:#CDD6F4"
+    --color=border:#B4BEFE,label:#CDD6F4 \
+    --border=bold"
 export WORK_HOME="$HOME/Code/Work"
 
 # PATH configuration
@@ -59,7 +60,7 @@ bindkey '^e' edit-command-line
 # ==============================================================================
 
 alias vim=nvim
-alias ls='ls --color'
+alias ls='eza --long --color=always --icons=always'
 alias gai='git add -i'
 
 # ==============================================================================
@@ -114,8 +115,8 @@ zinit snippet OMZP::helm
 zinit ice wait lucid as'completion'
 zinit snippet OMZP::gradle
 
-zinit ice wait lucid
-zinit snippet OMZP::dotenv
+# zinit ice wait lucid
+# zinit snippet OMZP::dotenv
 
 zinit ice wait lucid
 zinit snippet OMZP::command-not-found

@@ -6,6 +6,7 @@
     pkgs.awscli2
     pkgs.confluent-platform
     pkgs.d2
+    pkgs.eza
     pkgs.gh
     pkgs.git-spice
     pkgs.go
@@ -37,6 +38,7 @@
     pkgs.ripgrep
     pkgs.rustup
     pkgs.typst
+    pkgs.tlrc
     pkgs.tilt
     pkgs.zoxide
 
