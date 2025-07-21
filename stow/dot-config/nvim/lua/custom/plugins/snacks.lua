@@ -44,7 +44,7 @@ return {
 			statuscolumn = { enabled = true },
 			-- git = { enabled = true },
 			-- gitbrowse = { enabled = true },
-			-- lazygit = { enabled = true },
+			lazygit = { enabled = true },
 			-- bigfile = { enabled = true },
 			-- indent = { enabled = true },
 			-- input = { enabled = true },
@@ -68,6 +68,13 @@ return {
 					Snacks.explorer()
 				end,
 				desc = "File Explorer",
+			},
+			{
+				"<leader>gs",
+				function()
+					Snacks.lazygit()
+				end,
+				desc = "Lazygit",
 			},
 		},
 	},

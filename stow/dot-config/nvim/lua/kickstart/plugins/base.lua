@@ -774,12 +774,12 @@ return {
 		--    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
 		--    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
 	},
-	{
-		"tpope/vim-fugitive",
-		config = function()
-			vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
-		end,
-	},
+	-- {
+	-- 	"tpope/vim-fugitive",
+	-- 	config = function()
+	-- 		vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
+	-- 	end,
+	-- },
 	{
 		"theprimeagen/harpoon",
 		config = function()
