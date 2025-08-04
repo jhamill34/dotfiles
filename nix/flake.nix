@@ -9,11 +9,19 @@
 
     inputs = {
         nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+
         nix-darwin.url = "github:nix-darwin/nix-darwin/master";
         nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+
         home-manager = {
             url = "github:nix-community/home-manager";
             inputs.nixpkgs.follows = "nixpkgs";
+        };
+
+        # Nix User Repository
+        nur = {
+          url = "github:nix-community/NUR";
+          inputs.nixpkgs.follows = "nixpkgs";
         };
 
         mac-app-util.url = "github:hraban/mac-app-util";
@@ -24,7 +32,8 @@
         nix-darwin,
         nixpkgs,
         home-manager,
-        mac-app-util
+        mac-app-util,
+        nur
     }:
     let
         configuration = { pkgs, config, ... }: {
@@ -65,12 +74,14 @@
                 [
                     configuration
                     mac-app-util.darwinModules.default
+                    nur.modules.darwin.default
                     home-manager.darwinModules.home-manager {
                         home-manager.useGlobalPkgs = true;
                         home-manager.useUserPackages = true;
                         home-manager.users.joshuahamill = import ./home.nix;
                         home-manager.sharedModules = [
                             mac-app-util.homeManagerModules.default
+                            nur.modules.homeManager.default
                         ];
                     }
                 ];
