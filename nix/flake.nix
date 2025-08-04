@@ -17,16 +17,6 @@
         };
 
         mac-app-util.url = "github:hraban/mac-app-util";
-
-        # nix-homebrew.url = "github:zhaofengli/nix-homebrew";
-        # homebrew-core = {
-        #     url = "github:homebrew/homebrew-core";
-        #     flake = false;
-        # };
-        # homebrew-cask = {
-        #     url = "github:homebrew/homebrew-cask";
-        #     flake = false;
-        # };
     };
 
     outputs = inputs@{
@@ -35,51 +25,26 @@
         nixpkgs,
         home-manager,
         mac-app-util
-        # nix-homebrew,
-        # homebrew-core,
-        # homebrew-cask
     }:
     let
         configuration = { pkgs, config, ... }: {
             imports = [
-                ./modules/system-packages.nix
                 ./modules/fonts.nix
                 ./modules/networking.nix
             ];
 
             nixpkgs.config.allowUnfree = true;
 
-            # homebrew = {
-            #         enable = true;
-            #         casks = [];
-            #         taps = [
-            #             "homebrew/core"
-            #             "homebrew/cask"
-            #         ];
-            #
-            #         onActivation.cleanup = "zap";
-            #         onActivation.autoUpdate = true;
-            #         onActivation.upgrade = true;
-            #
-            #         global = {
-            #             brewfile = true;
-            #         };
-            #     };
-            #
             home-manager.backupFileExtension = "bak";
 
             # Required since we used the "Determinate" distribution
             nix.enable = false;
 
-            # TODO: Do we need these here? 
             system.primaryUser = "joshuahamill";
             users.users.joshuahamill.home = "/Users/joshuahamill";
 
             # Necessary for using flakes on this system.
             nix.settings.experimental-features = "nix-command flakes";
-
-            # Enable alternative shell support in nix-darwin.
-            # programs.fish.enable = true;
 
             # Set Git commit hash for darwin-version.
             system.configurationRevision = self.rev or self.dirtyRev or null;
@@ -108,26 +73,6 @@
                             mac-app-util.homeManagerModules.default
                         ];
                     }
-                    # nix-homebrew.darwinModules.nix-homebrew {
-                    #         nix-homebrew = {
-                    #                 # Install Homebrew under the default prefix
-                    #                 enable = true;
-                    #
-                    #                 # Apple Silicon Only: Also install Homebrew under the default
-                    #                 enableRosetta = true;
-                    #
-                    #                 # User owning the homebrew prefix
-                    #                 user = "joshuahamill";
-                    #
-                    #                 taps = {
-                    #                     "homebrew/homebrew-core" = homebrew-core;
-                    #                     "homebrew/homebrew-cask" = homebrew-cask;
-                    #                 };
-                    #
-                    #                 # Only allow taps to be added declaratively
-                    #                 mutableTaps = false;
-                    #         };
-                    # }
                 ];
         };
     };
