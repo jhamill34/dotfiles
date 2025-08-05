@@ -7,3 +7,6 @@ paginate = "never"
 name = "Josh Hamill"
 email = "joshua@oscilar.com"
 
+[git]
+private-commits = '''description(glob:'private:*')'''
+
