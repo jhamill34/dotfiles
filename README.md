@@ -77,6 +77,7 @@ pgrep AeroSpace | xargs -I {} kill {}
 
 - [x] Kitty -> Terminal emulator
 - [ ] Obsidian + Excalidraw -> Notes
+- [ ] foo
 
 ## Self Hosting
 
