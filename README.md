@@ -12,10 +12,8 @@ curl -fsSL https://install.determinate.systems/nix | sh -s -- install --determin
 Then to install the our flake we run 
 
 ```bash 
-sudo nix nix-darwin switch -- 
-
+make nix-switch
 ```
-
 
 ## Dotfiles
 
@@ -44,12 +42,7 @@ stow -D .
 - [x] Add our ghostty config here too
 - [x] Configure oh-my-posh look and feel
 - [ ] Use Ansible to run playbooks to install / run commands on remote machines (i.e. Amanda's macbook)
-- [ ] Continue to look into multi-user homebrew. 
 
-
-## Multi-user homebrew
-
-This setup is probably best done by having a dedicated homebrew user and then making sure that permissions are configured properly. 
 
 ## Ansible 
 
