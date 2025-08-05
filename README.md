@@ -70,13 +70,13 @@ sketchybar --reload
 To kill the aerospace process
 
 ```bash 
-pgrep "AeroSpace | xargs -I {} kill {}
+pgrep AeroSpace | xargs -I {} kill {}
 ```
 
 ## Apps I want to look into
 
-- Kitty -> Terminal emulator
-- Obsidian + Excalidraw -> Notes
+- [x] Kitty -> Terminal emulator
+- [ ] Obsidian + Excalidraw -> Notes
 
 ## Self Hosting
 
