@@ -3,7 +3,9 @@
 {
     home.packages = [
         pkgs.gh
-        pkgs.git-spice
+        pkgs.jujutsu
         pkgs.lazygit
+
+        pkgs.git-spice # if jj works out, I'll be removing this.
     ];
 }

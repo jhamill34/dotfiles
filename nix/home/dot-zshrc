@@ -158,6 +158,7 @@ _evalcache oh-my-posh init zsh --config $HOME/.config/ohmyposh/catppuccin_mocha.
 zsh-defer -t 1 _evalcache fzf --zsh
 zsh-defer -t 1 _evalcache zoxide init --cmd cd zsh
 zsh-defer -t 1 _evalcache gs shell completion zsh
+zsh-defer -t 1 _evalcache jj util completion zsh
 
 zsh-defer -t 2 _evalcache kafkactl completion zsh
 
