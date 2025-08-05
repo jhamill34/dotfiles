@@ -2,6 +2,6 @@
 
 {
     home.packages = [
-        pkgs.nur.repos.charmbracelet.crush
+        pkgs.opencode
     ];
 }

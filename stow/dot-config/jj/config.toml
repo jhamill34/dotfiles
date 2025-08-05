@@ -1,8 +1,5 @@
 "$schema" = "https://jj-vcs.github.io/jj/latest/config-schema.json"
 
-[ui]
-paginate = "never"
-
 [user]
 name = "Josh Hamill"
 email = "joshua@oscilar.com"
