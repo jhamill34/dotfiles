@@ -5,7 +5,14 @@ name = "Josh Hamill"
 email = "joshua@oscilar.com"
 
 [git]
-private-commits = '''description(glob:'private:*')'''
+private-commits = 'description(glob:"private:*")'
+
+[revset-aliases]
+wip = 'description(glob:"wip:*") & mutable()'
+private = 'description(glob:"private:*")'
+linear = 'description(regex:".*OSC-[0-9]+.*")'
+
+dev = 'wip | private'
 
 [ui]
 pager = ":builtin"

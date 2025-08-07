@@ -1,7 +1,5 @@
 { pkgs, ... }:
 
 {
-    home.packages = [
-        pkgs.opencode
-    ];
+    home.packages = []; 
 }
