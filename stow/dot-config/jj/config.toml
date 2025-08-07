@@ -7,3 +7,6 @@ email = "joshua@oscilar.com"
 [git]
 private-commits = '''description(glob:'private:*')'''
 
+[ui]
+pager = ":builtin"
+
