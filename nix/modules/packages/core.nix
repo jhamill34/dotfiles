@@ -6,6 +6,7 @@
         pkgs.mkalias
         pkgs.stow
         pkgs.tmux
-        pkgs.oh-my-posh
+        # pkgs.oh-my-posh
+        pkgs.starship
     ];
 }

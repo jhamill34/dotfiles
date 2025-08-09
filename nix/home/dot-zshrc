@@ -24,6 +24,7 @@ export FZF_DEFAULT_OPTS=" \
 export WORK_HOME="$HOME/Code/Work"
 
 export EZA_CONFIG_DIR="${XDG_CONFIG_HOME:-${HOME}/.conifg}/eza"
+export TRANSIENT_PROMPT_TRANSIENT_PROMPT="❯ "
 
 # PATH configuration
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
@@ -84,6 +85,9 @@ source "${ZINIT_HOME}/zinit.zsh"
 # Core utilities loaded synchronously (needed immediately)
 zinit light romkatv/zsh-defer
 zinit light mroth/evalcache
+
+zinit ice wait lucid
+zinit light olets/zsh-transient-prompt
 
 # Fast completions system
 zinit ice wait lucid blockf atpull'zinit creinstall -q .'
@@ -148,7 +152,9 @@ zstyle ':fzf-tab:*' switch-group '<' '>'
 # ==============================================================================
 
 # Load oh-my-posh synchronously to prevent flashing
-_evalcache oh-my-posh init zsh --config $HOME/.config/ohmyposh/catppuccin_mocha.omp.json
+# _evalcache oh-my-posh init zsh --config $HOME/.config/ohmyposh/catppuccin_mocha.omp.json
+# eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/catppuccin_mocha.omp.json)"
+_evalcache starship init zsh
 
 # ==============================================================================
 # TOOL INTEGRATIONS
@@ -157,7 +163,7 @@ _evalcache oh-my-posh init zsh --config $HOME/.config/ohmyposh/catppuccin_mocha.
 # Shell integrations with higher priority deferral
 zsh-defer -t 1 _evalcache fzf --zsh
 zsh-defer -t 1 _evalcache zoxide init --cmd cd zsh
-zsh-defer -t 1 _evalcache gs shell completion zsh
+# zsh-defer -t 1 _evalcache gs shell completion zsh
 zsh-defer -t 1 _evalcache jj util completion zsh
 
 zsh-defer -t 2 _evalcache kafkactl completion zsh

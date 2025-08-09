@@ -14,7 +14,7 @@
         "template": "\uf105 "
     },
     "blocks": [
-         {
+        {
             "alignment": "left",
             "segments": [
                 {
@@ -70,12 +70,6 @@
                     "style": "plain",
                     "foreground": "p:blue",
                     "template": "{{if .Namespace}}⎈ {{.Namespace}}{{end}} "
-                },
-                {
-                    "type": "aws",
-                    "style": "plain",
-                    "foreground": "#FFA400",
-                    "template": " {{.Profile}}{{if .Region}}@{{.Region}}{{end}} "
                 },
                 {
                     "type": "ipify",
