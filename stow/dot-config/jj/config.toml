@@ -10,7 +10,7 @@ private-commits = 'description(glob:"private:*")'
 [revset-aliases]
 wip = 'description(glob:"wip:*") & mutable()'
 private = 'description(glob:"private:*")'
-linear = 'description(regex:".*OSC-[0-9]+.*")'
+linear = 'description(regex:".*OSC-[0-9]+.*") & mutable()'
 
 dev = 'wip | private | present(@)'
 
