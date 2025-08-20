@@ -35,7 +35,7 @@ while [[ "$1" == -* ]]; do
 done
 
 if [[ -z "$INPUT" ]]; then
-    INPUT=$(find ./diagrams -name "*.d2" -type f | fzf)
+    INPUT=$(find ./Diagrams -name "*.d2" -type f | fzf)
 fi
 
 input_name=$(basename "$INPUT")

@@ -8,7 +8,7 @@ fi
 if ! command -v fzf &> /dev/null; then 
     INPUT="$1"
 else 
-    INPUT=$(find ./diagrams -name "*.d2" -type f | fzf)
+    INPUT=$(find ./Diagrams -name "*.d2" -type f | fzf)
 fi
 
 output_dir=$(mktemp -d)

@@ -33,6 +33,8 @@
             imports = [
                 ./modules/fonts.nix
                 ./modules/networking.nix
+                ./modules/screenshots.nix
+                ./modules/keyboard.nix
             ];
 
             nixpkgs.config.allowUnfree = true;

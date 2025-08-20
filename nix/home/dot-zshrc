@@ -65,6 +65,7 @@ bindkey '^e' edit-command-line
 alias vim=nvim
 alias ls='eza --long --color=always --icons=always'
 alias gai='git add -i'
+alias lld='lazydocker'
 
 # ==============================================================================
 # ZINIT PLUGIN MANAGER

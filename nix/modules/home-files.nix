@@ -23,5 +23,9 @@
       # Work
       This directory is intended to be used for work projects only. 
     '';
+    "Notes" = {
+        source = ../home/Notes;
+        recursive = true;
+    };
   };
 }
