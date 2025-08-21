@@ -1,0 +1,20 @@
+{
+    "insert screenshot": {
+        "prefix": "screenshot",
+        "body": [
+            ""
+        ]
+    },
+    "investigation log": {
+        "prefix": "loginv",
+        "body": [
+            ""
+        ]
+    },
+    "end investigation": {
+        "prefix": "endinv",
+        "body": [
+            ""
+        ]
+    }
+}
