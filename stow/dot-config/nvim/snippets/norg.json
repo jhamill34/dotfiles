@@ -8,41 +8,47 @@
     "investigation log": {
         "prefix": "ilog",
         "body": [
-            "_*$CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND*_ /logs/ -> ${1:[finding]}"
+            "_*$CURRENT_HOUR:$CURRENT_MINUTE:00*_ /logs/ -> ${1:[finding]}"
         ]
     },
     "investigation metrics": {
         "prefix": "imetric",
         "body": [
-            "_*$CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND*_ /metrics/ -> ${1:[finding]}"
+            "_*$CURRENT_HOUR:$CURRENT_MINUTE:00*_ /metrics/ -> ${1:[finding]}"
         ]
     },
     "investigation code": {
         "prefix": "itrace",
         "body": [
-            "_*$CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND*_ /code/ -> ${1:[finding]}"
+            "_*$CURRENT_HOUR:$CURRENT_MINUTE:00*_ /code/ -> ${1:[finding]}"
         ]
     },
     "investigation theory": {
         "prefix": "itheory",
         "body": [
-            "_*$CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND*_ /theory/ -> ${1:[finding]}"
+            "_*$CURRENT_HOUR:$CURRENT_MINUTE:00*_ /theory/ -> ${1:[finding]}"
         ]
     },
     "investigation test": {
         "prefix": "itest",
         "body": [
-            "_*$CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND*_ /test/ -> ${1:[finding]}"
+            "_*$CURRENT_HOUR:$CURRENT_MINUTE:00*_ /test/ -> ${1:[finding]}"
         ]
     },
     "investigation question": {
         "prefix": "iquest",
         "body": [
-            "_*$CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND*_ /question/ -> ${1:[finding]}"
+            "_*$CURRENT_HOUR:$CURRENT_MINUTE:00*_ /question/ -> ${1:[finding]}"
+        ]
+    },
+    "investigation fix": {
+        "prefix": "ifix",
+        "body": [
+            "_*$CURRENT_HOUR:$CURRENT_MINUTE:00*_ /fix/ -> ${1:[finding]}"
         ]
     },
     "investigation fixes": {
-        "prefix": "ifix",
+        "prefix": "ifixsummary",
         "body": [
             "* FIX APPLIED",
             "  /what was done to resolve the issue?/",
@@ -119,7 +125,7 @@
             "* ISSUE SUMMARY:",
             "  *CUSTOMER*: ${1:/customer name/}",
             "  *CHANNEL*: ${2:/slack, email, or support ticket/}",
-            "  *REPORTED*: {@ $CURRENT_DAY_NAME $CURRENT_MONTH_NAME $CURRENT_DATE $CURRENT_YEAR} at $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND",
+            "  *REPORTED*: {@ $CURRENT_DAY_NAME $CURRENT_MONTH_NAME $CURRENT_DATE $CURRENT_YEAR} at $CURRENT_HOUR:$CURRENT_MINUTE:00",
             "  *PRIORITY*: ${3:/P0,P1,P2,P3/}",
             "",
             " ${4:/What they're experiencing in 1-2 sentences/}",
@@ -141,7 +147,7 @@
         "body": [
             "* ISSUE SUMMARY",
             "  *ALERT*: ${1:/Alert name/}",
-            "  *FIRED*: {@ $CURRENT_DAY_NAME $CURRENT_MONTH_NAME $CURRENT_DATE $CURRENT_YEAR} at $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND",
+            "  *FIRED*: {@ $CURRENT_DAY_NAME $CURRENT_MONTH_NAME $CURRENT_DATE $CURRENT_YEAR} at $CURRENT_HOUR:$CURRENT_MINUTE:00",
             "  *SEVERITY*: ${2:/High,Med,Low/}",
             "  *ACTION*: ${3:/Investigate,Escalate,Acknowledge/}",
             "",
