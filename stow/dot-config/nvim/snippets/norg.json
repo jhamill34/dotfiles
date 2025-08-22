@@ -2,19 +2,157 @@
     "insert screenshot": {
         "prefix": "screenshot",
         "body": [
-            ""
+            ".image ~/Notes/Screen-Shots/"
         ]
     },
     "investigation log": {
-        "prefix": "loginv",
+        "prefix": "ilog",
         "body": [
+            "_*$CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND*_ /logs/ -> ${0:[finding]}"
+        ]
+    },
+    "investigation metrics": {
+        "prefix": "imetric",
+        "body": [
+            "_*$CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND*_ /metrics/ -> ${0:[finding]}"
+        ]
+    },
+    "investigation code": {
+        "prefix": "itrace",
+        "body": [
+            "_*$CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND*_ /code/ -> ${0:[finding]}"
+        ]
+    },
+    "investigation theory": {
+        "prefix": "itheory",
+        "body": [
+            "_*$CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND*_ /theory/ -> ${0:[finding]}"
+        ]
+    },
+    "investigation test": {
+        "prefix": "itest",
+        "body": [
+            "_*$CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND*_ /test/ -> ${0:[finding]}"
+        ]
+    },
+    "investigation question": {
+        "prefix": "iquest",
+        "body": [
+            "_*$CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND*_ /question/ -> ${0:[finding]}"
+        ]
+    },
+    "investigation fixes": {
+        "prefix": "ifix",
+        "body": [
+            "* FIX APPLIED",
+            "  /what was done to resolve the issue?/",
             ""
         ]
     },
-    "end investigation": {
-        "prefix": "endinv",
+    "references section": {
+        "prefix": "ref",
         "body": [
+            "===",
+            "",
+            "* REFERENCES",
+            "  - [${0:label}]{$1}",
             ""
+        ]
+    },
+    "investigation lessons": {
+        "prefix": "ilessons",
+        "body": [
+            "* LESSONS LEARNED",
+            "  - ${0:/Key insight/}",
+            "",
+            "* PREVENTION",
+            "  - ${1:/How do we avoid this in the future?/}",
+            ""
+        ]
+    },
+    "investigation actions": {
+        "prefix": "iaction",
+        "body": [
+            "* FOLLOW-UP TASKS",
+            "  - ( ) ${0:/task 1/}",
+            ""
+        ]
+    },
+    "investigation root cause": {
+        "prefix": "iroot",
+        "body": [
+            "* ROOT CAUSE",
+            "  ${0:/Technical explanation in 2-3 sentances/}",
+            ""
+        ]
+    },
+    "neorg calendar date": {
+        "prefix": "cdate",
+        "body": [
+            "{@ $CURRENT_DAY_NAME $CURRENT_MONTH_NAME $CURRENT_DATE $CURRENT_YEAR}"
+        ]
+    },
+    "investigation update": {
+        "prefix": "iupdate",
+        "body": [
+            "* SUMMARY",
+            "  *UPDATE*: ${0:/Issue title/} - {@ $CURRENT_DAY_NAME $CURRENT_MONTH_NAME $CURRENT_DATE $CURRENT_YEAR}",
+            "  *STATUS*: ${1:/Investigating,Root cause found,Fix deployed, or Resolved/}",
+            "  *IMPACT*: ${2:/Who or what is affected/}",
+            "",
+            "** Progress:",
+            "  - ${3:/What we've learned/}",
+            "  - ${4:/Current theory or fix in progress/}",
+            "",
+            "** Next Steps:",
+            "  - ${5:/What happens next/}",
+            "  - ${6:/ETA for next update/}",
+            "",
+            "** Workaround",
+            "  ${7:/If available/}",
+            ""
+        ]
+    },
+    "customer triage": {
+        "prefix": "tcust",
+        "body": [
+            "* ISSUE SUMMARY:",
+            "  *CUSTOMER*: ${0:/customer name/}",
+            "  *CHANNEL*: ${1:/slack, email, or support ticket/}",
+            "  *REPORTED*: {@ $CURRENT_DAY_NAME $CURRENT_MONTH_NAME $CURRENT_DATE $CURRENT_YEAR} at $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND",
+            "  *PRIORITY*: ${2:/P0,P1,P2,P3/}",
+            "",
+            " ${3:/What they're experiencing in 1-2 sentences/}",
+            "",
+            "** QUICK TRIAGE:",
+            "   - ( ) Reproducible?",
+            "   - ( ) Multiple customers?",
+            "   - ( ) Recent changes? Deployments?",
+            "   - ( ) Workaround available?",
+            "",
+            "",
+            "** INVESTIGATION NOTES:",
+            "   /Copy/paste your findings here as you go/",
+            ""
+        ]
+    },
+    "pager duty alert triage": {
+        "prefix": "talert",
+        "body": [
+            "* ISSUE SUMMARY",
+            "  *ALERT*: ${0:/Alert name/}",
+            "  *FIRED*: {@ $CURRENT_DAY_NAME $CURRENT_MONTH_NAME $CURRENT_DATE $CURRENT_YEAR} at $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND",
+            "  *SEVERITY*: ${1:/High,Med,Low/}",
+            "  *ACTION*: ${2:/Investigate,Escalate,Acknowledge/}",
+            "",
+            "** QUICK CHECK:",
+            "  - ( ) Grafana dashboard",
+            "  - ( ) Recent deployments",
+            "  - ( ) Error logs",
+            "  - ( ) User reports",
+            "",
+            "** Notes",
+            "  /log items from investigating this alert/"
         ]
     }
 }

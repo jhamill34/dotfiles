@@ -1,5 +1,6 @@
 -- Go here for help: https://github.com/nvim-neorg/neorg/wiki
 return {
+	"tpope/vim-speeddating",
 	{
 		"nvim-neorg/neorg",
 		lazy = false,
@@ -10,6 +11,9 @@ return {
 					["core.autocommands"] = {},
 					["core.defaults"] = {},
 					["core.concealer"] = {},
+					["core.keybinds"] = {},
+					["core.ui"] = {},
+					["core.ui.calendar"] = {},
 					["core.export"] = {},
 					["core.todo-introspector"] = {},
 					["core.itero"] = {},

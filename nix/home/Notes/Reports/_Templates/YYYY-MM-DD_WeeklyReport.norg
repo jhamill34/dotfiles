@@ -1,0 +1,40 @@
+@document.meta
+title: YYYY-MM-DD_WeeklyReport
+description: 
+authors: joshuahamill
+categories: 
+created: 2025-08-21T23:27:14-0500
+updated: 2025-08-21T23:43:22-0500
+version: 1.1.1
+@end
+
+* ON-CALL SUMMARY: 
+  *FROM*: /Date/
+  *TO*: /Date/
+
+** ALERTS: /count/ 
+   - /Brief list of notable ones/
+
+** CUSTOMER ISSUES: /count/
+   - /Brief list/
+
+** DEPLOYMENTS: /count/
+   - /status/
+
+** SYSTEM HEALTH
+   /overall status/
+
+** ACTIVE INVESTIGATIONS:
+   - /Issue 1/ - /status/next steps/
+   - /Issue 2/ - /status/next steps/
+
+** HANDOFF NOTES:
+   - /Important items for next person/
+
+* Project Status
+** ACTIVE DESIGNS
+   - /Project 1/ - /status/next steps/
+   - /Project 2/ - /status/next steps/
+
+** BLOCKED 
+   - /Project 3/ - /status/blocked reasons/impact/
