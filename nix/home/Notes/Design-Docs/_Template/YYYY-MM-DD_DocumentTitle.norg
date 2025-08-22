@@ -1,10 +1,171 @@
+%=================================================%
+%= THIS IS A TEMPLATE - DO NOT EDIT DIRECTLY     =%
+%= TO USE THIS TEMPLATE, COPY TO A NEW FILE      =%
+%=================================================%
+
 @document.meta
 title: YYYY-MM-DD_DocumentTitle
 description: 
 authors: joshuahamill
 categories: 
 created: 2025-08-21T23:25:58-0500
-updated: 2025-08-21T23:26:19-0500
+updated: 2025-08-22T10:46:57-0500
 version: 1.1.1
 @end
+
+* /Feature/System Name/ - Design Proposal
+
+  *Author:* /Your Name/  
+  *Date:* /Date/  
+  *Status:* /Draft / In Review / Approved/
+
+  ---
+
+** Executive Summary
+   /2-3 sentences explaining what you're proposing and why it matters to the business/
+
+   *Problem:* /What specific problem are we solving?/  
+   *Solution:* /High-level approach in 1-2 sentences/  
+   *Impact:* /Key business benefits - performance, reliability, cost, etc./  
+   *Timeline:* /X-Y weeks with Z developers/
+
+   ---
+
+** Current State & Problem Statement
+
+*** What's not working today?
+    /Describe the current system limitations, pain points, or requirements driving this change/
+
+*** Business Impact of Status Quo
+    /What happens if we don't make this change? Include metrics if available/
+
+*** Success Criteria
+    /How will we know this change was successful?/
+    - ( ) /Measurable outcome 1/
+    - ( ) /Measurable outcome 2/
+    - ( ) /Measurable outcome 3/
+
+    ---
+
+** Proposed Solution
+
+*** High-Level Architecture
+    /Include a diagram here - even a simple one helps enormously/
+
+*** Key Changes
+    1. */Component/Area 1/:* /Brief description of change/
+    2. */Component/Area 2/:* /Brief description of change/
+    3. */Component/Area 3/:* /Brief description of change/
+
+*** Integration Points
+    /How does this interact with existing systems? What APIs, databases, services are involved?/
+
+    ---
+
+** Trade-offs & Decision Rationale
+
+*** Approach Comparison
+
+**** Performance
+     *CURRENT:* /Current state/
+     *PROPOSED:* /Proposed improvement/
+     *ALTERNATIVE:* /Alternative option/
+
+**** Maintainability
+     *CURRENT:* /Current state/
+     *PROPOSED:* /Proposed improvement/
+     *ALTERNATIVE:* /Alternative option/
+
+**** Complexity
+     *CURRENT:* /Current state/
+     *PROPOSED:* /Proposed improvement/
+     *ALTERNATIVE:* /Alternative option/
+
+**** Resource Cost
+     *CURRENT:* /Current state/
+     *PROPOSED:* /Proposed improvement/
+     *ALTERNATIVE:* /Alternative option/
+
+
+*** Why This Approach?
+    */2-3 key reasons you chose this solution over alternatives/*
+
+*** Known Limitations & Risks
+    - */Risk 1/:* /Description and mitigation plan/
+    - */Risk 2/:* /Description and mitigation plan/
+    - */Risk 3/:* /Description and mitigation plan/
+
+    ---
+
+** Implementation Plan
+
+*** Phase Breakdown
+**** Phase 1: /Name/ (Est: /X-Y days/)
+     - /Task 1/
+     - /Task 2/
+     - /Task 3/
+
+**** Phase 2: /Name/ (Est: /X-Y days/)
+     - /Task 1/
+     - /Task 2/
+     - /Task 3/
+
+**** Phase 3: /Name/ (Est: /X-Y days/)
+     - /Task 1/
+     - /Task 2/
+     - /Task 3/
+
+*** Dependencies
+    - ( ) /External dependency 1 - who/what/when/
+    - ( ) /External dependency 2 - who/what/when/
+    - ( ) /External dependency 3 - who/what/when/
+
+*** Timeline Assumptions
+    /List the key assumptions your estimates are based on/
+    - Assumes /assumption 1/
+    - Assumes /assumption 2/
+    - Assumes /assumption 3/
+
+    ---
+
+** Operational Considerations
+
+*** Testing Strategy
+    /How will you validate this works correctly?/
+
+*** Rollout Plan
+    /Phased rollout? Feature flags? All at once?/
+
+*** Rollback Strategy
+    /What's your plan if things go wrong?/
+
+*** Monitoring & Alerting
+    /What new monitoring do you need? What could fail?/
+
+    ---
+
+** Resource Requirements
+
+*** Development Effort
+    - *Total Estimate:* /X-Y weeks/ for /Z/ developers
+    - *Buffer Reasoning:* /Why you added buffer time/
+
+*** Infrastructure/Tools Needed
+    - /Any new infrastructure, licenses, tools needed/
+
+*** Other Team Involvement
+    - /Which other teams need to be involved and for what/
+
+    ---
+
+** Next Steps
+   - ( ) /Immediate action item 1/
+   - ( ) /Immediate action item 2/
+   - ( ) /Get approval/feedback from stakeholder X/
+   - ( ) /Schedule kick-off meeting/
+
+   ===
+
+* REFERENCES
+  - [label]{...}
 

@@ -1,0 +1,61 @@
+#================================================
+# THIS IS A TEMPLATE - DO NOT EDIT DIRECTLY     =
+# TO USE THIS TEMPLATE, COPY TO A NEW FILE      =
+#================================================
+
+title: |md
+# Sequence Diagram - [Feature/Process Name]
+| { near: top-center }
+
+shape: sequence_diagram
+direction: right
+
+# Actors/Systems (vertical lanes)
+user: User {
+  shape: person
+}
+
+web_app: Web App {
+  shape: rectangle
+}
+
+api: API Service {
+  shape: rectangle
+}
+
+database: Database {
+  shape: cylinder
+}
+
+external: External API {
+  shape: cloud
+}
+
+# Sequence flow (use numbered steps for clarity)
+user.req -> web_app.req: Submit Request
+
+web_app.req -> api.req: Validate & Process
+# api.req -> web_app.req: Error: Validation Failed {
+#   style.stroke: red
+#   style.stroke-dash: 5
+# }
+
+api.req -> database.query1: Check Existing Data
+database.query1 -> api.req: Return Results
+
+api.req -> external.req: Enrich Data
+# external.req -> api.req: Error: Service Unavailable {
+#   style.stroke: red
+#   style.stroke-dash: 5
+# }
+external.req -> api.req: Additional Info
+
+api.req -> database.query2: Save Updated Data
+database.query2 -> api.req: Confirm Save
+
+api.req -> web_app.req: Success Response
+
+web_app.req -> user.req: Display Results
+
+
+

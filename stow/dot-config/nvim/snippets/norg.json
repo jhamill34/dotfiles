@@ -8,37 +8,37 @@
     "investigation log": {
         "prefix": "ilog",
         "body": [
-            "_*$CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND*_ /logs/ -> ${0:[finding]}"
+            "_*$CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND*_ /logs/ -> ${1:[finding]}"
         ]
     },
     "investigation metrics": {
         "prefix": "imetric",
         "body": [
-            "_*$CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND*_ /metrics/ -> ${0:[finding]}"
+            "_*$CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND*_ /metrics/ -> ${1:[finding]}"
         ]
     },
     "investigation code": {
         "prefix": "itrace",
         "body": [
-            "_*$CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND*_ /code/ -> ${0:[finding]}"
+            "_*$CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND*_ /code/ -> ${1:[finding]}"
         ]
     },
     "investigation theory": {
         "prefix": "itheory",
         "body": [
-            "_*$CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND*_ /theory/ -> ${0:[finding]}"
+            "_*$CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND*_ /theory/ -> ${1:[finding]}"
         ]
     },
     "investigation test": {
         "prefix": "itest",
         "body": [
-            "_*$CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND*_ /test/ -> ${0:[finding]}"
+            "_*$CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND*_ /test/ -> ${1:[finding]}"
         ]
     },
     "investigation question": {
         "prefix": "iquest",
         "body": [
-            "_*$CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND*_ /question/ -> ${0:[finding]}"
+            "_*$CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND*_ /question/ -> ${1:[finding]}"
         ]
     },
     "investigation fixes": {
@@ -55,7 +55,7 @@
             "===",
             "",
             "* REFERENCES",
-            "  - [${0:label}]{$1}",
+            "  - [${1:label}]{$2}",
             ""
         ]
     },
@@ -63,10 +63,10 @@
         "prefix": "ilessons",
         "body": [
             "* LESSONS LEARNED",
-            "  - ${0:/Key insight/}",
+            "  - ${1:/Key insight/}",
             "",
             "* PREVENTION",
-            "  - ${1:/How do we avoid this in the future?/}",
+            "  - ${2:/How do we avoid this in the future?/}",
             ""
         ]
     },
@@ -74,7 +74,7 @@
         "prefix": "iaction",
         "body": [
             "* FOLLOW-UP TASKS",
-            "  - ( ) ${0:/task 1/}",
+            "  - ( ) ${1:/task 1/}",
             ""
         ]
     },
@@ -82,7 +82,7 @@
         "prefix": "iroot",
         "body": [
             "* ROOT CAUSE",
-            "  ${0:/Technical explanation in 2-3 sentances/}",
+            "  ${1:/Technical explanation in 2-3 sentances/}",
             ""
         ]
     },
@@ -96,20 +96,20 @@
         "prefix": "iupdate",
         "body": [
             "* SUMMARY",
-            "  *UPDATE*: ${0:/Issue title/} - {@ $CURRENT_DAY_NAME $CURRENT_MONTH_NAME $CURRENT_DATE $CURRENT_YEAR}",
-            "  *STATUS*: ${1:/Investigating,Root cause found,Fix deployed, or Resolved/}",
-            "  *IMPACT*: ${2:/Who or what is affected/}",
+            "  *UPDATE*: ${1:/Issue title/} - {@ $CURRENT_DAY_NAME $CURRENT_MONTH_NAME $CURRENT_DATE $CURRENT_YEAR}",
+            "  *STATUS*: ${2:/Investigating,Root cause found,Fix deployed, or Resolved/}",
+            "  *IMPACT*: ${3:/Who or what is affected/}",
             "",
             "** Progress:",
-            "  - ${3:/What we've learned/}",
-            "  - ${4:/Current theory or fix in progress/}",
+            "  - ${4:/What we've learned/}",
+            "  - ${5:/Current theory or fix in progress/}",
             "",
             "** Next Steps:",
-            "  - ${5:/What happens next/}",
-            "  - ${6:/ETA for next update/}",
+            "  - ${6:/What happens next/}",
+            "  - ${7:/ETA for next update/}",
             "",
             "** Workaround",
-            "  ${7:/If available/}",
+            "  ${8:/If available/}",
             ""
         ]
     },
@@ -117,12 +117,12 @@
         "prefix": "tcust",
         "body": [
             "* ISSUE SUMMARY:",
-            "  *CUSTOMER*: ${0:/customer name/}",
-            "  *CHANNEL*: ${1:/slack, email, or support ticket/}",
+            "  *CUSTOMER*: ${1:/customer name/}",
+            "  *CHANNEL*: ${2:/slack, email, or support ticket/}",
             "  *REPORTED*: {@ $CURRENT_DAY_NAME $CURRENT_MONTH_NAME $CURRENT_DATE $CURRENT_YEAR} at $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND",
-            "  *PRIORITY*: ${2:/P0,P1,P2,P3/}",
+            "  *PRIORITY*: ${3:/P0,P1,P2,P3/}",
             "",
-            " ${3:/What they're experiencing in 1-2 sentences/}",
+            " ${4:/What they're experiencing in 1-2 sentences/}",
             "",
             "** QUICK TRIAGE:",
             "   - ( ) Reproducible?",
@@ -140,10 +140,10 @@
         "prefix": "talert",
         "body": [
             "* ISSUE SUMMARY",
-            "  *ALERT*: ${0:/Alert name/}",
+            "  *ALERT*: ${1:/Alert name/}",
             "  *FIRED*: {@ $CURRENT_DAY_NAME $CURRENT_MONTH_NAME $CURRENT_DATE $CURRENT_YEAR} at $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND",
-            "  *SEVERITY*: ${1:/High,Med,Low/}",
-            "  *ACTION*: ${2:/Investigate,Escalate,Acknowledge/}",
+            "  *SEVERITY*: ${2:/High,Med,Low/}",
+            "  *ACTION*: ${3:/Investigate,Escalate,Acknowledge/}",
             "",
             "** QUICK CHECK:",
             "  - ( ) Grafana dashboard",

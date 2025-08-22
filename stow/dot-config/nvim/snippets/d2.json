@@ -1,8 +1,161 @@
 {
-    "tmp": {
-        "prefix": "t",
+    "markdown title": {
+        "prefix": "title",
         "body": [
-            "this is a test"
+            "title: |md",
+            "# $1 - [$2]",
+            "| { near: top-center }"
+        ]
+    },
+    "legend": {
+        "prefix": "legend",
+        "body": [
+            "vars: {",
+            "    d2-legend: {",
+            "        $1: {",
+            "        }",
+            "        $2 {",
+            "        }",
+            "        $1 -> $2 {",
+            "        }",
+            "    }",
+            "}"
+        ]
+    },
+    "classes": {
+        "prefix": "classes",
+        "body": [
+            "classes: {",
+            "    $1: {",
+            "    }",
+            "}"
+        ]
+    },
+    "icon": {
+        "prefix": "icon",
+        "body": [
+            "shape: image",
+            "icon: https: //icons.terrastruct.com/${1:/dev/github}.svg"
+        ]
+    },
+    "hide all": {
+        "prefix": "hide",
+        "body": [
+            "**: suspend",
+            "(** -> **)[*]: suspend"
+        ]
+    },
+    "reveal destination": {
+        "prefix": "revdst",
+        "body": [
+            "(** -> **)[*]: unsuspend {",
+            "    &dst: $1",
+            "}"
+        ]
+    },
+    "reveal source": {
+        "prefix": "revdst",
+        "body": [
+            "(** -> **)[*]: unsuspend {",
+            "    &src: $1",
+            "}"
+        ]
+    },
+    "reveal label": {
+        "prefix": "revdst",
+        "body": [
+            "(** -> **)[*]: unsuspend {",
+            "    &label: $1",
+            "}"
+        ]
+    },
+    "sql table": {
+        "prefix": "table",
+        "body": [
+            "$1_table: $1 {",
+            "    shape: sql_table",
+            "    id: int { constraint: primary_key }",
+            "}"
+        ]
+    },
+    "has optional many": {
+        "prefix": "optmany",
+        "body": [
+            "${1:source} <-> ${2:target}: 0..* {",
+            "    target-arrowhead.shape: cf-many",
+            "    source-arrowhead.shape: diamond",
+            "}"
+        ]
+    },
+    "has required many": {
+        "prefix": "reqmany",
+        "body": [
+            "${1:source} <-> ${2:target}: 1..* {",
+            "    target-arrowhead.shape: cf-many-required",
+            "    source-arrowhead.shape: diamond",
+            "}"
+        ]
+    },
+    "has optional": {
+        "prefix": "optone",
+        "body": [
+            "${1:source} <-> ${2:target}: 0..* {",
+            "    target-arrowhead.shape: cf-one",
+            "    source-arrowhead.shape: diamond",
+            "}"
+        ]
+    },
+    "has required": {
+        "prefix": "optreq",
+        "body": [
+            "${1:source} <-> ${2:target}: 1 {",
+            "    target-arrowhead.shape: cf-one-required",
+            "    source-arrowhead.shape: diamond",
+            "}"
+        ]
+    },
+    "sequence definition": {
+        "prefix": "seqdef",
+        "body": [
+            "shape: sequence_diagram",
+            "direction: right"
+        ]
+    },
+    "group": {
+        "prefix": "group",
+        "body": [
+            "$1: {",
+            "}"
+        ]
+    },
+    "if condition": {
+        "prefix": "if",
+        "body": [
+            "if $1 : {",
+            "}"
+        ]
+    },
+    "request": {
+        "prefix": "seqreq",
+        "body": [
+            "${1:caller} -> ${2:reciever}: ${3:[request]}"
+        ]
+    },
+    "response": {
+        "prefix": "seqres",
+        "body": [
+            "${1:caller} -> ${2:reciever}: ${3:[response]} {",
+            "    style.stroke-dash: 3",
+            "}"
+        ]
+    },
+    "error response": {
+        "prefix": "seqerr",
+        "body": [
+            "${1:caller} -> ${2:reciever}: ${3:[error]} {",
+            "    style.stroke-dash: 3",
+            "    style.stroke: red",
+            "}"
         ]
     }
 }

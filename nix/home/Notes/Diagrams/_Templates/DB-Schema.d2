@@ -1,0 +1,75 @@
+#================================================
+# THIS IS A TEMPLATE - DO NOT EDIT DIRECTLY     =
+# TO USE THIS TEMPLATE, COPY TO A NEW FILE      =
+#================================================
+
+title: |md
+# Database Schema Changes - [Feature Name]
+| { near: top-center }
+
+vars: {
+    d2-legend: {
+        a: Table {
+            shape: sql_table
+            id: int { constraint: primary_key } 
+        }
+
+        a <-> a: Has Many {
+            target-arrowhead.shape: cf-many
+            source-arrowhead.shape: diamond
+        }
+    }
+}
+
+classes: {
+    has_many: {
+        # Options inculde: arrow, cf-one, cf-one-required, cf-many, cf-many-required
+        target-arrowhead.shape: cf-many
+
+        # diamond, triangle, and circle can all have:
+        #  style.filled: true | false
+        #  filled in diamond indicates "required" while non-filled is "optional"
+        #  a.k.a. "required" == "composition" and "optional" == "aggregation"
+        source-arrowhead.shape: diamond
+    }
+}
+
+users_table: users {
+    shape: sql_table
+    id: int { constraint: primary_key }
+    name: varchar(100)
+    email: varchar(255)
+    created_at: timestamp without timezone
+
+    # New fields highlighted
+    preferences: json 
+    last_login: timestamp without timezone
+}
+
+orders_table: orders {
+    shape: sql_table
+    id: int { constraint: primary_key }
+    user_id: int { constraint: forgeign_key }
+    total: decimal
+    status: varchar(50)
+
+    # Modified field highlighted
+    metadata: jsonb 
+}
+
+# New table
+audit_log: audit_events {
+    shape: sql_table
+
+    id: int { constraint: primary_key }
+    table_name: varchar(100)
+    record_id: int
+    action: varchar(50)
+    changed_data: json
+    timestamp: timestamp without timezone
+}
+
+users_table.id <-> orders_table.user_id: has_many {
+    class: has_many
+}
+

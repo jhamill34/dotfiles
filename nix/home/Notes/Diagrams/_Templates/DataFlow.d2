@@ -1,0 +1,106 @@
+#================================================
+# THIS IS A TEMPLATE - DO NOT EDIT DIRECTLY     =
+# TO USE THIS TEMPLATE, COPY TO A NEW FILE      =
+#================================================
+
+title: |md 
+# Data Flow - [Process Name]
+| { near: top-center }
+
+vars: {
+    d2-legend: {
+        a: start {
+            shape: oval
+        }
+        b: end {
+            shape: oval
+        }
+        c: process {
+        }
+        d: queue {
+            shape: parallelogram
+        }
+        e: external {
+            shape: cloud
+        }
+        f: db {
+            shape: cylinder
+        }
+        a->b: transition {}
+        a->b: error {
+            style.stroke: red
+            style.stroke-dash: 3
+        }
+    }
+}
+
+# Start/End points
+start: User Action {
+    shape: oval
+}
+
+end: Response/Result {
+    shape: oval
+}
+
+# Processing steps
+step1: Validate Request {
+}
+
+step2: Process Data {
+}
+
+step3: Update Records {
+}
+
+# Data stores
+input_queue: Input Queue {
+    shape: parallelogram
+}
+
+database: Database {
+    shape: cylinder
+}
+
+external_system: External System {
+    shape: cloud
+}
+
+# Flow
+start -> step1: User Data
+step1 -> input_queue: Valid Requests {
+  label: JSON Payload
+}
+input_queue -> step2: Queued Items
+step2 -> external_system: API Call {
+  label: Enrichment Data
+}
+external_system -> step2: Response Data
+step2 -> step3: Processed Data
+step3 -> database: Insert/Update {
+  label: SQL Transaction
+}
+database -> step3: Confirmation
+step3 -> end: Success Response
+
+# Error handling (optional)
+step1 -> end: Validation Error {
+    style.stroke: red
+    style.stroke-dash: 3
+}
+step2 -> end: Processing Error {
+    style.stroke: red
+    style.stroke-dash: 3
+}
+
+# Import models from a file called model_file.d2
+# ..@model_file
+
+# Treat the above as models
+# **: suspend
+# (** -> **)[*]: suspend
+
+# (** -> **)[*]: unsuspend {
+#   # &src: modified 
+#   &src: new
+# }

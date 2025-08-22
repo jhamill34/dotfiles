@@ -1,0 +1,88 @@
+#================================================
+# THIS IS A TEMPLATE - DO NOT EDIT DIRECTLY     =
+# TO USE THIS TEMPLATE, COPY TO A NEW FILE      =
+#================================================
+
+title: |md
+# System Architecture - [Feature Name]
+| { near: top-center }
+
+vars: {
+    d2-legend: {
+        modified: Modified Component {
+            shape: rectangle 
+            style.fill: lightyellow 
+            style.stroke-dash: 5
+        }
+
+        new: New Component {
+            shape: rectangle
+            style.fill: lightgreen
+            style.stroke: green
+            style.stroke-width: 3
+        }
+
+        unchanged: Existing Component {
+            shape: rectangle
+            style.fill: lightblue
+        }
+    }
+}
+
+# External systems
+user: User/Client {
+  shape: person
+}
+
+external_api: External API {
+  shape: cloud
+}
+
+# Main application components
+web_app: Web Application {
+  shape: rectangle
+  style.fill: lightblue
+  style.font-color: black
+}
+
+api_gateway: API Gateway {
+  shape: rectangle
+  style.fill: lightgreen
+  style.font-color: black
+}
+
+service_a: Service A {
+  shape: rectangle
+  style.fill: lightyellow
+  style.font-color: black
+}
+
+service_b: Service B {
+  shape: rectangle
+  style.fill: lightyellow
+  style.font-color: black
+}
+
+# Data stores
+database: Main Database {
+  shape: cylinder
+  style.fill: lightblue
+  style.font-color: black
+}
+
+cache: Cache Layer {
+  shape: cylinder
+  style.fill: lightgreen
+  style.font-color: black
+}
+
+# Connections
+user -> web_app: HTTP Requests
+web_app -> api_gateway: API Calls
+api_gateway -> service_a: Route A
+api_gateway -> service_b: Route B
+service_a -> database: Read/Write
+service_b -> database: Read/Write
+service_a -> cache: Cache Operations
+service_b -> external_api: External Calls
+
