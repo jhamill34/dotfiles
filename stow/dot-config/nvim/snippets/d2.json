@@ -1,0 +1,8 @@
+{
+    "tmp": {
+        "prefix": "t",
+        "body": [
+            "this is a test"
+        ]
+    }
+}

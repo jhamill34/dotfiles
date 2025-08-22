@@ -7,6 +7,12 @@
                     "norg"
                 ],
                 "path": "./norg.json"
+            },
+            {
+                "language": [
+                    "d2"
+                ],
+                "path": "./d2.json"
             }
         ]
     }
