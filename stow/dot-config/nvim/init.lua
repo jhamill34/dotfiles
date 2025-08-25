@@ -2,6 +2,7 @@ require("custom.global")
 require("custom.options")
 require("custom.maps")
 require("custom.autocmd")
+require("custom.commands")
 
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
