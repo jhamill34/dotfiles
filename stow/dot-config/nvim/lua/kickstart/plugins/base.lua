@@ -245,6 +245,7 @@ return {
 			{ "mason-org/mason.nvim", opts = {} },
 			"mason-org/mason-lspconfig.nvim",
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
+			"nvim-java/nvim-java",
 
 			-- Useful status updates for LSP.
 			{ "j-hui/fidget.nvim", opts = {} },
@@ -517,6 +518,14 @@ return {
 				},
 			}
 
+			require("java").setup({
+				-- Your custom jdtls settings goes here
+			})
+
+			require("lspconfig").jdtls.setup({
+				-- Your custom nvim-java configuration goes here
+			})
+
 			-- Ensure the servers and tools above are installed
 			--
 			-- To check the current status of installed tools and/or manually install
@@ -749,6 +758,8 @@ return {
 				"c",
 				"diff",
 				"html",
+				"java",
+				"kotlin",
 				"lua",
 				"luadoc",
 				"markdown",

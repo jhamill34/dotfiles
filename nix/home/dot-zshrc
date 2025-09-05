@@ -4,11 +4,6 @@ zmodload zsh/zprof
 # ENVIRONMENT SETUP
 # ==============================================================================
 
-# Source home-manager session variables
-if [ -f "/etc/profiles/per-user/$USER/etc/profile.d/hm-session-vars.sh" ]; then 
-    source "/etc/profiles/per-user/$USER/etc/profile.d/hm-session-vars.sh"
-fi
-
 # Environment variables
 export EDITOR="nvim"
 export PYENV_ROOT="$HOME/.pyenv"
@@ -66,6 +61,7 @@ alias vim=nvim
 alias ls='eza --long --color=always --icons=always'
 alias gai='git add -i'
 alias lld='lazydocker'
+alias gdl='gradle'
 
 # ==============================================================================
 # ZINIT PLUGIN MANAGER

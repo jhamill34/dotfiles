@@ -8,6 +8,12 @@
         pkgs.pyenv
         pkgs.rbenv
         pkgs.rustup
+
         pkgs.nodejs_22 # NodeJS
     ];
+
+    programs.java = {
+        enable = true;
+        package = pkgs.temurin-bin-23;
+    };
 }
