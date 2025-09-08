@@ -2,9 +2,26 @@
 
 {
     home.packages = [
-        pkgs.jankyborders
         pkgs.sketchybar
     ];
+
+    services.jankyborders = {
+        enable = true;
+        outLogFile = "/tmp/borders.out.log";
+        errorLogFile = "/tmp/borders.err.log";
+
+        # rosewater="0xfff5e0dc"
+        # flamingo="0xfff2cdcd"
+
+        settings = {
+            style="round";
+            width=6.0;
+            hidpi="off";
+            active_color="0xffb4befe";
+            inactive_color="0xff1e1e2e";
+            blacklist="Loom";
+        };
+    };
 
     programs.aerospace = {
         enable = true;
