@@ -4,7 +4,6 @@
   home.file = {
     ".zshrc".source = ../home/dot-zshrc;
     ".tmux.conf".source = ../home/dot-tmux.conf;
-    ".aerospace.toml".source = ../home/dot-aerospace.toml;
     ".config" = {
         source = ../home/dot-config;
         recursive = true;
