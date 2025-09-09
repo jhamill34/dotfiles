@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ config, pkgs, lib, ... }:
 
 # TODO: Others (ledger, 
 let
@@ -14,7 +14,7 @@ let
   # Import each file and create a list of module attributes.
   # The map function applies a function to each item in a list.
   importedModules = builtins.map
-    (file: import (modulesDir + "/${file}") { inherit pkgs lib; })
+    (file: import (modulesDir + "/${file}") { inherit config pkgs lib; })
     moduleFiles;
 
 in

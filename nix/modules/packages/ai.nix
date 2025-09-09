@@ -1,6 +1,11 @@
 { pkgs, ... }:
 
 {
-  # TODO: Opencode configuration
   home.packages = [ ];
+
+  # programs.opencode = {
+  #   enable = true;
+  #   rules = "";
+  #   settings = { };
+  # };
 }

@@ -1,10 +1,13 @@
 { pkgs, ... }:
 
 {
-  # TODO: Update docker, lazydocker 
   home.packages = [
     pkgs.docker
     pkgs.colima
-    pkgs.lazydocker
   ];
+
+  programs.lazydocker = {
+    enable = true;
+    settings = { };
+  };
 }

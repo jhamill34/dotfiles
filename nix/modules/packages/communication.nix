@@ -6,7 +6,7 @@
   ];
 
   # NOTE: Thunderbird is configurable
-  # TODO: Taskwarrior
+  # NOTE: Taskwarrior
   home.packages = [
     pkgs.slack
     pkgs.zoom-us

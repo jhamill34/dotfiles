@@ -1,11 +1,21 @@
 { pkgs, ... }:
 
 {
-  # TODO: update awscli
   home.packages = [
     pkgs.aws-sam-cli
-    pkgs.awscli2
     pkgs.pulumi
     pkgs.pulumictl
   ];
+
+  programs.awscli = {
+    enable = true;
+
+    credentials = { };
+    settings = {
+      "default" = {
+        region = "us-east-2";
+        output = "json";
+      };
+    };
+  };
 }

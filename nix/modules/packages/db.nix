@@ -5,12 +5,18 @@
     ./custom/clickhouse.nix
   ];
 
-  # TODO: update lazysql
   home.packages = [
-    # TODO: pgcli
     pkgs.postgresql
     pkgs.redis
-
-    # pkgs.lazysql
   ];
+
+  programs.lazysql = {
+    enable = true;
+    settings = { };
+  };
+
+  # programs.pgcli = {
+  #   enable = true;
+  #   settings = { };
+  # };
 }
