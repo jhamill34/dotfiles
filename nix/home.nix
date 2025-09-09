@@ -3,7 +3,6 @@
 {
   imports = [
     ./modules/home-packages.nix
-    ./modules/launchd.nix
     ./modules/home-files.nix
     ./modules/shell.nix
   ];
