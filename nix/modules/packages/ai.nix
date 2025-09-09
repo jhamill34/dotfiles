@@ -1,5 +1,6 @@
 { pkgs, ... }:
 
 {
-    home.packages = []; 
+  # TODO: Opencode configuration
+  home.packages = [ ];
 }

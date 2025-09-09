@@ -1,7 +1,8 @@
 { pkgs, ... }:
 
 {
-    home.packages = [
-        pkgs.btop
-    ];
+  # TODO: update btop
+  home.packages = [
+    pkgs.btop
+  ];
 }

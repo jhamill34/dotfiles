@@ -18,7 +18,7 @@ export FZF_DEFAULT_OPTS=" \
     --border=bold"
 export WORK_HOME="$HOME/Code/Work"
 
-export EZA_CONFIG_DIR="${XDG_CONFIG_HOME:-${HOME}/.conifg}/eza"
+# export EZA_CONFIG_DIR="${XDG_CONFIG_HOME:-${HOME}/.conifg}/eza"
 export TRANSIENT_PROMPT_TRANSIENT_PROMPT="❯ "
 
 # PATH configuration
@@ -58,7 +58,6 @@ bindkey '^e' edit-command-line
 # ==============================================================================
 
 alias vim=nvim
-alias ls='eza --long --color=always --icons=always'
 alias gai='git add -i'
 alias lld='lazydocker'
 alias gdl='gradle'

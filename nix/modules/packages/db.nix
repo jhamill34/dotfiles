@@ -1,12 +1,16 @@
 { pkgs, ... }:
 
 {
-    imports = [
-        ./custom/clickhouse.nix
-    ];
+  imports = [
+    ./custom/clickhouse.nix
+  ];
 
-    home.packages = [
-        pkgs.postgresql
-        pkgs.redis
-    ];
+  # TODO: update lazysql
+  home.packages = [
+    # TODO: pgcli
+    pkgs.postgresql
+    pkgs.redis
+
+    # pkgs.lazysql
+  ];
 }

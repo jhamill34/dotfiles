@@ -4,6 +4,7 @@
   programs.sketchybar = {
     enable = true;
 
+    # TODO: look into migrating to lua
     config = {
       source = ../../home/sketchybar;
       recursive = true;

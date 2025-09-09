@@ -1,7 +1,8 @@
 { pkgs, ... }:
 
 {
-    home.packages = [
-        pkgs._1password-cli
-    ];
+  # TODO: look into password-store...
+  home.packages = [
+    pkgs._1password-cli
+  ];
 }

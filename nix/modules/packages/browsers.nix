@@ -1,7 +1,9 @@
 { pkgs, ... }:
 
 {
-    imports = [
-        ./custom/brave-apps.nix
-    ];
+  # TODO: qutebrowser...
+  # NOTE: Firefox is customizable...
+  imports = [
+    ./custom/brave-apps.nix
+  ];
 }

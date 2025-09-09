@@ -1,12 +1,14 @@
 { pkgs, ... }:
 
 {
-    imports = [
-        ./custom/spark-mail.nix
-    ];
+  imports = [
+    ./custom/spark-mail.nix
+  ];
 
-    home.packages = [
-        pkgs.slack
-        pkgs.zoom-us
-    ];
+  # NOTE: Thunderbird is configurable
+  # TODO: Taskwarrior
+  home.packages = [
+    pkgs.slack
+    pkgs.zoom-us
+  ];
 }

@@ -1,12 +1,12 @@
 { pkgs, ... }:
 
 {
-    home.packages = [
-        pkgs.kitty
-        pkgs.mkalias
-        pkgs.stow
-        pkgs.tmux
-        # pkgs.oh-my-posh
-        pkgs.starship
-    ];
+  # TODO: update kitty, tmux, starship
+  home.packages = [
+    pkgs.kitty
+    pkgs.mkalias
+    pkgs.stow
+    pkgs.tmux
+    pkgs.starship
+  ];
 }

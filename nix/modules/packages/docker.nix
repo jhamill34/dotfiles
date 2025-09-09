@@ -1,9 +1,10 @@
 { pkgs, ... }:
 
 {
-    home.packages = [
-        pkgs.docker
-        pkgs.colima
-        pkgs.lazydocker
-    ];
+  # TODO: Update docker, lazydocker 
+  home.packages = [
+    pkgs.docker
+    pkgs.colima
+    pkgs.lazydocker
+  ];
 }
