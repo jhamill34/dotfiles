@@ -81,7 +81,6 @@
     options = [
       "--cmd"
       "cd"
-      "zsh"
     ];
   };
 

@@ -2,12 +2,12 @@
 
 {
   home.file = {
-    ".zshrc".source = ../home/dot-zshrc;
-    ".tmux.conf".source = ../home/dot-tmux.conf;
-    ".config" = {
-        source = ../home/dot-config;
-        recursive = true;
-     };
+    # ".zshrc".source = ../home/dot-zshrc;
+    # ".tmux.conf".source = ../home/dot-tmux.conf;
+    # ".config" = {
+    #     source = ../home/dot-config;
+    #     recursive = true;
+    #  };
     ".local/share/colima-docker-data/README.md".text = ''
       # Colima Docker Data
       This is where all of our docker images will be saved

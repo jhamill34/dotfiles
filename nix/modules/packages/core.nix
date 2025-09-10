@@ -42,13 +42,10 @@
     mouse = true;
     customPaneNavigationAndResize = true;
     prefix = "C-b";
+    newSession = true;
+    shell = "${pkgs.zsh}/bin/zsh";
 
     plugins = [
-      {
-        plugin = pkgs.tmuxPlugins.sensible;
-        extraConfig = ''
-        '';
-      }
       {
         plugin = pkgs.tmuxPlugins.yank;
         extraConfig = ''

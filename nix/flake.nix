@@ -45,6 +45,8 @@
             nix.enable = false;
 
             system.primaryUser = "joshuahamill";
+
+            environment.shells = [ pkgs.zsh ];
             users.users.joshuahamill.home = "/Users/joshuahamill";
 
             # Necessary for using flakes on this system.

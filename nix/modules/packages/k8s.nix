@@ -35,7 +35,7 @@
     settings = {
       k9s = {
         liveViewAutoRefresh = false;
-        screenDumpDir = "${config.xdg.stateDir}/k9s/screen-dumps";
+        screenDumpDir = "${config.xdg.stateHome}/k9s/screen-dumps";
         refreshRate = 2;
         apiServerTimeout = "15s";
         maxConnRetry = 5;
