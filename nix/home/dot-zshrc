@@ -1,186 +1,29 @@
-zmodload zsh/zprof
-
-# ==============================================================================
-# ENVIRONMENT SETUP
-# ==============================================================================
-
-# Environment variables
-export EDITOR="nvim"
 export PYENV_ROOT="$HOME/.pyenv"
 export RBENV_ROOT="$HOME/.rbenv"
-export PERSONAL_HOME="$HOME/Code/Personal"
-export FZF_DEFAULT_OPTS=" \
-    --color=bg+:#313244,bg:#1E1E2E,spinner:#F5E0DC,hl:#F38BA8 \
-    --color=fg:#CDD6F4,header:#F38BA8,info:#CBA6F7,pointer:#F5E0DC \
-    --color=marker:#B4BEFE,fg+:#CDD6F4,prompt:#CBA6F7,hl+:#F38BA8 \
-    --color=selected-bg:#45475A \
-    --color=border:#B4BEFE,label:#CDD6F4 \
-    --border=bold"
-export WORK_HOME="$HOME/Code/Work"
-
-# export EZA_CONFIG_DIR="${XDG_CONFIG_HOME:-${HOME}/.conifg}/eza"
-export TRANSIENT_PROMPT_TRANSIENT_PROMPT="❯ "
-
-# PATH configuration
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 [[ -d $RBENV_ROOT/bin ]] && export PATH="$RBENV_ROOT/bin:$PATH"
-export PATH="$HOME/.npm-global/bin:$HOME/.bin:$HOME/go/bin:$PATH"
+zsh-defer -t 3 _evalcache pyenv init -
+zsh-defer -t 3 _evalcache rbenv init -
 
-# ==============================================================================
-# ZSH CONFIGURATION
-# ==============================================================================
-
-# History configuration
-HISTSIZE=5000
-HISTFILE=~/.zsh_history
-SAVEHIST=$HISTSIZE
-HISTDUP=erase
-setopt appendhistory
-setopt sharehistory
-setopt hist_ignore_space
-setopt hist_ignore_all_dups
-setopt hist_save_no_dups
-setopt hist_ignore_dups
-setopt hist_find_no_dups
-
-# Keybindings
-bindkey -e
-bindkey '^p' history-search-backward
-bindkey '^n' history-search-forward
-bindkey '^ ' autosuggest-accept
-
-# Editor keybinding
-autoload edit-command-line; zle -N edit-command-line 
-bindkey '^e' edit-command-line
-
-# ==============================================================================
-# ALIASES
-# ==============================================================================
-
-alias vim=nvim
-alias gai='git add -i'
-alias lld='lazydocker'
-alias gdl='gradle'
-
-# ==============================================================================
-# ZINIT PLUGIN MANAGER
-# ==============================================================================
-
-# Set the directory we want to store zinit and plugins
-ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
-
-# Download Zinit, if it's not there yet
-if [ ! -d $ZINIT_HOME ]; then 
-    mkdir -p "$(dirname $ZINIT_HOME)"
-    git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
-fi
-
-# Load zinit 
-source "${ZINIT_HOME}/zinit.zsh"
-
-# Core utilities loaded synchronously (needed immediately)
-zinit light romkatv/zsh-defer
-zinit light mroth/evalcache
-
-zinit ice wait lucid
-zinit light olets/zsh-transient-prompt
-
-# Fast completions system
-zinit ice wait lucid blockf atpull'zinit creinstall -q .'
-zinit light zsh-users/zsh-completions
-
-# Essential UI plugins
-zinit ice wait lucid atinit'ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay'
-zinit light zsh-users/zsh-autosuggestions
-
-zinit ice wait lucid atload'_zsh_autosuggest_start'
-zinit light zsh-users/zsh-syntax-highlighting
-
-# Interactive completions
-zinit ice wait lucid
-zinit light Aloxaf/fzf-tab
-
-# OMZ snippets - async loading
-zinit ice wait lucid 
 zinit snippet OMZP::git
-zinit ice wait lucid as'completion'
 zinit snippet OMZP::gh
-
-zinit ice wait lucid 
 zinit snippet OMZP::aws
-
-zinit ice wait lucid
 zinit snippet OMZP::kubectl
-zinit ice wait lucid as'completion'
 zinit snippet OMZP::helm
-
-zinit ice wait lucid as'completion'
 zinit snippet OMZP::gradle
 
-# zinit ice wait lucid
-# zinit snippet OMZP::dotenv
-
-zinit ice wait lucid
-zinit snippet OMZP::command-not-found
-
-# Optimize completion loading
-zinit ice wait lucid atinit'zicompinit; zicdreplay'
-zinit light zdharma-continuum/null
-
-# ==============================================================================
-# COMPLETION CONFIGURATION
-# ==============================================================================
+zsh-defer -t 1 _evalcache jj util completion zsh
+zsh-defer -t 2 _evalcache kafkactl completion zsh
 
 # Completion styles
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
-
 zstyle ':completion:*:git-checkout:*' sort false
 zstyle ':completion:*:descriptions' format '[%d]'
+
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza --long --color=always --icons=always $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'eza --long --color=always --icons=always $realpath'
 zstyle ':fzf-tab:*' use-fzf-default-opts yes
 zstyle ':fzf-tab:*' switch-group '<' '>'
 
-# ==============================================================================
-# THEME AND PROMPT
-# ==============================================================================
-
-# Load oh-my-posh synchronously to prevent flashing
-# _evalcache oh-my-posh init zsh --config $HOME/.config/ohmyposh/catppuccin_mocha.omp.json
-# eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/catppuccin_mocha.omp.json)"
-_evalcache starship init zsh
-
-# ==============================================================================
-# TOOL INTEGRATIONS
-# ==============================================================================
-
-# Shell integrations with higher priority deferral
-zsh-defer -t 1 _evalcache fzf --zsh
-zsh-defer -t 1 _evalcache zoxide init --cmd cd zsh
-# zsh-defer -t 1 _evalcache gs shell completion zsh
-zsh-defer -t 1 _evalcache jj util completion zsh
-
-zsh-defer -t 2 _evalcache kafkactl completion zsh
-
-# Language environment managers - lowest priority
-zsh-defer -t 3 _evalcache pyenv init -
-zsh-defer -t 3 _evalcache rbenv init -
-
-# ==============================================================================
-# WORK CONFIGURATION
-# ==============================================================================
-
-export COLIMA_HOME="${XDG_CONFIG_HOME:-${HOME}/.config}/colima"
-export DOCKER_HOST="unix://${COLIMA_HOME}/default/docker.sock"
-export TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE="/var/run/docker.sock"
-zsh-defer -t 3 _evalcache echo "export TESTCONTAINERS_HOST_OVERRIDE=$(colima ls -j | jq -r '.address')"
-
-source "$HOME/.work.zshrc"
-
-# function to gauge zsh's startup time
-function timezsh() {
-  shell=${1-$SHELL}
-  for i in $(seq 1 10); do /usr/bin/time $shell -i -c exit; done
-}

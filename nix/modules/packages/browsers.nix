@@ -1,9 +1,13 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
-  # NOTE: qutebrowser...
-  # NOTE: Firefox is customizable...
-  imports = [
-    ./custom/brave-apps.nix
-  ];
+  programs.chromium = {
+    enable = true;
+    package = pkgs.brave;
+    commandLineArgs = [
+      "--user-data-dir=\"${config.xdg.dataHome}/personal-data\""
+      "--profile-directory=\"Personal\""
+    ];
+    # extensions = [ ];
+  };
 }

@@ -43,15 +43,15 @@ in
 {
   home.packages = [
     pkgs.brave
-    (makeBraveApp { 
-      name = "brave-personal"; 
-      profileName = "Personal"; 
+    (makeBraveApp {
+      name = "brave-personal";
+      profileName = "Personal";
       displayName = "Brave Personal";
       userDataDir = "${config.xdg.dataHome}/brave-personal";
     })
-    (makeBraveApp { 
-      name = "brave-work"; 
-      profileName = "Work"; 
+    (makeBraveApp {
+      name = "brave-work";
+      profileName = "Work";
       displayName = "Brave Work";
       userDataDir = "${config.xdg.dataHome}/brave-work";
     })

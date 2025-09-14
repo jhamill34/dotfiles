@@ -1,0 +1,17 @@
+@document.meta
+title: TODO
+description: 
+authors: joshuahamill
+categories: 
+created: 2025-09-15T11:03:08-0500
+updated: 2025-09-15T11:03:08-0500
+version: 1.1.1
+@end
+
+* Tasks for this repo
+  - ( ) Fix fzf-tab in zsh
+  - ( ) Working browser config with chromium
+  - ( ) Email / Calendar clients? 
+  - ( ) Sketchybar migrate to lua 
+  - ( ) Pyenv / Rbenv setup
+  - ( ) Remaining OMZ plugin coverage with completions (i.e. jj, kubectl, etc.)

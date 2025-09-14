@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   home.packages = [
@@ -6,13 +6,66 @@
     pkgs.stow
   ];
 
+  home.sessionPath = [
+    "$HOME/.npm-global/bin"
+    "$HOME/.bin"
+    "$HOME/go/bin"
+  ];
+
   programs.zsh = {
     enable = true;
-    # initVariables = {};
-    # initContent = "";
+
+    localVariables = {
+      KEYTIMEOUT = 1;
+    };
+    sessionVariables = {
+      COLIMA_HOME = "${config.xdg.configHome}/colima";
+      DOCKER_HOST = "unix://${config.xdg.configHome}/colima/default/docker.sock";
+      # test containers needs some other vars set
+    };
+    defaultKeymap = "emacs";
+
+    shellAliases = {
+      ls = "eza --long --color=always --icons=always";
+      gai = "git add -i";
+      lld = "lazydocker";
+      gdl = "gradle";
+    };
+    # shellGlobalAliases = [];
+    # dirHashes = {};
+
+    # loginExtra = ""; # ${HOME}/.zlogin
+    # logoutExtra = ""; # ${HOME}/.zlogout
+    # profileExtra = ""; # ${HOME}/.zprofile
+    # envExtra = ""; # ${HOME}/.zshenv
+
+    # setOptions = {}; # (i.e. NO_BEEP, etc.)
+    # siteFunctions = {}; # move simple scripts in ${HOME}/.bin here maybe?
+    initContent = lib.mkOrder 1600 ''
+      bindkey '^p' history-search-backward
+      bindkey '^n' history-search-forward
+      bindkey '^ ' autosuggest-accept
+
+      autoload edit-command-line; zle -N edit-command-line 
+      bindkey '^e' edit-command-line
+    '';
+
     antidote = {
       enable = true;
-      # plugins = [];
+      plugins = [
+        "mattmc3/ez-compinit"
+        "zsh-users/zsh-completions kind:fpath path:src"
+        "aloxaf/fzf-tab"
+
+        "belak/zsh-utils path:completion/functions kind:autoload post:compstyle_zshzoo_setup"
+        "belak/zsh-utils path:editor"
+        "belak/zsh-utils path:history"
+        "belak/zsh-utils path:utility"
+
+        "zdharma-continuum/fast-syntax-highlighting"
+        "zsh-users/zsh-autosuggestions"
+        "zsh-users/zsh-history-substring-search"
+      ];
     };
   };
 
@@ -20,6 +73,7 @@
     enable = true;
     # environment = {};
     extraConfig = ''
+      cursor_shape block
       macos_titlebar_color background
     '';
     # keybindings = {};
@@ -32,7 +86,6 @@
     };
     shellIntegration = {
       enableZshIntegration = true;
-      mode = "no-cursor";
     };
     settings = { };
   };
