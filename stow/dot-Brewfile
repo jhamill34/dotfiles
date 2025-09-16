@@ -1,0 +1,117 @@
+##################################################
+# Documentation and reference for Brewfiles
+# - https://docs.brew.sh/Brew-Bundle-and-Brewfile
+# Package Search 
+# - https://formulae.brew.sh/
+# Notes (disney specific):
+# - Microsoft suite provisioned by Disney
+# - Google chrome installed by self-service
+##################################################
+
+# CLI
+brew "jq"
+brew "fd"
+brew "fzf"
+brew "wget"
+brew "yq"
+brew "eza"
+brew "parallel"
+brew "ripgrep"
+brew "ripgrep-all"
+brew "tlrc"
+brew "zoxide"
+
+# Core
+brew "stow"
+cask "ghostty"
+brew "tmux", postinstall: "git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm"
+brew "tmuxp"
+brew "sesh"
+brew "starship"
+brew "antidote"
+
+# cask "postgres-unofficial"
+brew "redis"
+# cask "clickhouse"
+brew "lazysql"
+
+tap "hashicorp/tap"
+brew "hashicorp/tap/vault"
+
+brew "docker"
+brew "colima"
+brew "lazydocker"
+# cask "docker-desktop"
+
+# Editors
+brew "neovim"
+cask "intellij-idea"
+
+# Infra
+brew "awscli"
+brew "aws-sam-cli"
+# brew "pulumi"
+# brew "pulumictl"
+
+# k8s
+brew "k3d"
+brew "k9s"
+brew "kubernetes-cli"
+brew "kubectx"
+brew "helm"
+brew "tilt"
+
+# Kafka
+brew "kafkactl"
+# cask "confluent-platform"
+
+# Languages
+brew "gradle"
+brew "maven"
+brew "tomcat"
+brew "openapi-generator"
+
+brew "go"
+brew "rustup"
+brew "jenv"
+brew "pyenv"
+brew "rbenv"
+brew "fnm" # node
+
+brew "imagemagick"
+brew "d2"
+brew "ffmpeg"
+
+brew "btop"
+
+brew "dnsmasq"
+brew "mkcert"
+# cask "ngrok"
+brew "nss"
+
+# Writing
+brew "typst"
+
+# VCS
+brew "gh"
+brew "lazygit"
+brew "jj"
+brew "git-cliff"
+
+# Fonts
+cask "font-terminess-ttf-nerd-font"
+cask "font-sketchybar-app-font"
+
+# Media
+cask "spotify"
+
+# Window Manager
+tap "nikitabobko/tap" 
+cask "nikitabobko/tap/aerospace"
+
+tap "FelixKratz/formulae"
+brew "FelixKratz/formulae/sketchybar"
+brew "FelixKratz/formulae/borders"
+
+
+
