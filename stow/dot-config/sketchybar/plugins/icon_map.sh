@@ -8,7 +8,7 @@ function icon_map() {
   "Cursor") 
     icon_result=":cursor:"
     ;;
-  "Notion Calendar" | "Fantastical" | "Cron")
+  "Notion Calendar" | "Fantastical" | "Cron" | "Calendar")
     icon_result=":calendar:"
     ;;
   "Figma")

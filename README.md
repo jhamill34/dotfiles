@@ -28,6 +28,9 @@ stow stow-uninstall
 
 - [ ] Map CapsLock to Escape
 - [ ] Default screencapture directory 
+- [x] Fix fzf-tab
+- [x] Fix transient prompt
+- [ ] Install actual language runtimes
 
 ### Nix snippet 
 

@@ -1,3 +1,9 @@
+#!/bin/zsh
+
+# ==============================================================================
+# ENVIRONMENT VARIABLES
+# ==============================================================================
+
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
@@ -5,8 +11,9 @@ export XDG_STATE_HOME="$HOME/.local/state"
 
 export KEYTIMEOUT=1
 
-export EDITOR="nvim"
 export PERSONAL_HOME="$HOME/Code/Personal"
+export WORK_HOME="$HOME/Code/Work"
+
 export FZF_DEFAULT_OPTS=" \
     --color=bg+:#313244,bg:#1E1E2E,spinner:#F5E0DC,hl:#F38BA8 \
     --color=fg:#CDD6F4,header:#F38BA8,info:#CBA6F7,pointer:#F5E0DC \
@@ -15,7 +22,6 @@ export FZF_DEFAULT_OPTS=" \
     --color=border:#B4BEFE,label:#CDD6F4 \
     --border=bold"
 export FZF_TMUX="1"
-export WORK_HOME="$HOME/Code/Work"
 
 export JQ_COLORS="1;30:0;37:0;37:0;37:0;32:1;37:1;37:1;34"
 export EZA_CONFIG_DIR="${XDG_CONFIG_HOME:-${HOME}/.conifg}/eza"
@@ -27,4 +33,22 @@ export JENV_ROOT="$HOME/.jenv"
 export COLIMA_HOME="${XDG_CONFIG_HOME:-${HOME}/.config}/colima"
 export DOCKER_HOST="unix://${COLIMA_HOME}/default/docker.sock"
 
-export PATH="$HOME/.npm-global/bin:$HOME/.bin:$HOME/go/bin:$PYENV_ROOT/bin:$RBENV_ROOT/bin:$JENV_ROOT/bin:$PATH"
+export EDITOR="nvim"
+export TRANSIENT_PROMPT_TRANSIENT_PROMPT="❯ "
+
+typeset -gU path fpath
+
+path=(
+    $HOME/{,s}bin(N)
+    $HOME/.local/{,s}bin(N)
+    /opt/{homebrew,local}{,s}bin(N)
+    /usr/local/{,s}bin(N)
+    $HOME/.npm-global/bin(N)
+    $HOME/.bin(N)
+    $HOME/go/bin(N)
+    $PYENV_ROOT/bin(N)
+    $RBENV_ROOT/bin(N)
+    $JENV_ROOT/bin(N)
+    $path
+)
+

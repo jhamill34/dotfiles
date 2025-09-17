@@ -1,9 +1,9 @@
 #!/bin/zsh
-#
-# .zsh_plugins.txt - antidote plugins file
-#
 
 mroth/evalcache
+
+# Keybindings
+belak/zsh-utils path:editor
 
 # Completions
 mattmc3/ez-compinit
@@ -22,18 +22,16 @@ ohmyzsh/ohmyzsh path:plugins/gradle
 # Completion styles
 belak/zsh-utils path:completion/functions kind:autoload post:compstyle_zshzoo_setup
 
-# Keybindings
-belak/zsh-utils path:editor
 
 # History
 belak/zsh-utils path:history
 
 # Utilities
-zshzoo/macos
 belak/zsh-utils path:utility
-# ohmyzsh/ohmyzsh path:plugins/extract
 
 # Other Fish-like features
 zdharma-continuum/fast-syntax-highlighting  # Syntax highlighting
 zsh-users/zsh-autosuggestions               # Auto-suggestions
 zsh-users/zsh-history-substring-search      # Up/Down to search history
+
+olets/zsh-transient-prompt kind:defer

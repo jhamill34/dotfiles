@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 # ==============================================================================
 # GHOSTTY SHELL INTEGRATION FOR ZSH.
 # ==============================================================================
@@ -22,6 +24,28 @@ setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
 
+# ==============================================================================
+# ZSH PLUGIN MANAGER
+# ==============================================================================
+
+source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
+antidote load
+
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' menu no
+
+zstyle ':completion:*:git-checkout:*' sort false
+zstyle ':completion:*:descriptions' format '[%d]'
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza --long --color=always --icons=always $realpath'
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'eza --long --color=always --icons=always $realpath'
+zstyle ':fzf-tab:*' use-fzf-default-opts yes
+zstyle ':fzf-tab:*' switch-group '<' '>'
+
+# ==============================================================================
+# KEY BINDINGS
+# ==============================================================================
+
 # Keybindings
 bindkey -v
 bindkey '^p' history-search-backward
@@ -42,31 +66,6 @@ alias ls='eza --long --color=always --icons=always'
 alias gai='git add -i'
 alias lld='lazydocker'
 
-# ==============================================================================
-# ZSH PLUGIN MANAGER
-# ==============================================================================
-
-source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
-antidote load
-
-# export TRANSIENT_PROMPT_TRANSIENT_PROMPT="❯ "
-# source $(brew --prefix)/share/zsh-transient-prompt/transient-prompt.zsh-theme
-
-# ==============================================================================
-# COMPLETION CONFIGURATION
-# ==============================================================================
-
-# Completion styles
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-zstyle ':completion:*' menu no
-
-zstyle ':completion:*:git-checkout:*' sort false
-zstyle ':completion:*:descriptions' format '[%d]'
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza --long --color=always --icons=always $realpath'
-zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'eza --long --color=always --icons=always $realpath'
-zstyle ':fzf-tab:*' use-fzf-default-opts yes
-zstyle ':fzf-tab:*' switch-group '<' '>'
 
 # ==============================================================================
 # THEME AND PROMPT
@@ -76,7 +75,7 @@ eval "$(starship init zsh)"
 # ==============================================================================
 # TOOL INTEGRATIONS
 # ==============================================================================
-_evalcache /opt/homebrew/bin/brew shellenv
+_evalcache brew shellenv
 _evalcache fnm env --use-on-cd --shell zsh
 _evalcache pyenv init - zsh
 _evalcache rbenv init - zsh
@@ -85,4 +84,5 @@ _evalcache fzf --zsh
 _evalcache zoxide init --cmd cd zsh
 _evalcache jj util completion zsh
 # _evalcache kafkactl completion zsh
+
 
