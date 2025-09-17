@@ -3,4 +3,4 @@
 *.sock
 .crush/
 stow/dot-config/git/work.*
-stow/dot-config/jj/config.d/work.*
+stow/dot-config/jj/conf.d/work.*

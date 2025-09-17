@@ -1,0 +1,5 @@
+--when.repositories = [ "~/Code/Personal", "~/dotfiles" ]
+
+[user]
+email = "joshrasmussen34@gmail.com"
+name = "Josh Hamill"
