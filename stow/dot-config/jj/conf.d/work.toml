@@ -1,0 +1,7 @@
+--when.repositories = [
+    "~/Code/Work"
+]
+
+[user]
+email = "Josh.Hamill.-ND@disney.com"
+name = "Josh Hamill"
