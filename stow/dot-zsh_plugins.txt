@@ -3,21 +3,21 @@
 # .zsh_plugins.txt - antidote plugins file
 #
 
-# olets/zsh-transient-prompt
-#
-# zinit snippet OMZP::git
-# zinit snippet OMZP::gh
-# zinit snippet OMZP::aws
-# zinit snippet OMZP::kubectl
-# zinit snippet OMZP::helm
-# zinit snippet OMZP::gradle
-
 mroth/evalcache
 
 # Completions
 mattmc3/ez-compinit
 zsh-users/zsh-completions kind:fpath path:src
 aloxaf/fzf-tab  
+
+# frameworks like oh-my-zsh are supported
+getantidote/use-omz        
+ohmyzsh/ohmyzsh path:plugins/git
+ohmyzsh/ohmyzsh path:plugins/gh
+ohmyzsh/ohmyzsh path:plugins/aws
+ohmyzsh/ohmyzsh path:plugins/kubectl
+ohmyzsh/ohmyzsh path:plugins/helm
+ohmyzsh/ohmyzsh path:plugins/gradle
 
 # Completion styles
 belak/zsh-utils path:completion/functions kind:autoload post:compstyle_zshzoo_setup

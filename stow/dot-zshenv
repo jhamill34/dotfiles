@@ -19,7 +19,6 @@ export WORK_HOME="$HOME/Code/Work"
 
 export JQ_COLORS="1;30:0;37:0;37:0;37:0;32:1;37:1;37:1;34"
 export EZA_CONFIG_DIR="${XDG_CONFIG_HOME:-${HOME}/.conifg}/eza"
-export TRANSIENT_PROMPT_TRANSIENT_PROMPT="❯ "
 
 export PYENV_ROOT="$HOME/.pyenv"
 export RBENV_ROOT="$HOME/.rbenv"

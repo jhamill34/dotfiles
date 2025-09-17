@@ -49,6 +49,9 @@ alias lld='lazydocker'
 source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
 antidote load
 
+# export TRANSIENT_PROMPT_TRANSIENT_PROMPT="❯ "
+# source $(brew --prefix)/share/zsh-transient-prompt/transient-prompt.zsh-theme
+
 # ==============================================================================
 # COMPLETION CONFIGURATION
 # ==============================================================================

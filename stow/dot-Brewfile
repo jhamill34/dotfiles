@@ -29,6 +29,8 @@ brew "tmuxp"
 brew "sesh"
 brew "starship"
 brew "antidote"
+tap "olets/tap"
+brew "olets/tap/zsh-transient-prompt"
 
 # cask "postgres-unofficial"
 brew "redis"
