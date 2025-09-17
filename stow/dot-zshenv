@@ -36,6 +36,8 @@ export DOCKER_HOST="unix://${COLIMA_HOME}/default/docker.sock"
 export EDITOR="nvim"
 export TRANSIENT_PROMPT_TRANSIENT_PROMPT="❯ "
 
+export HOMEBREW_BUNDLE_NO_UPGRADE=1
+
 typeset -gU path fpath
 
 path=(

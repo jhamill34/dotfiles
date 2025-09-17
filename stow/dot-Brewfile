@@ -71,6 +71,7 @@ brew "maven"
 brew "tomcat"
 brew "openapi-generator"
 
+brew "luarocks"
 brew "go"
 brew "rustup"
 brew "jenv"
