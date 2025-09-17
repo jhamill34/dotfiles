@@ -31,7 +31,7 @@ brew "starship"
 brew "antidote"
 
 # cask "postgres-unofficial"
-brew "redis"
+# brew "redis"
 # cask "clickhouse"
 brew "lazysql"
 
@@ -69,6 +69,9 @@ brew "kafkactl"
 brew "gradle"
 brew "maven"
 brew "tomcat"
+brew "openjdk@11"
+brew "openjdk@17"
+
 brew "openapi-generator"
 
 brew "luarocks"
