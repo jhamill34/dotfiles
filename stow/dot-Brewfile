@@ -82,6 +82,7 @@ brew "pyenv"
 brew "rbenv"
 brew "fnm" # node
 
+brew "librsvg"
 brew "imagemagick"
 brew "d2"
 brew "ffmpeg"

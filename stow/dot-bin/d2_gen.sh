@@ -52,7 +52,7 @@ if [[ $CLEAN_CACHE == 1  ]]; then
 fi
 
 source "$HOME/.config/d2/init.sh"
-d2 "$INPUT" - | magick svg:- "${dir}/gen/${name}.png"
+d2 "$INPUT" - | rsvg-convert -o "${dir}/gen/${name}.png" -
 
 
 

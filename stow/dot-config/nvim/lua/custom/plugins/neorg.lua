@@ -40,13 +40,8 @@ return {
 				},
 			})
 
-			vim.keymap.set("n", "<leader>jt", "<cmd>Neorg journal today<CR>", { desc = "Open [j]ournal [t]oday" })
-			vim.keymap.set(
-				"n",
-				"<leader>jy",
-				"<cmd>Neorg journal yesterday<CR>",
-				{ desc = "Open [j]ournal [y]esterday" }
-			)
+			vim.keymap.set("n", "<leader>rr", "<cmd>Neorg journal today<CR>", { desc = "Open [j]ournal [t]oday" })
+			vim.keymap.set("n", "<leader>re", "<cmd>Neorg journal yesterday<CR>", { desc = "Open [j]ournal yesterday" })
 
 			vim.wo.foldlevel = 99
 			vim.wo.conceallevel = 2
