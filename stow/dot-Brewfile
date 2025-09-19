@@ -46,6 +46,8 @@ brew "lazydocker"
 # Editors
 brew "neovim"
 cask "intellij-idea"
+tap "sst/tap"
+brew "sst/tap/opencode"
 
 # Infra
 brew "awscli"
