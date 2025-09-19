@@ -14,6 +14,11 @@ return {
 					["core.keybinds"] = {},
 					["core.ui"] = {},
 					["core.ui.calendar"] = {},
+					["core.journal"] = {
+						config = {
+							journal_folder = "Daily Notes",
+						},
+					},
 					["core.export"] = {},
 					["core.todo-introspector"] = {},
 					["core.itero"] = {},
@@ -34,6 +39,14 @@ return {
 					},
 				},
 			})
+
+			vim.keymap.set("n", "<leader>jt", "<cmd>Neorg journal today<CR>", { desc = "Open [j]ournal [t]oday" })
+			vim.keymap.set(
+				"n",
+				"<leader>jy",
+				"<cmd>Neorg journal yesterday<CR>",
+				{ desc = "Open [j]ournal [y]esterday" }
+			)
 
 			vim.wo.foldlevel = 99
 			vim.wo.conceallevel = 2

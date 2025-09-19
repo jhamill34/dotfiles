@@ -6,6 +6,7 @@
   "fidget.nvim": { "branch": "main", "commit": "4d5858bd4c471c895060e1b9f3575f1551184dc5" },
   "friendly-snippets": { "branch": "main", "commit": "572f5660cf05f8cd8834e096d7b4c921ba18e175" },
   "gitsigns.nvim": { "branch": "main", "commit": "f780609807eca1f783a36a8a31c30a48fbe150c5" },
+  "goyo.vim": { "branch": "master", "commit": "fa0263d456dd43f5926484d1c4c7022dfcb21ba9" },
   "guess-indent.nvim": { "branch": "main", "commit": "84a4987ff36798c2fc1169cbaff67960aed9776f" },
   "harpoon": { "branch": "master", "commit": "1bc17e3e42ea3c46b33c0bbad6a880792692a1b3" },
   "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" },
@@ -14,10 +15,10 @@
   "mason-lspconfig.nvim": { "branch": "main", "commit": "7f9a39fcd2ac6e979001f857727d606888f5909c" },
   "mason-tool-installer.nvim": { "branch": "main", "commit": "517ef5994ef9d6b738322664d5fdd948f0fdeb46" },
   "mason.nvim": { "branch": "main", "commit": "7dc4facca9702f95353d5a1f87daf23d78e31c2a" },
-  "mini.nvim": { "branch": "main", "commit": "cf515dd765665d51086e418e587a4f7ebc650ba1" },
+  "mini.nvim": { "branch": "main", "commit": "80a11490e44a7fe8c911a3b4a827c56df3894058" },
   "neorg": { "branch": "main", "commit": "e206c9642f4a115cd836e76c98ef785623d335bc" },
   "nui.nvim": { "branch": "main", "commit": "de740991c12411b663994b2860f1a4fd0937c130" },
-  "nvim-lspconfig": { "branch": "master", "commit": "d9879110d0422a566fa01d732556f4d5515e1738" },
+  "nvim-lspconfig": { "branch": "master", "commit": "1f7fbc34e6420476142b5cc85e9bee52717540fb" },
   "nvim-nio": { "branch": "master", "commit": "21f5324bfac14e22ba26553caf69ec76ae8a7662" },
   "nvim-tmux-navigation": { "branch": "main", "commit": "4898c98702954439233fdaf764c39636681e2861" },
   "nvim-treesitter": { "branch": "master", "commit": "42fc28ba918343ebfd5565147a42a26580579482" },
@@ -29,7 +30,6 @@
   "symbols-outline.nvim": { "branch": "master", "commit": "564ee65dfc9024bdde73a6621820866987cbb256" },
   "todo-comments.nvim": { "branch": "main", "commit": "304a8d204ee787d2544d8bc23cd38d2f929e7cc5" },
   "tree-sitter-d2": { "branch": "main", "commit": "519f92699691d101d1aa91f69956383de7b28ae6" },
-  "undotree": { "branch": "master", "commit": "fe9a9d0645f0f5532360b5e5f5c550d7bb4f1869" },
   "vim-speeddating": { "branch": "master", "commit": "c17eb01ebf5aaf766c53bab1f6592710e5ffb796" },
   "which-key.nvim": { "branch": "main", "commit": "370ec46f710e058c9c1646273e6b225acf47cbed" }
 }
