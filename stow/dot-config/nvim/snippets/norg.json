@@ -88,19 +88,30 @@
         "prefix": "tcust",
         "body": [
             "* ISSUE SUMMARY:",
-            "  *CUSTOMER*: ${1:/customer name/}",
-            "  *CHANNEL*: ${2:/slack, email, or support ticket/}",
+            "  *JIRA*: ${1:DCLMSUST-XXXXX}",
+            "  *TITLE*: ${2:/Short description/}",
             "  *REPORTED*: {@ $CURRENT_DAY_NAME $CURRENT_MONTH_NAME $CURRENT_DATE $CURRENT_YEAR} at $CURRENT_HOUR:$CURRENT_MINUTE:00",
-            "  *PRIORITY*: ${3:/P0,P1,P2,P3/}",
-            "",
-            " ${4:/What they're experiencing in 1-2 sentences/}",
+            "  *POINTS*: ${3:2}",
+            "  *COMPONENT*: `dcl-${4:content}-svc`",
+            "  *VERSION*: v${CURRENT_YEAR}.${CURRENT_MONTH}.1",
+            "  *DESIGN DOC*: {:$/Design/All/TBD:}",
             "",
             "** QUICK TRIAGE:",
             "   - ( ) Reproducible?",
             "   - ( ) Multiple customers?",
             "   - ( ) Recent changes? Deployments?",
+            "   - ( ) Evidence of issue? (i.e. logs, metrics, traces, etc.)",
             "   - ( ) Workaround available?",
             "",
+            "** STORY",
+            "  /Insert a story template here/",
+            "",
+            "** CLOSING CRITERIA:",
+            "   - ( ) Pull Request Approved and Merged into main branch?",
+            "   - ( ) 80% code coverage minimum",
+            "   - ( ) New logic covered by tests",
+            "   - ( ) CI/CD is Green",
+            "   - ( ) QA has run regression tests",
             "",
             "** INVESTIGATION NOTES:",
             "   /Copy/paste your findings here as you go/",
@@ -124,6 +135,18 @@
             "",
             "** Notes",
             "  /log items from investigating this alert/"
+        ]
+    },
+    "acceptance criteria": {
+        "prefix": "tacc",
+        "body": [
+            "*GIVEN*: ${1:/that I am Authenticated Pre-Cruise guest/}",
+            "*WHEN*: ${2:/I see the payment module/}",
+            "*AND*: ${3:/I have paid in full/}",
+            "*THEN*: ${3:/there should be a `view` link CTA that when tapped opens the view screen as a foundation step to the right/}",
+            "",
+            "*QA Sign off?*: NO",
+            "*Product Sign off?*: NO"
         ]
     }
 }
