@@ -8,6 +8,8 @@
 # - Google chrome installed by self-service
 ##################################################
 
+cask_args appdir: "~/Applications"
+
 # CLI
 brew "jq"
 brew "fd"
