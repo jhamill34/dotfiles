@@ -56,6 +56,9 @@ function icon_map() {
   "Spotify")
     icon_result=":spotify:"
     ;;
+  "Microsoft Outlook")
+    icon_result=":microsoft_outlook:"
+    ;;
   "Microsoft Word")
     icon_result=":microsoft_word:"
     ;;
