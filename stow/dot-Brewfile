@@ -86,6 +86,7 @@ brew "jenv"
 brew "pyenv"
 brew "rbenv"
 brew "fnm" # node
+brew "pnpm"
 
 brew "librsvg"
 brew "imagemagick"

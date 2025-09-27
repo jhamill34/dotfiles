@@ -37,6 +37,7 @@ export EDITOR="nvim"
 export TRANSIENT_PROMPT_TRANSIENT_PROMPT="❯ "
 
 export HOMEBREW_BUNDLE_NO_UPGRADE=1
+export PNPM_HOME="$HOME/.pnpm-global"
 
 typeset -gU path fpath
 
@@ -51,6 +52,7 @@ path=(
     $PYENV_ROOT/bin(N)
     $RBENV_ROOT/bin(N)
     $JENV_ROOT/bin(N)
+    $PNPM_HOME
     $path
 )
 
