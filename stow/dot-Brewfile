@@ -41,6 +41,7 @@ tap "hashicorp/tap"
 brew "hashicorp/tap/vault"
 
 brew "docker"
+brew "docker-buildx"
 brew "colima"
 brew "lazydocker"
 # cask "docker-desktop"
