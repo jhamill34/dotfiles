@@ -78,6 +78,10 @@ if.app-name-regex-substring = 'finder'
 run = 'layout floating'
 
 [[on-window-detected]]
+if.app-name-regex-substring = 'disney cruise'
+run = 'layout floating'
+
+[[on-window-detected]]
 if.app-name-regex-substring = 'activity'
 run = 'layout floating'
 
@@ -156,12 +160,14 @@ run = 'layout floating'
     alt-shift-3 = 'move-node-to-workspace 3'
 
     # Right Group
-    alt-8 = 'workspace 4'
-    alt-9 = 'workspace 5'
-    alt-0 = 'workspace 6'
-    alt-shift-8 = 'move-node-to-workspace 4'
-    alt-shift-9 = 'move-node-to-workspace 5'
-    alt-shift-0 = 'move-node-to-workspace 6'
+    alt-7 = 'workspace 4'
+    alt-8 = 'workspace 5'
+    alt-9 = 'workspace 6'
+    alt-0 = 'workspace 7'
+    alt-shift-7 = 'move-node-to-workspace 4'
+    alt-shift-8 = 'move-node-to-workspace 5'
+    alt-shift-9 = 'move-node-to-workspace 6'
+    alt-shift-0 = 'move-node-to-workspace 7'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
     alt-tab = 'workspace-back-and-forth'
@@ -203,6 +209,7 @@ run = 'layout floating'
 
     u = ['exec-and-forget open -a Microsoft\ Teams', 'mode main']
     i = ['exec-and-forget open -a Microsoft\ Outlook', 'mode main']
+    o = ['exec-and-forget open $(xcenv version-name)', 'mode main']
     
     # y = ['exec-and-forget open -a zoom.us', 'mode main']
     # u = ['exec-and-forget open -a Slack', 'mode main']

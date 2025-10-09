@@ -42,12 +42,14 @@ brew "hashicorp/tap/vault"
 
 brew "docker"
 brew "docker-buildx"
+brew "docker-compose"
 brew "colima"
 brew "lazydocker"
 # cask "docker-desktop"
 
 # Editors
 brew "neovim"
+brew "tree-sitter-cli"
 cask "intellij-idea"
 tap "sst/tap"
 brew "sst/tap/opencode"
@@ -87,6 +89,9 @@ brew "pyenv"
 brew "rbenv"
 brew "fnm" # node
 brew "pnpm"
+brew "cocoapods"
+brew "xcodes"
+brew "xcenv"
 
 brew "librsvg"
 brew "imagemagick"
@@ -99,6 +104,7 @@ brew "dnsmasq"
 brew "mkcert"
 # cask "ngrok"
 brew "nss"
+cask "proxyman"
 
 # Writing
 brew "typst"
@@ -107,6 +113,8 @@ brew "typst"
 brew "gh"
 brew "lazygit"
 brew "jj"
+brew "spr"
+brew "koji"
 brew "git-cliff"
 
 # Fonts
@@ -115,6 +123,9 @@ cask "font-sketchybar-app-font"
 
 # Media
 cask "spotify"
+
+# Finance
+# cask "gnucash"
 
 # Window Manager
 tap "nikitabobko/tap" 
