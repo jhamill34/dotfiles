@@ -36,6 +36,8 @@ brew "antidote"
 # brew "redis"
 # cask "clickhouse"
 brew "lazysql"
+tap "ariga/tap"
+brew "ariga/tap/atlas"
 
 tap "hashicorp/tap"
 brew "hashicorp/tap/vault"
