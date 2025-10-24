@@ -99,6 +99,8 @@ brew "librsvg"
 brew "imagemagick"
 brew "d2"
 brew "ffmpeg"
+# tap "cytopia/tap"
+# brew "cytopia/tap/ffscreencast"
 
 brew "btop"
 
@@ -107,9 +109,6 @@ brew "mkcert"
 # cask "ngrok"
 brew "nss"
 cask "proxyman"
-
-# Writing
-brew "typst"
 
 # VCS
 brew "gh"
@@ -127,11 +126,21 @@ cask "font-sketchybar-app-font"
 cask "spotify"
 
 # Finance
-# cask "gnucash"
+brew "beancount"
+
+# Writing
+brew "typst"
 
 # Comms
 # cask "slack"
-cask "zoom"
+# cask "zoom"
+brew "himalaya" # Email Terminal Client
+brew "calcurse"
+brew "newsboat"
+
+# Quick Notes and Time Tracking
+brew "jrnl"
+brew "bartib"
 
 # Window Manager
 tap "nikitabobko/tap" 
