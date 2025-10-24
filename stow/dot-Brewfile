@@ -129,6 +129,10 @@ cask "spotify"
 # Finance
 # cask "gnucash"
 
+# Comms
+# cask "slack"
+cask "zoom"
+
 # Window Manager
 tap "nikitabobko/tap" 
 cask "nikitabobko/tap/aerospace"
