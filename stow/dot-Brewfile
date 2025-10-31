@@ -94,6 +94,8 @@ brew "pnpm"
 brew "cocoapods"
 brew "xcodes"
 brew "xcenv"
+cask "android-studio"
+# cask "android-platform-tools"
 
 brew "librsvg"
 brew "imagemagick"
@@ -109,6 +111,7 @@ brew "mkcert"
 # cask "ngrok"
 brew "nss"
 cask "proxyman"
+cask "charles"
 
 # VCS
 brew "gh"
