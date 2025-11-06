@@ -118,7 +118,7 @@ brew "gh"
 brew "lazygit"
 brew "jj"
 brew "spr"
-brew "koji"
+# brew "koji"
 brew "git-cliff"
 
 # Fonts
