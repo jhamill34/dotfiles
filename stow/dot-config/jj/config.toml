@@ -6,9 +6,12 @@ private-commits = 'description(glob:"private:*")'
 [revset-aliases]
 wip = 'description(glob:"wip:*") & mutable()'
 private = 'description(glob:"private:*")'
-
 dev = 'wip | private | present(@)'
+current_bookmarks = 'trunk()..@ & bookmarks()'
 
 [ui]
 pager = ":builtin"
+
+[template-aliases]
+'local_bookmarks' = 'if(!remote, name ++ "\n")'
 

@@ -56,6 +56,10 @@ cask "intellij-idea"
 tap "sst/tap"
 brew "sst/tap/opencode"
 
+# Secrets
+brew "pass"
+brew "ykman"
+
 # Infra
 brew "awscli"
 brew "aws-sam-cli"
