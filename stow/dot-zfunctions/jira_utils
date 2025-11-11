@@ -1,0 +1,10 @@
+jira_sync_issues() {
+    mkdir -p .jira && jira issue list -a$(jira me) -C$(basename $(pwd)) --raw > .jira/issues
+}
+
+jira_select_issue() {
+    jira_sync_issues 
+
+    cat .jira/issues | jq -r '.[].key' | fzf --preview "cat .jira/issues | jq -r '.[] | select(.key == \"{}\") | \"\(.fields.summary)\n\n\(.fields.description)\"'" > .jira/current
+}
+

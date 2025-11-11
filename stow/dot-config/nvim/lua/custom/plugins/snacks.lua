@@ -47,12 +47,43 @@ return {
 			-- or leave it empty to use the default settings
 			-- refer to the configuration section below
 			dashboard = {
+				width = 100,
 				preset = {
 					header = get_header(),
 				},
 				sections = {
 					{ section = "header" },
 					{ section = "keys", gap = 1, padding = 1 },
+					{
+						pane = 2,
+						icon = "󰌃 ",
+						desc = "Browse Issues",
+						padding = 1,
+						key = "i",
+						action = function()
+							vim.fn.jobstart("jira_open.sh", { detach = true })
+						end,
+					},
+					function()
+						local cmds = {
+							{
+								icon = " ",
+								title = "Jira Issues",
+								cmd = "jira_summary.sh || true",
+								height = 7,
+							},
+						}
+
+						return vim.tbl_map(function(cmd)
+							return vim.tbl_extend("force", {
+								pane = 2,
+								section = "terminal",
+								padding = 1,
+								indent = 3,
+								ttl = 0,
+							}, cmd)
+						end, cmds)
+					end,
 					{
 						pane = 2,
 						icon = " ",
@@ -67,19 +98,9 @@ return {
 						local in_git = Snacks.git.get_root() ~= nil
 						local cmds = {
 							{
-								title = "Open Issues",
-								cmd = "gh issue list -L 3 || true",
-								key = "i",
-								action = function()
-									vim.fn.jobstart("gh issue list --web", { detach = true })
-								end,
-								icon = " ",
-								height = 7,
-							},
-							{
 								icon = " ",
 								title = "Open PRs",
-								cmd = "gh pr list -L 3 || true",
+								cmd = "gh pr list -L 3",
 								key = "P",
 								action = function()
 									vim.fn.jobstart("gh pr list --web", { detach = true })
@@ -476,6 +497,13 @@ return {
 					Snacks.lazygit()
 				end,
 				desc = "Lazygit",
+			},
+			{
+				"<leader>gg",
+				function()
+					Snacks.dashboard()
+				end,
+				desc = "Goto Dashboard",
 			},
 		},
 		styles = {
