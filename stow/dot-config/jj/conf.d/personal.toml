@@ -3,3 +3,11 @@
 [user]
 email = "joshrasmussen34@gmail.com"
 name = "Josh Hamill"
+
+[signing]
+behavior = "drop"
+backend = "gpg"
+key = "Josh Hamill <joshrasmussen34@gmail.com>"
+
+[git]
+sign-on-push = true

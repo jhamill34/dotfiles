@@ -43,6 +43,10 @@ export RUSTUP_HOME="$HOME/.rustup/toolchains/stable-aarch64-apple-darwin"
 
 export PATH="$HOME/sbin:$HOME/bin:$HOME/.local/sbin:$HOME/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/opt/local/sbin:/opt/local/bin:/usr/local/sbin:/usr/local/bin:$HOME/.npm-global/bin:$HOME/.bin:$HOME/go/bin:$PYENV_ROOT/bin:$RBENV_ROOT/bin:$JENV_ROOT/bin:$PNPM_HOME:$HOME/.cargo/bin:$RUSTUP_HOME/bin:$PATH"
 
+export GPG_TTY=$(tty)
+export JIRA_AUTH_TYPE="bearer"
+export JIRA_API_TOKEN=$(pass Jira/AccessToken)
+
 # typeset -gU path fpath
 # path=(
 #     $HOME/{,s}bin(N)

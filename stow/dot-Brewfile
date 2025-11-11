@@ -141,6 +141,8 @@ brew "typst"
 # Comms
 # cask "slack"
 # cask "zoom"
+brew "jiratui"
+brew "jira-cli"
 brew "aerc" # Email Terminal Client
 brew "calcurse"
 brew "newsboat"

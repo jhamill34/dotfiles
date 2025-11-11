@@ -1,7 +1,16 @@
 --when.repositories = [
-    "~/Code/Work"
+    "~/Code/Work",
+    "~/.password-store"
 ]
 
 [user]
 email = "Josh.Hamill.-ND@disney.com"
 name = "Josh Hamill"
+
+[signing]
+behavior = "drop"
+backend = "gpg"
+key = "Josh Hamill <josh.hamill.-nd@disney.com>"
+
+[git]
+sign-on-push = true

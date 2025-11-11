@@ -95,6 +95,7 @@ _evalcache rbenv init - zsh
 _evalcache jenv init -
 _evalcache zoxide init --cmd cd zsh
 _evalcache jj util completion zsh
+_evalcache jira completion zsh
 # _evalcache kafkactl completion zsh
 
 

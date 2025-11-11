@@ -68,7 +68,7 @@ return {
 						local cmds = {
 							{
 								title = "Open Issues",
-								cmd = "gh issue list -L 3",
+								cmd = "gh issue list -L 3 || true",
 								key = "i",
 								action = function()
 									vim.fn.jobstart("gh issue list --web", { detach = true })
@@ -79,7 +79,7 @@ return {
 							{
 								icon = " ",
 								title = "Open PRs",
-								cmd = "gh pr list -L 3",
+								cmd = "gh pr list -L 3 || true",
 								key = "P",
 								action = function()
 									vim.fn.jobstart("gh pr list --web", { detach = true })
@@ -89,7 +89,7 @@ return {
 							{
 								icon = " ",
 								title = "Git Status",
-								cmd = "jj st --no-pager",
+								cmd = "jj st --no-pager || true",
 								height = 10,
 							},
 						}
