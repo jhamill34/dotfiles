@@ -141,7 +141,7 @@ brew "typst"
 # Comms
 # cask "slack"
 # cask "zoom"
-brew "himalaya" # Email Terminal Client
+brew "aerc" # Email Terminal Client
 brew "calcurse"
 brew "newsboat"
 
