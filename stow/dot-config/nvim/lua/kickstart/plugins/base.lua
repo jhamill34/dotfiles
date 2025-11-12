@@ -247,7 +247,7 @@ return {
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
 
 			-- Useful status updates for LSP.
-			{ "j-hui/fidget.nvim", opts = {} },
+			{ "j-hui/fidget.nvim", opts = { notification = { window = { winblend = 0 } } } },
 
 			-- Allows extra capabilities provided by blink.cmp
 			"saghen/blink.cmp",
@@ -515,6 +515,24 @@ return {
 						},
 					},
 				},
+				-- rust_analyzer = {
+				-- 	settings = {
+				-- 		imports = {
+				-- 			granularity = {
+				-- 				group = "module",
+				-- 			},
+				-- 			prefix = "self",
+				-- 		},
+				-- 		cargo = {
+				-- 			buildScripts = {
+				-- 				enable = true,
+				-- 			},
+				-- 		},
+				-- 		procMacro = {
+				-- 			enable = true,
+				-- 		},
+				-- 	},
+				-- },
 			}
 
 			-- Ensure the servers and tools above are installed

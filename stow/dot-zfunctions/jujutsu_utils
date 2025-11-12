@@ -5,7 +5,18 @@ jbm() {
         bookmark="$1"
     fi
 
-    jj bookmark move "$bookmark" --to @-
+    if [[ -z "$bookmark" ]]; then
+        echo "Bookmark can't be empty"
+        exit 1
+    fi
+
+    into=$(jj log --no-graph -r '@-' -T 'change_id ++ "\n"' | fzf --preview 'jj show {} --stat')
+    if [[ -z "$into" ]]; then
+        echo "Destination can't be empty"
+        exit 1
+    fi
+
+    jj bookmark move "$bookmark" --to "$into"
 }
 
 jr() {
