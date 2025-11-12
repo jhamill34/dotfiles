@@ -36,6 +36,7 @@ autoload -Uz $ZFUNCDIR/*(.:t)
 autoload -U colors && colors
 
 jira_utils
+jujutsu_utils
 
 # ==============================================================================
 # ZSH PLUGIN MANAGER
@@ -79,31 +80,20 @@ alias ls='eza --long --color=always --icons=always'
 alias gai='git add -i'
 alias lld='lazydocker'
 
-# Jujutsu
-# abbr -a j jj # I use `jj` to exit insert mode
-# abbr -a jbl 'jj bookmark list -a'
-# abbr -a jbm --set-cursor 'jj bookmark move % --to @-'
-# abbr -a jbmm 'jj bookmark move main --to @-'
-# abbr -a jc 'jj commit'
-# abbr -a jcc 'jj commit -m "$(koji --stdout)"'
-# abbr -a jd --set-cursor 'jj desc -m "%"'
-# abbr -a jdf 'jj diff'
-# abbr -a je --set-cursor 'jj edit %'
-# abbr -a jgf 'jj git fetch'
-# abbr -a jgp 'jj git push'
-# abbr -a jk 'jj desc -m "$(koji --stdout)"'
-# abbr -a jl 'jj log'
-# abbr -a jla "jj log 'all()'"
-# abbr -a jn --set-cursor 'jj new %'
-# abbr -a jr --set-cursor 'jj rebase -s % -d @-'
-# abbr -a js 'jj status'
+# Jujutsu 
+alias jbl='jj bookmark list -a'
+alias jbmm="jj bookmark move -r 'trunk()' --to @-"
+alias jgf='jj git fetch'
+alias jgp='jj git push'
+alias jl='jj log'
+alias js='jj status'
+alias jk='jj desc -m "$(koji --stdout)"'
+alias jcc='jj commit -m "$(koji --stdout)"'
+alias jc='jj commit'
+alias je='jj edit'
+alias jn='jj new'
 
-# Jira (TODO)
-# I'd like something to:
-# - create a jj bookmark from a jira issue using fzf 
-# - Use a marker file to indicate the issue we're working on 
-# - add a comment to the current working issue 
-# - Update the issue to another status (use fzf to select)
+alias jira='JIRA_API_TOKEN=$(pass Jira/AccessToken) jira'
 
 # ==============================================================================
 # THEME AND PROMPT
