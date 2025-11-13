@@ -8,6 +8,8 @@
 # - Google chrome installed by self-service
 ##################################################
 
+cask_args appdir: "~/Applications"
+
 # CLI
 brew "jq"
 brew "fd"
@@ -25,27 +27,38 @@ brew "zoxide"
 brew "stow"
 cask "ghostty"
 brew "tmux", postinstall: "git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm"
-brew "tmuxp"
+brew "tmuxinator"
 brew "sesh"
 brew "starship"
 brew "antidote"
 
 # cask "postgres-unofficial"
-brew "redis"
+# brew "redis"
 # cask "clickhouse"
 brew "lazysql"
+tap "ariga/tap"
+brew "ariga/tap/atlas"
 
 tap "hashicorp/tap"
 brew "hashicorp/tap/vault"
 
 brew "docker"
+brew "docker-buildx"
+brew "docker-compose"
 brew "colima"
 brew "lazydocker"
 # cask "docker-desktop"
 
 # Editors
 brew "neovim"
+brew "tree-sitter-cli"
 cask "intellij-idea"
+tap "sst/tap"
+brew "sst/tap/opencode"
+
+# Secrets
+brew "pass"
+brew "ykman"
 
 # Infra
 brew "awscli"
@@ -69,18 +82,31 @@ brew "kafkactl"
 brew "gradle"
 brew "maven"
 brew "tomcat"
+brew "openjdk@11"
+brew "openjdk@17"
+
 brew "openapi-generator"
 
+brew "luarocks"
 brew "go"
 brew "rustup"
 brew "jenv"
 brew "pyenv"
 brew "rbenv"
 brew "fnm" # node
+brew "pnpm"
+brew "cocoapods"
+brew "xcodes"
+brew "xcenv"
+cask "android-studio"
+# cask "android-platform-tools"
 
+brew "librsvg"
 brew "imagemagick"
 brew "d2"
 brew "ffmpeg"
+# tap "cytopia/tap"
+# brew "cytopia/tap/ffscreencast"
 
 brew "btop"
 
@@ -88,14 +114,15 @@ brew "dnsmasq"
 brew "mkcert"
 # cask "ngrok"
 brew "nss"
-
-# Writing
-brew "typst"
+cask "proxyman"
+cask "charles"
 
 # VCS
 brew "gh"
 brew "lazygit"
 brew "jj"
+brew "spr"
+# brew "koji"
 brew "git-cliff"
 
 # Fonts
@@ -104,6 +131,25 @@ cask "font-sketchybar-app-font"
 
 # Media
 cask "spotify"
+
+# Finance
+brew "beancount"
+
+# Writing
+brew "typst"
+
+# Comms
+# cask "slack"
+# cask "zoom"
+brew "jiratui"
+brew "jira-cli"
+brew "aerc" # Email Terminal Client
+brew "calcurse"
+brew "newsboat"
+
+# Quick Notes and Time Tracking
+brew "jrnl"
+brew "bartib"
 
 # Window Manager
 tap "nikitabobko/tap" 

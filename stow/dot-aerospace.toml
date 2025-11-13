@@ -70,11 +70,15 @@ automatically-unhide-macos-hidden-apps = false
     inner.vertical =   16
     outer.left =       16
     outer.bottom =     16
-    outer.top =        [ { monitor."built-in" = 48 }, 58 ]
+    outer.top =        58
     outer.right =      16
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'finder'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'disney cruise'
 run = 'layout floating'
 
 [[on-window-detected]]
@@ -146,19 +150,24 @@ run = 'layout floating'
     alt-minus = 'resize smart -50'
     alt-equal = 'resize smart +50'
 
-    # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
+
+    # Left Group
     alt-1 = 'workspace 1'
     alt-2 = 'workspace 2'
     alt-3 = 'workspace 3'
-    alt-4 = 'workspace 4'
-    alt-5 = 'workspace 5'
-
-    # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
     alt-shift-1 = 'move-node-to-workspace 1'
     alt-shift-2 = 'move-node-to-workspace 2'
     alt-shift-3 = 'move-node-to-workspace 3'
-    alt-shift-4 = 'move-node-to-workspace 4'
-    alt-shift-5 = 'move-node-to-workspace 5'
+
+    # Right Group
+    alt-7 = 'workspace 4'
+    alt-8 = 'workspace 5'
+    alt-9 = 'workspace 6'
+    alt-0 = 'workspace 7'
+    alt-shift-7 = 'move-node-to-workspace 4'
+    alt-shift-8 = 'move-node-to-workspace 5'
+    alt-shift-9 = 'move-node-to-workspace 6'
+    alt-shift-0 = 'move-node-to-workspace 7'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
     alt-tab = 'workspace-back-and-forth'
@@ -193,15 +202,23 @@ run = 'layout floating'
 
 [mode.launcher.binding]
     esc = ['mode main']
+    
+    # TODO: We should symlink these so we can open whatever the 
+    # desired app on our system is under a category 
+    # (i.e. 'mail' linked to 'Outlook' or 'Spark')
 
-    y = ['exec-and-forget open -a zoom.us', 'mode main']
-    u = ['exec-and-forget open -a Spark\ Desktop', 'mode main']
-    i = ['exec-and-forget open -a Slack', 'mode main']
-    o = ['exec-and-forget open -a Brave\ Work', 'mode main']
+    u = ['exec-and-forget open -a Microsoft\ Teams', 'mode main']
+    i = ['exec-and-forget open -a Microsoft\ Outlook', 'mode main']
+    o = ['exec-and-forget open $(xcenv version-name)', 'mode main']
+    
+    # y = ['exec-and-forget open -a zoom.us', 'mode main']
+    # u = ['exec-and-forget open -a Slack', 'mode main']
+    # i = ['exec-and-forget open -a Mail', 'mode main']
+    # o = ['exec-and-forget open -a Calendar', 'mode main']
 
     j = ['exec-and-forget open -a IntelliJ\ IDEA', 'mode main']
-    k = ['exec-and-forget open -a kitty', 'mode main']
-    l = ['exec-and-forget open -a Brave\ Personal', 'mode main']
+    k = ['exec-and-forget open -a Ghostty', 'mode main']
+    l = ['exec-and-forget open -a Google\ Chrome', 'mode main']
 
     h = ['exec-and-forget open -a Spotify', 'mode main']
 

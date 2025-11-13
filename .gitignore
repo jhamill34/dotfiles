@@ -2,3 +2,11 @@
 *.log
 *.sock
 .crush/
+
+stow/dot-config/git/work.*
+stow/dot-config/jj/conf.d/work.*
+
+stow/dot-config/colima/*
+!stow/dot-config/colima/_templates
+
+.DS_Store

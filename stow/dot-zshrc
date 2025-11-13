@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 # ==============================================================================
 # GHOSTTY SHELL INTEGRATION FOR ZSH.
 # ==============================================================================
@@ -22,6 +24,42 @@ setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
 
+
+# ==============================================================================
+# CUSTOM AUTOLOADED FUNCTIONS
+# ==============================================================================
+
+# Lazy-load (autoload) Zsh function files from a directory.
+ZFUNCDIR=${ZDOTDIR:-$HOME}/.zfunctions
+fpath=($ZFUNCDIR $fpath)
+autoload -Uz $ZFUNCDIR/*(.:t)
+autoload -U colors && colors
+
+jira_utils
+jujutsu_utils
+
+# ==============================================================================
+# ZSH PLUGIN MANAGER
+# ==============================================================================
+
+source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
+antidote load
+
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' menu no
+
+zstyle ':completion:*:git-checkout:*' sort false
+zstyle ':completion:*:descriptions' format '[%d]'
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza --long --color=always --icons=always $realpath'
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'eza --long --color=always --icons=always $realpath'
+zstyle ':fzf-tab:*' use-fzf-default-opts yes
+zstyle ':fzf-tab:*' switch-group '<' '>'
+
+# ==============================================================================
+# KEY BINDINGS
+# ==============================================================================
+
 # Keybindings
 bindkey -v
 bindkey '^p' history-search-backward
@@ -42,44 +80,40 @@ alias ls='eza --long --color=always --icons=always'
 alias gai='git add -i'
 alias lld='lazydocker'
 
-# ==============================================================================
-# ZSH PLUGIN MANAGER
-# ==============================================================================
+# Jujutsu 
+alias jbl='jj bookmark list -a'
+alias jbmm="jj bookmark move -r 'trunk()' --to @-"
+alias jgf='jj git fetch'
+alias jgp='jj git push'
+alias jl='jj log'
+alias js='jj status'
+alias jk='jj desc -m "$(koji --stdout)"'
+alias jcc='jj commit -m "$(koji --stdout)"'
+alias jc='jj commit'
+alias je='jj edit'
+alias jn='jj new'
 
-source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
-antidote load
-
-# ==============================================================================
-# COMPLETION CONFIGURATION
-# ==============================================================================
-
-# Completion styles
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-zstyle ':completion:*' menu no
-
-zstyle ':completion:*:git-checkout:*' sort false
-zstyle ':completion:*:descriptions' format '[%d]'
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza --long --color=always --icons=always $realpath'
-zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'eza --long --color=always --icons=always $realpath'
-zstyle ':fzf-tab:*' use-fzf-default-opts yes
-zstyle ':fzf-tab:*' switch-group '<' '>'
+alias jira='JIRA_API_TOKEN=$(pass Jira/AccessToken) jira'
 
 # ==============================================================================
 # THEME AND PROMPT
 # ==============================================================================
-eval "$(starship init zsh)"
+_evalcache starship init zsh
 
 # ==============================================================================
 # TOOL INTEGRATIONS
 # ==============================================================================
-_evalcache /opt/homebrew/bin/brew shellenv
+
+source <(fzf --zsh)
+
+_evalcache brew shellenv
 _evalcache fnm env --use-on-cd --shell zsh
 _evalcache pyenv init - zsh
 _evalcache rbenv init - zsh
 _evalcache jenv init -
-_evalcache fzf --zsh
 _evalcache zoxide init --cmd cd zsh
 _evalcache jj util completion zsh
+_evalcache jira completion zsh
 # _evalcache kafkactl completion zsh
+
 

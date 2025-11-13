@@ -11,7 +11,7 @@ options=(
 	hidpi=off
 	active_color="$lavender"
 	inactive_color="$base"
-    blacklist="Loom"
+    blacklist="Simulator"
 )
 
 borders "${options[@]}"

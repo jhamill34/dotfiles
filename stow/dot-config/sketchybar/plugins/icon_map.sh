@@ -8,7 +8,7 @@ function icon_map() {
   "Cursor") 
     icon_result=":cursor:"
     ;;
-  "Notion Calendar" | "Fantastical" | "Cron")
+  "Notion Calendar" | "Fantastical" | "Cron" | "Calendar")
     icon_result=":calendar:"
     ;;
   "Figma")
@@ -55,6 +55,9 @@ function icon_map() {
     ;;
   "Spotify")
     icon_result=":spotify:"
+    ;;
+  "Microsoft Outlook")
+    icon_result=":microsoft_outlook:"
     ;;
   "Microsoft Word")
     icon_result=":microsoft_word:"

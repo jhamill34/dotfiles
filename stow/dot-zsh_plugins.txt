@@ -1,39 +1,37 @@
 #!/bin/zsh
-#
-# .zsh_plugins.txt - antidote plugins file
-#
 
-# olets/zsh-transient-prompt
-#
-# zinit snippet OMZP::git
-# zinit snippet OMZP::gh
-# zinit snippet OMZP::aws
-# zinit snippet OMZP::kubectl
-# zinit snippet OMZP::helm
-# zinit snippet OMZP::gradle
-
-mroth/evalcache
-
-# Completions
 mattmc3/ez-compinit
-zsh-users/zsh-completions kind:fpath path:src
-aloxaf/fzf-tab  
-
-# Completion styles
-belak/zsh-utils path:completion/functions kind:autoload post:compstyle_zshzoo_setup
+mroth/evalcache
 
 # Keybindings
 belak/zsh-utils path:editor
+
+# Completions
+zsh-users/zsh-completions kind:fpath path:src
+aloxaf/fzf-tab  
+
+# frameworks like oh-my-zsh are supported
+getantidote/use-omz
+ohmyzsh/ohmyzsh path:plugins/git
+ohmyzsh/ohmyzsh path:plugins/gh
+ohmyzsh/ohmyzsh path:plugins/aws
+ohmyzsh/ohmyzsh path:plugins/kubectl
+ohmyzsh/ohmyzsh path:plugins/helm
+ohmyzsh/ohmyzsh path:plugins/gradle
+ohmyzsh/ohmyzsh path:plugins/colored-man-pages
 
 # History
 belak/zsh-utils path:history
 
 # Utilities
-zshzoo/macos
 belak/zsh-utils path:utility
-# ohmyzsh/ohmyzsh path:plugins/extract
+
+# Completion styles
+belak/zsh-utils path:completion
 
 # Other Fish-like features
 zdharma-continuum/fast-syntax-highlighting  # Syntax highlighting
 zsh-users/zsh-autosuggestions               # Auto-suggestions
 zsh-users/zsh-history-substring-search      # Up/Down to search history
+
+olets/zsh-transient-prompt kind:defer

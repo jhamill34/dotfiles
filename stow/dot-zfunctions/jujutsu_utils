@@ -1,0 +1,48 @@
+jbm() {
+    if [[ -z "$1" ]]; then
+        bookmark=$(jj bookmark list -T 'local_bookmarks' | fzf)
+    else
+        bookmark="$1"
+    fi
+
+    if [[ -z "$bookmark" ]]; then
+        echo "Bookmark can't be empty"
+        exit 1
+    fi
+
+    into=$(jj log --no-graph -r '@-' -T 'change_id ++ "\n"' | fzf --preview 'jj show {} --stat')
+    if [[ -z "$into" ]]; then
+        echo "Destination can't be empty"
+        exit 1
+    fi
+
+    jj bookmark move "$bookmark" --to "$into"
+}
+
+jr() {
+    if [[ -z "$1" ]]; then 
+        echo "Expected a revision to rebase"
+        exit 1
+    fi
+
+    jj rebase -s "$1" -d @-
+}
+
+jsq() {
+    into=$(jj log --no-graph -r '@-' -T 'change_id ++ "\n"' | fzf --preview 'jj show {} --stat')
+    jj squash --into "$into"
+}
+
+jna() {
+    into=$(jj log --no-graph -r '@-' -T 'change_id ++ "\n"' | fzf --preview 'jj show {} --stat')
+    jj new --insert-after "$into" --no-edit
+}
+
+jm() {
+    changes=$(jj log --no-graph -r 'visible_heads()' -T 'change_id ++ "\n"' | fzf --preview 'jj show {} --stat' --multi | tr '\n' ' ')
+
+    if [[ -n "$changes" ]]; then
+        jj new $changes
+    fi
+}
+
