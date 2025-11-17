@@ -146,6 +146,7 @@ brew "jira-cli"
 brew "aerc" # Email Terminal Client
 brew "calcurse"
 brew "newsboat"
+brew "w3m" # terminal brwoser
 
 # Quick Notes and Time Tracking
 brew "jrnl"

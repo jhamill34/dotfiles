@@ -79,6 +79,7 @@ alias vi=nvim
 alias ls='eza --long --color=always --icons=always'
 alias gai='git add -i'
 alias lld='lazydocker'
+alias nb='newsboat'
 
 # Jujutsu 
 alias jbl='jj bookmark list -a'
