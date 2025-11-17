@@ -92,6 +92,8 @@ alias jcc='jj commit -m "$(koji --stdout)"'
 alias jc='jj commit'
 alias je='jj edit'
 alias jn='jj new'
+alias jr='jj rebase -d @-'
+alias jrm="jj rebase -d 'trunk()'"
 
 alias jira='JIRA_API_TOKEN=$(pass Jira/AccessToken) jira'
 

@@ -19,15 +19,6 @@ jbm() {
     jj bookmark move "$bookmark" --to "$into"
 }
 
-jr() {
-    if [[ -z "$1" ]]; then 
-        echo "Expected a revision to rebase"
-        exit 1
-    fi
-
-    jj rebase -s "$1" -d @-
-}
-
 jsq() {
     into=$(jj log --no-graph -r '@-' -T 'change_id ++ "\n"' | fzf --preview 'jj show {} --stat')
     jj squash --into "$into"
