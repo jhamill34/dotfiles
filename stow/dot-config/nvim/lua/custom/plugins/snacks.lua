@@ -100,7 +100,7 @@ return {
 							{
 								icon = " ",
 								title = "Open PRs",
-								cmd = "gh pr list -L 3",
+								cmd = "gh pr list -L 3 || true",
 								key = "P",
 								action = function()
 									vim.fn.jobstart("gh pr list --web", { detach = true })
