@@ -80,6 +80,8 @@ alias ls='eza --long --color=always --icons=always'
 alias gai='git add -i'
 alias lld='lazydocker'
 alias nb='newsboat'
+alias ccal='calcurse'
+alias ccals='calcurse-caldav'
 
 # Jujutsu 
 alias jbl='jj bookmark list -a'
