@@ -1,4 +1,7 @@
+include ~/.config/newsboat/dark
+
 bind k everywhere up
 bind j everywhere down
 
 browser "w3m %u"
+
