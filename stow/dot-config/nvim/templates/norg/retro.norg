@@ -1,0 +1,113 @@
+@document.meta
+title: {TITLE_INPUT}
+description: 
+authors: {AUTHOR}
+categories: 
+created: {TODAY}
+updated: {TODAY}
+version: 1.0.0
+@end
+
+* Agile Method (Generic)
+  This is the generic template used in most agile teams and fits /most/ situations.
+
+  *When to use*: _When none of the following templates fit better._
+
+** What went Well?
+   Things we are happy about.
+
+** What went less well? 
+   Things we should improve
+
+** What do we want to try next? 
+   Things we should do differently
+
+** What puzzles us? 
+   Unanswered questions we have
+
+* Four Ls (Support People)
+  Great template for supporting the individuals, and allows for thoughts and feelings to be shared
+  regarding the process. An alternative could be to layout the categories as
+  the values in the process (i.e. scrum values, education or school values, etc.)
+
+  *When to use*: _When we want to examine the individuals involved in the body of work_
+
+** Liked
+   What did we like about this sprint?
+
+** Learned
+   What did we learn from last sprint?
+
+** Lacked
+   What do we think was missing from the last sprint?
+
+** Longed for
+   What could we have done better in the last sprint?
+
+* Starfish method (Support the process)
+  This template helps the group to look at current practices and processes and which 
+  ones have more or less energy directed towards them? 
+
+  *When to use*: _When we want to examine the process that governs the body of work (i.e. systems)._
+
+** Start
+   What do we need to start doing?
+
+** More of
+   What do we need to do more of that we're already doing?
+
+** Continue
+   What do we need to ensure we keep doing?
+
+** Less of
+   What do we need to do less of that we're already doing?
+
+** Stop
+   What are we doing now that we need to stop?
+
+* Three Little Pigs (Support the organization)
+  Offers the team a creative mechanism to identify short, medium, and long term
+  actions that will bring stability.
+
+  *When to use*: _When we want to examine the body of work as a whole._
+
+** House of straw
+   Things that could easily fall apart
+
+** House of sticks
+   Things that are working but could be improved
+
+** House of bricks
+   Things that are strong and stable
+
+* War Stories (Focus on improvement)
+  Offers a mechanism to constructively examine issues or a process that in general has not gone well. 
+
+  *When to use*: _When a body of work has not been going well_
+
+** Victories
+   Where did we experience success and wins?
+
+** Defeats
+   Where did we fail and learn? Activly worked on but failed for one reason or another.
+
+** Still fighting
+   Where are there still battles? Paper cuts, persistent issues, things that have not had any action taken for them. 
+
+** Training Camp
+   How could we improve in future battles?
+
+* Neutral Pragmatism (Focus on improvement)
+  Like the "War stories" retro template, this one is more neutral and guides people towards solutions 
+  while focusing on the impact of those issues (i.e. so what?)
+
+  *When to use*: _When a body of work has not been going well_
+
+** What?
+   How would you describe the situation?
+
+** So What?
+   How does this affect us? 
+
+** Now What?
+   What do we need to do to move forward?

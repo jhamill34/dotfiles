@@ -1,6 +1,6 @@
 --when.repositories = [
     "~/Code/Work",
-    "~/.password-store"
+    "~/.password-store",
 ]
 
 [user]
