@@ -1,21 +1,16 @@
-%=================================================%
-%= THIS IS A TEMPLATE - DO NOT EDIT DIRECTLY     =%
-%= TO USE THIS TEMPLATE, COPY TO A NEW FILE      =%
-%=================================================%
-
 @document.meta
-title: YYYY-MM-DD_WeeklyReport
-description: 
-authors: joshuahamill
-categories: 
-created: 2025-08-21T23:27:14-0500
-updated: 2025-08-22T10:47:12-0500
-version: 1.1.1
+title: {TITLE_INPUT}
+description:
+authors: {AUTHOR}
+categories:
+created: {TODAY}
+updated: {TODAY}
+version: 1.0.0
 @end
 
-* ON-CALL SUMMARY: 
-  *FROM*: /Date/
-  *TO*: /Date/
+*DATE*: {TODAY_IN_NORG}
+
+* ON-CALL SUMMARY
 
 ** ALERTS: /count/ 
    - /Brief list of notable ones/

@@ -169,7 +169,7 @@ return {
 			lazygit = { enabled = true },
 			-- bigfile = { enabled = true },
 			indent = { enabled = true },
-			-- input = { enabled = true },
+			input = { enabled = true },
 			picker = { enabled = true },
 			notify = {
 				enabled = true,

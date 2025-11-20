@@ -1,0 +1,22 @@
+@document.meta
+title: index
+description: 
+authors: josh.hamill.-nd
+categories: 
+created: 2025-11-20T14:39:09-0500
+updated: 2025-11-20T14:39:09-0500
+version: 1.1.1
+@end
+
+* Note
+  - to use this create a folder for each sprint and add a folder for each assigned ticket. 
+  - The folder for a ticket should contain any relevant information for solving and closing the ticket. 
+  - We might use this to hold a breakdown of tasks in one file, pull down the jira description, add quick notes (when we 
+    can figure out how to implement it, etc.)
+  - We could also use Jupyter notebooks in here as well.
+  - This would allow us to use `opencode` to summarize any changes or help us break down tasks. 
+  - Using the jira cli we could automate adding update comments here too. 
+  - I wonder if we could also create symlinks to the component we're working on so that in the code repo we could reference it. 
+
+
+
