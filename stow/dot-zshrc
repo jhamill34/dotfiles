@@ -99,6 +99,7 @@ alias jr='jj rebase -d @-'
 alias jrm="jj rebase -d 'trunk()'"
 
 alias jira='JIRA_API_TOKEN=$(pass Jira/AccessToken) jira'
+alias note='jrnl'
 
 # ==============================================================================
 # THEME AND PROMPT
