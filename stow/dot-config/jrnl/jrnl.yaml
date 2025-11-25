@@ -11,7 +11,7 @@ highlight: true
 indent_character: '|'
 journals:
   default:
-    journal: /Users/joshuahamill/.local/share/jrnl/journal.txt
+    journal: $XDG_DATA_HOME/jrnl/journal.txt
 linewrap: 79
 tagsymbols: '#@'
 template: false

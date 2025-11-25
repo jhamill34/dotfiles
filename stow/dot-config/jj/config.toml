@@ -11,6 +11,7 @@ current_bookmarks = 'trunk()..@ & bookmarks()'
 
 [ui]
 pager = ":builtin"
+default-command = "log"
 
 [template-aliases]
 'local_bookmarks' = 'if(!remote, name ++ "\n")'
