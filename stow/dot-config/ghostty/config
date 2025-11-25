@@ -8,6 +8,10 @@ copy-on-select = false
 keybind = ctrl+shift+c=unbind
 # remap super+c to ctrl+shift+c, use `bash -i -c cat` to see keycodes as you type them
 keybind = super+c=csi:99;6u
+keybind = global:option+\=toggle_quick_terminal
+quick-terminal-position = center
+quick-terminal-size = 50%,300px
+
 selection-invert-fg-bg = true
 
 background-opacity = 0.9

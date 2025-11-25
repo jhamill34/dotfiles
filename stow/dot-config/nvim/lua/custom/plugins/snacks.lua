@@ -1,4 +1,3 @@
--- Generate ASCII Art here -> https://patorjk.com/software/taag/
 local dclm_dev = [[
 ██████╗  ██████╗██╗     ███╗   ███╗
 ██╔══██╗██╔════╝██║     ████╗ ████║
@@ -27,7 +26,7 @@ local jhamill = [[
 ╚█████╔╝██║  ██║██║  ██║██║ ╚═╝ ██║██║███████╗███████╗
  ╚════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝╚══════╝╚══════╝ ]]
 
-local function get_header()
+function get_header()
 	local user = vim.fn.expand("$USER")
 	if user == "josh.hamill.-nd" then
 		return mickey .. "\n\n" .. dclm_dev
@@ -180,10 +179,25 @@ return {
 			-- quickfile = { enabled = true },
 			-- scope = { enabled = true },
 			-- scroll = { enabled = true },
+			scratch = { enabled = true },
 			-- terminal = { enabled = true },
 			-- words = { enabled = true },
 		},
 		keys = {
+			{
+				"<leader>.",
+				function()
+					Snacks.scratch()
+				end,
+				desc = "Toggle Scratch Buffer",
+			},
+			{
+				"<leader>S",
+				function()
+					Snacks.scratch.select()
+				end,
+				desc = "Select Scratch Buffer",
+			},
 			{
 				"<leader><space>",
 				function()
