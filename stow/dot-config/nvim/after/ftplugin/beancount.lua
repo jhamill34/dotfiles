@@ -1,5 +1,5 @@
 local DOC_QUERY = [[
-    (file (document filename: (filename (string) @bean-capture)))
+    ((document filename: (filename (string) @bean-capture)))
 ]]
 
 local function create_txn_query()
@@ -55,8 +55,16 @@ local function extract_text_from_buffer(buffer, node, exclude_quotes)
 		sc = sc + 1
 		ec = ec - 1
 	end
+	local result = {}
+	result.text = vim.api.nvim_buf_get_text(buffer, sr, sc, er, ec, {})[1]
+	result.range = {
+		start_row = sr,
+		start_col = sc,
+		end_row = er,
+		end_col = ec,
+	}
 
-	return vim.api.nvim_buf_get_text(buffer, sr, sc, er, ec, {})
+	return result
 end
 
 local function handle_postings(buffer, node)
@@ -66,9 +74,9 @@ local function handle_postings(buffer, node)
 	for _ = 1, node:child_count() do
 		local child, field = iter()
 		if field == "account" then
-			posting.account = extract_text_from_buffer(buffer, child, false)[1]
+			posting.account = extract_text_from_buffer(buffer, child, false)
 		elseif field == "amount" then
-			posting.account = extract_text_from_buffer(buffer, child, false)[1]
+			posting.account = extract_text_from_buffer(buffer, child, false)
 		end
 	end
 
@@ -83,11 +91,11 @@ local function handle_txn(buffer, node)
 	for _ = 1, node:child_count() do
 		local child, field = iter()
 		if field == "narration" then
-			txn.narration = extract_text_from_buffer(buffer, child, true)[1]
+			txn.narration = extract_text_from_buffer(buffer, child, true)
 		elseif field == "date" then
-			txn.date = extract_text_from_buffer(buffer, child, false)[1]
+			txn.date = extract_text_from_buffer(buffer, child, false)
 		elseif field == "txn" then
-			txn.txn = extract_text_from_buffer(buffer, child, false)[1]
+			txn.txn = extract_text_from_buffer(buffer, child, false)
 		else
 			table.insert(postings, handle_postings(buffer, child))
 		end
@@ -123,11 +131,17 @@ local function select_transaction()
 
 	vim.ui.select(txns, {
 		format_item = function(item)
-			return item.date .. " - " .. item.narration
+			return item.date.text .. " - " .. item.narration.text
 		end,
 	}, function(item)
 		if item ~= nil then
 			vim.api.nvim_win_set_cursor(win, { item.range.start_row + 1, item.range.start_col })
+
+			-- vim.ui.input({ prompt = "Replace with..." }, function(val)
+			-- 	local nr = item.narration.range
+			-- 	local replacement = { val }
+			-- 	vim.api.nvim_buf_set_text(curbuf, nr.start_row, nr.start_col, nr.end_row, nr.end_col, replacement)
+			-- end)
 		end
 	end)
 end
@@ -145,11 +159,9 @@ local function select_and_open_document_nodes()
 	local files = {}
 	handle_nodes(curbuf, root, DOC_QUERY, function(node)
 		local lines = extract_text_from_buffer(curbuf, node, true)
-		for _, l in ipairs(lines) do
-			local resolved_file = vim.fs.normalize(dirname .. "/" .. l)
-			if string.find(resolved_file, ".pdf") ~= nil then
-				table.insert(files, resolved_file)
-			end
+		local resolved_file = vim.fs.normalize(dirname .. "/" .. lines.text)
+		if string.find(resolved_file, ".pdf") ~= nil then
+			table.insert(files, resolved_file)
 		end
 	end)
 
@@ -162,7 +174,7 @@ local function select_and_open_document_nodes()
 			end
 		end)
 	else
-		vim.ui.notify("No documents found")
+		vim.notify("No documents found")
 	end
 end
 
