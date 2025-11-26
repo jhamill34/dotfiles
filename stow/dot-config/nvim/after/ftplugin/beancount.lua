@@ -25,6 +25,18 @@ local function get_root(curbuf)
 	return tree:root()
 end
 
+local function get_journal_root_file()
+	local result = vim.fs.find(function(name)
+		return name:match(".*%.bean")
+	end, { path = vim.fn.getcwd(), type = "file" })
+
+	if #result == 0 then
+		return nil
+	end
+
+	return result[1]
+end
+
 local function handle_nodes(curbuf, root, query_str, cb)
 	local query = vim.treesitter.query.parse("beancount", query_str)
 	for id, node, _ in query:iter_captures(root, curbuf) do
@@ -177,6 +189,61 @@ local function select_and_open_document_nodes()
 		vim.notify("No documents found")
 	end
 end
+
+local function makeHash(val)
+	local cmd = 'echo -n "' .. val .. "\" | sha256sum | awk '{ print $1 }'"
+	local hash_handle = io.popen(cmd, "r")
+	if hash_handle ~= nil then
+		local result = hash_handle:read("*a")
+		hash_handle:close()
+
+		return result:gsub("\n", "")
+	end
+
+	return nil
+end
+
+local function list_accounts()
+	local query = "select account, sum(cost(position)) group by account order by account"
+	local query_hash = makeHash(query)
+
+	local exe = "bean-query"
+	local journal_bean_file = "/Users/joshuahamill/Code/Personal/beancounting/hamfam.bean"
+
+	local output_dir = vim.env.XDG_DATA_HOME .. "/bean"
+	vim.fn.mkdir(output_dir, "p")
+
+	-- TODO: We need a way to expire this call? Or purge old values?
+	--  I think we can get away with not having a TTL (i.e. re generate the result every time)
+	--  but we should purge old files we don't want
+	local output_file = query_hash .. "_" .. vim.fs.basename(journal_bean_file)
+	local flags = '--format text --output "' .. output_dir .. "/" .. output_file .. '"'
+	local cmd = exe .. " " .. journal_bean_file .. " " .. flags
+
+	local handler = io.popen(cmd, "w")
+	if handler ~= nil then
+		handler:write(query)
+		handler:close()
+	end
+
+	local fp = io.open(output_dir .. "/" .. output_file, "r")
+	if fp ~= nil then
+		for l in fp:lines("*l") do
+			vim.notify(l)
+		end
+	end
+end
+
+vim.lsp.config("beancount", {
+	init_options = {
+		journal_file = get_journal_root_file(),
+		formatting = {
+			prefix_width = 30,
+			currency_column = 60,
+			number_currency_spacing = 1,
+		},
+	},
+})
 
 vim.keymap.set("n", "<leader>bdo", select_and_open_document_nodes, { desc = "[b]eancount [d]ocument [o]open" })
 vim.keymap.set("n", "<leader>bt", select_transaction, { desc = "[b]eancount [t]ransaction" })

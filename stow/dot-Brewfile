@@ -92,6 +92,7 @@ brew "go"
 brew "rustup"
 brew "jenv"
 brew "pyenv"
+brew "pyenv-virtualenv"
 brew "rbenv"
 brew "fnm" # node
 brew "pnpm"

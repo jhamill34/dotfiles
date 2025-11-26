@@ -475,24 +475,6 @@ return {
 			--  So, we create new capabilities with blink.cmp, and then broadcast that to the servers.
 			local capabilities = require("blink.cmp").get_lsp_capabilities()
 
-			vim.lsp.config("beancount", {
-				init_options = {
-					journal_file = vim.env.HOME .. "/Code/Personal/beancounting/hamfam.bean",
-					formatting = {
-						prefix_width = 30,
-						currency_column = 60,
-						number_currency_spacing = 1,
-					},
-				},
-			})
-
-			vim.filetype.add({
-				extension = {
-					beancount = "beancount",
-					bean = "beancount",
-				},
-			})
-
 			-- Enable the following language servers
 			--  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
 			--

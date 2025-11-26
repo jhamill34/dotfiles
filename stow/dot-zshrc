@@ -112,9 +112,12 @@ _evalcache starship init zsh
 
 source <(fzf --zsh)
 
+eval "$(pyenv init --path)"
+eval "$(pyenv init - zsh)"
+eval "$(pyenv virtualenv-init - zsh)"
+
 _evalcache brew shellenv
 _evalcache fnm env --use-on-cd --shell zsh
-_evalcache pyenv init - zsh
 _evalcache rbenv init - zsh
 _evalcache jenv init -
 _evalcache zoxide init --cmd cd zsh
