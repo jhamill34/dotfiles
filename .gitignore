@@ -10,3 +10,4 @@ stow/dot-config/colima/*
 !stow/dot-config/colima/_templates
 
 .DS_Store
+node_modules/

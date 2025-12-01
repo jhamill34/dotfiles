@@ -1,4 +1,5 @@
 STOW_DIR := ./stow
+PNPM_UTILS_DIR := ./stow/dot-pnpm-utils
 
 stow-install: 
 	cd $(STOW_DIR) && stow --dotfiles --target="$$HOME" .
@@ -8,6 +9,9 @@ stow-uninstall:
 
 brew-install:
 	brew bundle install --global
+
+pnpm-install:
+	pnpm -C $(PNPM_UTILS_DIR) install
 
 init-notes:
 	cp -R ./Notes $(HOME)

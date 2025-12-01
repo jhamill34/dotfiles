@@ -38,10 +38,11 @@ export TRANSIENT_PROMPT_TRANSIENT_PROMPT="❯ "
 
 export HOMEBREW_BUNDLE_NO_UPGRADE=1
 export PNPM_HOME="$HOME/.pnpm-global"
+export PNPM_UTILS_HOME="$HOME/.pnpm-utils"
 
 export RUSTUP_HOME="$HOME/.rustup"
 
-export PATH="$HOME/sbin:$HOME/bin:$HOME/.local/sbin:$HOME/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/opt/local/sbin:/opt/local/bin:/usr/local/sbin:/usr/local/bin:$HOME/.npm-global/bin:$HOME/.bin:$HOME/go/bin:$PYENV_ROOT/bin:$RBENV_ROOT/bin:$JENV_ROOT/bin:$PNPM_HOME:$HOME/.cargo/bin:$RUSTUP_HOME/bin:$PATH"
+export PATH="$HOME/sbin:$HOME/bin:$HOME/.local/sbin:$HOME/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/opt/local/sbin:/opt/local/bin:/usr/local/sbin:/usr/local/bin:$HOME/.npm-global/bin:$HOME/.bin:$HOME/go/bin:$PYENV_ROOT/bin:$RBENV_ROOT/bin:$JENV_ROOT/bin:$PNPM_UTILS_HOME/node_modules/.bin:$PNPM_HOME:$HOME/.cargo/bin:$RUSTUP_HOME/bin:$PATH"
 
 export GPG_TTY=$(tty)
 
