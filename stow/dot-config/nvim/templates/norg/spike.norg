@@ -1,0 +1,32 @@
+@document.meta
+title: SPIKE - {TITLE_INPUT}
+description:
+authors: {AUTHOR}
+categories:
+created: {TODAY}
+updated: {TODAY}
+version: 1.0.0
+@end
+
+* SPIKE - {TITLE_INPUT}
+  *FROM*: {TODAY_IN_NORG}    
+  *TO*: {TODAY_IN_NORG}    
+
+* Goal / Hypothesis
+  /What question or theory do we hope to answer in this research task?/
+
+* Background
+  /Proivide the current state of the system prior to our research or proposed solution/
+
+* Method
+  /How did we collect evidence? Prototype? Research? Subject matter experts?/
+
+* Evidence
+  /Document the evidence collected in the research. Recorded demos, measured metrics, references to documentation/
+
+* Conclusion 
+  /What is the answer to the original question proposed in the spike initially? Any new learnings?/
+
+* Action Items
+  /What new action items came out of this research?/
+
