@@ -1,5 +1,8 @@
 "$schema" = "https://jj-vcs.github.io/jj/latest/config-schema.json"
 
+[aliases]
+spr = ["util", "exec", "--", "jj-spr"]
+
 [git]
 private-commits = 'description(glob:"private:*")'
 

@@ -122,7 +122,7 @@ cask "charles"
 brew "gh"
 brew "lazygit"
 brew "jj"
-brew "spr"
+# brew "spr"
 # brew "koji"
 brew "git-cliff"
 
