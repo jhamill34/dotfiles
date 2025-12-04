@@ -5,10 +5,15 @@ if ! command -v d2 &> /dev/null; then
     exit 1
 fi
 
+if ! command -v fd &> /dev/null; then 
+    echo "Error: fd must be installed"
+    exit 1
+fi
+
 if ! command -v fzf &> /dev/null; then 
     INPUT="$1"
 else 
-    INPUT=$(find ./Diagrams -name "*.d2" -type f | fzf)
+    INPUT=$(fd d2 -t f -E '*_*' | fzf)
 fi
 
 output_dir=$(mktemp -d)
