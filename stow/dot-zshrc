@@ -119,10 +119,11 @@ eval "$(pyenv virtualenv-init - zsh)"
 _evalcache brew shellenv
 _evalcache fnm env --use-on-cd --shell zsh
 _evalcache rbenv init - zsh
-_evalcache jenv init -
 _evalcache zoxide init --cmd cd zsh
 _evalcache jj util completion zsh
 _evalcache jira completion zsh
 # _evalcache kafkactl completion zsh
+
+[ -s "$HOMEBREW_PREFIX/opt/jabba/jabba.sh" ] && . "$HOMEBREW_PREFIX/opt/jabba/jabba.sh"
 
 
