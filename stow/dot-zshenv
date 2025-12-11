@@ -42,6 +42,9 @@ export PNPM_UTILS_HOME="$HOME/.pnpm-utils"
 
 export RUSTUP_HOME="$HOME/.rustup"
 
+export SERVICES_CODE_HOME="$HOME/Code/Work/svcs"
+export SERVICES_HELM_HOME="$HOME/Code/Work/helm"
+
 export PATH="$HOME/sbin:$HOME/bin:$HOME/.local/sbin:$HOME/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/opt/local/sbin:/opt/local/bin:/usr/local/sbin:/usr/local/bin:$HOME/.npm-global/bin:$HOME/.bin:$HOME/go/bin:$PYENV_ROOT/bin:$RBENV_ROOT/bin:$JENV_ROOT/bin:$PNPM_UTILS_HOME/node_modules/.bin:$PNPM_HOME:$HOME/.cargo/bin:$RUSTUP_HOME/bin:$PATH"
 
 export GPG_TTY=$(tty)
