@@ -45,3 +45,6 @@ export RUSTUP_HOME="$HOME/.rustup"
 
 export GPG_TTY=$(tty)
 
+# NOTE: Uncomment the following to enable passing your GPG pin through STDIN. 
+# export PASSWORD_STORE_GPG_OPTS="--pinentry-mode loopback --passphrase-fd 0"
+

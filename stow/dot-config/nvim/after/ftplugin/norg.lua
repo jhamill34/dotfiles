@@ -60,21 +60,19 @@ end
 local function pass_terminal()
 	local temp_buf = vim.api.nvim_create_buf(true, false)
 	vim.api.nvim_buf_set_name(temp_buf, "Password Terminal")
-	local term_chan_id = vim.api.nvim_open_term(temp_buf, {})
-	vim.cmd.term()
 
-	-- local height = vim.api.nvim_win_get_height(0)
-	-- local width = vim.api.nvim_win_get_width(0)
-	local float_win = vim.api.nvim_open_win(temp_buf, false, {
+	local height = vim.api.nvim_win_get_height(0)
+	local width = vim.api.nvim_win_get_width(0)
+	local float_win = vim.api.nvim_open_win(temp_buf, true, {
 		win = 0,
 		split = "below",
-		-- relative = "win",
-		-- width = math.floor(width / 2),
-		-- height = math.floor(height / 2),
-		-- row = math.floor(height / 4),
-		-- col = math.floor(width / 4),
-		-- border = "rounded",
-		focusable = false,
+		relative = "win",
+		width = math.floor(width / 2),
+		height = math.floor(height / 2),
+		row = math.floor(height / 4),
+		col = math.floor(width / 4),
+		border = "rounded",
+		focusable = true,
 	})
 
 	vim.api.nvim_chan_send(term_chan_id, "echo 'hello world'\\n")
