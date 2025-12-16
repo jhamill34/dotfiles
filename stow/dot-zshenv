@@ -9,6 +9,7 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 
+export DISABLE_AUTO_UPDATE=true
 export KEYTIMEOUT=1
 
 export PERSONAL_HOME="$HOME/Code/Personal"
@@ -42,26 +43,5 @@ export PNPM_UTILS_HOME="$HOME/.pnpm-utils"
 
 export RUSTUP_HOME="$HOME/.rustup"
 
-export SERVICES_CODE_HOME="$HOME/Code/Work/svcs"
-export SERVICES_HELM_HOME="$HOME/Code/Work/helm"
-
-export PATH="$HOME/sbin:$HOME/bin:$HOME/.local/sbin:$HOME/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/opt/local/sbin:/opt/local/bin:/usr/local/sbin:/usr/local/bin:$HOME/.npm-global/bin:$HOME/.bin:$HOME/go/bin:$PYENV_ROOT/bin:$RBENV_ROOT/bin:$JENV_ROOT/bin:$PNPM_UTILS_HOME/node_modules/.bin:$PNPM_HOME:$HOME/.cargo/bin:$RUSTUP_HOME/bin:$PATH"
-
 export GPG_TTY=$(tty)
 
-# typeset -gU path fpath
-# path=(
-#     $HOME/{,s}bin(N)
-#     $HOME/.local/{,s}bin(N)
-#     /opt/{homebrew,local}{,s}bin(N)
-#     /usr/local/{,s}bin(N)
-#     $HOME/.npm-global/bin(N)
-#     $HOME/.bin(N)
-#     $HOME/go/bin(N)
-#     $PYENV_ROOT/bin(N)
-#     $RBENV_ROOT/bin(N)
-#     $JENV_ROOT/bin(N)
-#     $PNPM_HOME
-#     $path
-# )
-#

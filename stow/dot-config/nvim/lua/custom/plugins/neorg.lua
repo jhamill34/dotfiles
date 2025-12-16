@@ -27,7 +27,13 @@ return {
 					["core.todo-introspector"] = {},
 					["core.itero"] = {},
 					["core.qol.todo_items"] = {},
-					["core.esupports.indent"] = {},
+					["core.esupports.indent"] = {
+						config = {
+							dedent_excess = true,
+							format_on_enter = true,
+							format_on_escape = true,
+						},
+					},
 					["core.esupports.metagen"] = {
 						config = {
 							type = "none",
@@ -54,6 +60,7 @@ return {
 									local s = require("neorg.modules.external.templates.default_snippets")
 									return ls.text_node(s.parse_date(0, os.time(), [[%H:%M:%S]]))
 								end,
+								sc,
 							},
 						},
 						-- default_subcommand = "add", -- or "fload", "load"

@@ -8,6 +8,29 @@ if [ -n "${GHOSTTY_RESOURCES_DIR}" ]; then
 fi
 
 # ==============================================================================
+# Setting up our path
+# ==============================================================================
+
+typeset -gU path fpath
+path=(
+    $HOME/{,s}bin(N)
+    $HOME/.local/{,s}bin(N)
+    /opt/{homebrew,local}{,s}bin(N)
+    /usr/local/{,s}bin(N)
+    $HOME/.npm-global/bin(N)
+    $HOME/.bin(N)
+    $HOME/go/bin(N)
+    $PYENV_ROOT/bin(N)
+    $RBENV_ROOT/bin(N)
+    $JENV_ROOT/bin(N)
+    $PNPM_UTILS_HOME/node_modules/.bin(N)
+    $PNPM_HOME(N)
+    $HOME/.cargo/bin(N)
+    $RUSTUP_HOME/bin(N)
+    $path
+)
+
+# ==============================================================================
 # ZSH CONFIGURATION
 # ==============================================================================
 
@@ -31,19 +54,39 @@ setopt hist_find_no_dups
 
 # Lazy-load (autoload) Zsh function files from a directory.
 ZFUNCDIR=${ZDOTDIR:-$HOME}/.zfunctions
-fpath=($ZFUNCDIR $fpath)
-autoload -Uz $ZFUNCDIR/*(.:t)
-autoload -U colors && colors
-
-jira_utils
-jujutsu_utils
 
 # ==============================================================================
 # ZSH PLUGIN MANAGER
 # ==============================================================================
 
-source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
-antidote load
+# Set the root name of the plugins files (.txt and .zsh) antidote will use.
+zsh_plugins=${ZDOTDIR:-~}/.zsh_plugins
+
+# Ensure the .zsh_plugins.txt file exists so you can add plugins.
+[[ -f ${zsh_plugins}.txt ]] || touch ${zsh_plugins}.txt
+
+# Lazy-load antidote from its functions directory.
+fpath=(
+    $ZFUNCDIR(N)
+    $HOMEBREW_PREFIX/opt/antidote/share/antidote/functions(N)
+    $fpath
+)
+
+# autoload -Uz $ZFUNCDIR/*(.:t)
+autoload -Uz antidote
+autoload -U colors && colors
+
+# Generate a new static file whenever .zsh_plugins.txt is updated.
+if [[ ! ${zsh_plugins}.zsh -nt ${zsh_plugins}.txt ]]; then
+  antidote bundle <${zsh_plugins}.txt >|${zsh_plugins}.zsh
+fi
+
+# Source your static plugins file.
+source ${zsh_plugins}.zsh
+
+# ====================================================================== 
+# ZSH COMPLETIONS
+# ====================================================================== 
 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
@@ -66,9 +109,12 @@ bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 bindkey '^ ' autosuggest-accept
 
-# Editor keybinding
-autoload edit-command-line; zle -N edit-command-line 
-bindkey '^e' edit-command-line
+if [[ -z "$NVIM" ]]; then 
+
+    # Editor keybinding
+    autoload edit-command-line; zle -N edit-command-line 
+    bindkey '^e' edit-command-line
+fi
 
 # ==============================================================================
 # ALIASES
@@ -82,48 +128,42 @@ alias lld='lazydocker'
 alias nb='newsboat'
 alias ccal='calcurse'
 alias ccals='calcurse-caldav'
+alias note='jrnl'
 
 # Jujutsu 
-alias jbl='jj bookmark list -a'
-alias jbmm="jj bookmark move -r 'trunk()' --to @-"
-alias jgf='jj git fetch'
-alias jgp='jj git push'
-alias jl='jj log'
-alias js='jj status'
-alias jk='jj desc -m "$(koji --stdout)" --edit'
-alias jcc='jj commit -m "$(koji --stdout)"'
-alias jc='jj commit'
-alias je='jj edit'
-alias jn='jj new'
-alias jr='jj rebase -d @-'
-alias jrm="jj rebase -d 'trunk()'"
-
-alias jira='JIRA_API_TOKEN=$(pass Jira/AccessToken) jira'
-alias note='jrnl'
+alias jjk='jj desc -m "$(koji --stdout)" --edit'
+alias jjcc='jj commit -m "$(koji --stdout)"'
 
 # ==============================================================================
 # THEME AND PROMPT
 # ==============================================================================
+
 _evalcache starship init zsh
+
+source $HOMEBREW_PREFIX/share/zsh-transient-prompt/transient-prompt.zsh-theme
 
 # ==============================================================================
 # TOOL INTEGRATIONS
 # ==============================================================================
 
-source <(fzf --zsh)
+zsh-defer -t 1 _evalcache fzf --zsh
+zsh-defer -t 1 _evalcache pyenv init --path
+zsh-defer -t 1 _evalcache pyenv virtualenv-init - zsh
+zsh-defer -t 1 _evalcache pyenv init - zsh
+zsh-defer -t 1 _evalcache fnm env --use-on-cd --shell zsh
+zsh-defer -t 1 _evalcache brew shellenv
+zsh-defer -t 1 _evalcache rbenv init - zsh
+zsh-defer -t 1 _evalcache jira completion zsh
 
-eval "$(pyenv init --path)"
-eval "$(pyenv init - zsh)"
-eval "$(pyenv virtualenv-init - zsh)"
-
-_evalcache brew shellenv
-_evalcache fnm env --use-on-cd --shell zsh
-_evalcache rbenv init - zsh
 _evalcache zoxide init --cmd cd zsh
 _evalcache jj util completion zsh
-_evalcache jira completion zsh
 # _evalcache kafkactl completion zsh
 
-[ -s "$HOMEBREW_PREFIX/opt/jabba/jabba.sh" ] && . "$HOMEBREW_PREFIX/opt/jabba/jabba.sh"
+if [ -s "$HOMEBREW_PREFIX/opt/jabba/jabba.sh" ]; then 
+    zsh-defer -t 1 . "$HOMEBREW_PREFIX/opt/jabba/jabba.sh"
+fi
 
+if [ -f "$WORK_HOME/.work.zshrc" ]; then
+    source "$WORK_HOME/.work.zshrc"
+fi
 

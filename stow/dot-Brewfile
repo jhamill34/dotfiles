@@ -24,6 +24,9 @@ brew "ripgrep-all"
 brew "tlrc"
 brew "zoxide"
 
+tap "olets/tap"
+brew "olets/tap/zsh-transient-prompt"
+
 # Core
 brew "stow"
 cask "ghostty"
@@ -42,11 +45,13 @@ brew "ariga/tap/atlas"
 
 tap "hashicorp/tap"
 brew "hashicorp/tap/vault"
+brew "ansible"
 
 brew "docker"
 brew "docker-buildx"
 brew "docker-compose"
 brew "colima"
+brew "lima"
 brew "lazydocker"
 # cask "docker-desktop"
 

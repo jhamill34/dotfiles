@@ -37,10 +37,21 @@ end
 function TSQuery:handle_nodes(query_str, cb)
 	local query = vim.treesitter.query.parse(self.filetype, query_str)
 	local capture_id = self.filetype .. "-capture"
-	for id, node, _ in query:iter_captures(self.root, curbuf) do
+	for id, node, _ in query:iter_captures(self.root, self.curbuf) do
 		if query.captures[id] == capture_id then
 			cb(node)
 		end
+	end
+end
+
+--- @param query_str string
+--- @param cb fun(node: TSNode, capture: string)
+function TSQuery:find_nodes(query_str, cb)
+	local query = vim.treesitter.query.parse(self.filetype, query_str)
+
+	for id, node, _ in query:iter_captures(self.root, self.curbuf) do
+		local capture = query.captures[id]
+		cb(node, capture)
 	end
 end
 
