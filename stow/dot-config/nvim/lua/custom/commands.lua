@@ -32,3 +32,26 @@ vim.api.nvim_create_user_command("LinkWithoutDate", function()
 end, {
 	desc = "Rename current file with underscore prefix and create a symbolic link without date prefix",
 })
+
+-- TODO: Figure out how to load a neovim plugin from github so
+-- Work specific stuff can be separated out
+vim.api.nvim_create_user_command("ParseTSV", function()
+	local float = f.new_floating_window({
+		on_close = function(lines)
+			local result = {}
+			for _, line in ipairs(lines) do
+				local row = {}
+				for col in string.gmatch(line, "([^\t]+)") do
+					table.insert(row, col)
+				end
+				table.insert(result, row)
+			end
+
+			vim.notify(result[1][3] .. ", " .. result[1][2])
+		end,
+	})
+
+	float:create()
+end, {
+	desc = "Parse a TSV formatted buffer",
+})

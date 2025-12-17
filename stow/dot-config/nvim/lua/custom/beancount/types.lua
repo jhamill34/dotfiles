@@ -1,11 +1,5 @@
 --- @meta
 
---- @class BufferLocation
---- @field start_row integer
---- @field start_col integer
---- @field end_row integer
---- @field end_col integer
-
 --- @class BufferText
 --- @field text string|nil
 --- @field range BufferLocation|nil

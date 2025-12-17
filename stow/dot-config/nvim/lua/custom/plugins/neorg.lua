@@ -60,7 +60,6 @@ return {
 									local s = require("neorg.modules.external.templates.default_snippets")
 									return ls.text_node(s.parse_date(0, os.time(), [[%H:%M:%S]]))
 								end,
-								sc,
 							},
 						},
 						-- default_subcommand = "add", -- or "fload", "load"

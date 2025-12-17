@@ -32,27 +32,35 @@ function TSQuery.new(opts)
 	return instance
 end
 
---- @param query_str string
---- @param cb fun(node: TSNode)
-function TSQuery:handle_nodes(query_str, cb)
-	local query = vim.treesitter.query.parse(self.filetype, query_str)
-	local capture_id = self.filetype .. "-capture"
-	for id, node, _ in query:iter_captures(self.root, self.curbuf) do
-		if query.captures[id] == capture_id then
-			cb(node)
-		end
-	end
+--- @param node TSNode
+--- @return BufferLocation
+local function extract_location(node)
+	local sr, sc, er, ec = node:range()
+
+	--- @type BufferLocation
+	local loc = {
+		start_row = sr,
+		start_col = sc,
+		end_row = er,
+		end_col = ec,
+	}
+
+	return loc
 end
 
 --- @param query_str string
---- @param cb fun(node: TSNode, capture: string)
-function TSQuery:find_nodes(query_str, cb)
+--- @return fun(): (TSNode, BufferLocation)
+function TSQuery:find_captures(query_str)
 	local query = vim.treesitter.query.parse(self.filetype, query_str)
+	local capture_id = self.filetype .. "-capture"
 
-	for id, node, _ in query:iter_captures(self.root, self.curbuf) do
-		local capture = query.captures[id]
-		cb(node, capture)
-	end
+	return coroutine.wrap(function()
+		for id, node, _ in query:iter_captures(self.root, self.curbuf) do
+			if query.captures[id] == capture_id then
+				coroutine.yield(node, extract_location(node))
+			end
+		end
+	end)
 end
 
 M.new_ts_query = TSQuery.new

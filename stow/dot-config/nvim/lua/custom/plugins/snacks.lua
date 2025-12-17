@@ -1,3 +1,5 @@
+--- @module "snacks"
+
 local t = require("custom.title")
 
 return {

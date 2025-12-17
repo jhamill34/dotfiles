@@ -1,5 +1,5 @@
 local bc_queries = require("custom.beancount.queries")
-local ts_query = require("custom.treesitter")
+local ts_query = require("custom.common.treesitter")
 
 local M = {}
 
@@ -124,10 +124,10 @@ function M.select_transaction()
 	})
 
 	local txns = {}
-	tsq:handle_nodes(bc_queries.TXN_QUERY, function(node)
+	for node, _ in tsq:find_captures(bc_queries.TXN_QUERY) do
 		local txn = handle_txn(curbuf, node)
 		table.insert(txns, txn)
-	end)
+	end
 
 	vim.ui.select(txns, {
 		format_item = function(item)
@@ -156,13 +156,13 @@ function M.select_and_open_document_nodes()
 	})
 
 	local files = {}
-	tsq:handle_nodes(bc_queries.DOC_QUERY, function(node)
+	for node, _ in tsq:find_captures(bc_queries.DOC_QUERY) do
 		local lines = extract_text_from_buffer(curbuf, node, true)
 		local resolved_file = vim.fs.normalize(dirname .. "/" .. lines.text)
 		if string.find(resolved_file, ".pdf") ~= nil then
 			table.insert(files, resolved_file)
 		end
-	end)
+	end
 
 	if #files > 0 then
 		vim.ui.select(files, {
