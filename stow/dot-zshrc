@@ -148,21 +148,21 @@ source $HOMEBREW_PREFIX/share/zsh-transient-prompt/transient-prompt.zsh-theme
 # TOOL INTEGRATIONS
 # ==============================================================================
 
-zsh-defer -t 1 _evalcache fzf --zsh
-zsh-defer -t 1 _evalcache pyenv init --path
-zsh-defer -t 1 _evalcache pyenv virtualenv-init - zsh
-zsh-defer -t 1 _evalcache pyenv init - zsh
-zsh-defer -t 1 _evalcache fnm env --use-on-cd --shell zsh
-zsh-defer -t 1 _evalcache brew shellenv
-zsh-defer -t 1 _evalcache rbenv init - zsh
-zsh-defer -t 1 _evalcache jira completion zsh
+_evalcache fzf --zsh
+_evalcache pyenv init --path
+_evalcache pyenv virtualenv-init - zsh
+_evalcache pyenv init - zsh
+_evalcache fnm env --use-on-cd --shell zsh
+_evalcache brew shellenv
+_evalcache rbenv init - zsh
+_evalcache jira completion zsh
 
 _evalcache zoxide init --cmd cd zsh
 _evalcache jj util completion zsh
 # _evalcache kafkactl completion zsh
 
 if [ -s "$HOMEBREW_PREFIX/opt/jabba/jabba.sh" ]; then 
-    zsh-defer -t 1 . "$HOMEBREW_PREFIX/opt/jabba/jabba.sh"
+    . "$HOMEBREW_PREFIX/opt/jabba/jabba.sh"
 fi
 
 if [ -f "$WORK_HOME/.work.zshrc" ]; then

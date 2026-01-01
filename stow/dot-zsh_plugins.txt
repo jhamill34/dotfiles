@@ -12,14 +12,14 @@ aloxaf/fzf-tab
 
 # frameworks like oh-my-zsh are supported
 getantidote/use-omz
-ohmyzsh/ohmyzsh path:plugins/git kind:defer
-ohmyzsh/ohmyzsh path:plugins/jj kind:defer
-ohmyzsh/ohmyzsh path:plugins/gh kind:defer
-ohmyzsh/ohmyzsh path:plugins/aws kind:defer
-ohmyzsh/ohmyzsh path:plugins/kubectl kind:defer
-ohmyzsh/ohmyzsh path:plugins/helm kind:defer
-ohmyzsh/ohmyzsh path:plugins/gradle kind:defer
-ohmyzsh/ohmyzsh path:plugins/colored-man-pages kind:defer
+ohmyzsh/ohmyzsh path:plugins/git 
+ohmyzsh/ohmyzsh path:plugins/jj 
+ohmyzsh/ohmyzsh path:plugins/gh 
+ohmyzsh/ohmyzsh path:plugins/aws 
+ohmyzsh/ohmyzsh path:plugins/kubectl 
+ohmyzsh/ohmyzsh path:plugins/helm 
+ohmyzsh/ohmyzsh path:plugins/gradle 
+ohmyzsh/ohmyzsh path:plugins/colored-man-pages
 
 # History
 belak/zsh-utils path:history
