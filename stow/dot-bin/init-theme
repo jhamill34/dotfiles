@@ -1,0 +1,20 @@
+#!/bin/bash
+
+links=(
+    aerc/stylesets/theme
+    borders/bordersrc
+    btop/themes/current.theme
+    eza/theme.yml
+    ghostty/themes/current.conf
+    k9s/skins/current.yaml
+    sketchybar/colors.sh
+    tmux/theme.conf
+    nvim/lua/custom/plugins/theme.lua
+    zshcolors
+    starship.toml
+)
+
+for l in "${links[@]}"; do 
+    ln -fs "${XDG_STATE_HOME}/jhamill/current/theme/$l" "${XDG_CONFIG_HOME}/$l"
+done
+

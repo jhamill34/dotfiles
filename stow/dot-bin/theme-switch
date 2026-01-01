@@ -1,0 +1,27 @@
+#!/bin/bash
+
+if [[ -z $1 ]]; then 
+    echo "Usage: theme-switch <theme-name>"
+    echo ""
+    exit 1
+fi
+
+THEMES_DIR="${XDG_CONFIG_HOME}/jhamill/themes"
+CURRENT_DIR="${XDG_STATE_HOME}/jhamill/current"
+
+if [[ ! -d "$CURRENT_DIR" ]]; then 
+    mkdir -p "$CURRENT_DIR"
+fi
+CURRENT_THEME_DIR="${CURRENT_DIR}/theme"
+
+THEME_NAME=$(echo "$1" | sed -E 's/<[^>]+>//g' | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
+THEME_PATH="${THEMES_DIR}/${THEME_NAME}"
+
+if [[ ! -d "${THEME_PATH}" ]]; then 
+    echo "Launcher '$THEME_NAME' does not exist"
+    echo ""
+    exit 1
+fi
+
+ln -nsf "$THEME_PATH" "$CURRENT_THEME_DIR"
+

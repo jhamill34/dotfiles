@@ -169,3 +169,4 @@ if [ -f "$WORK_HOME/.work.zshrc" ]; then
     source "$WORK_HOME/.work.zshrc"
 fi
 
+source "$HOME/.config/zshcolors"

@@ -1,4 +1,4 @@
-theme = catppuccin-mocha.conf
+theme = current.conf
 font-family = "Terminess Nerd Font Mono"
 font-size = 16
 

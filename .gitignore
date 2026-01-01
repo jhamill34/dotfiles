@@ -11,3 +11,13 @@ stow/dot-config/colima/*
 
 .DS_Store
 node_modules/
+
+stow/dot-config/aerc/stylesets/theme
+stow/dot-config/borders/bordersrc
+stow/dot-config/btop/themes/current.theme
+stow/dot-config/eza/theme.yml
+stow/dot-config/ghostty/themes/current.conf
+stow/dot-config/k9s/skins/current.yaml
+stow/dot-config/sketchybar/colors.sh
+stow/dot-config/tmux/theme.conf
+stow/dot-config/nvim/lua/custom/plugins/theme.lua
