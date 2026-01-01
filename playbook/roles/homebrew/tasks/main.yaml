@@ -1,0 +1,23 @@
+---
+- name: Set Casks Appdir Fact
+  ansible.builtin.set_fact:
+    casks_appdir: "{{ ansible_facts['user_dir'] }}/Applications"
+
+- name: Terminal Based Tools
+  include_tasks: terminal.yaml
+
+- name: Editor Tools
+  include_tasks: editors.yaml
+
+- name: Programming Languages
+  include_tasks: languages.yaml
+
+- name: Infrastructure Tools
+  include_tasks: infra.yaml
+
+- name: Productivity Tools
+  include_tasks: productivity.yaml
+
+- name: Hardware Tools
+  include_tasks: hardware.yaml
+

@@ -1,0 +1,86 @@
+---
+- name: Set Screeshots Directory
+  community.general.osx_defaults:
+    domain: com.apple.screencapture
+    key: location
+    value: "{{ ansible_facts['user_dir'] }}/Notes/Screen-Shots"
+    type: string
+    state: present
+
+- name: Set Screeshots Target
+  community.general.osx_defaults:
+    domain: com.apple.screencapture
+    key: target
+    value: "file"
+    type: string
+    state: present
+
+- name: Set Screeshots Target
+  community.general.osx_defaults:
+    domain: com.apple.screencapture
+    key: show-thumbnail
+    value: false 
+    type: bool
+    state: present
+
+- name: Set Dock Autohide
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: autohide
+    value: true
+    type: bool
+    state: present
+
+- name: Show Hidden Files in Finder
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: AppleShowAllFiles
+    value: true
+    type: bool
+    state: present
+
+- name: Set Finder Default View Style
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: FXPreferredViewStyle
+    value: clmv
+    type: string
+    state: present
+
+- name: Hide External Hard Drives on Desktop
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: ShowExternalHardDrivesOnDesktop
+    value: false
+    type: bool
+    state: present
+
+- name: Use Fn Key to show Emojis
+  community.general.osx_defaults:
+    domain: com.apple.HIToolbox
+    key: AppleFnUsageType
+    value: 2
+    type: int 
+    state: present
+
+- name: Enable Keyboard Navigation
+  community.general.osx_defaults:
+    domain: NSGlobalDomain
+    key: AppleKeyboardUIMode
+    value: 2
+    type: int 
+    state: present
+
+- name: Map CapsLock to ESC
+  block:
+    - name: Copy custom Capslock plist
+      ansible.builtin.template:
+        src: capslock.plist.j2
+        dest: "{{ ansible_facts['user_dir'] }}/Library/LaunchAgents/tech.jhamill.capslock-escape.plist"
+
+    - name: Start Capslock
+      community.general.launchd:
+        name: tech.jhamill.capslock-escape
+        state: started
+
+

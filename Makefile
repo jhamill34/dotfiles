@@ -7,17 +7,9 @@ stow-install:
 stow-uninstall:
 	cd $(STOW_DIR) && stow -D --dotfiles --target="$$HOME" .
 
-brew-install:
-	brew bundle install --global
-
-pnpm-install:
-	pnpm -C $(PNPM_UTILS_DIR) install
+ansible-install:
+	ansible-playbook ./playbook/site.yaml
 
 init-notes:
 	cp -R ./Notes $(HOME)
 
-init-screenshots:
-	defaults write com.apple.screencapture location $(HOME)/Notes/Screen-Shots
-	defaults write com.apple.screencapture target "file"
-	defaults write com.apple.screencapture show-thumbnail -bool false
-	killall SystemUIServer

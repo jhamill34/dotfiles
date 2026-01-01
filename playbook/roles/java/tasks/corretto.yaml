@@ -1,0 +1,11 @@
+---
+- name: Download Amazon Corretto {{ item }}
+  ansible.builtin.get_url:
+    url: "https://corretto.aws/downloads/latest/amazon-corretto-{{ item }}-aarch64-macos-jdk.tar.gz"
+    dest: "{{ ansible_facts['user_dir'] }}/ansible_java/amazon-corretto-{{ item }}.tar.gz"
+
+- name: Extract Amazon Corretto {{ item }}
+  ansible.builtin.command:
+    cmd: "tar -xvf amazon-corretto-{{ item }}.tar.gz"
+    chdir: "{{ ansible_facts['user_dir'] }}/ansible_java"
+

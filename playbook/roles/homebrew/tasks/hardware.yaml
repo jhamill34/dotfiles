@@ -1,0 +1,6 @@
+---
+- name: Install Hardware Tools
+  community.general.homebrew:
+    state: present
+    name:
+      - arduino-cli

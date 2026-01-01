@@ -1,0 +1,48 @@
+#!/bin/bash
+
+usage () {
+    echo "Usage: launcher <app>"
+    echo "  options for app are: browser, calendar, java-editor, ios-editor, email, messaging, music, terminal, video-conference"
+    echo ""
+}
+
+if [[ -z $1 ]]; then 
+    usage
+    exit 1
+fi
+
+app=$(echo "$1" | tr '[:upper:]' '[:lower:]' | tr ' _' '-')
+
+case $1 in 
+    "browser")
+        open -a 'Google Chrome'
+        ;;
+    "calendar")
+        open -a 'Spark'
+        ;;
+    "java-editor")
+        open -a 'IntelliJ IDEA'
+        ;;
+    "ios-editor")
+        open "$(xcenv version-name)"
+        ;;
+    "email")
+        open -a 'Spark'
+        ;;
+    "messaging")
+        open -a 'Messages'
+        ;;
+    "music")
+        open -a 'Spotify'
+        ;;
+    "terminal")
+        open -a 'Ghostty'
+        ;;
+    "video-conference")
+        open -a 'zoom.us'
+        ;;
+    *)
+        usage
+        exit 1
+        ;;
+esac 

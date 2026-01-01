@@ -1,0 +1,13 @@
+#!/bin/bash
+
+LAUNCHER="${XDG_STATE_HOME}/jhamill/current/launcher"
+
+if [[ -L "$LAUNCHER" && -e "$LAUNCHER" ]]; then 
+    /bin/bash -c "$LAUNCHER $1"
+else 
+    echo "launcher doesn't seem to exist"
+    echo "make sure this links to a proper script"
+    echo "    -> $LAUNCHER <- "
+    echo ""
+fi
+

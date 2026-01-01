@@ -203,24 +203,16 @@ run = 'layout floating'
 [mode.launcher.binding]
     esc = ['mode main']
     
-    # TODO: We should symlink these so we can open whatever the 
-    # desired app on our system is under a category 
-    # (i.e. 'mail' linked to 'Outlook' or 'Spark')
+    y = ['exec-and-forget launcher-open video-conference', 'mode main']
+    u = ['exec-and-forget launcher-open messaging', 'mode main']
+    i = ['exec-and-forget launcher-open email', 'mode main']
+    o = ['exec-and-forget launcher-open calendar', 'mode main']
 
-    y = ['exec-and-forget open $(xcenv version-name)', 'mode main']
-    u = ['exec-and-forget open -a Microsoft\ Teams', 'mode main']
-    i = ['exec-and-forget open -a Microsoft\ Outlook', 'mode main']
-    
-    # y = ['exec-and-forget open -a zoom.us', 'mode main']
-    # u = ['exec-and-forget open -a Slack', 'mode main']
-    # i = ['exec-and-forget open -a Mail', 'mode main']
-    # o = ['exec-and-forget open -a Calendar', 'mode main']
+    j = ['exec-and-forget launcher-open java-editor', 'mode main']
+    k = ['exec-and-forget launcher-open terminal', 'mode main']
+    l = ['exec-and-forget launcher-open browser', 'mode main']
 
-    j = ['exec-and-forget open -a IntelliJ\ IDEA', 'mode main']
-    k = ['exec-and-forget open -a Ghostty', 'mode main']
-    l = ['exec-and-forget open -a Google\ Chrome', 'mode main']
-
-    h = ['exec-and-forget open -a Spotify', 'mode main']
+    h = ['exec-and-forget launcher-open music', 'mode main']
 
 
 

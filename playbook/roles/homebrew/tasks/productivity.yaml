@@ -1,0 +1,44 @@
+---
+- name: Install Media Tools
+  community.general.homebrew:
+    state: present
+    name:
+      - librsvg
+      - imagemagick
+      - d2
+      - ffmpeg
+
+
+- name: Install Beancount
+  community.general.homebrew:
+    name: beancount
+    state: present
+
+- name: Install Writing Tools
+  community.general.homebrew:
+    name: typst
+    state: present
+
+- name: Install Jira Tools
+  community.general.homebrew:
+    state: present
+    name:
+      - jiratui
+      - jira-cli
+
+- name: Install Terminal Based Communication Tools
+  community.general.homebrew:
+    state: present
+    name:
+      - aerc
+      - calcurse
+      - newsboat
+      - w3m
+      - jrnl
+      - bartib
+
+- name: Install Spotify
+  community.general.homebrew_cask:
+    state: present
+    name: spotify
+    install_options: "appdir={{ casks_appdir }}"

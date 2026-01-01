@@ -1,0 +1,41 @@
+---
+- name: Install Java Tooling
+  community.general.homebrew:
+    state: present
+    name:
+      - gradle
+      - maven
+      - tomcat
+
+- name: Install Rust Tooling
+  community.general.homebrew:
+    name: rustup
+    state: present
+
+- name: Install Golang
+  community.general.homebrew:
+    name: go
+    state: present
+
+- name: Install Javascript Tooling
+  community.general.homebrew:
+    state: present
+    name: 
+      - fnm
+      - pnpm
+
+- name: Install Python Tooling
+  community.general.homebrew:
+    state: present
+    name: 
+      - pyenv
+      - pyenv-virtualenv
+
+- name: Install iOS Tooling
+  community.general.homebrew:
+    state: present
+    name:
+      - cocoapods
+      - xcodes
+      - xcenv
+
