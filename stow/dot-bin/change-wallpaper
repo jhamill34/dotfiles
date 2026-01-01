@@ -1,0 +1,6 @@
+#!/bin/bash
+
+image=$(fd . ~/.local/state/jhamill/current/theme/wallpapers | fzf)
+
+osascript -e "tell application \"System Events\" to set picture of current desktop to \"$image\""
+
