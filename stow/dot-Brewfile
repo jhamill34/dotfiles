@@ -92,6 +92,9 @@ brew "maven"
 brew "tomcat"
 
 brew "openapi-generator"
+brew "protobuf"
+brew "protoc-gen-go"
+brew "protoc-gen-go-grpc"
 
 brew "luarocks"
 brew "go"
