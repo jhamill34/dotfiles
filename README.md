@@ -32,3 +32,4 @@ stow stow-uninstall
 - [ ] Remove TMUX 
 - [ ] Remove / migrate zsh config to nushell
 - [ ] Create a second theme
+- [ ] Add CPU and Memory to sketchybar
