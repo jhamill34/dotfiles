@@ -1,0 +1,25 @@
+---
+- name: Get List of Formulas
+  ansible.builtin.command: brew list --formula --installed-on-request -1 --full-name
+  register: installed_formulas
+  changed_when: false
+
+- name: Set Unwanted Fact
+  ansible.builtin.set_fact:
+    unwanted_formulas: "{{ installed_formulas.stdout_lines | difference(desired_formulas) }}"
+
+- name: Debug Formulas
+  ansible.builtin.debug:
+    var: unwanted_formulas
+
+- name: Install Homebrew Formulas
+  community.general.homebrew:
+    state: present
+    name: "{{ desired_formulas }}"
+
+- name: Install TPM
+  ansible.builtin.git:
+    repo: 'https://github.com/tmux-plugins/tpm'
+    dest: "{{ ansible_facts['user_dir'] }}/.tmux/plugins/tpm"
+    update: no
+

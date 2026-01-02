@@ -1,0 +1,18 @@
+---
+- name: Get List of Taps
+  ansible.builtin.command: brew tap
+  register: installed_taps
+  changed_when: false
+
+- name: Set Unwanted Fact
+  ansible.builtin.set_fact:
+    unwanted_taps: "{{ installed_taps.stdout_lines | difference(desired_taps) }}"
+
+- name: Debug Taps
+  ansible.builtin.debug:
+    var: unwanted_taps
+
+- name: Add Homebrew Taps
+  community.general.homebrew_tap:
+    state: present
+    name: "{{ desired_taps }}"

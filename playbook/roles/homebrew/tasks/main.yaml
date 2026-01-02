@@ -3,21 +3,126 @@
   ansible.builtin.set_fact:
     casks_appdir: "{{ ansible_facts['user_dir'] }}/Applications"
 
-- name: Terminal Based Tools
-  include_tasks: terminal.yaml
+- name: Install Taps
+  include_tasks: taps.yaml
+  vars:
+    desired_taps:
+      - sst/tap
+      - olets/tap
+      - nikitabobko/tap
+      - felixkratz/formulae
 
-- name: Editor Tools
-  include_tasks: editors.yaml
+- name: Install Formulas
+  include_tasks: brews.yaml
+  vars:
+    desired_formulas:
+      - ansible
+      - neovim
+      - tree-sitter-cli
+      - luarocks
+      - gh
+      - lazygit
+      - jj
+      - git-cliff
+      - koji
+      - sst/tap/opencode
+      - arduino-cli
+      - lazysql
+      - redis
+      - docker
+      - docker-buildx
+      - docker-compose
+      - colima
+      - lima
+      - lazydocker
+      - awscli
+      - aws-sam-cli
+      - k9s
+      - kubernetes-cli
+      - kubectx
+      - helm
+      - kafkactl
+      - openapi-generator 
+      - protobuf
+      - protoc-gen-go
+      - protoc-gen-go-grpc
+      - dnsmasq
+      - mkcert
+      - nss
+      - gradle
+      - maven
+      - tomcat
+      - rustup
+      - go 
+      - fnm
+      - pnpm
+      - pyenv
+      - pyenv-virtualenv
+      - cocoapods
+      - xcodes
+      - xcenv
+      - librsvg
+      - imagemagick
+      - d2
+      - ffmpeg
+      - beancount
+      - typst
+      - jiratui
+      - jira-cli
+      - aerc
+      - calcurse
+      - newsboat
+      - w3m
+      - jrnl
+      - bartib
+      - jq
+      - fd 
+      - xq
+      - fzf
+      - wget
+      - yq
+      - eza
+      - parallel
+      - ripgrep
+      - ripgrep-all
+      - tlrc
+      - zoxide
+      - grex
+      - btop
+      - tmux
+      - stow
+      - tmuxinator
+      - sesh
+      - starship
+      - antidote
+      - pass
+      - olets/tap/zsh-transient-prompt
+      - felixkratz/formulae/borders
+      - felixkratz/formulae/sketchybar
 
-- name: Programming Languages
-  include_tasks: languages.yaml
+- name: Install Casks
+  include_tasks: casks.yaml
+  vars:
+    desired_casks:
+      - intellij-idea
+      - android-studio
+      - proxyman
+      - charles
+      - spotify
+      - ghostty
+      - font-terminess-ttf-nerd-font
+      - font-sketchybar-app-font
+      - nikitabobko/tap/aerospace
+      - google-chrome
+      # - zoom
 
-- name: Infrastructure Tools
-  include_tasks: infra.yaml
+- name: Start Services
+  community.general.homebrew_services:
+    state: present
+    name: "{{ item }}" 
+  loop:
+    - sketchybar
+    - borders
 
-- name: Productivity Tools
-  include_tasks: productivity.yaml
-
-- name: Hardware Tools
-  include_tasks: hardware.yaml
-
+- name: Cleanup Unwanted Items
+  include_tasks: cleanup.yaml

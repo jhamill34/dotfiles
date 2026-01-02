@@ -1,0 +1,20 @@
+---
+- name: Get List of Casks
+  ansible.builtin.command: brew list --casks -1 --full-name
+  register: installed_casks
+  changed_when: false
+
+- name: Set Unwanted Fact
+  ansible.builtin.set_fact:
+    unwanted_casks: "{{ installed_casks.stdout_lines | difference(desired_casks) }}"
+
+- name: Debug Casks
+  ansible.builtin.debug:
+    var: unwanted_casks
+
+- name: Install Homebrew Casks 
+  community.general.homebrew_cask:
+    state: present
+    name: "{{ desired_casks }}"
+    install_options: "appdir={{ casks_appdir }}"
+

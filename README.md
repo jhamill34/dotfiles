@@ -23,3 +23,12 @@ stow stow-uninstall
 ```
 
 
+# Todos
+
+- [ ] Explore nushell (directory stacking)
+- [ ] Use Ghostty new window / tabs (disable confirmation on close prompt?)
+- [ ] Use Aerospace to "clone" a window in a direction
+- [ ] Fix neovim to use terminal mode
+- [ ] Remove TMUX 
+- [ ] Remove / migrate zsh config to nushell
+- [ ] Create a second theme

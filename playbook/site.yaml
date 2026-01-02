@@ -4,6 +4,6 @@
   become: no
   roles:
     - homebrew
-    - java
-    - osx
+    # - java
+    # - osx
 

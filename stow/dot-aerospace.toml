@@ -70,7 +70,7 @@ automatically-unhide-macos-hidden-apps = false
     inner.vertical =   16
     outer.left =       16
     outer.bottom =     16
-    outer.top =        58
+    outer.top =        [ { monitor."built-in" = 32 }, 58 ]
     outer.right =      16
 
 [[on-window-detected]]
