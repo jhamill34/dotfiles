@@ -16,3 +16,9 @@ selection-invert-fg-bg = true
 
 background-opacity = 0.9
 background-blur = true
+
+keybind = ctrl+shift+n=new_window
+
+confirm-close-surface = false
+quit-after-last-window-closed = true
+macos-dock-drop-behavior = window
