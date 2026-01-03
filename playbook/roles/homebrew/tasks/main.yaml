@@ -97,6 +97,7 @@
       - starship
       - antidote
       - pass
+      - nushell
       - olets/tap/zsh-transient-prompt
       - felixkratz/formulae/borders
       - felixkratz/formulae/sketchybar
