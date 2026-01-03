@@ -17,9 +17,9 @@
     state: present
     name: "{{ desired_formulas }}"
 
-- name: Install TPM
-  ansible.builtin.git:
-    repo: 'https://github.com/tmux-plugins/tpm'
-    dest: "{{ ansible_facts['user_dir'] }}/.tmux/plugins/tpm"
-    update: no
+# - name: Install TPM
+#   ansible.builtin.git:
+#     repo: 'https://github.com/tmux-plugins/tpm'
+#     dest: "{{ ansible_facts['user_dir'] }}/.tmux/plugins/tpm"
+#     update: no
 

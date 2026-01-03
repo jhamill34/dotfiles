@@ -90,10 +90,10 @@
       - zoxide
       - grex
       - btop
-      - tmux
       - stow
-      - tmuxinator
-      - sesh
+      # - tmux
+      # - tmuxinator
+      # - sesh
       - starship
       - antidote
       - pass
@@ -114,7 +114,7 @@
       - font-terminess-ttf-nerd-font
       - font-sketchybar-app-font
       - nikitabobko/tap/aerospace
-      # - google-chrome
+      - google-chrome
       # - zoom
 
 - name: Start Services
