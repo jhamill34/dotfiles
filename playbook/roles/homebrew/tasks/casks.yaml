@@ -1,8 +1,29 @@
 ---
+- name: Determine Enabled Formulas
+  ansible.builtin.set_fact:
+    enabled_common_casks: "{{ enabled_casks | default([]) | map('extract', common_casks) | select('defined') | list | flatten }}"
+    enabled_additional_casks: "{{ enabled_casks | default([]) | map('extract', additional_casks) | select('defined') | list | flatten }}"
+
+- name: Set Desired Formulas Fact
+  ansible.builtin.set_fact:
+    desired_casks: "{{ enabled_common_casks + enabled_additional_casks }}"
+
+- name: Debug Desired Casks
+  ansible.builtin.debug:
+    var: desired_casks
+
 - name: Get List of Casks
   ansible.builtin.command: brew list --casks -1 --full-name
   register: installed_casks
   changed_when: false
+
+- name: Set Unwanted Fact
+  ansible.builtin.set_fact:
+    new_casks: "{{ desired_casks | difference(installed_casks.stdout_lines) }}"
+
+- name: Debug New Casks
+  ansible.builtin.debug:
+    var: new_casks
 
 - name: Set Unwanted Fact
   ansible.builtin.set_fact:
@@ -14,7 +35,8 @@
 
 - name: Install Homebrew Casks 
   community.general.homebrew_cask:
-    state: present
+    state: installed
     name: "{{ desired_casks }}"
     install_options: "appdir={{ casks_appdir }}"
+    sudo_password: "{{ secrets.sudo_password | default('') }}"
 

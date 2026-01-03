@@ -9,6 +9,7 @@
   community.general.homebrew_cask:
     state: absent
     name: "{{ unwanted_casks }}"
+    sudo_password: "{{ secrets.sudo_password | default('') }}"
   when: unwanted_casks | length > 0
 
 - name: Remove Unwanted Taps

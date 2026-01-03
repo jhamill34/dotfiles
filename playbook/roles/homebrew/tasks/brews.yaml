@@ -1,8 +1,29 @@
 ---
+- name: Determine Enabled Formulas
+  ansible.builtin.set_fact:
+    enabled_common_formulas: "{{ enabled_formulas | default([]) | map('extract', common_formulas) | select('defined') | list | flatten }}"
+    enabled_additional_formulas: "{{ enabled_formulas | default([]) | map('extract', additional_formulas) | select('defined') | list | flatten }}"
+
+- name: Set Desired Formulas Fact
+  ansible.builtin.set_fact:
+    desired_formulas: "{{ enabled_common_formulas + enabled_additional_formulas }}"
+
+- name: Debug Desired Formulas
+  ansible.builtin.debug:
+    var: desired_formulas
+
 - name: Get List of Formulas
   ansible.builtin.command: brew list --formula --installed-on-request -1 --full-name
   register: installed_formulas
   changed_when: false
+
+- name: Set New Formulas Fact
+  ansible.builtin.set_fact:
+    new_formulas: "{{ desired_formulas | difference(installed_formulas.stdout_lines) }}"
+
+- name: Debug New Formulas
+  ansible.builtin.debug:
+    var: new_formulas
 
 - name: Set Unwanted Fact
   ansible.builtin.set_fact:
@@ -14,12 +35,13 @@
 
 - name: Install Homebrew Formulas
   community.general.homebrew:
-    state: present
+    state: installed
     name: "{{ desired_formulas }}"
 
-# - name: Install TPM
-#   ansible.builtin.git:
-#     repo: 'https://github.com/tmux-plugins/tpm'
-#     dest: "{{ ansible_facts['user_dir'] }}/.tmux/plugins/tpm"
-#     update: no
+- name: Install TPM
+  ansible.builtin.git:
+    repo: 'https://github.com/tmux-plugins/tpm'
+    dest: "{{ ansible_facts['user_dir'] }}/.tmux/plugins/tpm"
+    update: no
+  when: '"terminal_mux" in enabled_formulas'
 

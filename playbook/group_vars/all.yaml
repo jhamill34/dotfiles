@@ -1,0 +1,198 @@
+additional_taps: {}
+common_taps:
+  ai:
+    - sst/tap
+
+  shell_zsh:
+    - olets/tap
+
+  asthetics:
+    - nikitabobko/tap
+    - felixkratz/formulae
+
+additional_formulas: {}
+common_formulas:
+  core:
+    - ansible
+    - stow
+    - wget
+    - parallel
+    - tlrc
+    - btop
+  
+  hardware:
+    - arduino-cli
+
+  editor:
+    - neovim
+    - tree-sitter-cli
+    - luarocks
+
+  version_control:
+    - gh
+    - lazygit
+    - jj
+    - git-cliff
+    - koji
+
+  ai:
+    - sst/tap/opencode
+
+  database:
+    - lazysql
+
+  kafka:
+    - kafkactl
+
+  containers:
+    - docker
+    - docker-buildx
+    - docker-compose
+    - colima
+    - lima
+    - lazydocker
+
+  cloud_aws:
+    - awscli
+    - aws-sam-cli
+
+  k8s:
+    - k9s
+    - kubernetes-cli
+    - kubectx
+    - helm
+
+  api_tools:
+    - openapi-generator 
+
+  protobuf_tools:
+    - protobuf
+    - protoc-gen-go
+    - protoc-gen-go-grpc
+
+  network:
+    - dnsmasq
+    - mkcert
+    - nss
+    - ifstat
+
+  java_tools:
+    - gradle
+    - maven
+
+  rust_tools:
+    - rustup
+
+  node_tools:
+    - fnm
+    - pnpm
+
+  go_tools:
+    - go 
+
+  python_tools:
+    - pyenv
+    - pyenv-virtualenv
+  
+  ios_tools:
+    - cocoapods
+    - xcodes
+    - xcenv
+
+  media:
+    - librsvg
+    - imagemagick
+    - d2
+    - ffmpeg
+
+  finance:
+    - beancount
+
+  writing:
+    - typst
+
+  productivity:
+    - aerc
+    - calcurse
+    - jrnl
+    - bartib
+
+  asthetics:
+    - felixkratz/formulae/borders
+    - felixkratz/formulae/sketchybar
+
+  reading:
+    - newsboat
+    - w3m
+
+  terminal_search:
+    - jq
+    - fd 
+    - xq
+    - fzf
+    - yq
+    - ripgrep
+    - ripgrep-all
+    - grex
+
+  terminal_nav:
+    - zoxide
+    - eza
+
+  terminal_mux:
+    - tmux
+    - tmuxinator
+    - sesh
+
+  terminal_prompt:
+    - starship
+
+  shell_zsh:
+    - antidote
+    - olets/tap/zsh-transient-prompt
+
+  shell_nu:
+    - nushell
+
+  secrets:
+    - pass
+
+additional_casks: {}
+common_casks:
+  ai:
+    - claude-code
+
+  java_tools:
+    - intellij-idea
+
+  android_tools:
+    - android-studio
+
+  terminal:
+    - ghostty
+
+  music:
+    - spotify
+
+  fonts:
+    - font-terminess-ttf-nerd-font
+    - font-sketchybar-app-font
+
+  proxy_tools:
+    - proxyman
+    - charles
+
+  asthetics:
+    - nikitabobko/tap/aerospace
+
+  browser:
+    - google-chrome
+
+  video_calls:
+    - zoom
+
+
+additional_services: []
+common_services: 
+  - sketchybar
+  - borders

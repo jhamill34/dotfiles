@@ -1,7 +1,6 @@
 ---
 - name: Setup Mac
-  hosts: localhost
-  become: no
+  hosts: all 
   roles:
     - homebrew
     - java

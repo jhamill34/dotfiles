@@ -5,126 +5,18 @@
 
 - name: Install Taps
   include_tasks: taps.yaml
-  vars:
-    desired_taps:
-      - sst/tap
-      - olets/tap
-      - nikitabobko/tap
-      - felixkratz/formulae
 
 - name: Install Formulas
   include_tasks: brews.yaml
-  vars:
-    desired_formulas:
-      - ansible
-      - neovim
-      - tree-sitter-cli
-      - luarocks
-      - gh
-      - lazygit
-      - jj
-      - git-cliff
-      - koji
-      - sst/tap/opencode
-      - arduino-cli
-      - lazysql
-      - redis
-      - docker
-      - docker-buildx
-      - docker-compose
-      - colima
-      - lima
-      - lazydocker
-      - awscli
-      - aws-sam-cli
-      - k9s
-      - kubernetes-cli
-      - kubectx
-      - helm
-      - kafkactl
-      - openapi-generator 
-      - protobuf
-      - protoc-gen-go
-      - protoc-gen-go-grpc
-      - dnsmasq
-      - mkcert
-      - nss
-      - ifstat
-      - gradle
-      - maven
-      - tomcat
-      - rustup
-      - go 
-      - fnm
-      - pnpm
-      - pyenv
-      - pyenv-virtualenv
-      - cocoapods
-      - xcodes
-      - xcenv
-      - librsvg
-      - imagemagick
-      - d2
-      - ffmpeg
-      - beancount
-      - typst
-      - jiratui
-      - jira-cli
-      - aerc
-      - calcurse
-      - newsboat
-      - w3m
-      - jrnl
-      - bartib
-      - jq
-      - fd 
-      - xq
-      - fzf
-      - wget
-      - yq
-      - eza
-      - parallel
-      - ripgrep
-      - ripgrep-all
-      - tlrc
-      - zoxide
-      - grex
-      - btop
-      - stow
-      # - tmux
-      # - tmuxinator
-      # - sesh
-      - starship
-      - antidote
-      - pass
-      - nushell
-      - olets/tap/zsh-transient-prompt
-      - felixkratz/formulae/borders
-      - felixkratz/formulae/sketchybar
 
 - name: Install Casks
   include_tasks: casks.yaml
-  vars:
-    desired_casks:
-      - intellij-idea
-      - android-studio
-      - proxyman
-      - charles
-      - spotify
-      - ghostty
-      - font-terminess-ttf-nerd-font
-      - font-sketchybar-app-font
-      - nikitabobko/tap/aerospace
-      - google-chrome
-      # - zoom
 
 - name: Start Services
   community.general.homebrew_services:
     state: present
     name: "{{ item }}" 
-  loop:
-    - sketchybar
-    - borders
+  loop: "{{ common_services + (additional_services | default([])) }}"
 
 - name: Cleanup Unwanted Items
   include_tasks: cleanup.yaml

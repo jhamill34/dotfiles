@@ -12,6 +12,8 @@ stow/dot-config/colima/*
 .DS_Store
 node_modules/
 
+playbook/secrets.yaml
+
 stow/dot-config/aerc/stylesets/theme
 stow/dot-config/borders/bordersrc
 stow/dot-config/btop/themes/current.theme

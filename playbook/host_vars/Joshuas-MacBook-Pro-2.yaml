@@ -1,0 +1,48 @@
+enabled_taps: 
+  - ai
+  - shell_zsh
+  - asthetics
+
+enabled_formulas:
+  - core
+  - hardware
+  - editor
+  - version_control
+  - ai
+  - database
+  - kafka
+  - containers
+  - cloud_aws
+  - k8s
+  - api_tools
+  - protobuf_tools
+  - network
+  - java_tools
+  - rust_tools
+  - go_tools
+  - node_tools
+  - python_tools
+  - media
+  - finance
+  - writing
+  - productivity
+  - asthetics
+  - reading
+  - terminal_search
+  - terminal_nav
+  - terminal_mux
+  - terminal_prompt
+  - shell_zsh
+  - shell_nu
+  - secrets
+
+enabled_casks:
+  - ai
+  - java_tools
+  - terminal
+  - music
+  - fonts
+  - asthetics
+  - browser
+  - video_calls
+

@@ -1,8 +1,29 @@
 ---
+- name: Determine Enabled Taps
+  ansible.builtin.set_fact:
+    enabled_common_taps: "{{ enabled_taps | default([]) | map('extract', common_taps ) | select('defined') | list | flatten }}"
+    enabled_additional_taps: "{{ enabled_taps | default([]) | map('extract', additional_taps) | select('defined') | list | flatten }}"
+
+- name: Set Desiered Taps
+  ansible.builtin.set_fact:
+    desired_taps: "{{ enabled_common_taps + enabled_additional_taps }}"
+
+- name: Debug Desired Taps 
+  ansible.builtin.debug:
+    var: desired_taps
+
 - name: Get List of Taps
   ansible.builtin.command: brew tap
   register: installed_taps
   changed_when: false
+
+- name: Set New Taps Fact
+  ansible.builtin.set_fact:
+    new_taps: "{{ desired_taps | difference(installed_taps.stdout_lines) }}"
+
+- name: Debug New Taps
+  ansible.builtin.debug:
+    var: new_taps
 
 - name: Set Unwanted Fact
   ansible.builtin.set_fact:
