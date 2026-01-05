@@ -10,7 +10,6 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 
 export DISABLE_AUTO_UPDATE=true
-export KEYTIMEOUT=1
 
 export PERSONAL_HOME="$HOME/Code/Personal"
 export WORK_HOME="$HOME/Code/Work"

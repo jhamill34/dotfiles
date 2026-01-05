@@ -35,6 +35,7 @@ enabled_formulas:
   - shell_zsh
   - shell_nu
   - secrets
+  - jira
 
 enabled_casks:
   - java_tools
