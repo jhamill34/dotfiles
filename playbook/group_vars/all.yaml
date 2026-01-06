@@ -137,7 +137,6 @@ common_formulas:
 
   terminal_nav:
     - zoxide
-    - eza
 
   terminal_mux:
     - tmux
@@ -148,6 +147,7 @@ common_formulas:
     - starship
 
   shell_zsh:
+    - eza
     - antidote
     - olets/tap/zsh-transient-prompt
 

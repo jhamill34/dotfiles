@@ -30,11 +30,11 @@ enabled_formulas:
   - reading
   - terminal_search
   - terminal_nav
-  - terminal_mux
   - terminal_prompt
-  - shell_zsh
   - shell_nu
   - secrets
+  # - terminal_mux
+  # - shell_zsh
 
 enabled_casks:
   - ai

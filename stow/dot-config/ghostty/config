@@ -22,3 +22,4 @@ keybind = alt+n=new_window
 confirm-close-surface = false
 quit-after-last-window-closed = true
 macos-dock-drop-behavior = window
+command = "/opt/homebrew/bin/nu"

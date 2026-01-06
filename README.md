@@ -25,11 +25,9 @@ stow stow-uninstall
 
 # Todos
 
-- [ ] Explore nushell (directory stacking)
-- [ ] Use Ghostty new window / tabs (disable confirmation on close prompt?)
-- [ ] Use Aerospace to "clone" a window in a direction
-- [ ] Fix neovim to use terminal mode
-- [ ] Remove TMUX 
-- [ ] Remove / migrate zsh config to nushell
+- [ ] Migrate to sbarlua
+- [ ] Convert my bash scripts to nushell
 - [ ] Create a second theme
-- [x] Add CPU and Memory to sketchybar
+- [ ] Fix some default keybinds in nushell
+- [ ] Figure out how fzf-tab would work in nushell
+- [ ] Finalze new setup by gutting old configs

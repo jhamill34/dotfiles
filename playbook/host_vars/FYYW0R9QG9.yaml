@@ -30,12 +30,12 @@ enabled_formulas:
   - reading
   - terminal_search
   - terminal_nav
-  - terminal_mux
   - terminal_prompt
-  - shell_zsh
   - shell_nu
   - secrets
   - jira
+  # - terminal_mux
+  # - shell_zsh
 
 enabled_casks:
   - java_tools

@@ -1,6 +1,13 @@
+use std "dirs"
+
+$env.config.buffer_editor = "nvim"
+$env.config.show_banner = false
+
+alias nu-open = open
+alias open = ^open
+
 alias vim = nvim
 alias vi = nvim
-alias ls = eza --long --color=always --icons=always
 alias gai = git add -i
 alias lld = lazydocker
 alias nb = newsboat
@@ -25,3 +32,8 @@ def jjcc [] {
 
 mkdir ($nu.data-dir | path join "vendor/autoload")
 starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
+
+source ~/.zoxide.nu
+source ~/.completions-jj.nu
+
+source ~/.config/nushell/colors.nu
