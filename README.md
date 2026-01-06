@@ -29,5 +29,7 @@ stow stow-uninstall
 - [ ] Convert my bash scripts to nushell
 - [ ] Create a second theme
 - [ ] Fix some default keybinds in nushell
-- [ ] Figure out how fzf-tab would work in nushell
+- [ ] Use the built-in completions stuff
+- [ ] Look into nushell overlays
 - [ ] Finalze new setup by gutting old configs
+- [ ] Look into side stepping homebrew on some tools (i.e. directly installing using ansible. Particularlly for things like python or node)
