@@ -8,7 +8,7 @@ $env.XDG_STATE_HOME = $"($env.HOME)/.local/state"
 $env.PERSONAL_HOME = $"($env.HOME)/Code/Personal"
 $env.WORK_HOME = $"($env.HOME)/Code/Work"
 
-$env.COLIMA_HOME = $"($env.XDG_CONFIG_HOME)/.config/colima"
+$env.COLIMA_HOME = $"($env.XDG_CONFIG_HOME)/colima"
 $env.DOCKER_HOST = $"unix://($env.COLIMA_HOME)/default/docker.sock"
 
 $env.EDITOR = "nvim"

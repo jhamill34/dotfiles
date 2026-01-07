@@ -2,6 +2,7 @@ use std "dirs"
 
 $env.config.buffer_editor = "nvim"
 $env.config.show_banner = false
+$env.config.edit_mode = 'vi'
 
 alias nu-open = open
 alias open = ^open
@@ -29,6 +30,16 @@ def jjcc [] {
     let message = (koji --stdout | str trim)
     jj commit -m $message
 }
+
+$env.config.keybindings ++= [{
+    name: accept_history_hint
+    modifier: control
+    keycode: space
+    mode: vi_insert
+    event: {
+        send: historyhintcomplete
+    }
+}]
 
 mkdir ($nu.data-dir | path join "vendor/autoload")
 starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
