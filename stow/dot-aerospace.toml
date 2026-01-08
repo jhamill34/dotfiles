@@ -148,7 +148,7 @@ run = 'layout floating'
     alt-semicolon = 'split opposite'
 
     alt-f = 'fullscreen'
-    alt-shift-q = 'close'
+    alt-shift-q = 'close --quit-if-last-window'
 
     alt-tab = 'layout tiles horizontal vertical'
     alt-q = 'layout v_accordion'
