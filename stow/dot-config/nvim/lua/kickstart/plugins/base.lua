@@ -592,7 +592,7 @@ return {
 				-- have a well standardized coding style. You can add additional
 				-- languages here or re-enable it for the disabled ones.
 				local disable_filetypes = { c = true, cpp = true }
-				if disable_filetypes[vim.bo[bufnr].filetype] then
+				if os.getenv("NVIM_DISABLE_FORMAT") or disable_filetypes[vim.bo[bufnr].filetype] then
 					return nil
 				else
 					return {

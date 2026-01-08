@@ -1,6 +1,10 @@
-#!/bin/bash
+#!/opt/homebrew/bin/nu
 
-image=$(fd . ~/.local/state/jhamill/current/theme/wallpapers | fzf)
+let image = (ls ~/.local/state/jhamill/current/theme/wallpapers 
+    | where name =~ '\.(png|jpg|jpeg)' 
+    | get name 
+    | input list --fuzzy 'Select Image'
+)
 
-osascript -e "tell application \"System Events\" to set picture of current desktop to \"$image\""
+osascript -e $"tell application \"System Events\" to set picture of current desktop to \"($image)\""
 
