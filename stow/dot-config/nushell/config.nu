@@ -48,3 +48,4 @@ source ~/.zoxide.nu
 source ~/.completions-jj.nu
 
 source ~/.config/nushell/colors.nu
+source $"($nu.home-path)/.cargo/env.nu"

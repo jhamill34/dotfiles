@@ -13,6 +13,7 @@ $env.DOCKER_HOST = $"unix://($env.COLIMA_HOME)/default/docker.sock"
 
 $env.EDITOR = "nvim"
 $env.RUSTUP_HOME = $"($env.HOME)/.rustup"
+$env.CARGO_HOME = $"($env.HOME)/.cargo"
 $env.GPG_TTY = (tty | str trim)
 
 $env.TRANSIENT_PROMPT_COMMAND = {|| starship module character }

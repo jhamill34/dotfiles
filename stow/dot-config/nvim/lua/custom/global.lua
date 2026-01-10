@@ -9,7 +9,8 @@ vim.g.python3_host_prog = vim.env.PYENV_ROOT .. "/versions/neovim-venv-3.11.13/b
 
 vim.filetype.add({
 	extension = {
-		beancount = "beancount",
-		bean = "beancount",
+		ferrocount = "ferrocount",
+		beancount = "ferrocount",
+		bean = "ferrocount",
 	},
 })
