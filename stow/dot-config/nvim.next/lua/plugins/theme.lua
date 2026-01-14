@@ -1,0 +1,1 @@
+/Users/joshuahamill/.local/state/jhamill/current/theme/nvim.next/lua/plugins/theme.lua

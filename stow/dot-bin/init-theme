@@ -10,6 +10,7 @@ links=(
     sketchybar/colors.sh
     tmux/theme.conf
     nvim/lua/custom/plugins/theme.lua
+    nvim.next/lua/plugins/theme.lua
     nushell/colors.nu
     zshcolors
     starship.toml
