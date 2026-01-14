@@ -1,0 +1,32 @@
+--
+-- jhamill's neovim config (v2026)
+--
+-- What do we want?
+--   Plugin Manager (lazy?)
+--   Fuzzy finding (snacks or telescope)
+--   LSP (plugin or manual, I just need to learn how this works so I can add a custom one)
+--   Auto Complete (blink)
+--   Tree Sitter Highlighting
+--   Terminal usage (quick floating?)
+--   Formatting (conform)
+--   Git or JJ integration (git-signs, lazygit, jj specific?)
+--
+-- Plugins that I already have
+--   Which key
+--   Todo comment highlighting
+--   Neorg for notes
+--   Mini.nvim has some stuff but we should figure out what
+--   Harpoon for when I need adhoc quick switching
+--   Undotree?
+--   guess indent
+--   Symbols outline
+--   Snacks (explorer, fuzzy find, etc.)
+--   Oil
+--   Rust
+--
+-- Rarely used?
+--  d2
+--  dadbod (sql interface)
+--  goyo (zen mode)
+--
+--
