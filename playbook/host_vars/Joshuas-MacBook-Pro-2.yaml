@@ -1,48 +1,12 @@
-enabled_taps: 
-  - ai
-  - shell_zsh
-  - asthetics
+additional_formulas:
+  - arduino-cli
 
-enabled_formulas:
-  - core
-  - hardware
-  - editor
-  - version_control
-  - ai
-  - database
-  - kafka
-  - containers
-  - cloud_aws
-  - k8s
-  - api_tools
-  - protobuf_tools
-  - network
-  - java_tools
-  - rust_tools
-  - go_tools
-  - node_tools
-  - python_tools
-  - media
-  - finance
-  - writing
-  - productivity
-  - asthetics
-  - reading
-  - terminal_search
-  - terminal_nav
-  - terminal_prompt
-  - shell_nu
-  - secrets
-  # - terminal_mux
-  # - shell_zsh
+additional_casks:
+  # AI
+  - claude-code
 
-enabled_casks:
-  - ai
-  - java_tools
-  - terminal
-  - music
-  - fonts
-  - asthetics
-  - browser
-  - video_calls
+  # Browser
+  - google-chrome
 
+  # Video Call
+  - zoom

@@ -1,196 +1,166 @@
-additional_taps: {}
+additional_taps: []
 common_taps:
-  ai:
-    - sst/tap
+  - sst/tap
+  - olets/tap
+  - nikitabobko/tap
+  - felixkratz/formulae
 
-  shell_zsh:
-    - olets/tap
-
-  asthetics:
-    - nikitabobko/tap
-    - felixkratz/formulae
-
-additional_formulas: {}
+additional_formulas: []
 common_formulas:
-  core:
-    - ansible
-    - stow
-    - wget
-    - parallel
-    - tlrc
-    - btop
+  # Core
+  - ansible
+  - stow
+  - wget
+  - parallel
+  - tlrc
+  - btop
   
-  hardware:
-    - arduino-cli
+  # Editor
+  - neovim
+  - tree-sitter-cli
+  - luarocks
 
-  editor:
-    - neovim
-    - tree-sitter-cli
-    - luarocks
+  # Version Control
+  - gh
+  - lazygit
+  - jj
+  - git-cliff
+  - koji
 
-  version_control:
-    - gh
-    - lazygit
-    - jj
-    - git-cliff
-    - koji
+  # AI 
+  - sst/tap/opencode
 
-  ai:
-    - sst/tap/opencode
+  # Databases
+  - lazysql
 
-  database:
-    - lazysql
+  # PubSub
+  - kafkactl
 
-  kafka:
-    - kafkactl
+  # Containers
+  - docker
+  - docker-buildx
+  - docker-compose
+  - colima
+  - lima
+  - lazydocker
 
-  containers:
-    - docker
-    - docker-buildx
-    - docker-compose
-    - colima
-    - lima
-    - lazydocker
+  # AWS
+  - awscli
+  - aws-sam-cli
 
-  cloud_aws:
-    - awscli
-    - aws-sam-cli
+  # Kubernetes
+  - k9s
+  - kubernetes-cli
+  - kubectx
+  - helm
 
-  k8s:
-    - k9s
-    - kubernetes-cli
-    - kubectx
-    - helm
+  # OpenAPI
+  - openapi-generator 
 
-  api_tools:
-    - openapi-generator 
+  # Protobuf
+  - protobuf
+  - protoc-gen-go
+  - protoc-gen-go-grpc
 
-  protobuf_tools:
-    - protobuf
-    - protoc-gen-go
-    - protoc-gen-go-grpc
+  # Network
+  - dnsmasq
+  - mkcert
+  - nss
+  - ifstat
 
-  network:
-    - dnsmasq
-    - mkcert
-    - nss
-    - ifstat
+  # Java Build
+  - gradle
+  - maven
 
-  java_tools:
-    - gradle
-    - maven
+  # Rust Toolchain
+  - rustup
 
-  rust_tools:
-    - rustup
+  # NodeJS 
+  - fnm
+  - pnpm
 
-  node_tools:
-    - fnm
-    - pnpm
+  # Golang
+  - go 
 
-  go_tools:
-    - go 
-
-  python_tools:
-    - pyenv
-    - pyenv-virtualenv
+  # Python
+  - pyenv
+  - pyenv-virtualenv
   
-  ios_tools:
-    - cocoapods
-    - xcodes
-    - xcenv
+  # Media
+  - librsvg
+  - imagemagick
+  - d2
+  - ffmpeg
 
-  media:
-    - librsvg
-    - imagemagick
-    - d2
-    - ffmpeg
+  # Finance
+  - beancount
 
-  finance:
-    - beancount
+  # Writing
+  - typst
 
-  writing:
-    - typst
+  # Productivity
+  - aerc
+  - calcurse
+  - jrnl
+  - bartib
 
-  productivity:
-    - aerc
-    - calcurse
-    - jrnl
-    - bartib
+  # Asthetics
+  - felixkratz/formulae/borders
+  - felixkratz/formulae/sketchybar
 
-  asthetics:
-    - felixkratz/formulae/borders
-    - felixkratz/formulae/sketchybar
+  # Reading
+  - newsboat
+  - w3m
 
-  reading:
-    - newsboat
-    - w3m
+  # Terminal Search
+  - jq
+  - fd 
+  - xq
+  - fzf
+  - yq
+  - ripgrep
+  - ripgrep-all
+  - grex
 
-  terminal_search:
-    - jq
-    - fd 
-    - xq
-    - fzf
-    - yq
-    - ripgrep
-    - ripgrep-all
-    - grex
+  # Terminal Navigation
+  - zoxide
 
-  terminal_nav:
-    - zoxide
+  # Tmux
+  # - tmux
+  # - tmuxinator
+  # - sesh
 
-  terminal_mux:
-    - tmux
-    - tmuxinator
-    - sesh
+  # Terminal Prompt
+  - starship
 
-  terminal_prompt:
-    - starship
+  # ZSH 
+  # - eza
+  # - antidote
+  # - olets/tap/zsh-transient-prompt
 
-  shell_zsh:
-    - eza
-    - antidote
-    - olets/tap/zsh-transient-prompt
+  # Nushell
+  - nushell
 
-  shell_nu:
-    - nushell
+  # Password Management
+  - pass
 
-  secrets:
-    - pass
-
-additional_casks: {}
+additional_casks: []
 common_casks:
-  ai:
-    - claude-code
+  # Editor
+  - intellij-idea
 
-  java_tools:
-    - intellij-idea
+  # Terminal
+  - ghostty
 
-  android_tools:
-    - android-studio
+  # Music
+  - spotify
 
-  terminal:
-    - ghostty
+  # Fonts
+  - font-sketchybar-app-font
+  - font-terminess-ttf-nerd-font
 
-  music:
-    - spotify
-
-  fonts:
-    - font-terminess-ttf-nerd-font
-    - font-sketchybar-app-font
-
-  proxy_tools:
-    - proxyman
-    - charles
-
-  asthetics:
-    - nikitabobko/tap/aerospace
-
-  browser:
-    - google-chrome
-
-  video_calls:
-    - zoom
-
+  # Window Manager
+  - nikitabobko/tap/aerospace
 
 additional_services: []
 common_services: 

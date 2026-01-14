@@ -1,12 +1,7 @@
 ---
-- name: Determine Enabled Formulas
-  ansible.builtin.set_fact:
-    enabled_common_formulas: "{{ enabled_formulas | default([]) | map('extract', common_formulas) | select('defined') | list | flatten }}"
-    enabled_additional_formulas: "{{ enabled_formulas | default([]) | map('extract', additional_formulas) | select('defined') | list | flatten }}"
-
 - name: Set Desired Formulas Fact
   ansible.builtin.set_fact:
-    desired_formulas: "{{ enabled_common_formulas + enabled_additional_formulas }}"
+    desired_formulas: "{{ common_formulas + additional_formulas }}"
 
 - name: Debug Desired Formulas
   ansible.builtin.debug:
@@ -43,5 +38,5 @@
     repo: 'https://github.com/tmux-plugins/tpm'
     dest: "{{ ansible_facts['user_dir'] }}/.tmux/plugins/tpm"
     update: no
-  when: '"terminal_mux" in enabled_formulas'
+  when: '"tmux" in desired_formulas'
 

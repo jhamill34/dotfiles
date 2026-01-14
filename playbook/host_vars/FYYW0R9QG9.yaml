@@ -1,55 +1,20 @@
-enabled_taps: 
-  - ai
-  - shell_zsh
-  - asthetics
-
-enabled_formulas:
-  - core
-  - editor
-  - version_control
-  - ai
-  - database
-  - kafka
-  - containers
-  - cloud_aws
-  - k8s
-  - api_tools
-  - protobuf_tools
-  - network
-  - java_tools
-  - rust_tools
-  - go_tools
-  - node_tools
-  - python_tools
-  - ios_tools
-  - media
-  - finance
-  - writing
-  - productivity
-  - asthetics
-  - reading
-  - terminal_search
-  - terminal_nav
-  - terminal_prompt
-  - shell_nu
-  - secrets
-  - jira
-  # - terminal_mux
-  # - shell_zsh
-
-enabled_casks:
-  - java_tools
-  - terminal
-  - music
-  - fonts
-  - asthetics
-  - proxy_tools
-  - android_tools
-
 additional_formulas: 
-  jira:
-    - jira-cli
-    - jiratui
+  # Jira
+  - jira-cli
+  - jiratui
 
-  java_tools:
-    - tomcat
+  # Java Web Server
+  - tomcat
+  
+  # iOS
+  - cocoapods
+  - xcodes
+  - xcenv
+
+additional_casks:
+  # Editor
+  - android-studio
+
+  # Proxy
+  - proxyman
+  - charles

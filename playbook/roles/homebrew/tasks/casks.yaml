@@ -1,12 +1,7 @@
 ---
-- name: Determine Enabled Formulas
-  ansible.builtin.set_fact:
-    enabled_common_casks: "{{ enabled_casks | default([]) | map('extract', common_casks) | select('defined') | list | flatten }}"
-    enabled_additional_casks: "{{ enabled_casks | default([]) | map('extract', additional_casks) | select('defined') | list | flatten }}"
-
 - name: Set Desired Formulas Fact
   ansible.builtin.set_fact:
-    desired_casks: "{{ enabled_common_casks + enabled_additional_casks }}"
+    desired_casks: "{{ common_casks + additional_casks }}"
 
 - name: Debug Desired Casks
   ansible.builtin.debug:

@@ -1,12 +1,7 @@
 ---
-- name: Determine Enabled Taps
-  ansible.builtin.set_fact:
-    enabled_common_taps: "{{ enabled_taps | default([]) | map('extract', common_taps ) | select('defined') | list | flatten }}"
-    enabled_additional_taps: "{{ enabled_taps | default([]) | map('extract', additional_taps) | select('defined') | list | flatten }}"
-
 - name: Set Desiered Taps
   ansible.builtin.set_fact:
-    desired_taps: "{{ enabled_common_taps + enabled_additional_taps }}"
+    desired_taps: "{{ common_taps + additional_taps }}"
 
 - name: Debug Desired Taps 
   ansible.builtin.debug:
