@@ -21,6 +21,8 @@ set ideajoin
 set showcmd
 set number relativenumber
 set visualbell
+set clipboard+=unnamed
+
 
 " Do incremental searching.
 set incsearch
