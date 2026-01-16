@@ -21,7 +21,7 @@ return {
 			notifier = { enabled = true },
 			scratch = { enabled = true },
 		},
-		keys = require("ui,keys"),
+		keys = require("ui.keys"),
 		styles = {
 			snacks_image = {
 				relative = "editor",
