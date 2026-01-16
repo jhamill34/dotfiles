@@ -1,3 +1,5 @@
+--- @module "snacks"
+
 return {
 	{
 		"<leader>.",

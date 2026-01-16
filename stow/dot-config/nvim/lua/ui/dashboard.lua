@@ -9,7 +9,7 @@ return {
 		{ section = "header" },
 		{ section = "keys", gap = 1, padding = 1 },
 		{
-			pane = 2,
+			pane = 1,
 			icon = " ",
 			desc = "Browse Repo",
 			padding = 1,
@@ -40,7 +40,7 @@ return {
 			}
 			return vim.tbl_map(function(cmd)
 				return vim.tbl_extend("force", {
-					pane = 2,
+					pane = 1,
 					section = "terminal",
 					enabled = in_git,
 					padding = 1,
