@@ -1,5 +1,5 @@
-local bc_queries = require("custom.beancount.queries")
-local ts_query = require("custom.common.treesitter")
+local bc_queries = require("beancount.queries")
+local ts_query = require("common.treesitter")
 
 local M = {}
 

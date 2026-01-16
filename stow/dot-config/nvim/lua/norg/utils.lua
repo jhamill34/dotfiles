@@ -1,7 +1,7 @@
 local M = {}
 
-local norg_queries = require("custom.norg.queries")
-local ts_query = require("custom.common.treesitter")
+local norg_queries = require("norg.queries")
+local ts_query = require("common.treesitter")
 
 function M.format_norg()
 	local cursor = vim.api.nvim_win_get_cursor(0)
