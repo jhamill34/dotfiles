@@ -22,4 +22,6 @@ keybind = alt+n=new_window
 confirm-close-surface = false
 quit-after-last-window-closed = true
 macos-dock-drop-behavior = window
-command = "/opt/homebrew/bin/nu"
+shell-integration = "none"
+command = /usr/bin/env XDG_CONFIG_HOME=$HOME/.config /opt/homebrew/bin/nu
+

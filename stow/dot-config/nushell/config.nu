@@ -21,6 +21,9 @@ alias jjgp = jj git push
 alias jjgf = jj git fetch
 alias jjbm = jj bookmark move
 
+alias python = python3
+alias pip = pip3 
+
 def jjk [] {
     let message = (koji --stdout | str trim)
     jj desc -m $message --edit
@@ -49,3 +52,5 @@ source ~/.completions-jj.nu
 
 source ~/.config/nushell/colors.nu
 source $"($nu.home-path)/.cargo/env.nu"
+
+source $"($nu.default-config-dir)/langs.nu"

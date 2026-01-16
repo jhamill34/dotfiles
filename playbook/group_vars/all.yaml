@@ -76,16 +76,8 @@ common_formulas:
   - rustup
 
   # NodeJS 
-  - fnm
   - pnpm
 
-  # Golang
-  - go 
-
-  # Python
-  - pyenv
-  - pyenv-virtualenv
-  
   # Media
   - librsvg
   - imagemagick
@@ -125,18 +117,8 @@ common_formulas:
   # Terminal Navigation
   - zoxide
 
-  # Tmux
-  # - tmux
-  # - tmuxinator
-  # - sesh
-
   # Terminal Prompt
   - starship
-
-  # ZSH 
-  # - eza
-  # - antidote
-  # - olets/tap/zsh-transient-prompt
 
   # Nushell
   - nushell

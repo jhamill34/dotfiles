@@ -33,11 +33,6 @@ stow stow-uninstall
 - [ ] Look into nushell overlays
 - [ ] Finalze new setup by gutting old configs
 - [ ] Look into side stepping homebrew on some tools (i.e. directly installing using ansible. Particularlly for things like python or node)
-  - [ ] Prebuilt binaries
-  - [ ] DMG applications
-  - [ ] PKG applications
-  - [ ] Manually built
-  - [ ] plist services XML files
 - [ ] Work on a neovim config from scratch (clean up and learn about how LSP works)
 
 ## Custom Build Notes

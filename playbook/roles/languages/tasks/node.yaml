@@ -1,0 +1,18 @@
+---
+- name: Download NodeJS version {{ item }}
+  ansible.builtin.get_url:
+    url: "https://nodejs.org/dist/v{{ item }}/node-v{{ item }}-darwin-arm64.tar.gz"
+    dest: "{{ node_root }}/node-{{ item }}.tar.gz"
+  register: download_result
+
+- name: Create NodeJS version {{ item }} Directory
+  ansible.builtin.file:
+    path: "{{ node_root }}/node-{{ item }}"
+    state: directory
+
+- name: Extract NodeJS version {{ item }}
+  ansible.builtin.command:
+    cmd: "tar -xvf node-{{ item }}.tar.gz --strip-components=1 -C {{ node_root }}/node-{{ item }}"
+    chdir: "{{ node_root }}"
+  when: download_result.changed
+

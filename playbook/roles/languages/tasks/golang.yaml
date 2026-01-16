@@ -1,0 +1,18 @@
+---
+- name: Download Golang version {{ item }}
+  ansible.builtin.get_url:
+    url: "https://go.dev/dl/go{{ item }}.darwin-arm64.tar.gz"
+    dest: "{{ golang_root }}/golang-{{ item }}.tar.gz"
+  register: download_result
+
+- name: Create Golang {{ item }} Directory
+  ansible.builtin.file:
+    path: "{{ golang_root }}/golang-{{ item }}"
+    state: directory
+
+- name: Extract Golang version {{ item }}
+  ansible.builtin.command:
+    cmd: "tar -xvf golang-{{ item }}.tar.gz --strip-components=1 -C {{ golang_root }}/golang-{{ item }}"
+    chdir: "{{ golang_root }}"
+  when: download_result.changed
+

@@ -1,0 +1,40 @@
+---
+- name: Download Python version {{ item }}
+  ansible.builtin.get_url:
+    url: "https://www.python.org/ftp/python/{{ item }}/Python-{{ item }}.tgz"
+    dest: "{{ python_root }}/Python-{{ item }}.tgz"
+  register: download_result
+
+- name: Extract Python version {{ item }}
+  ansible.builtin.command:
+    cmd: "tar -xvf Python-{{ item }}.tgz"
+    chdir: "{{ python_root }}"
+  when: download_result.changed
+  register: extract_result
+
+- name: Configure Python
+  shell: |
+    ./configure \
+      --prefix="{{ python_root }}/Python-{{ item }}/build" \
+      --enable-optimizations \
+      --with-lto \
+      --enable-shared
+  args:
+    chdir: "{{ python_root }}/Python-{{ item }}"
+  when: extract_result.changed
+  register: configure_step
+
+- name: Build Python
+  command: make
+  args:
+    chdir: "{{ python_root }}/Python-{{ item }}"
+  when: configure_step.changed
+  register: make_step
+
+- name: Install Python (user-local, no sudo needed!)
+  command: make install
+  args:
+    chdir: "{{ python_root }}/Python-{{ item }}"
+  when: make_step.changed
+  register: install_step
+

@@ -1,3 +1,4 @@
+STOW_BIN := /opt/homebrew/bin/stow
 STOW_DIR := ./stow
 PNPM_UTILS_DIR := ./stow/dot-pnpm-utils
 HOSTNAME := $(shell hostname -s)
@@ -6,10 +7,10 @@ SECRETS_FILE := ./playbook/secrets.yaml
 VAULT_PASSWORD := $(HOME)/.vault-password.txt
 
 stow-install: 
-	cd $(STOW_DIR) && stow --dotfiles --target="$$HOME" .
+	cd $(STOW_DIR) && $(STOW_BIN) --dotfiles --target="$$HOME" .
 
 stow-uninstall:
-	cd $(STOW_DIR) && stow -D --dotfiles --target="$$HOME" .
+	cd $(STOW_DIR) && $(STOW_BIN) -D --dotfiles --target="$$HOME" .
 
 $(SECRETS_FILE): 
 	ansible-vault create \

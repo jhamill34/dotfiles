@@ -1,0 +1,83 @@
+---
+- name: Set Language Root Fact
+  ansible.builtin.set_fact:
+    language_root: "{{ ansible_facts['user_dir'] }}/ansible_langs"
+
+- name: Create Language Root Directory
+  ansible.builtin.file:
+    path: "{{ language_root }}"
+    state: directory
+
+- name: Install Java
+  block:
+    - name: Set Java Root Fact
+      ansible.builtin.set_fact:
+        java_root: "{{ language_root }}/java"
+
+    - name: Create Node Root
+      ansible.builtin.file:
+        path: "{{ java_root }}"
+        state: directory
+
+    - name: Install Amazon Corretto
+      include_tasks: corretto.yaml
+      loop:
+        - "17"
+        - "11"
+        - "8"
+
+- name: Install NodeJS
+  block:
+    - name: Set Node Root Fact
+      ansible.builtin.set_fact:
+        node_root: "{{ language_root }}/node"
+
+    - name: Create Node Root
+      ansible.builtin.file:
+        path: "{{ node_root }}"
+        state: directory
+
+    - name: Install NodeJS Versions
+      include_tasks: node.yaml
+      loop:
+        - "24.13.0"
+        - "20.19.5"
+
+
+- name: Install Python
+  block:
+    - name: Set Python Root Fact
+      ansible.builtin.set_fact:
+        python_root: "{{ language_root }}/python"
+
+    - name: Create Python Root
+      ansible.builtin.file:
+        path: "{{ python_root }}"
+        state: directory
+
+    - name: Install Python Versions
+      include_tasks: python.yaml
+      loop:
+        - "3.14.2"
+        - "3.11.14"
+
+
+
+- name: Install Golang
+  block:
+    - name: Set Golang Root Fact
+      ansible.builtin.set_fact:
+        golang_root: "{{ language_root }}/golang"
+
+    - name: Create Golang Root
+      ansible.builtin.file:
+        path: "{{ golang_root }}"
+        state: directory
+
+    - name: Install Golang Versions
+      include_tasks: golang.yaml
+      loop:
+        - "1.25.6"
+
+
+

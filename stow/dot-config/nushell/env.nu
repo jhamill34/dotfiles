@@ -23,15 +23,24 @@ $env.HOMEBREW_PREFIX = "/opt/homebrew"
 $env.HOMEBREW_CELLAR = "/opt/homebrew/Cellar"
 $env.HOMEBREW_REPOSITORY = "/opt/homebrew"
 
-path add ($env.HOME | path join "bin")
-path add ($env.HOME | path join "sbin")
+$env.LANGS_HOME = ($env.HOME | path join "ansible_langs")
+$env.JAVA_HOME = ($env.LANGS_HOME | path join "java" "current" "Contents" "Home")
+
 path add ($env.HOMEBREW_PREFIX | path join "bin")
 path add ($env.HOMEBREW_PREFIX | path join "sbin")
-path add ($env.HOME | path join ".npm-global" "bin")
+
+path add ($env.HOME | path join "bin")
+path add ($env.HOME | path join "sbin")
 path add ($env.HOME | path join ".bin")
-path add ($env.HOME | path join "go" "bin")
+
 path add ($env.HOME | path join ".cargo" "bin")
 path add ($env.RUSTUP_HOME| path join "bin")
+
+path add ($env.HOME | path join ".npm-global" "bin")
+
+path add ($env.LANGS_HOME | path join "golang" "current" "bin")
+path add ($env.LANGS_HOME | path join "node" "current" "bin")
+path add ($env.LANGS_HOME | path join "python" "current" "build" "bin")
 
 zoxide init --cmd cd nushell | save -f ~/.zoxide.nu
 jj util completion nushell | save -f ~/.completions-jj.nu
