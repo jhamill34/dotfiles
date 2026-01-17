@@ -2,7 +2,7 @@
 - name: Setup Mac
   hosts: all 
   roles:
-    - homebrew
+    # - homebrew
     - languages
-    - osx
+    # - osx
 

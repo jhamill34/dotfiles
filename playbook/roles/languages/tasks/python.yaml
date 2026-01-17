@@ -18,7 +18,10 @@
       --prefix="{{ python_root }}/Python-{{ item }}/build" \
       --enable-optimizations \
       --with-lto \
-      --enable-shared
+      --enable-shared \
+      --with-openssl=/opt/homebrew/opt/openssl \
+      CPPFLAGS=-I/opt/homebrew/opt/openssl/include \
+      LDFLAGS=-L/opt/homebrew/opt/openssl/lib
   args:
     chdir: "{{ python_root }}/Python-{{ item }}"
   when: extract_result.changed
