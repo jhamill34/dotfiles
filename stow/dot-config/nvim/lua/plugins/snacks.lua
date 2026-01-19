@@ -1,7 +1,5 @@
 --- @module "snacks"
 
-local t = require("ui.title")
-
 return {
 	{
 		"folke/snacks.nvim",
