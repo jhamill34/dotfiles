@@ -2,20 +2,91 @@
 
 [aliases]
 spr = ["util", "exec", "--", "jj-spr"]
+tug = ["bookmark", "move", "--from", "closest_bookmark(@)", "--to", "closest_pushable(@)"]
+restack = ["rebase", "-o", "trunk()", "-s", "roots(trunk()..) & stack()"]
+plan = ["new", "--no-edit", "heads(@::)", "-m"]
+collapse = ["squash", "-f", "branch_start(@)+::@", "-t", "branch_start(@)"]
+issueprefix = ["util", "exec", "--", "bash", "-c", """
+set -euo pipefail
 
+ISSUE=$1
+PREFIX="[$ISSUE] "
+# We don't actually need the editor, since we format the commit using the commit description template,
+# but we want a command that returns success.
+export JJ_EDITOR=/usr/bin/true
+# Change all offending commits at once, to get only one operation in the operation log.
+jj desc -r "((trunk()..@) | @::) ~ subject(glob:'\\[*')" --config templates.draft_commit_description="concat(\\"$PREFIX\\",coalesce(description, default_commit_description, \\"\n\\"))\"
+""", ""]
 [git]
 private-commits = 'description(glob:"private:*")'
 
 [revset-aliases]
-wip = 'description(glob:"wip:*") & mutable()'
-private = 'description(glob:"private:*")'
-dev = 'wip | private | present(@)'
-current_bookmarks = 'trunk()..@ & bookmarks()'
+private = 'description(regex:"^private:")'
+wip = 'description(regex:"^wip:")'
+has-pr = 'mine() & description(regex:"Pull-Request:")'
+ready = 'mine() & ~wip & ~private & mutable()'
+
+'closest_bookmark(to)' = 'heads(::to & bookmarks())'
+'closest_pushable(to)' = 'heads(::to & ~description(exact:"") & (~empty() | merges()))'
+'stack()' = 'stack(@)'
+'stack(x)' = 'stack(x, 2)'
+'stack(x, n)' = 'ancestors(reachable(x, mutable()), n)'
+"branch_start(to)" = "heads(::to & trunk())+ & ::to"
 
 [ui]
 pager = ":builtin"
 default-command = "log"
 
+[colors]
+closing_issue = { fg = "cyan", bold = true }
+closing_issue_link = { fg = "cyan", bold = true, italic = true }
+pull_request = { fg = "magenta", bold = true }
+pull_request_link = { fg = "magenta", bold = true, italic = true }
+
 [template-aliases]
 'local_bookmarks' = 'if(!remote, name ++ "\n")'
 
+
+'pull_request(commit)' = '''
+    commit.trailers()
+        .filter(|t| t.key() == "Pull-Request")
+        .map(|t| 
+            if (t.value().starts_with("https://"), 
+                hyperlink(
+                    t.value(), label("pull_request_link", "[PR #" ++ t.value().replace(regex:".*/(.*)$", "$1") ++ "]")
+                ),
+                label("pull_request", "[PR #" ++ t.value().replace(regex:".*/(.*)$", "$1") ++ "]" )
+            )
+        )
+        .join(" ")
+'''
+
+'closing_issue(commit)' = '''
+    commit.trailers()
+        .filter(|t| t.key() == "Closes")
+        .map(|t| 
+            if(t.value().starts_with("https://"), 
+                hyperlink(
+                    t.value(), label("closing_issue_link", "[" ++ t.value().replace(regex:".*/(.*)$", "$1") ++ "]")), 
+                label("closing_issue", "[" ++ t.value().replace(regex:".*/(.*)$", "$1") ++ "]")
+            )
+        )
+        .join(" ")
+'''
+
+'commit_description(commit)' = '''
+    if (commit.empty(), label("empty", "(empty)")) ++ " " 
+    ++ if (commit.conflict(), label("conflict", "(conflict)"))
+    ++ " " 
+    ++ if(commit.description().len() > 0, 
+        commit.description().first_line(),
+        label("empty", "(no description)")
+    )
+'''
+
+[templates]
+'log' = '''
+    format_short_commit_header(self) ++ " "  
+    ++ pull_request(self) ++ closing_issue(self) ++ "\n"
+    ++ commit_description(self) ++ "\n "
+'''

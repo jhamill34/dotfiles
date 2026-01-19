@@ -28,6 +28,6 @@
     - name: Install Cargo Packages
       include_tasks: rust.yaml
       loop: 
-        - repo: https://github.com/LucioFranco/jj-spr.git
-          rev: 93b0f224f477d01a753748e3390fa107917ef0f6
+        - repo: https://github.com/jhamill34/jj-spr.git
+          rev: c001ed0e38fc7a706e85e007aa0b085f8ee47b68
 
