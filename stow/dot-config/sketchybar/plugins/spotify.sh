@@ -58,11 +58,13 @@ update ()
     if [ "$ARTIST" == "" ]; then
       args+=(--set spotify.title label="$TRACK"
              --set spotify.album label="Podcast"
-             --set spotify.artist label="$ALBUM"  )
+             --set spotify.artist label="$ALBUM"  
+             --set spotify.anchor label="$TRACK" )
     else
       args+=(--set spotify.title label="$TRACK"
              --set spotify.album label="$ALBUM"
-             --set spotify.artist label="$ARTIST")
+             --set spotify.artist label="$ARTIST"
+             --set spotify.anchor label="$TRACK - $ARTIST")
     fi
     args+=(--set spotify.play icon=
            --set spotify.shuffle icon.highlight=$SHUFFLE

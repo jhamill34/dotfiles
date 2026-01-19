@@ -8,6 +8,7 @@ cpu_percent=(
   update_freq=2
   mach_helper="$HELPER"
   script="$PLUGIN_DIR/cpu.sh"
+  width=84
 )
 
 sketchybar --add item cpu.percent right \
@@ -20,6 +21,7 @@ memory=(
   icon.color="$GREEN"
   update_freq=15
   script="$PLUGIN_DIR/ram.sh"
+  width=60
 )
 
 sketchybar --add item memory right \
@@ -31,6 +33,7 @@ disk=(
   icon.color="$MAROON"
   update_freq=60
   script="$PLUGIN_DIR/disk.sh"
+  width=60
 )
 
 sketchybar --add item disk right \

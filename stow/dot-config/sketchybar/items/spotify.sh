@@ -11,8 +11,11 @@ spotify_anchor=(
   popup.height=150
   icon=":spotify:"
   icon.font="sketchybar-app-font:Regular:14.0"
-  label.drawing=off
+  icon.color="$GREEN"
   drawing=on
+  label.max_chars=18
+  label.font="$FONT:Bold:14.0"
+  width=265
 )
 
 spotify_cover=(
