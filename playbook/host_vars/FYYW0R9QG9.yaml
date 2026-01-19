@@ -6,10 +6,6 @@ additional_formulas:
   # Java Web Server
   - tomcat
   
-  # iOS
-  - cocoapods
-  - xcodes
-  - xcenv
 
 additional_casks:
   # Editor

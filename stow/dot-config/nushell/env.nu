@@ -25,6 +25,7 @@ $env.LANGS_HOME = ($env.HOME | path join "ansible_langs")
 $env.JAVA_HOME = ($env.LANGS_HOME | path join "java" "current" "Contents" "Home")
 $env.RUSTUP_HOME = ($env.LANGS_HOME | path join "rust" "rustup")
 $env.CARGO_HOME = ($env.LANGS_HOME | path join "rust" "cargo")
+$env.XCENV_ROOT = ($env.LANGS_HOME | path join "xcenv")
 
 path add ($env.HOMEBREW_PREFIX | path join "bin")
 path add ($env.HOMEBREW_PREFIX | path join "sbin")

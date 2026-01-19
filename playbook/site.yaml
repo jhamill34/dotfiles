@@ -2,8 +2,8 @@
 - name: Setup Mac
   hosts: all 
   roles:
-    # - homebrew
+    - homebrew
     - languages
     - language_packages
-    # - osx
+    - osx
 
