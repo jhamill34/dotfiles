@@ -24,16 +24,6 @@ alias jjbm = jj bookmark move
 alias python = python3
 alias pip = pip3 
 
-def jjk [] {
-    let message = (koji --stdout | str trim)
-    jj desc -m $message --editor
-}
-
-def jjcc [] {
-    let message = (koji --stdout | str trim)
-    jj commit -m $message
-}
-
 $env.config.keybindings ++= [{
     name: accept_history_hint
     modifier: control

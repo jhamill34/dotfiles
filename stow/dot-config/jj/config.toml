@@ -4,7 +4,18 @@
 spr = ["util", "exec", "--", "jj-spr"]
 tug = ["bookmark", "move", "--from", "closest_bookmark(@)", "--to", "closest_pushable(@)"]
 restack = ["rebase", "-o", "trunk()", "-s", "roots(trunk()..) & stack()"]
-plan = ["new", "--no-edit", "heads(@::)", "-m"]
+plan = ["util", "exec", "--", "bash", "-c", """
+CHANGE_MSG=$(koji --stdout)
+jj new --no-edit 'heads(@::)' -m "$CHANGE_MSG" 
+"""]
+
+koji = ["util", "exec", "--", "bash", "-c", """
+set -euo pipefail 
+
+CHANGE_MSG=$(koji --stdout)
+jj desc -m "$CHANGE_MSG" --editor
+"""]
+
 collapse = ["squash", "-f", "branch_start(@)+::@", "-t", "branch_start(@)"]
 issueprefix = ["util", "exec", "--", "bash", "-c", """
 set -euo pipefail
