@@ -45,3 +45,6 @@ path add ($env.LANGS_HOME | path join "python" "current" "build" "bin")
 zoxide init --cmd cd nushell | save -f ~/.zoxide.nu
 jj util completion nushell | save -f ~/.completions-jj.nu
 
+$env.CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense' # optional
+mkdir $"($nu.cache-dir)"
+carapace _carapace nushell | save --force $"($nu.cache-dir)/carapace.nu"

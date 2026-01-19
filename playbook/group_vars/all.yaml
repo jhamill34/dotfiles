@@ -122,6 +122,7 @@ common_formulas:
 
   # Nushell
   - nushell
+  - carapace 
 
   # Password Management
   - pass

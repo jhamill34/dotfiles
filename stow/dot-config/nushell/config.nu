@@ -54,3 +54,5 @@ source ~/.config/nushell/colors.nu
 source $"($nu.home-path)/.cargo/env.nu"
 
 source $"($nu.default-config-dir)/langs.nu"
+
+source $"($nu.cache-dir)/carapace.nu"
