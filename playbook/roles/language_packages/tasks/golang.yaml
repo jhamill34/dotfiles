@@ -1,0 +1,15 @@
+---
+- name: Check if {{ item.binary }} exists
+  ansible.builtin.shell: "command -v {{ item.binary }}"
+  register: package_check
+  changed_when: false
+  failed_when: false
+
+- name: Install Go Package {{ item.binary }}
+  ansible.builtin.command:
+    cmd: >
+      {{ go_root }}/bin/go install {{ item.repo }}
+  environment:
+    GOPATH: "{{ go_root }}" 
+  when: package_check.rc != 0
+

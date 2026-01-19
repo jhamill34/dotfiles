@@ -1,0 +1,12 @@
+---
+- name: Install Cargo Package {{ item }}
+  ansible.builtin.command: >
+    {{ cargo_home }}/bin/cargo install
+    --git {{ item.repo }}
+    --rev {{ item.rev }}
+  environment:
+    CARGO_HOME: "{{ cargo_home }}"
+    RUSTUP_HOME: "{{ rustup_home }}"
+  register: cargo_install
+  changed_when: "'Installing' in cargo_install.stderr or 'Installed' in cargo_install.stderr"
+

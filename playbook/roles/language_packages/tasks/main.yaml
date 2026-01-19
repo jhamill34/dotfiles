@@ -1,0 +1,33 @@
+---
+- name: Set Language Root Fact
+  ansible.builtin.set_fact:
+    language_root: "{{ ansible_facts['user_dir'] }}/ansible_langs"
+
+- name: Golang packages
+  block:
+    - name: Set Golang Facts
+      ansible.builtin.set_fact:
+        go_root: "{{ language_root }}/golang/current"  
+  
+    - name: Install Golang Packages
+      include_tasks: golang.yaml
+      loop:
+        - repo: golang.org/x/tools/gopls@latest
+          binary: gopls
+        - repo: golang.org/x/tools/cmd/goimports@latest
+          binary: goimports
+
+
+- name: Cargo Packages
+  block:
+    - name: Set Cargo Home Fact
+      ansible.builtin.set_fact:
+        cargo_home: "{{ language_root }}/rust/cargo"
+        rustup_home: "{{ language_root }}/rust/rustup"
+
+    - name: Install Cargo Packages
+      include_tasks: rust.yaml
+      loop: 
+        - repo: https://github.com/LucioFranco/jj-spr.git
+          rev: 93b0f224f477d01a753748e3390fa107917ef0f6
+
