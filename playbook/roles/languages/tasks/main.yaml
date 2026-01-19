@@ -26,6 +26,12 @@
         - "11"
         - "8"
 
+    - name: Set Default Java
+      file: 
+        src: "{{ java_root }}/amazon-corretto-17"
+        dest: "{{ java_root }}/current"
+        state: link
+
 - name: Install NodeJS
   block:
     - name: Set Node Root Fact
@@ -42,7 +48,12 @@
       loop:
         - "24.13.0"
         - "20.19.5"
-
+    
+    - name: Set Default Node
+      file: 
+        src: "{{ node_root }}/node-24.13.0"
+        dest: "{{ node_root }}/current"
+        state: link
 
 - name: Install Python
   block:
@@ -59,8 +70,12 @@
       include_tasks: python.yaml
       loop:
         - "3.14.2"
-
-
+    
+    - name: Set Default Python
+      file: 
+        src: "{{ python_root }}/Python-3.14.2"
+        dest: "{{ python_root }}/current"
+        state: link
 
 - name: Install Golang
   block:
@@ -77,5 +92,29 @@
       include_tasks: golang.yaml
       loop:
         - "1.25.6"
+    
+    - name: Set Default Golang
+      file: 
+        src: "{{ golang_root }}/golang-1.25.6"
+        dest: "{{ golang_root }}/current"
+        state: link
+
+- name: Install Rust
+  block:
+    - name: Set Rust Root Fact
+      ansible.builtin.set_fact: 
+        rust_root: "{{ language_root }}/rust"
+        rustup_home: "{{ language_root }}/rust/rustup"
+        cargo_home: "{{ language_root }}/rust/cargo"
+
+    - name: Create Rust Root
+      ansible.builtin.file:
+        path: "{{ rust_root }}"
+        state: directory
+
+    - name: Install Rust Toolchain
+      include_tasks: rust.yaml
+      loop: 
+        - stable-aarch64-apple-darwin
 
 

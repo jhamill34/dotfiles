@@ -72,9 +72,6 @@ common_formulas:
   - gradle
   - maven
 
-  # Rust Toolchain
-  - rustup
-
   # NodeJS 
   - pnpm
 

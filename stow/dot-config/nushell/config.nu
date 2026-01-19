@@ -51,7 +51,7 @@ source ~/.zoxide.nu
 source ~/.completions-jj.nu
 
 source ~/.config/nushell/colors.nu
-source $"($nu.home-path)/.cargo/env.nu"
+source $"($nu.home-path)/ansible_langs/rust/cargo/env.nu"
 
 source $"($nu.default-config-dir)/langs.nu"
 

@@ -19,9 +19,3 @@
     cmd: "tar -xvf golang-{{ item }}.tar.gz --strip-components=1 -C {{ golang_path }}"
     chdir: "{{ golang_root }}"
   when: download_result.changed
-
-- name: Install Golang LSP
-  ansible.builtin.command:
-    cmd: "go install golang.org/x/tools/gopls@latest"
-  environment:
-    GOPATH: "{{ golang_path }}"

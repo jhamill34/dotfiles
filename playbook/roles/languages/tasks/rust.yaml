@@ -1,0 +1,43 @@
+---
+- name: Check if Cargo is Installed
+  ansible.builtin.stat:
+    path: "{{ cargo_home }}/bin/cargo"
+  register: cargo_exists
+
+- name: Install Rustup
+  block:
+    - name: Download rustup installer
+      ansible.builtin.get_url: 
+        url: https://sh.rustup.rs
+        dest: "{{ rust_root }}/rustup-init.sh"
+        mode: '0755'
+
+    - name: Initialize rustup
+      ansible.builtin.command: 
+        cmd: >
+          {{ rust_root }}/rustup-init.sh -y 
+          --default-toolchain {{ item }}
+          --no-modify-path
+      environment:
+        RUSTUP_HOME: "{{ rustup_home }}"
+        CARGO_HOME: "{{ cargo_home }}"
+
+  when: not cargo_exists.stat.exists
+
+- name: Get Current toolchain
+  ansible.builtin.command:
+    cmd: "{{ cargo_home }}/bin/rustup show active-toolchain"
+  register: current_toolchain
+  changed_when: false
+  environment: 
+    RUSTUP_HOME: "{{ rustup_home }}"
+    CARGO_HOME: "{{ cargo_home }}"
+
+- name: Install Default Toolchain
+  command: 
+    cmd: "{{ cargo_home }}/bin/rustup toolchain install {{ item }}"
+  when: item not in current_toolchain.stdout
+  environment: 
+    RUSTUP_HOME: "{{ rustup_home }}"
+    CARGO_HOME: "{{ cargo_home }}"
+
