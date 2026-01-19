@@ -26,7 +26,7 @@ alias pip = pip3
 
 def jjk [] {
     let message = (koji --stdout | str trim)
-    jj desc -m $message --edit
+    jj desc -m $message --editor
 }
 
 def jjcc [] {
