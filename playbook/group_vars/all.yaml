@@ -4,7 +4,6 @@ common_taps:
   - olets/tap
   - nikitabobko/tap
   - felixkratz/formulae
-  - jhamill34/tools
 
 additional_formulas: []
 common_formulas:
@@ -129,9 +128,6 @@ common_formulas:
 
   # Password Management
   - pass
-
-  - jhamill34/tools/media-listener
-  - jhamill34/tools/sketchybar-media-listener
 
 additional_casks: []
 common_casks:
