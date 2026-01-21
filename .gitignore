@@ -24,6 +24,7 @@ stow/dot-config/sketchybar/colors.sh
 stow/dot-config/tmux/theme.conf
 stow/dot-config/nushell/colors.nu
 stow/dot-config/nvim/lua/custom/plugins/theme.lua
+stow/dot-config/nvim/lua/plugins/theme.lua
 stow/dot-config/nvim.next/lua/config/theme.lua
 
 stow/dot-config/nushell/history.txt
