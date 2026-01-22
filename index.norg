@@ -1,0 +1,176 @@
+@document.meta
+title: index
+description: 
+authors: josh.hamill.-nd
+categories: 
+created: 2026-01-22T11:25:08-0500
+updated: 2026-01-22T11:25:08-0500
+version: 1.1.1
+@end
+
+* Note Index
+
+** Tools
+   - (x) Linear 
+   - (x) Notion
+   - (x) Github
+   - ( ) Slack
+   - ( ) Gmail
+   - ( ) Google Calendar
+   - ( ) zoom
+
+*** Docs
+
+    I think that we'll want to use markdown or neorg as the way we document information. 
+
+    I think that this will give us a good way to also interact with Claude or Codex. 
+
+    We can then figure out a way to sync to Notion for broad consumption (or just keep the wiki on github for documents). 
+    Seems like there's a Github action for pushing to Notion but a 2-way sync might be hard. 
+
+    Once we have a living doc for a project we could then try to use AI to generate some tasks based on the codebase that could 
+    live in Linear. I'm sure there's an API that we could use here. The goal of the doc would be to gather requirements. 
+    I mainly want to capture the business justification with sign off from product as well as "acceptance criteria" that would 
+    serve as the north star of the task. 
+
+    After the business requirements we would want to capture the high level changes this would require working backwards from the
+    requirements and using the current state to inform these steps. These steps could serve as starting points for linear tasks
+    and would want to estimate this. From here we want to find a happy medium between going full on "waterfall" that would 
+    require a top-down planning down to details and the ability to be flexible and piviot as needed. 
+
+    The steps from here are:
+
+    ~ Write an "idea" doc that includes business justification and outcome
+    ~ When marked as relevant or a priority break down into technical chunks.
+    ~ Get Sign off from *Product*
+    ~ Get Sign off from *Eng*
+    ~ Create Linear tickets from technical chunks and provide estimates 
+    ~ Repeat 5 until estimates are doable in a day (use AI as needed here).
+
+    Would be kind of cool if we could structure these "docs" in a stacked PR way. Smaller chunks that that can be easily consumed.
+    I guess this just the concept of breaking down tickets. /Tracking the number of "docs" will be a metric with associated approvals/
+
+*** Source Code
+    Obviously we will then use Github for our code and PRs. JJ and SPR will come in to play here for stacked diffs and trying
+    to hit a defined "diff" metric. On top of stretching the communication skills and being uncomfortable we also want to push
+    out a bunch of changes. At least one diff a day (more would be better) would be the goal. /We can track the diff metric/
+
+> Would be great if we had an aggregator to combine these sources into a single source of truth and then send updates. 
+
+*** Messaging
+    Slack will be used for real time communication. Slash commands within slack will be for creating tickets and tracking tasks. 
+    Maybe within linear we can create a personal board for me to track my work related tasks. This comes back to the same issue 
+    as always.... where do we track personal tasks. Should we try to use linear for personal tasks?
+
+*** Email
+    Gmail for long form formal updates (i.e. weekly updates or project updates) where we would send oncall updates or general
+    things that would make slack noisey. 
+
+*** Calendar 
+    Google Calendar will be where we store our time blocking. This will be useful for visualizing our time spent in various 
+    places and if we actually decide to move to Sunsama then we can use those features for time blocking and planning. 
+
+*** Video Conference
+    The zoom integration will be for AI meeting notes that we can throw into our document system as well as integrations into 
+    Google calendar to add a zoom link on meetings. 
+
+    Speaking of meetings we're going to want to set up 1:1s with the team right away and make sure that we have Notion notes 
+    to keep track of the "minutes" and action items that come out of a meeting. We should also practice the "pre-meeting" system
+    to better prepare for meetings.
+    ---
+
+** Time Management
+*** Routines
+    - Morning Check-ins
+    - End of Day Updates
+    - Meetings
+    - Pre-meeting prep
+    - Weekly Project Updates
+    - one-on-ones with leadership
+    - 90 minute pomodoros (kind of in tandem with the other alarms)
+
+*** Flexibility
+**** High Energy 
+     - Requires a light calendar
+     - Focus on ambiguity 
+     - 1 major task + documentation
+**** Medium Energy
+     - Focus on completion, at the end of the week focus on what is 80% done
+     - 3-4 medium tasks + collaboration
+**** Low Energy
+     - Sometimes due to a packed calendar
+     - 5-8 small tasks + stay visible
+
+*** Alarms
+    - 10:30am - /Did I post an update?/
+    - 2:00pm - /Am I working on the right thing?/
+    - 4:30pm - /Post EOD update/
+    - Calendar to have two alarms with built in "transition time". Always allow 15 minute breather between events on calendar.
+    -- 15 minutes (start a brain dump so that it doesn't feel so bad to stop and allows us to pick up later)
+    -- 5 minutes (stand up and say out loud DONE)
+
+*** Triage
+    - Intake during morning check-in (linear, slack, email, personal list)
+    - Eisenhower matrix (Important + Urgency)
+    -- Do Now
+    -- Delegate 
+    -- Schedule (This week, this month, this quarter, etc.)
+
+*** Morning Check-in
+    - Check linear for highest priority or quickest win
+    - only aim to do ONE thing to consider the day a win
+
+** Quick Dopamine Hits that add value
+   - Review PR
+   - close a small bug
+   - Help out on slack
+
+** When low energy and hyperfocus ends (require a time bound)
+   - take a real world break
+   - Review PRs
+   - Organize linear
+   - Update documentation
+
+** Templates
+   - Stakeholder updates for work
+   - Weekly Progress summary
+   - Monthly Progress summary
+   - Meeting updates (pre-meeting prep)
+   - Triage Templates
+
+**** Triage Templates
+
+     Response templates:
+     - "I can help with this. Currently working on [X], can pick this up by [date]. Does that work?"
+     - "This isn't in my current sprint. Let me check with [VP Eng] on priorities."
+     - "I'm oncall, need to focus on that. Can [teammate] help or can this wait until [date]?"
+
+** Goals
+   - Share a "Today I Learned" in a public channel
+   - Daily updates, don't leave the day without "speaking" to someone
+   - Ask a question in a public channel 
+   - Share Docs before its "done"
+   - Talk in meetings, camera on
+   - Regularly demo our work that we've done
+   - Ask leadership questions in sync meetings rather than 1:1s
+   - Keep a "brag doc" and/or a "brave moments doc"
+   - Try working sessions to body double with work (we could even frame them as "office hours") 
+
+** Preventative Protocols
+   - Set alarms through out the day 
+   - Everything we work on needs to be visible (even small tooling stuff). 
+   - Personal projects NEED to wait until after hours or scheduled (20% time?) *this shouldn't happen until we prove discipline*
+
+** Emergency Protocols
+*** Going Silent
+    - /few hours/ - Post an update NOW
+    - /a whole day/ - Send update about yesterday and now, send manager an update as well directly acknowledging the silence
+
+*** Wrong Priority
+    - Acknowledge, and send update
+    - Document learnings so some value can be gleaned 
+    - Switch back to highest priority OR quickest win OR make case for this being priority. 
+
+
+
+
