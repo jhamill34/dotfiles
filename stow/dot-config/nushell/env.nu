@@ -33,6 +33,7 @@ path add ($env.HOMEBREW_PREFIX | path join "sbin")
 path add ($env.HOME | path join "bin")
 path add ($env.HOME | path join "sbin")
 path add ($env.HOME | path join ".bin")
+path add ($env.HOME | path join ".local" "bin")
 
 
 path add ($env.HOME | path join ".npm-global" "bin")
