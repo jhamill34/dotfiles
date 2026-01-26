@@ -1,7 +1,7 @@
 ---
 - name: Set Language Root Fact
   ansible.builtin.set_fact:
-    language_root: "{{ ansible_facts['user_dir'] }}/ansible_langs"
+    language_root: "{{ ansible_facts['user_dir'] }}/.local/ansible_langs"
 
 - name: Golang packages
   block:

@@ -40,9 +40,15 @@ starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.n
 source ~/.zoxide.nu
 source ~/.completions-jj.nu
 
-source ~/.config/nushell/colors.nu
-source $"($nu.home-path)/ansible_langs/rust/cargo/env.nu"
+source $"($nu.home-path)/.local/ansible_langs/rust/cargo/env.nu"
 
 source $"($nu.default-config-dir)/langs.nu"
+source $"($nu.default-config-dir)/theme.nu"
+init_theme
+
+source $"($nu.default-config-dir)/wallpaper.nu"
+source $"($nu.default-config-dir)/launcher.nu"
+source ~/.config/nushell/colors.nu
 
 source $"($nu.cache-dir)/carapace.nu"
+

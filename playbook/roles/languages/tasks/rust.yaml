@@ -9,13 +9,13 @@
     - name: Download rustup installer
       ansible.builtin.get_url: 
         url: https://sh.rustup.rs
-        dest: "{{ rust_root }}/rustup-init.sh"
+        dest: "{{ language_cache_root }}/rustup-init.sh"
         mode: '0755'
 
     - name: Initialize rustup
       ansible.builtin.command: 
         cmd: >
-          {{ rust_root }}/rustup-init.sh -y 
+          {{ language_cache_root }}/rustup-init.sh -y 
           --default-toolchain {{ item }}
           --no-modify-path
       environment:

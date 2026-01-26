@@ -21,7 +21,7 @@ $env.HOMEBREW_PREFIX = "/opt/homebrew"
 $env.HOMEBREW_CELLAR = "/opt/homebrew/Cellar"
 $env.HOMEBREW_REPOSITORY = "/opt/homebrew"
 
-$env.LANGS_HOME = ($env.HOME | path join "ansible_langs")
+$env.LANGS_HOME = ($env.HOME | path join ".local" "ansible_langs")
 $env.JAVA_HOME = ($env.LANGS_HOME | path join "java" "current" "Contents" "Home")
 $env.RUSTUP_HOME = ($env.LANGS_HOME | path join "rust" "rustup")
 $env.CARGO_HOME = ($env.LANGS_HOME | path join "rust" "cargo")
@@ -38,10 +38,23 @@ path add ($env.HOME | path join ".local" "bin")
 
 path add ($env.HOME | path join ".npm-global" "bin")
 
+path add ($env.JAVA_HOME | path join "bin")
 path add ($env.LANGS_HOME | path join "golang" "current" "bin")
 path add ($env.LANGS_HOME | path join "node" "current" "bin")
-path add ($env.LANGS_HOME | path join "python" "current" "build" "bin")
+path add ($env.LANGS_HOME | path join "python" "current" "bin")
 path add ($env.CARGO_HOME | path join "bin")
+ 
+$env.THEME_PATH = [
+    ($env.XDG_CONFIG_HOME | path join "aerc" "stylesets" "theme")
+    ($env.XDG_CONFIG_HOME | path join "borders" "bordersrc")
+    ($env.XDG_CONFIG_HOME | path join "btop" "themes" "current.theme")
+    ($env.XDG_CONFIG_HOME | path join "ghostty" "themes" "current.conf")
+    ($env.XDG_CONFIG_HOME | path join "k9s" "skins" "current.yaml")
+    ($env.XDG_CONFIG_HOME | path join "sketchybar" "colors.sh")
+    ($env.XDG_CONFIG_HOME | path join "nvim" "lua" "plugins" "theme.lua")
+    ($env.XDG_CONFIG_HOME | path join "nushell" "colors.nu")
+    ($env.XDG_CONFIG_HOME | path join "starship.toml")
+]
 
 zoxide init --cmd cd nushell | save -f ~/.zoxide.nu
 jj util completion nushell | save -f ~/.completions-jj.nu

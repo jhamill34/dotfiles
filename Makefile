@@ -6,6 +6,8 @@ PLAYBOOK := ./playbook/site.yaml
 SECRETS_FILE := ./playbook/secrets.yaml
 VAULT_PASSWORD := $(HOME)/.vault-password.txt
 
+export ANSIBLE_PYTHON_INTERPRETER := $(HOME)/.local/bootstrap/bin/python3
+
 stow-install: 
 	cd $(STOW_DIR) && $(STOW_BIN) --dotfiles --target="$$HOME" .
 

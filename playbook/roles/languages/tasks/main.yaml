@@ -1,23 +1,34 @@
 ---
 - name: Set Language Root Fact
   ansible.builtin.set_fact:
-    language_root: "{{ ansible_facts['user_dir'] }}/ansible_langs"
+    language_install_root: "{{ ansible_facts['user_dir'] }}/.local/ansible_langs"
+
+- name: Set Language Cache Root Fact
+  ansible.builtin.set_fact:
+    language_cache_root: "{{ ansible_facts['user_dir'] }}/.cache/ansible_langs"
 
 - name: Create Language Root Directory
   ansible.builtin.file:
-    path: "{{ language_root }}"
+    path: "{{ language_install_root }}"
+    state: directory
+
+- name: Create Language Cache Root Directory
+  ansible.builtin.file:
+    path: "{{ language_cache_root }}"
     state: directory
 
 - name: Install Java
   block:
-    - name: Set Java Root Fact
-      ansible.builtin.set_fact:
-        java_root: "{{ language_root }}/java"
-
-    - name: Create Node Root
+    - name: Create Java Install Root
       ansible.builtin.file:
-        path: "{{ java_root }}"
+        path: "{{ language_install_root }}/java"
         state: directory
+    
+    - name: Create Java Cache Install Root
+      ansible.builtin.file:
+        path: "{{ language_cache_root }}/java"
+        state: directory
+
 
     - name: Install Amazon Corretto
       include_tasks: corretto.yaml
@@ -28,19 +39,20 @@
 
     - name: Set Default Java
       file: 
-        src: "{{ java_root }}/amazon-corretto-17"
-        dest: "{{ java_root }}/current"
+        src: "{{ language_install_root }}/java/amazon-corretto-17"
+        dest: "{{ language_install_root }}/java/current"
         state: link
 
 - name: Install NodeJS
   block:
-    - name: Set Node Root Fact
-      ansible.builtin.set_fact:
-        node_root: "{{ language_root }}/node"
-
-    - name: Create Node Root
+    - name: Create Node Install Root
       ansible.builtin.file:
-        path: "{{ node_root }}"
+        path: "{{ language_install_root }}/node"
+        state: directory
+    
+    - name: Create Node Cache Root
+      ansible.builtin.file:
+        path: "{{ language_cache_root }}/node"
         state: directory
 
     - name: Install NodeJS Versions
@@ -48,69 +60,70 @@
       loop:
         - "24.13.0"
         - "20.19.5"
-    
+
     - name: Set Default Node
       file: 
-        src: "{{ node_root }}/node-24.13.0"
-        dest: "{{ node_root }}/current"
+        src: "{{ language_install_root }}/node/node-24.13.0"
+        dest: "{{ language_install_root }}/node/current"
         state: link
 
 - name: Install Python
   block:
-    - name: Set Python Root Fact
-      ansible.builtin.set_fact:
-        python_root: "{{ language_root }}/python"
-
-    - name: Create Python Root
+    - name: Create Python Install Root
       ansible.builtin.file:
-        path: "{{ python_root }}"
+        path: "{{ language_install_root }}/python"
+        state: directory
+    
+    - name: Create Python Cache Root
+      ansible.builtin.file:
+        path: "{{ language_cache_root }}/python"
         state: directory
 
     - name: Install Python Versions
       include_tasks: python.yaml
       loop:
         - "3.14.2"
-    
+
     - name: Set Default Python
       file: 
-        src: "{{ python_root }}/Python-3.14.2"
-        dest: "{{ python_root }}/current"
+        src: "{{ language_install_root }}/python/Python-3.14.2"
+        dest: "{{ language_install_root }}/python/current"
         state: link
 
 - name: Install Golang
   block:
-    - name: Set Golang Root Fact
-      ansible.builtin.set_fact:
-        golang_root: "{{ language_root }}/golang"
-
-    - name: Create Golang Root
+    - name: Create Golang Install Root
       ansible.builtin.file:
-        path: "{{ golang_root }}"
+        path: "{{ language_install_root }}/golang"
+        state: directory
+    
+    - name: Create Golang Cache Root
+      ansible.builtin.file:
+        path: "{{ language_cache_root }}/golang"
         state: directory
 
     - name: Install Golang Versions
       include_tasks: golang.yaml
       loop:
         - "1.25.6"
-    
+
     - name: Set Default Golang
       file: 
-        src: "{{ golang_root }}/golang-1.25.6"
-        dest: "{{ golang_root }}/current"
+        src: "{{ language_install_root }}/golang/golang-1.25.6"
+        dest: "{{ language_install_root }}/golang/current"
         state: link
 
 - name: Install Rust
   block:
-    - name: Set Rust Root Fact
-      ansible.builtin.set_fact: 
-        rust_root: "{{ language_root }}/rust"
-        rustup_home: "{{ language_root }}/rust/rustup"
-        cargo_home: "{{ language_root }}/rust/cargo"
-
     - name: Create Rust Root
       ansible.builtin.file:
-        path: "{{ rust_root }}"
+        path: "{{ language_install_root }}/rust"
         state: directory
+    
+    - name: Set Rust Root Fact
+      ansible.builtin.set_fact: 
+        rustup_home: "{{ language_install_root }}/rust/rustup"
+        cargo_home: "{{ language_install_root }}/rust/cargo"
 
     - name: Install Rust Toolchain
       include_tasks: rust.yaml

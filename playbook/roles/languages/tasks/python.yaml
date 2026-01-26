@@ -2,42 +2,51 @@
 - name: Download Python version {{ item }}
   ansible.builtin.get_url:
     url: "https://www.python.org/ftp/python/{{ item }}/Python-{{ item }}.tgz"
-    dest: "{{ python_root }}/Python-{{ item }}.tgz"
+    dest: "{{ language_cache_root }}/python/Python-{{ item }}.tgz"
   register: download_result
+
+- name: Set OpenSSL Directory Fact
+  ansible.builtin.set_fact:
+    openssl_dir: "{{ ansible_facts['user_dir'] }}/.local/bootstrap"
 
 - name: Extract Python version {{ item }}
   ansible.builtin.command:
     cmd: "tar -xvf Python-{{ item }}.tgz"
-    chdir: "{{ python_root }}"
+    chdir: "{{ language_cache_root }}/python"
   when: download_result.changed
   register: extract_result
+
+- name: Create Python {{ item }} installation directory
+  ansible.builtin.file:
+    path: "{{ language_install_root }}/python/Python-{{ item }}"
+    state: directory 
 
 - name: Configure Python
   shell: |
     ./configure \
-      --prefix="{{ python_root }}/Python-{{ item }}/build" \
+      --prefix="{{ language_install_root }}/python/Python-{{ item }}" \
       --enable-optimizations \
       --with-lto \
       --enable-shared \
-      --with-openssl=/opt/homebrew/opt/openssl \
-      CPPFLAGS=-I/opt/homebrew/opt/openssl/include \
-      LDFLAGS=-L/opt/homebrew/opt/openssl/lib
+      --with-openssl={{ openssl_dir }} \
+      CPPFLAGS=-I{{ openssl_dir }}/include \
+      LDFLAGS=-L{{ openssl_dir }}/lib
   args:
-    chdir: "{{ python_root }}/Python-{{ item }}"
+    chdir: "{{ language_cache_root }}/python/Python-{{ item }}"
   when: extract_result.changed
   register: configure_step
 
 - name: Build Python
   command: make
   args:
-    chdir: "{{ python_root }}/Python-{{ item }}"
+    chdir: "{{ language_cache_root }}/python/Python-{{ item }}"
   when: configure_step.changed
   register: make_step
 
 - name: Install Python (user-local, no sudo needed!)
   command: make install
   args:
-    chdir: "{{ python_root }}/Python-{{ item }}"
+    chdir: "{{ language_cache_root }}/python/Python-{{ item }}"
   when: make_step.changed
   register: install_step
 

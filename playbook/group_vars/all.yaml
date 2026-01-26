@@ -8,7 +8,6 @@ common_taps:
 additional_formulas: []
 common_formulas:
   # Core
-  - ansible
   - stow
   - wget
   - parallel

@@ -1,0 +1,11 @@
+#!/opt/homebrew/bin/nu
+
+def change-wallpaper [] {
+    let image = (ls ~/.local/state/jhamill/current/theme/wallpapers 
+        | where name =~ '\.(png|jpg|jpeg)' 
+        | get name 
+        | input list --fuzzy 'Select Image'
+    )
+
+    osascript -e $"tell application \"System Events\" to set picture of current desktop to \"($image)\""
+}
