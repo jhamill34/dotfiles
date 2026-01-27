@@ -48,6 +48,7 @@ init_theme
 
 source $"($nu.default-config-dir)/wallpaper.nu"
 source $"($nu.default-config-dir)/launcher.nu"
+source $"($nu.default-config-dir)/d2.nu"
 source ~/.config/nushell/colors.nu
 
 source $"($nu.cache-dir)/carapace.nu"

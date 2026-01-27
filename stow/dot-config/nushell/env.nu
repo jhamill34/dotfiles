@@ -56,6 +56,12 @@ $env.THEME_PATH = [
     ($env.XDG_CONFIG_HOME | path join "starship.toml")
 ]
 
+$env.D2_SKETCH = true
+$env.D2_STDOUT_FORMAT = "svg"
+$env.D2_THEME = 200
+$env.D2_DARK_THEME = 200
+$env.D2_LAYOUT = "ELK"
+
 zoxide init --cmd cd nushell | save -f ~/.zoxide.nu
 jj util completion nushell | save -f ~/.completions-jj.nu
 
