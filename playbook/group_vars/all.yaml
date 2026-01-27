@@ -67,6 +67,7 @@ common_formulas:
   - nss
   - ifstat
   - nmap
+  - socat
   
   # iOS
   - cocoapods
