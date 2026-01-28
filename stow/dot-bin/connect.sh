@@ -17,9 +17,71 @@ SOCKET_DIR="/tmp/hardware-key"
 PID_DIR="$SOCKET_DIR/pids"
 SSH_SOCK="$SOCKET_DIR/ssh-agent.sock"
 GPG_SOCK="$SOCKET_DIR/S.gpg-agent"
+LOCAL_BIN="$HOME/.local/bin"
+SOCAT_VERSION="1.8.0.1"
 
 # Detect platform
 OS_TYPE="$(uname -s)"
+
+# Add local bin to PATH if it exists
+if [ -d "$LOCAL_BIN" ]; then
+    export PATH="$LOCAL_BIN:$PATH"
+fi
+
+# Function to build socat from source
+build_socat() {
+    echo "  Building socat from source..."
+
+    local build_dir="$SOCKET_DIR/build"
+    mkdir -p "$build_dir"
+    mkdir -p "$LOCAL_BIN"
+
+    cd "$build_dir"
+
+    # Download
+    echo "  Downloading socat-$SOCAT_VERSION..."
+    if ! curl -fsSL -O "http://www.dest-unreach.org/socat/download/socat-$SOCAT_VERSION.tar.gz"; then
+        echo "  ✗ Failed to download socat"
+        exit 1
+    fi
+
+    # Extract
+    echo "  Extracting..."
+    tar xzf "socat-$SOCAT_VERSION.tar.gz"
+    cd "socat-$SOCAT_VERSION"
+
+    # Build
+    echo "  Configuring..."
+    if ! ./configure --prefix="$HOME/.local" > "$build_dir/configure.log" 2>&1; then
+        echo "  ✗ Configure failed. Check $build_dir/configure.log"
+        exit 1
+    fi
+
+    echo "  Compiling..."
+    if ! make > "$build_dir/make.log" 2>&1; then
+        echo "  ✗ Build failed. Check $build_dir/make.log"
+        exit 1
+    fi
+
+    # Install
+    echo "  Installing to $LOCAL_BIN..."
+    if ! make install > "$build_dir/install.log" 2>&1; then
+        echo "  ✗ Install failed. Check $build_dir/install.log"
+        exit 1
+    fi
+
+    # Return to original directory
+    cd - > /dev/null
+
+    # Add to PATH for this session
+    export PATH="$LOCAL_BIN:$PATH"
+
+    echo "  ✓ socat built and installed to $LOCAL_BIN"
+    echo
+    echo "  Add this to your shell config to make it permanent:"
+    echo "    export PATH=\"\$HOME/.local/bin:\$PATH\""
+    echo
+}
 
 # Function to detect serial device
 detect_device() {
@@ -43,21 +105,32 @@ detect_device() {
     echo "$device"
 }
 
-# Function to check if socat is installed
+# Function to check if socat is installed, build from source if not
 check_socat() {
-    if ! command -v socat &> /dev/null; then
-        echo "  ✗ socat is not installed"
-        echo
+    if command -v socat &> /dev/null; then
+        return 0
+    fi
+
+    echo "  socat not found, will build from source..."
+    echo
+
+    # Check for build dependencies
+    if ! command -v curl &> /dev/null; then
+        echo "  ✗ curl is required to download socat"
+        exit 1
+    fi
+
+    if ! command -v make &> /dev/null; then
+        echo "  ✗ make is required to build socat"
         case "$OS_TYPE" in
             Darwin)
-                echo "Install with: brew install socat"
-                ;;
-            Linux)
-                echo "Install with: sudo apt-get install socat"
+                echo "  Install Xcode command line tools: xcode-select --install"
                 ;;
         esac
         exit 1
     fi
+
+    build_socat
 }
 
 # Function to cleanup old connections
