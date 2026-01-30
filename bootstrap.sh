@@ -9,6 +9,7 @@ BUILD_DIR="$HOME/.cache/bootstrap-build"
 
 OPENSSL_VERSION="3.2.0"
 PYTHON_VERSION="3.13.11"
+SOCAT_VERSION="1.8.0.1"
 
 
 export PATH="${PYTHON_PREFIX}/bin:$PATH"
@@ -28,6 +29,52 @@ echo "✓ Xcode CLI Tools"
 
 
 mkdir -p "$BUILD_DIR"
+
+SOCAT_CMD="$HOME/.local/bin/socat"
+if [[ -f "$SOCAT_CMD" ]]; then
+    echo "✓ Using bootstrap socat"
+else
+    echo "  Building socat from source..."
+    cd "$BUILD_DIR"
+
+    # Download
+    echo "  Downloading socat-$SOCAT_VERSION..."
+    if ! curl -fsSL -O "http://www.dest-unreach.org/socat/download/socat-$SOCAT_VERSION.tar.gz"; then
+        echo "  ✗ Failed to download socat"
+        exit 1
+    fi
+
+    # Extract
+    echo "  Extracting..."
+    tar xzf "socat-$SOCAT_VERSION.tar.gz"
+    cd "socat-$SOCAT_VERSION"
+
+    # Build
+    echo "  Configuring..."
+    if ! ./configure --prefix="$HOME/.local/bin/socat" > "$BUILD_DIR/configure.log" 2>&1; then
+        echo "  ✗ Configure failed. Check $BUILD_DIR/configure.log"
+        exit 1
+    fi
+
+    echo "  Compiling..."
+    if ! make > "$BUILD_DIR/make.log" 2>&1; then
+        echo "  ✗ Build failed. Check $BUILD_DIR/make.log"
+        exit 1
+    fi
+
+    # Install
+    echo "  Installing socat..."
+    if ! make install > "$BUILD_DIR/install.log" 2>&1; then
+        echo "  ✗ Install failed. Check $BUILD_DIR/install.log"
+        exit 1
+    fi
+
+    # Return to original directory
+    cd "$CURRENT_DIR" 
+
+    echo "  ✓ socat built and installed"
+    echo "   ensure that its on your path by adding $HOME/.local/bin"
+fi
 
 # Check for OpenSSL
 OPENSSL_CMD="$INSTALL_DIR/bin/openssl"

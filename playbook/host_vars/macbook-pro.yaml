@@ -1,0 +1,12 @@
+additional_casks:
+  # AI
+  - claude-code
+
+  # Browser
+  - google-chrome
+
+  # Video Call
+  - zoom
+
+  # Used for raspberry pi setups
+  - raspberry-pi-imager

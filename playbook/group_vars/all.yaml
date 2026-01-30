@@ -87,6 +87,7 @@ common_formulas:
   - ffmpeg
 
   # Finance
+  - bison
   - beancount
 
   # Writing

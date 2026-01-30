@@ -29,6 +29,7 @@ $env.XCENV_ROOT = ($env.LANGS_HOME | path join "xcenv")
 
 path add ($env.HOMEBREW_PREFIX | path join "bin")
 path add ($env.HOMEBREW_PREFIX | path join "sbin")
+path add ($env.HOMEBREW_PREFIX | path join "opt" "bison" "bin")
 
 path add ($env.HOME | path join "bin")
 path add ($env.HOME | path join "sbin")
