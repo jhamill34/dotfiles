@@ -33,6 +33,7 @@
     - name: Install Amazon Corretto
       include_tasks: corretto.yaml
       loop:
+        - "25"
         - "17"
         - "11"
         - "8"

@@ -8,8 +8,8 @@ $env.XDG_STATE_HOME = $"($env.HOME)/.local/state"
 $env.PERSONAL_HOME = $"($env.HOME)/Code/Personal"
 $env.WORK_HOME = $"($env.HOME)/Code/Work"
 
-$env.COLIMA_HOME = $"($env.XDG_CONFIG_HOME)/colima"
-$env.DOCKER_HOST = $"unix://($env.COLIMA_HOME)/default/docker.sock"
+# $env.COLIMA_HOME = $"($env.XDG_CONFIG_HOME)/colima"
+$env.DOCKER_HOST = $"unix://($env.HOME)/.docker/run/docker.sock"
 
 $env.EDITOR = "nvim"
 $env.GPG_TTY = (tty | str trim)
@@ -44,6 +44,7 @@ path add ($env.LANGS_HOME | path join "golang" "current" "bin")
 path add ($env.LANGS_HOME | path join "node" "current" "bin")
 path add ($env.LANGS_HOME | path join "python" "current" "bin")
 path add ($env.CARGO_HOME | path join "bin")
+path add ($env.HOME | path join ".docker" "bin")
  
 $env.THEME_PATH = [
     ($env.XDG_CONFIG_HOME | path join "aerc" "stylesets" "theme")
