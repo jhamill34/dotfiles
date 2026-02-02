@@ -9,7 +9,7 @@ VAULT_PASSWORD := $(HOME)/.vault-password.txt
 export ANSIBLE_PYTHON_INTERPRETER := $(HOME)/.local/bootstrap/bin/python3
 
 stow-install: 
-	cd $(STOW_DIR) && $(STOW_BIN) --dotfiles --target="$$HOME" .
+	cd $(STOW_DIR) && $(STOW_BIN) --no-fold --dotfiles --target="$$HOME" .
 
 stow-uninstall:
 	cd $(STOW_DIR) && $(STOW_BIN) -D --dotfiles --target="$$HOME" .

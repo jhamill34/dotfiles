@@ -1,3 +1,5 @@
+#!/opt/homebrew/bin/nu
+
 def d2_list [] {
     glob **/*.d2
 }

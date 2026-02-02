@@ -8,5 +8,6 @@ additional_casks:
   # Video Call
   - zoom
 
-  # Used for raspberry pi setups
-  - raspberry-pi-imager
+  # Communications
+  - slack
+

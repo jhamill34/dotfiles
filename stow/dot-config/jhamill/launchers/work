@@ -18,7 +18,7 @@ case "$app" in
         open -a 'Google Chrome' --args --profile-directory='Default' 'https://google.com'
         ;;
     "calendar")
-        open -a 'Microsoft Outlook'
+        open -a 'Spark'
         ;;
     "java-editor")
         open -a 'IntelliJ IDEA'
@@ -27,10 +27,10 @@ case "$app" in
         open "$(xcenv version-name)"
         ;;
     "email")
-        open -a 'Microsoft Outlook'
+        open -a 'Spark'
         ;;
     "messaging")
-        open -a 'Microsoft Teams'
+        open -a 'Slack'
         ;;
     "music")
         open -a 'Spotify'
@@ -39,7 +39,7 @@ case "$app" in
         open -a 'Ghostty'
         ;;
     "video-conference")
-        open -a 'Microsoft Teams'
+        open -a 'zoom.us'
         ;;
     *)
         usage
