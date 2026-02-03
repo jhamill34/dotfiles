@@ -4,13 +4,13 @@
 ]
 
 [user]
-email = "Josh.Hamill.-ND@disney.com"
+email = "joshua@oscilar.com"
 name = "Josh Hamill"
 
 [signing]
 behavior = "drop"
 backend = "gpg"
-key = "Josh Hamill <josh.hamill.-nd@disney.com>"
+key = "Josh Hamill <joshua@oscilar.com>"
 
 [git]
 sign-on-push = true

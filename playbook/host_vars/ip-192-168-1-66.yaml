@@ -7,7 +7,7 @@ additional_casks:
 
   # Video Call
   - zoom
-
+ 
   # Notion
   - notion
   - notion-calendar
@@ -17,4 +17,3 @@ additional_casks:
   - slack
 
   - clickhouse
-

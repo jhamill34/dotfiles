@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns='http://www.w3.org/2005/Atom' xmlns:apps='http://schemas.google.com/apps/2006'>
+	<title>Mail Filters</title>
+	<id>tag:mail.google.com,2008:filters:1747422684180,z0000001770304674367*2148233986251058417,z0000001770304674801*6981763563552260548,z0000001770304675908*5105212013132552904</id>
+	<updated>2026-02-05T15:46:51Z</updated>
+	<author>
+		<name>Joshua Hamill</name>
+		<email>joshua@oscilar.com</email>
+	</author>
+	<entry>
+		<category term='filter'></category>
+		<title>Mail Filter</title>
+		<id>tag:mail.google.com,2008:filter:1747422684180</id>
+		<updated>2026-02-05T15:46:51Z</updated>
+		<content></content>
+		<apps:property name='from' value='mail.notion.so'/>
+		<apps:property name='label' value='Notion Updates'/>
+		<apps:property name='shouldArchive' value='true'/>
+		<apps:property name='smartLabelToApply' value='^smartlabel_notification'/>
+		<apps:property name='sizeOperator' value='s_sl'/>
+		<apps:property name='sizeUnit' value='s_smb'/>
+	</entry>
+	<entry>
+		<category term='filter'></category>
+		<title>Mail Filter</title>
+		<id>tag:mail.google.com,2008:filter:z0000001770304674367*2148233986251058417</id>
+		<updated>2026-02-05T15:46:51Z</updated>
+		<content></content>
+		<apps:property name='hasTheWord' value='from:(notifications@github.com) subject:(&quot;pull request&quot; OR &quot;PR #&quot;)'/>
+		<apps:property name='label' value='Github Notifications'/>
+		<apps:property name='shouldArchive' value='true'/>
+		<apps:property name='smartLabelToApply' value='^smartlabel_notification'/>
+		<apps:property name='sizeOperator' value='s_sl'/>
+		<apps:property name='sizeUnit' value='s_smb'/>
+	</entry>
+	<entry>
+		<category term='filter'></category>
+		<title>Mail Filter</title>
+		<id>tag:mail.google.com,2008:filter:z0000001770304674801*6981763563552260548</id>
+		<updated>2026-02-05T15:46:51Z</updated>
+		<content></content>
+		<apps:property name='hasTheWord' value='from:(linear@app.linear.app OR notifications@linear.app)'/>
+		<apps:property name='label' value='Linear Notifications'/>
+		<apps:property name='shouldArchive' value='true'/>
+		<apps:property name='smartLabelToApply' value='^smartlabel_notification'/>
+		<apps:property name='sizeOperator' value='s_sl'/>
+		<apps:property name='sizeUnit' value='s_smb'/>
+	</entry>
+	<entry>
+		<category term='filter'></category>
+		<title>Mail Filter</title>
+		<id>tag:mail.google.com,2008:filter:z0000001770304675908*5105212013132552904</id>
+		<updated>2026-02-05T15:46:51Z</updated>
+		<content></content>
+		<apps:property name='hasTheWord' value='from:(pagerduty.com)'/>
+		<apps:property name='label' value='Pager Duty Notifications'/>
+		<apps:property name='sizeOperator' value='s_sl'/>
+		<apps:property name='sizeUnit' value='s_smb'/>
+	</entry>
+</feed>

@@ -391,6 +391,10 @@ function M.get_header()
 
 	if host == "FYYW0R9QG9" then
 		return M.generate("DCL-Navigator")
+	elseif host == "Joshuas-MacBook-Pro.local" then
+		return M.generate("Oscilar")
+	elseif host == "ip-192-168-1-66.us-east-2.compute.internal" then
+		return M.generate("Oscilar VPN")
 	else
 		return M.generate("jhamill")
 	end

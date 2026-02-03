@@ -9,6 +9,7 @@ additional_formulas: []
 common_formulas:
   # Core
   - stow
+  - mas
   - wget
   - parallel
   - tlrc
@@ -52,6 +53,7 @@ common_formulas:
   - kubernetes-cli
   - kubectx
   - helm
+  - tilt
 
   # OpenAPI
   - openapi-generator 
@@ -137,6 +139,7 @@ common_casks:
 
   # Terminal
   - ghostty
+  - confluent-cli
 
   # Music
   - spotify

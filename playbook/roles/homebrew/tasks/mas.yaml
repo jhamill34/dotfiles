@@ -1,0 +1,54 @@
+# NOTE: this file isn't used
+---
+- name: Check if signed into App Store
+  command: mas account
+  register: mas_account
+  changed_when: false
+  failed_when: false
+
+- name: Prompt to sign into App Store
+  pause:
+    prompt: |
+
+      You need to be signed into the App Store to install apps.
+
+      Please:
+      1. Open the App Store application
+      2. Sign in with your Apple ID
+      3. Press Enter to continue...
+
+  when: mas_account.rc != 0
+
+- name: Set Desired Mas Apps Fact
+  ansible.builtin.set_fact:
+    desired_mas_apps: "{{ common_mas_apps + additional_mas_apps }}"
+
+- name: Debug Desired Mas Apps
+  ansible.builtin.debug:
+    var: desired_mas_apps
+
+- name: Get list of installed apps
+  command: mas list
+  register: installed_mas_apps
+  changed_when: false
+
+- name: Set New Mas Fact
+  ansible.builtin.set_fact:
+    new_mas_apps: "{{ desired_mas_apps | difference(installed_mas_apps.stdout_lines) }}"
+
+- name: Debug New Formulas
+  ansible.builtin.debug:
+    var: new_mas_apps
+
+- name: Set Unwanted Fact
+  ansible.builtin.set_fact:
+    unwanted_mas_apps: "{{ installed_mas_apps.stdout_lines | difference(desired_mas_apps) }}"
+
+- name: Debug Formulas
+  ansible.builtin.debug:
+    var: unwanted_mas_apps
+
+- name: Install Mac App Store applications
+  community.general.mas:
+    id: "{{ new_mas_apps }}"
+    state: present
