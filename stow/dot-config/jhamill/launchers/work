@@ -18,7 +18,7 @@ case "$app" in
         open -a 'Google Chrome' --args --profile-directory='Default' 'https://google.com'
         ;;
     "calendar")
-        open -a 'Spark'
+        open -a 'Notion Calendar'
         ;;
     "java-editor")
         open -a 'IntelliJ IDEA'
@@ -27,7 +27,7 @@ case "$app" in
         open "$(xcenv version-name)"
         ;;
     "email")
-        open -a 'Spark'
+        open -a 'Notion Mail'
         ;;
     "messaging")
         open -a 'Slack'
@@ -37,6 +37,9 @@ case "$app" in
         ;;
     "terminal")
         open -a 'Ghostty'
+        ;;
+    "notes")
+        open -a 'Notion'
         ;;
     "video-conference")
         open -a 'zoom.us'

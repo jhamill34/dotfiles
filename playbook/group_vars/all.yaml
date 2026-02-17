@@ -43,6 +43,9 @@ common_formulas:
   - colima
   - lima
   - lazydocker
+  
+  # General Infra
+  - pulumi
 
   # AWS
   - awscli

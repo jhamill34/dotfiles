@@ -77,7 +77,7 @@ function icon_map() {
   "PyCharm")
     icon_result=":pycharm:"
     ;;
-  "Mail" )
+  "Mail" | "Notion Mail" )
     icon_result=":mail:"
     ;;
   "Default")

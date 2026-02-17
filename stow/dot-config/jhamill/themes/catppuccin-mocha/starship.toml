@@ -20,13 +20,16 @@ $kotlin\
 $haskell\
 $python\
 [](fg:green bg:sapphire)\
-$conda\
 [](fg:sapphire bg:lavender)\
 $time\
 [ ](fg:lavender)\
 $cmd_duration\
+$fill\
+$kubernetes\
+$localip\
 $line_break\
 $character"""
+
 
 palette = 'catppuccin_mocha'
 
@@ -72,7 +75,13 @@ truncation_symbol = "…/"
 "Downloads" = " "
 "Music" = "󰝚 "
 "Pictures" = " "
-"Developer" = "󰲋 "
+"Code" = "󰲋 "
+
+[localip]
+ssh_only = false
+format = '[ $localipv4 ]($style)'
+style = "fg:sapphire"
+disabled = true
 
 [git_branch]
 symbol = ""
@@ -128,6 +137,32 @@ symbol = ""
 style = "bg:green"
 format = '[[ $symbol( $version)(\(#$virtualenv\)) ](fg:crust bg:green)]($style)'
 
+[kubernetes]
+disabled = false
+symbol = "⎈ "
+style = "fg:crust bg:sapphire"
+format = '[ $symbol( $context) \($namespace\) ]($style)'
+
+[[kubernetes.contexts]]
+context_pattern = "^local-k3s-lima$"
+context_alias = "local"
+style = "fg:green"
+
+[[kubernetes.contexts]]
+context_pattern = "^control-plane$"
+context_alias = "control-plane"
+style = "fg:crust bg:peach"
+
+[[kubernetes.contexts]]
+context_pattern = "^prod.*$"
+context_alias = "prod"
+style = "fg:crust bg:red"
+
+[[kubernetes.contexts]]
+context_pattern = "^dev.*$"
+context_alias = "dev"
+style = "fg:crust bg:yellow"
+
 [docker_context]
 symbol = ""
 style = "bg:sapphire"
@@ -149,7 +184,7 @@ format = '[[  $time ](fg:crust bg:lavender)]($style)'
 disabled = true
 
 [character]
-disabled = false
+disabled = true
 success_symbol = '[❯](bold fg:green)'
 error_symbol = '[❯](bold fg:red)'
 vimcmd_symbol = '[❮](bold fg:green)'

@@ -206,6 +206,7 @@ run = 'layout floating'
     j = ['exec-and-forget launcher-open java-editor', 'mode main']
     k = ['exec-and-forget launcher-open terminal', 'mode main']
     l = ['exec-and-forget launcher-open browser', 'mode main']
+    semicolon = ['exec-and-forget launcher-open notes', 'mode main']
 
     h = ['exec-and-forget launcher-open music', 'mode main']
 

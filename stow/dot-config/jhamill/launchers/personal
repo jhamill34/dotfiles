@@ -38,6 +38,9 @@ case $1 in
     "terminal")
         open -a 'Ghostty'
         ;;
+    "notes")
+        open -a 'Notion'
+        ;;
     "video-conference")
         open -a 'zoom.us'
         ;;
