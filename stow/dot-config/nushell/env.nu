@@ -72,3 +72,8 @@ jj util completion nushell | save -f ~/.completions-jj.nu
 $env.CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense' # optional
 mkdir $"($nu.cache-dir)"
 carapace _carapace nushell | save --force $"($nu.cache-dir)/carapace.nu"
+
+# pnpm
+$env.PNPM_HOME = ($env.XDG_DATA_HOME | path join "pnpm")
+$env.PATH = ($env.PATH | split row (char esep) | prepend $env.PNPM_HOME )
+# pnpm end

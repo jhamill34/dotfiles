@@ -35,7 +35,7 @@ else
   SELECTED_TZ=$(readlink /etc/localtime | sed 's|.*/zoneinfo/||')
 fi
 
-CAL_TIME=$(TZ="$SELECTED_TZ" date "+%a %d. %b %H:%M %Z")
+CAL_TIME=$(TZ="$SELECTED_TZ" date "+%a %b %d %H:%M %Z")
 
 sketchybar --set calendar label="$CAL_TIME"
 

@@ -37,6 +37,7 @@ private-commits = 'description(glob:"private:*")'
 private = 'description(regex:"^private:")'
 wip = 'description(regex:"^wip:")'
 has-pr = 'mine() & description(regex:"Pull-Request:")'
+approved-pr = 'has-pr & description(regex:"Reviewed-By:")'
 ready = 'mine() & ~wip & ~private & mutable()'
 
 'closest_bookmark(to)' = 'heads(::to & bookmarks())'
@@ -52,9 +53,15 @@ default-command = "log"
 
 [colors]
 closing_issue = { fg = "cyan", bold = true }
-closing_issue_link = { fg = "cyan", bold = true, italic = true }
 pull_request = { fg = "magenta", bold = true }
-pull_request_link = { fg = "magenta", bold = true, italic = true }
+# reviewd = { }
+# build_status = { }
+
+PASSED = { fg = "green", bold = true }
+FAILED = { fg = "red", bold = true }
+PENDING = { fg = "yellow", bold = true }
+
+link = { italic = true }
 
 [template-aliases]
 'local_bookmarks' = 'if(!remote, name ++ "\n")'
@@ -66,13 +73,43 @@ pull_request_link = { fg = "magenta", bold = true, italic = true }
         .map(|t| 
             if (t.value().starts_with("https://"), 
                 hyperlink(
-                    t.value(), label("pull_request_link", "[PR #" ++ t.value().replace(regex:".*/(.*)$", "$1") ++ "]")
+                    t.value(), label("pull_request link", "[PR #" ++ t.value().replace(regex:".*/(.*)$", "$1") ++ "] ")
                 ),
-                label("pull_request", "[PR #" ++ t.value().replace(regex:".*/(.*)$", "$1") ++ "]" )
+                label("pull_request", "[PR #" ++ t.value().replace(regex:".*/(.*)$", "$1") ++ "] " )
             )
         )
         .join(" ")
 '''
+
+'reviewed_by(commit)' = '''
+    commit.trailers()
+        .filter(|t| t.key() == "Reviewed-By")
+        .map(|t| 
+            label("reviewed PASSED", "[APPROVED] " )
+        )
+        .join(" ")
+'''
+
+'build_status(commit)' = '''
+    commit.trailers()
+        .filter(|t| t.key() == "Build-Status")
+        .map(|t| 
+            if (t.value().starts_with("https://"),
+                hyperlink(
+                    t.value(),
+                    label(
+                        "build_status link " ++ t.value().replace(regex:".*#(.*)$", "$1"),
+                        "[" ++ t.value().replace(regex:".*#(.*)$", "$1") ++ "] "
+                    )
+                ),
+                label(
+                    "build_status " ++ t.value().replace(regex:".*#(.*)$", "$1"),
+                    "[" ++ t.value().replace(regex:".*#(.*)$", "$1") ++ "] "
+                )
+            )
+        )
+        .join(" ")
+  '''
 
 'closing_issue(commit)' = '''
     commit.trailers()
@@ -80,8 +117,8 @@ pull_request_link = { fg = "magenta", bold = true, italic = true }
         .map(|t| 
             if(t.value().starts_with("https://"), 
                 hyperlink(
-                    t.value(), label("closing_issue_link", "[" ++ t.value().replace(regex:".*/(.*)$", "$1") ++ "]")), 
-                label("closing_issue", "[" ++ t.value().replace(regex:".*/(.*)$", "$1") ++ "]")
+                    t.value(), label("closing_issue link", "[" ++ t.value().replace(regex:".*/(.*)$", "$1") ++ "] ")), 
+                label("closing_issue", "[" ++ t.value().replace(regex:".*/(.*)$", "$1") ++ "] ")
             )
         )
         .join(" ")
@@ -100,6 +137,6 @@ pull_request_link = { fg = "magenta", bold = true, italic = true }
 [templates]
 'log' = '''
     format_short_commit_header(self) ++ " "  
-    ++ pull_request(self) ++ closing_issue(self) ++ "\n"
+    ++ pull_request(self) ++ reviewed_by(self) ++ build_status(self) ++ closing_issue(self) ++ "\n"
     ++ commit_description(self) ++ "\n "
 '''

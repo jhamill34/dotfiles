@@ -23,3 +23,9 @@ co = checkout
 	autoSetupRemote = true
 	default = current
 
+[user]
+	signingKey = A44C369BA25A5D1A
+[commit]
+	gpgsign = true
+[tag]
+	gpgsign = true

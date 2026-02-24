@@ -29,7 +29,7 @@
       include_tasks: rust.yaml
       loop: 
         - repo: https://github.com/jhamill34/jj-spr.git
-          rev: c001ed0e38fc7a706e85e007aa0b085f8ee47b68
+          rev: 2d0c6ee892745f56ec1a2fb60e55fce86f04e061
 
 - name: Python Packages
   block:

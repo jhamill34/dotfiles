@@ -4,6 +4,7 @@ common_taps:
   - olets/tap
   - nikitabobko/tap
   - felixkratz/formulae
+  - quarkusio/tap
 
 additional_formulas: []
 common_formulas:
@@ -26,6 +27,7 @@ common_formulas:
   - jj
   - git-cliff
   - koji
+  - act
 
   # AI 
   - sst/tap/opencode
@@ -43,7 +45,7 @@ common_formulas:
   - colima
   - lima
   - lazydocker
-  
+
   # General Infra
   - pulumi
 
@@ -81,6 +83,7 @@ common_formulas:
   # Java Build
   - gradle
   - maven
+  - quarkus
 
   # NodeJS 
   - pnpm
@@ -90,6 +93,7 @@ common_formulas:
   - imagemagick
   - d2
   - ffmpeg
+  - graphviz
 
   # Finance
   - bison
@@ -143,6 +147,7 @@ common_casks:
   # Terminal
   - ghostty
   - confluent-cli
+  - ngrok
 
   # Music
   - spotify

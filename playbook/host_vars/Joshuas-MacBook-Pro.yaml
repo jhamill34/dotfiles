@@ -8,6 +8,8 @@ additional_casks:
   # Video Call
   - zoom
 
+  - loom
+
   # Notion
   - notion
   - notion-calendar
