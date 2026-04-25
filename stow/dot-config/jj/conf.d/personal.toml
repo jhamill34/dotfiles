@@ -1,8 +1,8 @@
---when.repositories = [ "~/Code/Personal", "~/dotfiles", "~/Finance" ]
+--when.repositories = [ "~/Code/Personal", "~/dotfiles", "~/Finance", "~/Code/Entri" ]
 
 [user]
 email = "joshrasmussen34@gmail.com"
-name = "Josh Hamill"
+name = "Joshua Hamill"
 
 [signing]
 behavior = "drop"
