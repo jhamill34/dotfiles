@@ -152,6 +152,10 @@ common_casks:
   # Music
   - spotify
 
+  # Password manager
+  - 1password-cli
+  - memoryanalyzer
+
   # Fonts
   - font-sketchybar-app-font
   - font-terminess-ttf-nerd-font
