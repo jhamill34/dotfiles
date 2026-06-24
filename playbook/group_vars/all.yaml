@@ -5,6 +5,7 @@ common_taps:
   - nikitabobko/tap
   - felixkratz/formulae
   - quarkusio/tap
+  - agavra/tap
 
 additional_formulas: []
 common_formulas:
@@ -20,6 +21,8 @@ common_formulas:
   - neovim
   - tree-sitter-cli
   - luarocks
+  - herdr
+  - agavra/tap/tuicr 
 
   # Version Control
   - gh

@@ -1,0 +1,14 @@
+[terminal]
+default_shell = "nu"
+
+[keys]
+prefix = "ctrl+b"
+goto = "prefix+g"
+new_tab = "prefix+c"
+next_tab = "prefix+n"
+previous_tab = "prefix+p"
+focus_pane_left = "prefix+h"
+navigate_workspace_down = "j"
+navigate_pane_down = "ctrl+j"
+split_horizontal = "prefix+minus"
+split_vertical = "prefix+|"

@@ -10,4 +10,4 @@ backend = "gpg"
 key = "Josh Hamill <joshrasmussen34@gmail.com>"
 
 [git]
-sign-on-push = true
+sign-on-push = false
