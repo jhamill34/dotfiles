@@ -1,4 +1,10 @@
---when.repositories = [ "~/Code/Personal", "~/dotfiles", "~/Finance", "~/Code/Entri" ]
+--when.repositories = [ 
+    "~/Code/Personal",
+    "~/dotfiles",
+    "~/Finance",
+    "~/Code/Entri",
+    "~/Code/Finance"
+]
 
 [user]
 email = "joshrasmussen34@gmail.com"
