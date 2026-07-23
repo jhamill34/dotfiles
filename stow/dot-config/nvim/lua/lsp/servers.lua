@@ -29,7 +29,7 @@ M.mason_servers = {
 			journal_file = vim.fn.getcwd() .. "/main.beancount",
 			formatting = {
 				prefix_width = 30,
-				currency_column = 60,
+				currency_column = 80,
 				number_currency_spacing = 1,
 			},
 			completion = {

@@ -21,22 +21,22 @@ return {
 		function()
 			local in_git = Snacks.git.get_root() ~= nil
 			local cmds = {
-				{
-					icon = " ",
-					title = "Open PRs",
-					cmd = "gh pr list -L 3 || true",
-					key = "P",
-					action = function()
-						vim.fn.jobstart("gh pr list --web", { detach = true })
-					end,
-					height = 7,
-				},
-				{
-					icon = " ",
-					title = "Git Status",
-					cmd = "jj st --no-pager || true",
-					height = 10,
-				},
+				-- {
+				-- 	icon = " ",
+				-- 	title = "Open PRs",
+				-- 	cmd = "gh pr list -L 3 try true",
+				-- 	key = "P",
+				-- 	action = function()
+				-- 		vim.fn.jobstart("gh pr list --web", { detach = true })
+				-- 	end,
+				-- 	height = 7,
+				-- },
+				-- {
+				-- 	icon = " ",
+				-- 	title = "Git Status",
+				-- 	cmd = "jj st --no-pager || true",
+				-- 	height = 10,
+				-- },
 			}
 			return vim.tbl_map(function(cmd)
 				return vim.tbl_extend("force", {

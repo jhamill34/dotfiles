@@ -15,3 +15,12 @@ vim.filetype.add({
 		bean = "beancount",
 	},
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "beancount" },
+	callback = function()
+		vim.o.tabstop = 2
+		vim.o.shiftwidth = 2
+		vim.o.expandtab = true
+	end,
+})
