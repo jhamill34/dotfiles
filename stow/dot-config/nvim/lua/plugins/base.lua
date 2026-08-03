@@ -114,4 +114,14 @@ return {
 			vim.keymap.set("n", "<leader>-", require("oil").toggle_float)
 		end,
 	},
+	{
+		"christoomey/vim-tmux-navigator",
+		lazy = false,
+		init = function()
+			vim.g.tmux_navigator_no_mappings = 1
+		end,
+		config = function()
+			require("herdr.nav")
+		end,
+	},
 }

@@ -1,0 +1,19 @@
+additional_casks:
+  # AI
+  - claude-code
+
+  # Browser
+  - google-chrome
+
+  # Video Call
+  - zoom
+  - loom
+
+  # Notion
+  - notion-calendar
+
+  # Communications
+  - slack
+
+additional_mas_apps: 
+  - 6445813049

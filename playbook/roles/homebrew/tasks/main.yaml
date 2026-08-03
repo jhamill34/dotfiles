@@ -33,6 +33,9 @@
 - name: Install Casks
   include_tasks: casks.yaml
 
+- name: Install MAS
+  include_tasks: mas.yaml
+
 - name: Start Services
   community.general.homebrew_services:
     state: present

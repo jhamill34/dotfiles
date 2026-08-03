@@ -170,3 +170,6 @@ additional_services: []
 common_services: 
   - sketchybar
   - borders
+
+additional_mas_apps: []
+common_mas_apps: []
