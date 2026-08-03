@@ -13,3 +13,6 @@ additional_casks:
 
   # Used for raspberry pi setups
   - raspberry-pi-imager
+
+additional_mas_apps:
+  - 6445813049 

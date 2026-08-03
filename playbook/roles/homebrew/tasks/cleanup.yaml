@@ -17,3 +17,9 @@
     state: absent
     name: "{{ unwanted_taps }}"
   when: unwanted_taps | length > 0
+
+# - name: Remove Unwanted MAS Apps
+#   community.mas:
+#     state: absent
+#     name: "{{ unwanted_mas_apps }}"
+#   when: unwanted_mas_apps | length > 0

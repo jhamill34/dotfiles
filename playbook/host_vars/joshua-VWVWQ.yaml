@@ -14,6 +14,3 @@ additional_casks:
 
   # Communications
   - slack
-
-additional_mas_apps: 
-  - 6445813049
