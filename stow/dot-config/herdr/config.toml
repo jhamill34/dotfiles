@@ -11,6 +11,8 @@ navigate_workspace_down = "j"
 navigate_workspace_up = "k"
 split_horizontal = "prefix+minus"
 split_vertical = "prefix+|"
+next_agent = "prefix+}"
+previous_agent = "prefix+{"
 
 [[keys.command]]
 key = "ctrl+h"
@@ -35,3 +37,6 @@ key = "ctrl+l"
 type = "plugin_action"
 command = "vim-herdr-navigation.right"
 description = "navigate right (vim/herdr)"
+
+[ui]
+agent_panel_sort = "spaces"
