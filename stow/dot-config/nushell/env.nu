@@ -58,6 +58,8 @@ $env.THEME_PATH = [
     ($env.XDG_CONFIG_HOME | path join "nvim" "lua" "plugins" "theme.lua")
     ($env.XDG_CONFIG_HOME | path join "nushell" "colors.nu")
     ($env.XDG_CONFIG_HOME | path join "starship.toml")
+    ($env.XDG_CONFIG_HOME | path join "herdr" "config.toml")
+    ($env.XDG_CONFIG_HOME | path join "tuicr" "config.toml")
 ]
 
 $env.D2_SKETCH = true

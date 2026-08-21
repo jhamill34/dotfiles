@@ -12,4 +12,3 @@ review_watch_interval_ms = 1000 # set to 0 to disable persisted-review polling
 id = "issue"
 color = "red"
 definition = "must fix before merge"
-

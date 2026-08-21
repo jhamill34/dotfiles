@@ -1,0 +1,16 @@
+#!/bin/bash
+
+fg="0xffd3c6aa"
+purple="0xffA7C080"
+base="0xff272e33"
+
+options=(
+	style=round
+	width=6.0
+	hidpi=off
+	active_color="$purple"
+	inactive_color="$base"
+    blacklist="Simulator"
+)
+
+borders "${options[@]}"

@@ -68,12 +68,12 @@ automatically-unhide-macos-hidden-apps = false
 #                 See:
 #                 https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
-    inner.horizontal = 16
-    inner.vertical =   16
-    outer.left =       16
-    outer.bottom =     16
-    outer.top =        [ { monitor."built-in" = 32 }, 58 ]
-    outer.right =      16
+    inner.horizontal = 24
+    inner.vertical =   24
+    outer.left =       24
+    outer.bottom =     24
+    outer.top =        [ { monitor."built-in" = 32 }, 64 ]
+    outer.right =      24
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'finder'

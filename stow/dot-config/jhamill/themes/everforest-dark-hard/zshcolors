@@ -1,0 +1,11 @@
+#!/bin/zsh
+
+export FZF_DEFAULT_OPTS=" \
+    --color=bg+:#414B50,bg:#272E33,spinner:#D3C6AA,hl:#E67E80 \
+    --color=fg:#D3C6AA,header:#E67E80,info:#E69875,pointer:#D3C6AA \
+    --color=marker:#E69875,fg+:#D3C6AA,prompt:#E69875,hl+:#E67E80 \
+    --color=selected-bg:#414B50 \
+    --color=border:#E69875,label:#D3C6AA \
+    --border=bold"
+
+export JQ_COLORS="1;30:0;37:0;37:0;37:0;32:1;37:1;37:1;34"
