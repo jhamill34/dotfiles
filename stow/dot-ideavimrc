@@ -98,6 +98,11 @@ map <leader>db  <Action>(ToggleLineBreakpoint)
 let g:WhichKeyDesc_debugStop = "<leader>dx [d]ebug [x] (quit)"
 map <leader>dx  <Action>(Stop)
 
+let g:WhichKeyDesc_testRun = "<leader>tt [t]est run under cursor"
+map <leader>tt <Action>(ContextRun)
+let g:WhichKeyDesc_testDebug = "<leader>td [t]est [d]ebug under cursor"
+map <leader>td <Action>(ContextDebug)
+
 let g:WhichKeyDesc_reformat = "<leader>rf [r]efactor [f]ormat"
 map <leader>rf <Action>(ReformatCode)
 let g:WhichKeyDesc_rename = "<leader>rn [r]efactor re[N]ame"
