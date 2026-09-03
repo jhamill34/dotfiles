@@ -32,6 +32,11 @@ map Q gq
 
 map <C-c> <Esc><CR>
 
+" -- Diagnostics, mirroring lua/config/maps.lua's <leader>q / <C-w><C-o>
+let g:WhichKeyDesc_diagnosticsList = "<leader>q [Q]uickfix / problems list"
+nmap <leader>q <Action>(ActivateProblemsViewToolWindow)
+nmap <C-w><C-o> <Action>(ShowErrorDescription)
+
 " --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
 
 let g:WhichKeyDesc_methodDown = "[[ Method Down"
@@ -54,8 +59,6 @@ let g:WhichKeyDesc_back = "gb [g]oto [b]ack"
 nmap gb <Action>(Back)
 let g:WhichKeyDesc_forward = "gf [g]oto [f]orward"
 nmap gf <Action>(Forward)
-let g:WhichKeyDesc_gotoRefs = "gr [g]oto [r]eferences"
-nmap gr <Action>(FindUsages)
 let g:WhichKeyDesc_gotoImpl = "gI [g]oto [I]mplementations"
 nmap gI <Action>(GotoImplementation)
 let g:WhichKeyDesc_gotoDesc = "gD [g]oto [D]eclarations"
@@ -68,6 +71,25 @@ let g:WhichKeyDesc_gotoTest = "gt [g]oto [T]est"
 nmap gt <Action>(GotoTest)
 
 nmap K <Action>(ShowHoverInfo)
+
+" -- LSP-style "gr" mappings, mirroring the nvim 0.11 default LSP keymaps
+" used in ./stow/dot-config/nvim/lua/lsp/attach.lua and lua/ui/keys.lua
+" (grn/gra/grr/gri/grt/grd/grD). "gr" alone is dropped in favor of "grr"
+" since it would otherwise be an ambiguous prefix of these (notimeout is set).
+let g:WhichKeyDesc_lspRename = "grn LSP re[n]ame"
+nmap grn <Action>(RenameElement)
+let g:WhichKeyDesc_lspCodeAction = "gra LSP code [a]ction"
+nmap gra <Action>(ShowIntentionActions)
+let g:WhichKeyDesc_lspReferences = "grr LSP [r]eferences"
+nmap grr <Action>(FindUsages)
+let g:WhichKeyDesc_lspImplementation = "gri LSP [i]mplementation"
+nmap gri <Action>(GotoImplementation)
+let g:WhichKeyDesc_lspTypeDef = "grt LSP [t]ype definition"
+nmap grt <Action>(GotoTypeDeclaration)
+let g:WhichKeyDesc_lspDefinition = "grd LSP [d]efinition"
+nmap grd <Action>(GotoDeclaration)
+let g:WhichKeyDesc_lspDeclaration = "grD LSP [D]eclaration"
+nmap grD <Action>(GotoDeclaration)
 
 let g:WhichKeyDesc_codeCall = "<leader>cc [c]code [c]alls"
 nmap <leader>cc <Action>(CallHierarchy)
@@ -90,6 +112,21 @@ let g:WhichKeyDesc_searchGrep = "<leader>sg [s]earch [g]rep"
 nmap <leader>sg <Action>(FindInPath)
 let g:WhichKeyDesc_searchRecent = "<leader>s. [s]earch [.] (recent stuff)"
 nmap <leader>s. <Action>(RecentFiles)
+let g:WhichKeyDesc_searchSymbols = "<leader>ss [s]earch [s]ymbols (current file)"
+nmap <leader>ss <Action>(FileStructurePopup)
+let g:WhichKeyDesc_searchWorkspaceSymbols = "<leader>sS [s]earch [S]ymbols (workspace)"
+nmap <leader>sS <Action>(GotoSymbol)
+
+" -- Smart find / buffers / explorer, mirroring lua/ui/keys.lua and
+" the Oil/Snacks explorer bindings in lua/plugins/base.lua & snacks.lua
+nmap <leader><space> <Action>(SearchEverywhere)
+let g:WhichKeyDesc_buffers = "<leader>, buffers (open editors)"
+nmap <leader>, <Action>(Switcher)
+let g:WhichKeyDesc_explorer = "<leader>e file [e]xplorer"
+nmap <leader>e <Action>(ActivateProjectToolWindow)
+nmap - <Action>(SelectInProjectView)
+let g:WhichKeyDesc_scratch = "<leader>. scratch buffer"
+nmap <leader>. <Action>(NewScratchFile)
 
 let g:WhichKeyDesc_debugStart = "<leader>ds [d]ebug [s]tart"
 map <leader>ds  <Action>(Debug)
@@ -172,6 +209,10 @@ xmap <C-S-j> <Action>(MoveLineDown)
 nmap <C-S-k> <Action>(MoveLineUp)
 xmap <C-S-k> <Action>(MoveLineUp)
 
+" Move selected lines up/down, matching lua/config/maps.lua's visual J/K
+xmap J <Action>(MoveLineDown)
+xmap K <Action>(MoveLineUp)
+
 " Cycle through tabs (Alt+Shift+h_vim-motion) to move tabs
 nnoremap <C-S-l> :tabnext<CR>
 nnoremap <C-S-h> :tabprev<CR>
@@ -198,6 +239,29 @@ set NERDTree
 set which-key
 
 set notimeout
+
+" -- vim-surround remapped to mini.surround's keys (lua/plugins/mini.lua
+" runs `require("mini.surround").setup()`, whose defaults are sa/sd/sr —
+" see that file's own comment: saiw), sd', sr)'). The vim-surround engine
+" underneath is unchanged, just its trigger keys move from ys/ds/cs to
+" sa/sd/sr so muscle memory matches nvim. ys/ds/cs still work too.
+let g:WhichKeyDesc_surroundAdd = "sa [s]urround [a]dd (e.g. saiw))"
+nmap sa <Plug>YSurround
+xmap sa <Plug>VSurround
+let g:WhichKeyDesc_surroundDelete = "sd [s]urround [d]elete (e.g. sd')"
+nmap sd <Plug>DSurround
+let g:WhichKeyDesc_surroundReplace = "sr [s]urround [r]eplace (e.g. sr)')"
+nmap sr <Plug>CSurround
+
+" -- Move sneak (`set sneak` above) off s/S since mini.surround/vim-surround
+" now own the s-prefix above; gs/gS keeps the "goto"-style g-prefix already
+" used throughout this file for jump-ish navigation.
+nmap gs <Plug>(sneak-s)
+xmap gs <Plug>(sneak-s)
+nmap gS <Plug>(sneak-S)
+unmap s
+unmap S
+xunmap s
 
 " Open project view nd other things)(... again... just muscle memory)
 "TIP IdeaVim specific Note: need to use q to quit or <Ctrl+c> to just move back
