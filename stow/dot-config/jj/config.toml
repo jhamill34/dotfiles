@@ -1,6 +1,9 @@
 "$schema" = "https://jj-vcs.github.io/jj/latest/config-schema.json"
 
 [aliases]
+current_stack = [ "log", "-r", "stack()" ] 
+stack_roots = [ "log", "-r", "stack_roots()"] 
+stack_heads = [ "log", "-r", "stack_heads()"] 
 spr = ["util", "exec", "--", "jj-spr"]
 tug = ["bookmark", "move", "--from", "closest_bookmark(@)", "--to", "closest_pushable(@)"]
 restack = ["rebase", "-d", "trunk()", "-s", "roots(stack())+ & mutable()"]
@@ -45,11 +48,13 @@ ready = 'mine() & ~wip & ~private & mutable()'
 'stack()' = 'stack(@)'
 'stack(x)' = 'stack(x, 2)'
 'stack(x, n)' = 'ancestors(reachable(x, mutable()), n)'
+'stack_roots()' = 'roots(stack())+ & mutable()'
+'stack_heads()' = 'heads(stack_roots():: & ~empty())'
 "branch_start(to)" = "heads(::to & trunk())+ & ::to"
 
 [ui]
 pager = ":builtin"
-default-command = "log"
+default-command = "current_stack"
 
 [colors]
 closing_issue = { fg = "cyan", bold = true }

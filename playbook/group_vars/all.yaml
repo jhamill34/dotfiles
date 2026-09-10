@@ -97,6 +97,7 @@ common_formulas:
   - d2
   - ffmpeg
   - graphviz
+  - switchaudio-osx
 
   # Finance
   - bison
