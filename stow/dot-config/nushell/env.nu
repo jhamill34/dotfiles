@@ -77,5 +77,5 @@ carapace _carapace nushell | save --force $"($nu.cache-dir)/carapace.nu"
 
 # pnpm
 $env.PNPM_HOME = ($env.XDG_DATA_HOME | path join "pnpm")
-$env.PATH = ($env.PATH | split row (char esep) | prepend $env.PNPM_HOME )
+$env.PATH = ($env.PATH | split row (char esep) | prepend ($env.PNPM_HOME | path join "bin") )
 # pnpm end

@@ -177,7 +177,7 @@ let g:WhichKeyDesc_close = "<leader>zc [z]en [c]lose "
 map <leader>zc <Action>(CloseAllUnmodifiedEditors)
 
 let g:WhichKeyDesc_mavenSync = "<leader>ms [m]aven [s]ync"
-map <leader>ms <Action>(Gradle.DownloadSources)
+map <leader>ms <Action>(ExternalSystem.RefreshAllProjects)
 let g:WhichKeyDesc_mavenWindow = "<leader>mw [m]aven [w]indow"
 map <leader>mw <Action>(ActivateGradleToolWindow)
 let g:WhichKeyDes_mavenRunTask = "<leader>mg [m]aven [g]oal"
