@@ -1,6 +1,6 @@
 additional_casks:
   # AI
-  - claude-code
+  - claude-code@latest
 
   # Browser
   - google-chrome

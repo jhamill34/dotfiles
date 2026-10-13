@@ -24,7 +24,7 @@ add_space() {
         label.highlight_color=$WHITE
         label.font="sketchybar-app-font:Regular:16.0"
         label.y_offset=-1
-        background.color=$BACKGROUND_1
+        background.color=0xa0${BLACK:4}   # theme black, darker than the bar
         background.border_color=$BACKGROUND_2
         click_script="aerospace workspace $wid"
         script="$PLUGIN_DIR/aerospace.sh $wid"

@@ -75,6 +75,8 @@ $env.CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense' # optional
 mkdir $"($nu.cache-dir)"
 carapace _carapace nushell | save --force $"($nu.cache-dir)/carapace.nu"
 
+$env.PI_LEDS_PORT = '/dev/cu.usbmodem21201'
+
 # pnpm
 $env.PNPM_HOME = ($env.XDG_DATA_HOME | path join "pnpm")
 $env.PATH = ($env.PATH | split row (char esep) | prepend ($env.PNPM_HOME | path join "bin") )

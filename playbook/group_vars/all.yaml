@@ -167,6 +167,8 @@ common_casks:
   # Window Manager
   - nikitabobko/tap/aerospace
 
+  - vorssaint
+
 additional_services: []
 common_services: 
   - sketchybar

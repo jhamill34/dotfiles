@@ -88,16 +88,16 @@
     type: bool
     state: present
 
-- name: Map CapsLock to ESC
-  block:
-    - name: Copy custom Capslock plist
-      ansible.builtin.template:
-        src: capslock.plist.j2
-        dest: "{{ ansible_facts['user_dir'] }}/Library/LaunchAgents/tech.jhamill.capslock-escape.plist"
-
-    - name: Start Capslock
-      community.general.launchd:
-        name: tech.jhamill.capslock-escape
-        state: started
-
-
+# - name: Map CapsLock to ESC
+#   block:
+#     - name: Copy custom Capslock plist
+#       ansible.builtin.template:
+#         src: capslock.plist.j2
+#         dest: "{{ ansible_facts['user_dir'] }}/Library/LaunchAgents/tech.jhamill.capslock-escape.plist"
+#
+#     - name: Start Capslock
+#       community.general.launchd:
+#         name: tech.jhamill.capslock-escape
+#         state: unloaded 
+#
+#

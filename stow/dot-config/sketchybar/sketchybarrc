@@ -9,9 +9,14 @@ ITEM_DIR="$CONFIG_DIR/items"
 FONT="Terminess Nerd Font"
 PADDINGS=5
 
+# sketchybar can't round individual corners, so the bar is made taller by the
+# corner radius and pushed up off-screen to hide the rounded top corners.
+BAR_HEIGHT=40
+CORNER_RADIUS=9
+
 bar=(
-  height=40
-  color=$BAR_COLOR
+  height=$((BAR_HEIGHT + CORNER_RADIUS))
+  color=0xd0${BAR_COLOR:4}   # theme bar color at ~80% opacity
   border_width=1
   border_color=$BAR_BORDER_COLOR
   shadow=on
@@ -19,10 +24,10 @@ bar=(
   sticky=on
   padding_right=10
   padding_left=10
-  y_offset=8
+  y_offset=-$CORNER_RADIUS
   margin=10
   blur_radius=15
-  corner_radius=9
+  corner_radius=$CORNER_RADIUS
   topmost=window
 )
 
@@ -72,6 +77,17 @@ for wid in $(aerospace list-workspaces --all | sort -rn); do
 done
 
 # source "$ITEM_DIR/media.sh"
+
+# Items are centred in the full (partly off-screen) bar, so push them down to
+# the centre of the visible part. Popup items are left alone.
+item_y_offset=(y_offset=-$(((CORNER_RADIUS + 1) / 2)))
+sketchybar --set apple.logo "${item_y_offset[@]}" \
+           --set '/space\..*/' "${item_y_offset[@]}" \
+           --set chevron "${item_y_offset[@]}" \
+           --set front_app "${item_y_offset[@]}" \
+           --set calendar "${item_y_offset[@]}" \
+           --set wifi "${item_y_offset[@]}" \
+           --set battery "${item_y_offset[@]}"
 
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update
