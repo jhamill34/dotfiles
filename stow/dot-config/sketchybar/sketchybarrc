@@ -63,11 +63,15 @@ source "$ITEM_DIR/front_app.sh"
 source "$ITEM_DIR/calendar.sh"
 source "$ITEM_DIR/wifi.sh"
 source "$ITEM_DIR/battery.sh"
-source "$ITEM_DIR/volume.sh"
-source "$ITEM_DIR/stats.sh"
+
+# Right-side spaces are added in reverse so they read left to right
+for wid in $(aerospace list-workspaces --all | sort -rn); do
+  if [ "$wid" -ge "$RIGHT_SPACES_FROM" ]; then
+    add_space "$wid" right
+  fi
+done
 
 # source "$ITEM_DIR/media.sh"
-source "$ITEM_DIR/spotify.sh"
 
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update

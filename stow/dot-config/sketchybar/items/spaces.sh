@@ -7,7 +7,11 @@
 
 sketchybar --add event aerospace_workspace_change
 
-for wid in $(aerospace list-workspaces --all); do
+RIGHT_SPACES_FROM=4
+
+add_space() {
+    local wid=$1
+    local position=$2
     space=(
         icon=$wid
         icon.padding_left=10
@@ -26,9 +30,15 @@ for wid in $(aerospace list-workspaces --all); do
         script="$PLUGIN_DIR/aerospace.sh $wid"
     )
 
-    sketchybar --add item space.$wid left \
+    sketchybar --add item space.$wid $position \
         --set space.$wid "${space[@]}" \
         --subscribe space.$wid aerospace_workspace_change space_windows_change
+}
+
+for wid in $(aerospace list-workspaces --all); do
+    if [ "$wid" -lt "$RIGHT_SPACES_FROM" ]; then
+        add_space "$wid" left
+    fi
 done
 
 
