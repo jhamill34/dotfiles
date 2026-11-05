@@ -240,7 +240,9 @@ export default class Strip extends View {
     this.sets = [];
     // Scrolling writes the layout at most every WRITE_MS, however fast the wheel.
     this.seq = 0; // bumped by whatever changes the model outside render (see render's key)
-    cx.timer.every(WRITE_MS / 2, (cx) => { if (this.dirty) { this.dirty = false; this.seq++; cx.notify(); } });
+    // jhamill: also while a focus waits for its pane to land in the layout. A layout write doesn't
+    // redraw mods, so the focus otherwise waited for an unrelated redraw (seconds, now and then).
+    cx.timer.every(WRITE_MS / 2, (cx) => { if (this.dirty) { this.dirty = false; this.seq++; cx.notify(); } else if (this.pendingFocus) cx.notify(); });
     // A drag on one of Herdr's dividers changes the tree without telling us.
     cx.timer.every(150, (cx) => {
       // A pane let go where nothing takes drops (a gutter) is held until

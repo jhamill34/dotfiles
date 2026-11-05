@@ -21,11 +21,12 @@ local function nav(wincmd, dir)
 	-- The Herdr app (herdr-core terminals) comes first: its terminals can inherit a
 	-- stale HERDR_PANE_ID that points at the TUI.
 	if vim.env.HC_TERMINAL_ID and vim.env.HC_TERMINAL_ID ~= "" and vim.fn.executable("herdr-app") == 1 then
-		vim.fn.system({ "herdr-app", "do", "pane.go", "--direction", dir })
-		-- A Kanso strip shows panes as layout blocks, which pane.go refuses: use the strip's own move.
-		if vim.v.shell_error ~= 0 then
-			vim.fn.system({ "herdr-app", "do", "kanso-strip.go-" .. dir })
-		end
+		-- In the background, so Neovim never waits on it. A Kanso strip shows panes as layout
+		-- blocks, which pane.go refuses: then the strip's own move.
+		vim.fn.jobstart({
+			"sh", "-c", 'herdr-app do pane.go --direction "$1" >/dev/null 2>&1 || herdr-app do "kanso-strip.go-$1" >/dev/null 2>&1',
+			"sh", dir,
+		}, { detach = true })
 	elseif vim.env.HERDR_PANE_ID and vim.env.HERDR_PANE_ID ~= "" then
 		local herdr = vim.env.HERDR_BIN_PATH
 		if herdr == nil or herdr == "" then
@@ -50,3 +51,20 @@ map("<C-h>", "h", "left", "Navigate left (vim/herdr)")
 map("<C-j>", "j", "down", "Navigate down (vim/herdr)")
 map("<C-k>", "k", "up", "Navigate up (vim/herdr)")
 map("<C-l>", "l", "right", "Navigate right (vim/herdr)")
+
+-- The Herdr app takes <C-h/j/k/l> itself (its vim-nav mod). For a Neovim pane it calls
+-- HerdrNav over this instance's RPC socket, which `hc label` publishes on the terminal
+-- (herdr.nvim=<socket>): typing the key with `hc keys` instead waits until the person
+-- seems to have stopped typing, seconds right after a :split.
+local WINCMD = { left = "h", down = "j", up = "k", right = "l" }
+function _G.HerdrNav(dir)
+	if WINCMD[dir] then nav(WINCMD[dir], dir) end
+end
+
+local term = vim.env.HC_TERMINAL_ID
+if term and term ~= "" and vim.v.servername ~= "" and vim.fn.executable("hc") == 1 then
+	vim.fn.jobstart({ "hc", "label", term, "herdr.nvim=" .. vim.v.servername }, { detach = true })
+	vim.api.nvim_create_autocmd("VimLeavePre", {
+		callback = function() vim.fn.jobstart({ "hc", "label", term, "herdr.nvim=" }, { detach = true }) end,
+	})
+end
