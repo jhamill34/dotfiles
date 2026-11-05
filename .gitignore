@@ -28,3 +28,6 @@ stow/dot-config/nvim/lua/plugins/theme.lua
 stow/dot-config/nvim.next/lua/config/theme.lua
 
 stow/dot-config/nushell/history.txt
+
+herdr-app/mods/*/gpui-kit.d.ts
+herdr-app/mods/*/jsconfig.json
