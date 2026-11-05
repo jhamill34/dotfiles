@@ -1,0 +1,11 @@
+{
+  "name": "mermaid-render",
+  "version": "1.0.0",
+  "description": "Mermaid -> SVG in a dark diagram style for md-preview (Herdr mod)",
+  "license": "MIT",
+  "type": "commonjs",
+  "dependencies": {
+    "beautiful-mermaid": "1.1.3"
+  },
+  "private": true
+}

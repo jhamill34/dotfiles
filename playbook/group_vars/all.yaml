@@ -167,6 +167,8 @@ common_casks:
   # Fonts
   - font-sketchybar-app-font
   - font-terminess-ttf-nerd-font
+  - font-lexend-deca  # herdr-app mermaid diagrams
+  - font-dm-mono      # herdr-app mermaid diagram labels
 
   # Window Manager
   - nikitabobko/tap/aerospace

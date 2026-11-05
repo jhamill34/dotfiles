@@ -1,0 +1,8 @@
+{
+  "place": "none",
+  "title": "Panel",
+  "cloned_from": {
+    "name": "kanso-panel",
+    "version": "0.1.13"
+  }
+}
