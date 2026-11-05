@@ -18,7 +18,11 @@ local function nav(wincmd, dir)
 		return -- moved within Neovim
 	end
 	-- At a split edge: cross into the surrounding multiplexer.
-	if vim.env.HERDR_PANE_ID and vim.env.HERDR_PANE_ID ~= "" then
+	-- The Herdr app (herdr-core terminals) comes first: its terminals can inherit a
+	-- stale HERDR_PANE_ID that points at the TUI.
+	if vim.env.HC_TERMINAL_ID and vim.env.HC_TERMINAL_ID ~= "" and vim.fn.executable("herdr-app") == 1 then
+		vim.fn.system({ "herdr-app", "do", "pane.go", "--direction", dir })
+	elseif vim.env.HERDR_PANE_ID and vim.env.HERDR_PANE_ID ~= "" then
 		local herdr = vim.env.HERDR_BIN_PATH
 		if herdr == nil or herdr == "" then
 			herdr = "herdr"

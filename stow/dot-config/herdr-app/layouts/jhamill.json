@@ -203,5 +203,15 @@
     16
   ],
   "preview": "layouts/github-and-trunk.svg",
-  "theme": "everforest-dark-hard"
+  "theme": "everforest-dark-hard",
+  "floating": [
+    {
+      "id": "vim-nav",
+      "content": {
+        "mod": "vim-nav"
+      },
+      "edge": "bottom",
+      "align": "end"
+    }
+  ]
 }

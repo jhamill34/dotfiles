@@ -1,12 +1,13 @@
 {
-  "zoom": 1.0,
+  "zoom": 1,
   "sounds": {
     "enabled": true
   },
   "font": "Terminess Nerd Font",
-  "font_size": 14.0,
+  "font_size": 14,
   "font_ligatures": false,
   "ui_font": "Terminess Nerd Font",
-  "minimum_contrast": 1.0,
-  "appearance": "dark"
+  "minimum_contrast": 1,
+  "appearance": "dark",
+  "option_as_alt": "auto"
 }
