@@ -2,6 +2,7 @@ onboarding = false
 [theme]
 name = "gruvbox"
 
+auto_switch = false
 [theme.custom]
 panel_bg = "#272e33"
 text = "#d3c6aa"

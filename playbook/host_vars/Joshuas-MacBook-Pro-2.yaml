@@ -1,9 +1,9 @@
 additional_formulas:
-  - arduino-cli
+  - arduino-cli 
+  - claude-code
 
 additional_casks:
-  # AI
-  - claude-code
+  - claude
 
   # Browser
   - google-chrome

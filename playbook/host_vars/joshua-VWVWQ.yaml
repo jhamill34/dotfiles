@@ -1,6 +1,9 @@
+additional_formulas: 
+  - claude-code
+
 additional_casks:
   # AI
-  - claude-code@latest
+  - claude
 
   # Browser
   - google-chrome

@@ -209,6 +209,9 @@ function icon_map() {
   "Claude")
     icon_result=":claude:"
     ;;
+  "Herdr")
+    icon_result=":herdr:"
+    ;; 
   *)
     icon_result=":default:"
     ;;
