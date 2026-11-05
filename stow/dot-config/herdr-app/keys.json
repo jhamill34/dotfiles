@@ -77,7 +77,7 @@
     "cmd-p": "mod.open:pixel-picker"
   },
   "layout:jhamill": {
-    "cmd-p": "mod.open:pixel-picker",
+    "cmd-p": "mod.open:jhamill-picker",
     "ctrl-h": "vim-nav.left",
     "ctrl-j": "vim-nav.down",
     "ctrl-k": "vim-nav.up",
@@ -85,13 +85,16 @@
     "ctrl-b c": "tab.new",
     "ctrl-b n": "tab.next",
     "ctrl-b p": "tab.prev",
-    "ctrl-b g": "mod.open:pixel-picker",
+    "ctrl-b g": "mod.open:jhamill-picker",
     "ctrl-b -": "pane.split:down",
     "ctrl-b |": "pane.split:right",
     "ctrl-b {": "agent.prev",
     "ctrl-b }": "agent.next",
     "ctrl-b x": "pane.close",
     "ctrl-b w": "mod.open:space-nav",
-    "ctrl-b shift-n": "space.new"
+    "ctrl-b shift-n": "space.new",
+    "ctrl-b t": "mod.open:jhamill-worktree",
+    "ctrl-b shift-t": "mod.open:worktree-new",
+    "ctrl-b shift-x": "mod.open:worktree-remove"
   }
 }

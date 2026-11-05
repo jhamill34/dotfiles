@@ -14,7 +14,7 @@
           "id": "brand",
           "type": "block",
           "content": {
-            "mod": "pixel-chrome"
+            "mod": "jhamill-chrome"
           },
           "size": {
             "px": 46
@@ -29,7 +29,7 @@
               "id": "spaces",
               "type": "block",
               "content": {
-                "mod": "pixel-spaces"
+                "mod": "jhamill-spaces"
               },
               "size": {
                 "weight": 0.800000011920929
