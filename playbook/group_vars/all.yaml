@@ -63,6 +63,9 @@ common_formulas:
   - helm
   - tilt
 
+  # Formal Proofs
+  - elan-init
+
   # OpenAPI
   - openapi-generator 
 
@@ -98,6 +101,7 @@ common_formulas:
   - ffmpeg
   - graphviz
   - switchaudio-osx
+  - media-control
 
   # Finance
   - bison

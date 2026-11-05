@@ -7,6 +7,9 @@ co = checkout
 [includeIf "gitdir:~/Code/Personal/"]
 	path = "~/.config/git/personal.gitconfig"
 
+[includeIf "gitdir:~/dotfiles/"]
+	path = "~/.config/git/personal.gitconfig"
+
 [includeIf "gitdir:~/Code/Work/"]
 	path = "~/.config/git/work.gitconfig"
 
