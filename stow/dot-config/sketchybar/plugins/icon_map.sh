@@ -203,6 +203,12 @@ function icon_map() {
   "Kitty" | "kitty")
     icon_result=":kitty:"
     ;;
+  "Zoom") 
+    icon_result=":zoom:"
+    ;;
+  "Claude")
+    icon_result=":claude:"
+    ;;
   *)
     icon_result=":default:"
     ;;
