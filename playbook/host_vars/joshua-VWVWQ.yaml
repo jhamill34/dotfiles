@@ -1,5 +1,6 @@
 additional_formulas: 
   - claude-code
+  - libomp
 
 additional_casks:
   # AI
