@@ -1,0 +1,3 @@
+# Signing uses pinentry-mac (GUI), so lazygit need not suspend its TUI for gpg; suspending left it blank and spinning.
+git:
+  overrideGpg: true
