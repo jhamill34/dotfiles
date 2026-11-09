@@ -1,0 +1,66 @@
+export GPG_TTY="$(tty)"
+
+source "$HOMEBREW_PREFIX/opt/antidote/share/antidote/antidote.zsh"
+antidote load
+
+# after plugins: zsh-utils/history sets its own HISTFILE; keep the existing one
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=100000
+SAVEHIST=100000
+
+# vi mode, like nushell's edit_mode = 'vi'
+bindkey -v
+KEYTIMEOUT=1
+bindkey -M viins '^ ' autosuggest-accept
+bindkey -M viins '^[[A' history-substring-search-up
+bindkey -M viins '^[[B' history-substring-search-down
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
+# buffer_editor = nvim: press v in normal mode to edit the line in $EDITOR
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd 'v' edit-command-line
+
+alias vim=nvim
+alias vi=nvim
+alias gai='git add -i'
+alias lld=lazydocker
+alias nb=newsboat
+alias ccal=calcurse
+alias ccals=calcurse-caldav
+alias note=jrnl
+
+alias jjn='jj new'
+alias jjgp='jj git push'
+alias jjgf='jj git fetch'
+alias jjbm='jj bookmark move'
+
+alias ls='eza --long --color=always --icons=always'
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza --long --color=always --icons=always $realpath'
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'eza --long --color=always --icons=always $realpath'
+
+alias python=python3
+alias pip=pip3
+
+for f in "$XDG_CONFIG_HOME"/zsh/*.zsh; do source "$f"; done
+
+init_theme
+source "$XDG_STATE_HOME/jhamill/current/theme/zshcolors"
+
+_evalcache carapace _carapace zsh
+_evalcache starship init zsh
+
+# transient prompt, like nushell's TRANSIENT_PROMPT_COMMAND: once a command is entered,
+# redraw its prompt as just starship's character, and restore the full prompt for the next one
+_full_prompt=$PROMPT _full_rprompt=$RPROMPT
+_transient_prompt() {
+    PROMPT='$(starship module character)' RPROMPT=''
+    zle .reset-prompt
+}
+_restore_prompt() { PROMPT=$_full_prompt RPROMPT=$_full_rprompt }
+autoload -Uz add-zle-hook-widget
+add-zle-hook-widget zle-line-finish _transient_prompt
+precmd_functions+=(_restore_prompt)
+
+_evalcache wt config shell init zsh
+_evalcache zoxide init --cmd cd zsh

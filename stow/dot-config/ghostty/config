@@ -23,5 +23,5 @@ confirm-close-surface = false
 quit-after-last-window-closed = true
 macos-dock-drop-behavior = window
 shell-integration = "none"
-command = /usr/bin/env XDG_CONFIG_HOME=$HOME/.config /opt/homebrew/bin/nu
+command = /bin/zsh -l
 

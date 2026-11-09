@@ -131,11 +131,13 @@ common_formulas:
 
   # Terminal Navigation
   - zoxide
+  - eza
 
   # Terminal Prompt
   - starship
 
-  # Nushell
+  # Shell
+  - antidote
   - nushell
   - carapace 
 

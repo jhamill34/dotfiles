@@ -13,7 +13,7 @@ blue = "#7fbbb3"
 yellow = "#dbbc7f"
 
 [terminal]
-default_shell = "nu"
+default_shell = "zsh"
 
 [keys]
 prefix = "ctrl+b"
@@ -54,3 +54,4 @@ description = "navigate right (vim/herdr)"
 
 [ui]
 agent_panel_sort = "spaces"
+host_cursor = "native"

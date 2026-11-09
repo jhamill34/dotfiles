@@ -3,7 +3,7 @@ additional_formulas:
 
 additional_casks:
   # AI
-  - claude
+  # - claude
 
   # Browser
   - google-chrome

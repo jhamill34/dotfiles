@@ -1,0 +1,53 @@
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+
+export PERSONAL_HOME="$HOME/Code/Personal"
+export WORK_HOME="$HOME/Code/Work"
+
+export COLIMA_HOME="$XDG_CONFIG_HOME/colima"
+export DOCKER_HOST="unix://$COLIMA_HOME/default/docker.sock"
+
+# export TESTCONTAINERS_HOST_OVERRIDE="192.168.64.2"
+export TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE="/var/run/docker.sock"
+
+export EDITOR="nvim"
+
+export HOMEBREW_PREFIX="/opt/homebrew"
+export HOMEBREW_CELLAR="/opt/homebrew/Cellar"
+export HOMEBREW_REPOSITORY="/opt/homebrew"
+
+export LANGS_HOME="$HOME/.local/ansible_langs"
+export JAVA_HOME="$LANGS_HOME/java/current/Contents/Home"
+export RUSTUP_HOME="$LANGS_HOME/rust/rustup"
+export CARGO_HOME="$LANGS_HOME/rust/cargo"
+export XCENV_ROOT="$LANGS_HOME/xcenv"
+export PNPM_HOME="$XDG_DATA_HOME/pnpm"
+
+export D2_SKETCH=true
+export D2_STDOUT_FORMAT="svg"
+export D2_THEME=200
+export D2_DARK_THEME=200
+export D2_LAYOUT="ELK"
+
+export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense'
+
+typeset -U path
+path=(
+    "$PNPM_HOME/bin"
+    "$CARGO_HOME/bin"
+    "$LANGS_HOME/python/current/bin"
+    "$LANGS_HOME/node/current/bin"
+    "$LANGS_HOME/golang/current/bin"
+    "$JAVA_HOME/bin"
+    "$HOME/.npm-global/bin"
+    "$HOME/.local/bin"
+    "$HOME/.bin"
+    "$HOME/sbin"
+    "$HOME/bin"
+    "$HOMEBREW_PREFIX/opt/bison/bin"
+    "$HOMEBREW_PREFIX/sbin"
+    "$HOMEBREW_PREFIX/bin"
+    $path
+)

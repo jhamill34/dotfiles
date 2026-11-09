@@ -1,0 +1,2 @@
+# macOS /etc/zprofile runs path_helper after .zshenv and pushes system dirs ahead of ours; re-apply.
+source "$HOME/.zshenv"
