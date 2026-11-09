@@ -143,6 +143,7 @@ common_formulas:
 
   # Password Management
   - pass
+  - pinentry-mac
 
 additional_casks: []
 common_casks:

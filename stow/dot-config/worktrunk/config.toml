@@ -1,0 +1,7 @@
+# Worktrunk user config — `wt config create` prints a fully documented example.
+
+worktree-path = "~/worktrees/{{ repo }}/{{ branch | sanitize }}"
+
+[aliases]
+# `wt new foo` -> branch jhamill-oscilar/foo; extra flags pass through (e.g. --base develop)
+new = "wt switch --create jhamill-oscilar/{{ args }}"
