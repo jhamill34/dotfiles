@@ -1,10 +1,8 @@
 additional_taps: []
 common_taps:
-  - sst/tap
   - olets/tap
   - nikitabobko/tap
   - felixkratz/formulae
-  - quarkusio/tap
   - agavra/tap
 
 additional_formulas: []
@@ -31,9 +29,7 @@ common_formulas:
   - git-cliff
   - koji
   - act
-
-  # AI 
-  - sst/tap/opencode
+  - worktrunk
 
   # Databases
   - lazysql
@@ -89,7 +85,6 @@ common_formulas:
   # Java Build
   - gradle
   - maven
-  - quarkus
 
   # NodeJS 
   - pnpm

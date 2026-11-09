@@ -25,11 +25,11 @@
         cargo_home: "{{ language_root }}/rust/cargo"
         rustup_home: "{{ language_root }}/rust/rustup"
 
-    - name: Install Cargo Packages
-      include_tasks: rust.yaml
-      loop: 
-        - repo: https://github.com/jhamill34/jj-spr.git
-          rev: 2d0c6ee892745f56ec1a2fb60e55fce86f04e061
+    # - name: Install Cargo Packages
+    #   include_tasks: rust.yaml
+    #   loop: 
+    #     - repo: https://github.com/jhamill34/jj-spr.git
+    #       rev: 2d0c6ee892745f56ec1a2fb60e55fce86f04e061
 
 - name: Python Packages
   block:
