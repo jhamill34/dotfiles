@@ -13,10 +13,11 @@ HERDR_MODS_EXCLUDE := --exclude gpui-kit.d.ts --exclude jsconfig.json --exclude 
 # copy and installs it only where none exists yet.
 HERDR_LAYOUTS_DIR := ./herdr-app/layouts
 HERDR_LAYOUTS_TARGET := $(HOME)/.config/herdr-app/layouts
+# herdr-app is uninstalled; its targets stay for a reinstall but are no longer part of stow-install.
 
 export ANSIBLE_PYTHON_INTERPRETER := $(HOME)/.local/bootstrap/bin/python3
 
-stow-install: herdr-mods herdr-layouts
+stow-install:
 	cd $(STOW_DIR) && $(STOW_BIN) --no-fold --dotfiles --target="$$HOME" .
 
 herdr-layouts:
