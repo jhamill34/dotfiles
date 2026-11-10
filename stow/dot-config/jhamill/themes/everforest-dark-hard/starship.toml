@@ -7,7 +7,7 @@ $username\
 [](bg:peach fg:red)\
 $directory\
 [](bg:yellow fg:peach)\
-$git_branch\
+${custom.branch}\
 $git_status\
 [](fg:yellow bg:green)\
 $c\
@@ -76,6 +76,7 @@ truncation_symbol = "…/"
 "Music" = "󰝚 "
 "Pictures" = " "
 "Code" = "󰲋 "
+"jhamill-oscilar-" = ""
 
 [localip]
 ssh_only = false
@@ -83,10 +84,14 @@ format = '[ $localipv4 ]($style)'
 style = "fg:sapphire"
 disabled = true
 
-[git_branch]
+# Replaces git_branch: drops the wt prefix, truncates, and hides inside worktrunk worktrees (dir name is the branch).
+[custom.branch]
 symbol = ""
 style = "bg:yellow"
-format = '[[ $symbol $branch ](fg:crust bg:yellow)]($style)'
+format = '[[ $symbol $output ](fg:crust bg:yellow)]($style)'
+require_repo = true
+when = 'case "$PWD" in "$HOME"/worktrees/*) exit 1;; esac'
+command = "git branch --show-current | sed -E 's|^jhamill-oscilar/||; s|^(.{23}).{2,}$|\\1…|'"
 
 [git_status]
 style = "bg:yellow"
